@@ -1,0 +1,24 @@
+mat-card-header {
+    background-color: rgba(165, 6, 91, 0.192);
+}
+
+.image-custom {
+    padding: 8px;
+    width: 150px;
+    height: auto;
+  }
+
+.search-custom {
+    margin-top: 10px;
+    width: 200px;
+}
+
+.mat-card-custom {
+    max-width: 200px; /* ou toute autre taille souhaitée */
+    width: 100%;
+    height: auto; /* pour conserver les proportions de l'image */
+  }
+
+.grid-color {
+    background-color: aqua;
+}

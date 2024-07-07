@@ -14,11 +14,26 @@ mat-card-header {
 }
 
 .mat-card-custom {
-    max-width: 200px; /* ou toute autre taille souhaitée */
+    max-width: 200px; 
     width: 100%;
-    height: auto; /* pour conserver les proportions de l'image */
+    height: auto;
   }
 
 .grid-color {
     background-color: aqua;
+}
+
+mat-grid-tile {
+  /* background: ligh tblue; */
+}
+
+.card-test {
+  max-width: 410px; 
+  padding: 8px;
+  height: auto;
+}
+
+.img-card {
+  max-width: 200px; 
+  height: auto;
 }

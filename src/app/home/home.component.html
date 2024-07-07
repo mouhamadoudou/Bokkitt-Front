@@ -1,12 +1,12 @@
 <div class="container">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Tous les deals et codes de réduction Applications valides en juin 2024
-            </mat-card-title>
-        </mat-card-header>
-        <mat-divider></mat-divider>
-        <mat-card-content>
-            <mat-form-field class="search-custom" appearance="outline">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Tous les deals et codes de réduction Applications valides en juin 2024
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <!-- <mat-form-field class="search-custom" appearance="outline">
                 <input matInput (change)="filterStudent($event)">
                 <mat-label>Search promotion</mat-label>
             </mat-form-field>
@@ -37,15 +37,36 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
-              <mat-paginator [pageSizeOptions]="[5, 10, 15, 10]" aria-label="Select page of users"></mat-paginator>
-        </mat-card-content>
-        <mat-grid-list cols="1" rowHeight="8:1">
-          <mat-grid-tile class="grid-color">1</mat-grid-tile>
-          <mat-grid-tile>2</mat-grid-tile>
-          <mat-grid-tile>3</mat-grid-tile>
-          <mat-grid-tile>4</mat-grid-tile>
-          <mat-grid-tile>4</mat-grid-tile>
-          <mat-grid-tile>4</mat-grid-tile>
-        </mat-grid-list>
-    </mat-card>
+              <mat-paginator [pageSizeOptions]="[5, 10, 15, 10]" aria-label="Select page of users"></mat-paginator> -->
+      <mat-grid-list cols="4" rowHeight="5:5">
+        <mat-grid-tile class="card-test">
+          <app-card />
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+        </mat-grid-tile>
+        <mat-grid-tile class="card-test">
+          <app-card />
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
 </div>

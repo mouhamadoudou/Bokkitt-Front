@@ -31,6 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './guards/auth.guard';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './card/card.component';
+import { CardListComponent } from './card-list/card-list.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { HttpClientModule } from '@angular/common/http';
     StudentsComponent,
     PaymentsComponent,
     LoadStudentsComponent,
-    LoadPaymentsComponent
+    LoadPaymentsComponent,
+    CardComponent,
+    CardListComponent
   ],
   imports: [
     BrowserModule,

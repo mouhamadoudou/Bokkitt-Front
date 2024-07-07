@@ -1,14 +1,20 @@
 .card-test {
     max-width: 410px; 
     height: auto;
+    padding: 8px;
     margin: 4px;
   }
   
   .img-card {
-    max-width: 200px; 
+    margin-left: 17px;
+    margin-top: 12px;
+    max-width: 95%;
+    padding-bottom: 10px;
     height: auto;
   }
 
 .example-card {
-    background-color: rgba(184, 178, 182, 0.521);
+    margin-left: 15px;
+
+    background-color: rgba(184, 178, 182, 0.274);
 }

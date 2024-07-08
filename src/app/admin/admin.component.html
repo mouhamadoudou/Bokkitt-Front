@@ -5,11 +5,11 @@
     <span class="spacer">
     </span>
     <button mat-button routerLink="/admin/home"> Mes-Trajets </button>
-    <button mat-button routerLink="/admin/profile"> Trajet-prevus </button>
+    <button mat-button routerLink="/admin/profile"> Offre trajet </button>
     <button mat-button [mat-menu-trigger-for]="importMenu"
             *ngIf="authService.roles.includes('ADMIN')">
         <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
-        Poposer un trajet
+        Publier votre annonce
     </button>
         <mat-menu #importMenu>
             <button mat-menu-item routerLink="/admin/load-students"> Mes clients</button>
@@ -18,7 +18,7 @@
     <button mat-button *ngIf="authService.authentificated==true">
         {{authService.username}}
     </button>
-    <button (click)="logout()" mat-raised-button color="accent" > Logout </button>
+    <button (click)="logout()" mat-raised-button color="accent" > Se déconnecter </button>
 </mat-toolbar>
 
 <mat-drawer-container>

@@ -28,8 +28,9 @@ mat-grid-tile {
 }
 
 .card-test {
+  margin-top: 5px;
+  padding-top: 5px;
   max-width: 410px; 
-  padding: 8px;
   height: auto;
 }
 
@@ -41,10 +42,14 @@ mat-grid-tile {
 .container {
   /* background-color: aliceblue; */
   padding: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .card-title {
   margin-left: 20px;
+  justify-content: center;
+  padding-bottom: 40px;
 }
 
 .card-filter {

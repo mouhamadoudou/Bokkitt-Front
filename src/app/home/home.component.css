@@ -37,3 +37,22 @@ mat-grid-tile {
   max-width: 200px; 
   height: auto;
 }
+
+.container {
+  /* background-color: aliceblue; */
+  padding: 10px;
+}
+
+.card-title {
+  margin-left: 20px;
+}
+
+.card-filter {
+  display: flex;
+  max-width: 200px; 
+  /* height: auto; */
+}
+
+.card-content {
+  display: flex;
+}

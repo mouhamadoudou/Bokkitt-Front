@@ -4,16 +4,16 @@
     </button>
     <span class="spacer">
     </span>
-    <button mat-button routerLink="/admin/home"> Home </button>
-    <button mat-button routerLink="/admin/profile"> Profile </button>
+    <button mat-button routerLink="/admin/home"> Mes-Trajets </button>
+    <button mat-button routerLink="/admin/profile"> Trajet-prevus </button>
     <button mat-button [mat-menu-trigger-for]="importMenu"
             *ngIf="authService.roles.includes('ADMIN')">
         <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
-        Import 
+        Poposer un trajet
     </button>
         <mat-menu #importMenu>
-            <button mat-menu-item routerLink="/admin/load-students"> Load Students</button>
-            <button mat-menu-item routerLink="/admin/load-payments"> Load Payments</button>
+            <button mat-menu-item routerLink="/admin/load-students"> Mes clients</button>
+            <button mat-menu-item routerLink="/admin/load-payments"> Hitstorique de trajet</button>
         </mat-menu>
     <button mat-button *ngIf="authService.authentificated==true">
         {{authService.username}}
@@ -27,19 +27,21 @@
             <mat-list-item>
                 <button mat-button routerLink="/admin/dashboard"> 
                     <mat-icon>dashboard</mat-icon>
-                    Dashboard
+                    <!-- Dashboard -->
+                    Mes Trajets
                 </button>
             </mat-list-item>
             <mat-list-item>
                 <button mat-button routerLink="/admin/students"> 
                     <mat-icon>dashboard</mat-icon>
-                    Students
+                    Trajets en Demande
+                    <!-- students -->
                 </button>
             </mat-list-item>
             <mat-list-item>
                 <button mat-button routerLink="/admin/payments"> 
                     <mat-icon>dashboard</mat-icon>
-                    Payments
+                    Trajet prevus
                 </button>
             </mat-list-item>
         </mat-nav-list>

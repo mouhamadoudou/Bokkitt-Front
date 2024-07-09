@@ -28,16 +28,7 @@ export class LoadStudentsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.students = [];
     this.products= [];
-    // console.log(this.productService.getAllProducts())
 
-    this.productService.getAllProducts().subscribe(
-      (data) => {
-        this.products = data; // Assign data to products array
-      },
-      (error) => {
-        console.error('Error fetching products:', error);
-      }
-    );
     console.log(this.products)
     for (let i = 1; i < 100; i++) {
       this.students.push(

@@ -15,7 +15,7 @@ import { first } from 'rxjs';
 export class HomeComponent implements OnInit, AfterViewInit {
   public cards : any;
   public dataSource : any;
-  public displayedColumns = ["id", "firstName", "payments"];
+
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
 
@@ -27,11 +27,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.cards = [];
     
-    for (let i = 1; i < 100; i++) {
+    for (let i = 1; i < 10; i++) {
       this.cards.push(
         {
-          city : "Thies a Dakar",
-          url : "https://www.photo-paysage.com/albums/userpics/10001/thumb_Crepuscule_sur_le_lac_Leman.jpg",
+          depart : "Thies",
+          destination: "Dakar",
+          img : "https://www.photo-paysage.com/albums/userpics/10001/thumb_Crepuscule_sur_le_lac_Leman.jpg",
           description : "Trajet demain a 11h depart de dakar vers thies heure de rendez \nvous a 13h30",
           firstName : Math.random().toString(20),
           payemnts : null,
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    console.log(this.dataSource.paginator)
     this.dataSource.sort = this.sort;
   }
 

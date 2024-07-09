@@ -90,3 +90,7 @@ mat-grid-tile {
 .card-comp {
 margin-top: 20px;
 }
+
+.mat-header {
+  display: flex;
+}

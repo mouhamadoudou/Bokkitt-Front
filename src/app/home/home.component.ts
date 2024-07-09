@@ -13,7 +13,7 @@ import { first } from 'rxjs';
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
-  public students : any;
+  public cards : any;
   public dataSource : any;
   public displayedColumns = ["id", "firstName", "payments"];
   @ViewChild(MatPaginator) paginator! : MatPaginator;
@@ -25,18 +25,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.students = [];
+    this.cards = [];
     
     for (let i = 1; i < 100; i++) {
-      this.students.push(
+      this.cards.push(
         {
-          id : i,
+          city : "Thies a Dakar",
+          url : "https://www.photo-paysage.com/albums/userpics/10001/thumb_Crepuscule_sur_le_lac_Leman.jpg",
+          description : "Trajet demain a 11h depart de dakar vers thies heure de rendez \nvous a 13h30",
           firstName : Math.random().toString(20),
           payemnts : null,
         }
       )
     }
-    this.dataSource = new MatTableDataSource(this.students)
+    this.dataSource = new MatTableDataSource(this.cards)
   }
 
   ngAfterViewInit(): void {
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = value;
   }
 
-  getPayments(students : any) : void {
+  getPayments(cards : any) : void {
     this.router.navigateByUrl("/payments")
   }
 

@@ -139,3 +139,21 @@ margin-top: 20px;
   padding-top: 3px;
   padding-left: 4px;
 }
+
+.disp-depart {
+  margin-left: 70px;
+  margin-right: 5px;
+}
+
+.disp-place {
+  margin-right: 10px;
+  margin-left: 40px;
+}
+
+.disp-price {
+  margin-left: 40px;
+}
+
+.disp-smoke {
+  margin-left: 40px;
+}

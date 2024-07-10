@@ -53,6 +53,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.router.navigateByUrl("/payments")
   }
 
+  onCardClick(element: any) {
+
+  }
 }
 
 

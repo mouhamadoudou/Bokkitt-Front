@@ -93,4 +93,28 @@ margin-top: 20px;
 
 .mat-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.title-container .mat-card-title-1 {
+  margin-right: 8%;
+}
+
+.title-container .mat-card-title-2 {
+  margin-left: 8%;
+}
+
+.mat-header .mat-card-subtitle {
+  margin-left: auto;
+}
+
+.button-reserved {
+  margin-left: 44%;
 }

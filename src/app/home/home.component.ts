@@ -15,7 +15,7 @@ import { first } from 'rxjs';
 export class HomeComponent implements OnInit, AfterViewInit {
   public cards : any;
   public dataSource : any;
-
+  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
 
@@ -26,15 +26,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.cards = [];
+
+    
     
     for (let i = 1; i < 10; i++) {
       this.cards.push(
         {
-          depart : "Thies",
-          destination: "Dakar",
+          depart : this.city[Math.floor(Math.random() * this.city.length)],
+          destination: this.city[Math.floor(Math.random() * this.city.length)],
           img : "https://www.photo-paysage.com/albums/userpics/10001/thumb_Crepuscule_sur_le_lac_Leman.jpg",
+          date : "10/07/2024",
           description : "Trajet demain a 11h depart de dakar vers thies heure de rendez \nvous a 13h30",
-          firstName : Math.random().toString(20),
           payemnts : null,
         }
       )
@@ -55,6 +57,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   getPayments(cards : any) : void {
     this.router.navigateByUrl("/payments")
+  }
+
+  clickOne() {
+    console.log("ok")
   }
 
 }

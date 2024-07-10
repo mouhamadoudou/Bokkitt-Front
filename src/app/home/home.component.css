@@ -4,7 +4,7 @@ mat-card-header {
 
 .image-custom {
     padding: 8px;
-    width: 150px;
+    width: 250px;
     height: auto;
   }
 
@@ -117,4 +117,25 @@ margin-top: 20px;
 
 .button-reserved {
   margin-left: 44%;
+}
+
+.table-comp {
+  width: 100%; 
+  height: 100px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(33, 73, 73);
+}
+
+.table-comp .traject{
+  display: flex;
+  justify-content: baseline;
+}
+
+.table-comp .traject p{
+  padding-top: 3px;
+  padding-left: 4px;
 }

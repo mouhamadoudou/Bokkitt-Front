@@ -93,7 +93,10 @@ mat-card-header {
 }
 
 .disp-price, .disp-smoke {
-  margin-left: 40px;
+  margin-left: 50px;
+  background-color: #AD1457;
+  margin-bottom: 40px;
+
 }
 
 .search-custom {

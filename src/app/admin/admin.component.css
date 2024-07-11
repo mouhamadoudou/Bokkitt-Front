@@ -5,3 +5,24 @@
 .admin_log {
     background-color: black;
 }
+
+.side-nav {
+    margin-top: 65px;
+    position: fixed;
+}
+
+.toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.custom-icon {
+    transform: scale(1.5);
+}
+
+
+.profile-menu {
+    margin-top: 500px;
+    background-color: #fff;
+}

@@ -1,45 +1,50 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar">
     <button mat-icon-button (click)="drawerId.toggle()">
         <mat-icon> menu </mat-icon>
     </button>
     <span class="spacer">
     </span>
-    <button mat-button routerLink="/admin/home"> Mes-Trajets </button>
-    <button mat-button routerLink="/admin/profile"> Offre trajet </button>
-    <button mat-button [mat-menu-trigger-for]="importMenu"
-            *ngIf="authService.roles.includes('ADMIN')">
-        <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+    <button mat-button routerLink="/admin/home"> Offre trajet </button>
+    <button mat-button routerLink="/admin/profile"> Mes-Trajets </button>
+    <button mat-button *ngIf="authService.roles.includes('ADMIN')">
         Publier votre annonce
     </button>
-        <mat-menu #importMenu>
-            <button mat-menu-item routerLink="/admin/load-students"> Mes clients</button>
-            <button mat-menu-item routerLink="/admin/load-payments"> Hitstorique de trajet</button>
-        </mat-menu>
-    <button mat-button *ngIf="authService.authentificated==true">
-        {{authService.username}}
+    <mat-menu #importMenu class="profile-menu">
+        <button mat-menu-item > Mes informations</button>
+        <button mat-menu-item routerLink="/admin/load-students" *ngIf="authService.roles.includes('ADMIN')"> Mes clients</button>
+        <button mat-menu-item routerLink="/admin/load-payments"> Hitstorique de trajet</button>
+        <button  mat-menu-item (click)="logout()" >
+            <!-- <mat-icon> exit_to_app </mat-icon> -->
+            Déconnexion
+        </button>
+    </mat-menu>
+    <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
+        <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+        <!-- {{authService.username}} -->
+        <mat-icon class="custom-icon">person</mat-icon>
     </button>
-    <button (click)="logout()" mat-raised-button color="accent" > Se déconnecter </button>
+
 </mat-toolbar>
 
 <mat-drawer-container>
-    <mat-drawer #drawerId mode="side" position="start" opened="true">
+    <mat-drawer #drawerId mode="side" class="side-nav" position="start" opened="true">
         <mat-nav-list>
             <mat-list-item>
-                <button mat-button routerLink="/admin/dashboard"> 
+                <button mat-button routerLink="/admin/dashboard">
                     <mat-icon>dashboard</mat-icon>
                     <!-- Dashboard -->
                     Mes Trajets
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button routerLink="/admin/students"> 
+                <button mat-button routerLink="/admin/students">
                     <mat-icon>dashboard</mat-icon>
                     Trajets en Demande
                     <!-- students -->
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button routerLink="/admin/payments"> 
+                <button mat-button routerLink="/admin/payments">
                     <mat-icon>dashboard</mat-icon>
                     Trajet prevus
                 </button>
@@ -50,5 +55,5 @@
         <div style="min-height: 868px;">
             <router-outlet></router-outlet>
         </div>
-    </mat-drawer-content> 
+    </mat-drawer-content>
 </mat-drawer-container>

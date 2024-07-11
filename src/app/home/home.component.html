@@ -1,86 +1,87 @@
 <div class="container">
-  <mat-card>
+  <mat-card class="card-table">
     <mat-card-header>
-      <mat-card-title>Tous les deals et codes de réduction Applications valides en juin 2024
-      </mat-card-title>
+      <mat-form-field class="search-custom" appearance="outline">
+        <input matInput (change)="filterStudent($event)">
+        <mat-label>Rechercher un trajet</mat-label>
+      </mat-form-field>
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
       <mat-form-field class="search-custom" appearance="outline">
         <input matInput (change)="filterStudent($event)">
-        <mat-label>Search promotion</mat-label>
+        <mat-label>Rechercher un trajet</mat-label>
       </mat-form-field>
       <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z1">
 
-        <ng-container  (click)="onCardClick($event)" class="table-comp" matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <ng-container (click)="onCardClick($event)" class="table" matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header > <mat-card-title>Plus de 300 trajets disponible trouvez votre trajet </mat-card-title></th>
           <td mat-cell *matCellDef="let element">
             <mat-card class="table-comp">
               <!-- <button mat-card (click)="onCardClick(element)" class="table-comp"> -->
-              <mat-card-header  >
-                Mercredi 10 Juillet
-              <mat-divider></mat-divider>
+              <mat-card-header>
+                {{element.date}}
+                <mat-divider></mat-divider>
               </mat-card-header>
-              <mat-card-content >
+              <mat-card-content>
                 <div class="traject">
                   <mat-icon color="primary"> access_time </mat-icon>
                   <p>
-                    10h21
+                    {{element.time}}
                   </p>
 
                   <p class="disp-depart">
-                    Paris
+                    {{element.depart}}
                   </p>
                   <mat-icon color="primary"> redo </mat-icon>
                   <p>
-                    Dakar
+                    {{element.destination}}
                   </p>
 
-                  <p class="disp-place" >
+                  <p class="disp-place">
                     Place Disponible
                   </p>
-                  <mat-icon  color="primary"> chair </mat-icon>
-                  <mat-icon  color="primary"> chair </mat-icon>
-                  <mat-icon  color="primary"> chair </mat-icon>
-                  <mat-icon  color="primary"> chair </mat-icon>
-                  <mat-icon  > chair </mat-icon>
-                  <mat-icon  > chair </mat-icon>
+                  <span *ngFor="let chair of element.clients">
+                    <!-- <mat-icon *ngif="chair === undefined" color="primary"> chair </mat-icon> -->
+                    <!-- <mat-icon *ngif="chair !== undefined"> chair </mat-icon> -->
+                    <mat-icon [ngStyle]="{'color': chair === undefined ? 'primary' : 'orange'}"> chair </mat-icon>
+                  </span>
 
 
-                  <mat-icon class="disp-price" color="primary">  attach_money </mat-icon>
-                  <p>
+                  <!-- <mat-icon class="disp-price" color="primary"> attach_money </mat-icon> -->
+                  <p class="disp-price"> 
                     14 000 FCFA
                   </p>
 
-                  <mat-icon class="disp-smoke"> smoke_free </mat-icon>
+                  <mat-icon class="disp-smoke" color="primary"> smoke_free </mat-icon>
                   <!-- <mat-icon  > smoking_rooms </mat-icon> -->
-                  <mat-icon color="primary" > local_mall </mat-icon>
-                  <mat-icon color="primary"> phone </mat-icon>
+                  <mat-icon color="primary"> local_mall </mat-icon>
+                  <mat-icon color="primary"> pets </mat-icon>
 
-                  
+
                 </div>
-                
+
               </mat-card-content>
-          <!-- </button> -->
+              <!-- </button> -->
 
               <!-- <img class="image-custom" mat-card-image src="https://cdn.pixabay.com/photo/2023/06/25/11/12/orange-flowers-8087066_1280.jpg" alt="Description de l'image"> -->
             </mat-card>
           </td>
 
         </ng-container>
-        <!-- 
+        
             
-              <ng-container matColumnDef="firstName">
+              <!-- <ng-container matColumnDef="firstName">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
                 <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
-              </ng-container>
+              </ng-container> -->
 
-              <ng-container matColumnDef="payments">
+              <ng-container matColumnDef="">
                   <th mat-header-cell *matHeaderCellDef> </th>
                   <td mat-cell *matCellDef=" let element"> 
                       <button (click)="getPayments(element)" mat-raised-button color="primary">Payements</button>
                   </td>
-                </ng-container> -->
+                </ng-container>
         <!-- </div> -->
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

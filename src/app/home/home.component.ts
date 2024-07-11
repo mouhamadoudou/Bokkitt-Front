@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public displayedColumns = ["id"];
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
+  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
+  public client = ["Mohammed", undefined]; 
+
 
 
   constructor (private router : Router) {
@@ -26,12 +29,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.students = [];
-    
+
+
     for (let i = 1; i < 100; i++) {
       this.students.push(
         {
-          id : i,
-          firstName : Math.random().toString(20),
+          depart : this.city[Math.floor(Math.random() * this.city.length)],
+          destination: this.city[Math.floor(Math.random() * this.city.length)],
+          date : "Mercredi 10 Juillet",
+          time : "12h30",
+          clients : ["Mohammed", "Abubakar", "Omar", undefined, undefined, undefined],
+          chair : 3,
+          price : 800 + Math.random() * 10000,
+          smoke : false,
+          bague : false,
+          phone : false,
           payemnts : null,
         }
       )

@@ -33,7 +33,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { CardListComponent } from './card-list/card-list.component';
-
+import { FormsModule } from '@angular/forms';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -74,6 +74,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     BrowserAnimationsModule,
     MatGridListModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     AuthorizationGuard, AuthGuard

@@ -34,8 +34,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public client = ["Mohammed", undefined]; 
 
   filterValues = {
-    depart: 'Dakar',
-    destination: 'Saly'
+    depart: '',
+    destination: ''
   };
 
   constructor (private router : Router) {
@@ -78,14 +78,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  filterStudent(event: Event) :void {
-    // let value = (event.target as HTMLInputElement).value;
-    // this.dataSource.filter = value;
+  filterTraject() :void {
     this.dataSource.filter = JSON.stringify(this.filterValues);
-  }
-
-  getPayments(students : any) : void {
-    this.router.navigateByUrl("/payments")
   }
 
   onCardClick(element: any) {

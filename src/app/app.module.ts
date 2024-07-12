@@ -34,6 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { CardListComponent } from './card-list/card-list.component';
 
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -69,7 +73,7 @@ import { CardListComponent } from './card-list/card-list.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     AuthorizationGuard, AuthGuard

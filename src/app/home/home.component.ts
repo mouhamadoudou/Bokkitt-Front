@@ -3,8 +3,21 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { first } from 'rxjs';
 
+
+export interface Traject {
+  depart: string;
+  destination: string;
+  date : string,
+  time : string,
+  clients : any,
+  chair : number,
+  price : number,
+  smoke : false,
+  bague : false,
+  phone : false,
+  payemnts : null,
+}
 
 @Component({
   selector: 'app-home',
@@ -13,7 +26,6 @@ import { first } from 'rxjs';
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
-  public students : any;
   public dataSource : any;
   public displayedColumns = ["id"];
   @ViewChild(MatPaginator) paginator! : MatPaginator;
@@ -21,18 +33,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
   public client = ["Mohammed", undefined]; 
 
-
+  filterValues = {
+    depart: 'Dakar',
+    destination: 'Saly'
+  };
 
   constructor (private router : Router) {
 
   }
 
   ngOnInit(): void {
-    this.students = [];
-
-
+    const traject: Traject[] = [];
     for (let i = 1; i < 100; i++) {
-      this.students.push(
+      traject.push(
         {
           depart : this.city[Math.floor(Math.random() * this.city.length)],
           destination: this.city[Math.floor(Math.random() * this.city.length)],
@@ -48,17 +61,27 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
       )
     }
-    this.dataSource = new MatTableDataSource(this.students)
+    this.dataSource = new MatTableDataSource(traject)
+    this.dataSource.filterPredicate = this.createFilter();
   }
 
+  createFilter(): (data: Traject, filter: string) => boolean {
+    const filterFunction = (data: Traject, filter: string): boolean => {
+      const searchTerms = JSON.parse(filter);
+      return data.depart.toLowerCase().indexOf(searchTerms.depart.toLowerCase()) !== -1
+         && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
+    };
+    return filterFunction;
+  }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
   filterStudent(event: Event) :void {
-    let value = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = value;
+    // let value = (event.target as HTMLInputElement).value;
+    // this.dataSource.filter = value;
+    this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
   getPayments(students : any) : void {

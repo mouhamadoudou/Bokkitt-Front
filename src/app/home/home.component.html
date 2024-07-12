@@ -3,8 +3,15 @@
     <mat-card-header>
       <mat-form-field class="search-custom" appearance="outline">
         <input matInput (change)="filterStudent($event)">
-        <mat-label>Rechercher un trajet</mat-label>
+        <mat-label>Depart</mat-label>
       </mat-form-field>
+      <mat-form-field class="destination-input" appearance="outline">
+        <input matInput (change)="filterStudent($event)">
+        <mat-label >Destination</mat-label>
+      </mat-form-field>
+      <button class="search-button" (click)="getPayments($event)" mat-raised-button color="primary">Rechercher</button>
+
+      
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
@@ -45,10 +52,14 @@
             <button (click)="getPayments(element)" mat-raised-button color="primary">Payements</button>
           </td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <mat-paginator [pageSizeOptions]="[10, 15, 20]" aria-label="Select page of users"></mat-paginator>
+      <mat-paginator 
+      [pageSizeOptions]="[10]" 
+      aria-label="Select page of users"
+      >
+    </mat-paginator>
     </mat-card-content>
   </mat-card>
 </div>

@@ -3,7 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-
+import { Observable } from 'rxjs';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
 
 export interface Traject {
   depart: string;
@@ -26,13 +28,13 @@ export interface Traject {
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
-  public dataSource : any;
-  public displayedColumns = ["id"];
+
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
+  public dataSource : any;
+  public displayedColumns = ["id"];
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
   public client = ["Mohammed", undefined]; 
-
   filterValues = {
     depart: '',
     destination: ''
@@ -41,8 +43,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor (private router : Router) {
 
   }
+  myControl = new FormControl('');
+  myControl2 = new FormControl('');
 
+  filteredOptions = new Observable<string[]>;
+  filteredOptions2 = new Observable<string[]>;
+  
   ngOnInit(): void {
+    
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+
+    this.filteredOptions2 = this.myControl2.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+
     const traject: Traject[] = [];
     for (let i = 1; i < 100; i++) {
       traject.push(
@@ -65,6 +83,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSource.filterPredicate = this.createFilter();
   }
 
+  private _filter(value: string): string[] {
+    console.log(value)
+    const filterValue = value.toLowerCase();
+
+    return this.city.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
   createFilter(): (data: Traject, filter: string) => boolean {
     const filterFunction = (data: Traject, filter: string): boolean => {
       const searchTerms = JSON.parse(filter);
@@ -83,75 +108,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   onCardClick(element: any) {
-
+    // options = ()
+    console.log(this.dataSource.data)
+    // console.log("hello world : ")
+    // console.log(element)
   }
 }
 
-
-// johhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-// import { AfterViewInit, Component, OnInit, ViewChild, viewChild } from '@angular/core';
-// import { MatPaginator } from '@angular/material/paginator';
-// import { MatSort } from '@angular/material/sort';
-// import { MatTableDataSource } from '@angular/material/table';
-// import { Router } from '@angular/router';
-// import { first } from 'rxjs';
-
-
-// @Component({
-//   selector: 'app-home',
-//   templateUrl: './home.component.html',
-//   styleUrl: './home.component.css'
-// })
-
-// export class HomeComponent implements OnInit, AfterViewInit {
-//   public cards : any;
-//   public dataSource : any;
-//   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
-//   @ViewChild(MatPaginator) paginator! : MatPaginator;
-//   @ViewChild(MatSort) sort! : MatSort;
-
-
-//   constructor (private router : Router) {
-
-//   }
-
-//   ngOnInit(): void {
-//     this.cards = [];
-
-    
-    
-//     for (let i = 1; i < 10; i++) {
-//       this.cards.push(
-//         {
-//           depart : this.city[Math.floor(Math.random() * this.city.length)],
-//           destination: this.city[Math.floor(Math.random() * this.city.length)],
-//           img : "https://www.photo-paysage.com/albums/userpics/10001/thumb_Crepuscule_sur_le_lac_Leman.jpg",
-//           date : "10/07/2024",
-//           description : "Trajet demain a 11h depart de dakar vers thies heure de rendez \nvous a 13h30",
-//           payemnts : null,
-//         }
-//       )
-//     }
-//     this.dataSource = new MatTableDataSource(this.cards)
-//   }
-
-//   ngAfterViewInit(): void {
-//     this.dataSource.paginator = this.paginator;
-//     console.log(this.dataSource.paginator)
-//     this.dataSource.sort = this.sort;
-//   }
-
-//   filterStudent(event: Event) :void {
-//     let value = (event.target as HTMLInputElement).value;
-//     this.dataSource.filter = value;
-//   }
-
-//   getPayments(cards : any) : void {
-//     this.router.navigateByUrl("/payments")
-//   }
-
-//   clickOne() {
-//     console.log("ok")
-//   }
-
-// }

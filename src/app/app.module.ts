@@ -34,6 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { FormsModule } from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {Observable} from 'rxjs';
+import {FormControl} from '@angular/forms';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -74,7 +77,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     BrowserAnimationsModule,
     MatGridListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule,
+    // FormControl
   ],
   providers: [
     AuthorizationGuard, AuthGuard

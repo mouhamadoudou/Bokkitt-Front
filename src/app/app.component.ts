@@ -7,5 +7,5 @@ import { AdminComponent } from './admin/admin.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'evol-front';
+  title = 'AfriCar';
 }

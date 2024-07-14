@@ -22,12 +22,11 @@ export interface Traject {
 }
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrl: './home-page.component.css'
 })
-
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomePageComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
   @ViewChild(MatSort) sort! : MatSort;
@@ -114,4 +113,3 @@ export class HomeComponent implements OnInit, AfterViewInit {
     console.log(this.dataSource)
   }
 }
-

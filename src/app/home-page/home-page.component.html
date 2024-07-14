@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button>
+        <mat-icon> waves </mat-icon>
+        EvolBoost
+    </button>
+    <span class="spacer">
+    </span>
+    <button mat-button routerLink="/admin/home"> Offre trajet </button>
+    <!-- <button mat-button routerLink="/admin/profile"> Country </button> -->
+    <mat-menu #importMenu>
+        <button mat-menu-item routerLink="/admin/load-students"> Load Students</button>
+        <button mat-menu-item routerLink="/admin/load-payments"> Load Payments</button>
+    </mat-menu>
+</mat-toolbar>
+
+<mat-drawer-container>
+    <div class="container">
+        <mat-card class="card-table">
+            <mat-card-header>
+                <mat-form-field class="search-custom" appearance="outline">
+                    <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete">
+
+                        @for (option of filteredOptions | async; track option) {
+                        <mat-option [value]="option">{{option}}</mat-option>
+                        }
+                    </mat-autocomplete>
+                    <mat-label>Depart</mat-label>
+                </mat-form-field>
+                <mat-icon> redo </mat-icon>
+                <mat-form-field class="destination-input" appearance="outline">
+                    <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
+                        [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
+                    <mat-autocomplete #auto2="matAutocomplete">
+
+                        @for (option of filteredOptions2 | async; track option) {
+                        <mat-option [value]="option">{{option}}</mat-option>
+                        }
+                    </mat-autocomplete>
+                    <mat-label>Destination</mat-label>
+                </mat-form-field>
+                <button class="search-button" (click)="filterTraject()" mat-raised-button
+                    color="primary">Rechercher</button>
+
+
+            </mat-card-header>
+            <!-- <mat-card-content>
+
+
+            </mat-card-content> -->
+        </mat-card>
+    </div>
+</mat-drawer-container>

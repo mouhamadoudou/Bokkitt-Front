@@ -11,29 +11,36 @@ import { LoadPaymentsComponent } from './load-payments/load-payments.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { HomePageComponent } from './home-page/home-page.component'
 
 const routes: Routes = [
-  {path : "", component : LoginComponent},
-  {path : "login", component : LoginComponent},
-  {path : "home", component : HomeComponent},
-  {path : "dashboard", component : DashboardComponent},
+  { path: "login", component: LoginComponent },
+  { path: "", component: HomePageComponent },
 
-  {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
-    {path : "home", component : HomeComponent},
-    {path : "profile", component : ProfileComponent},
-    {path : "dashboard", component : DashboardComponent},
-    {path : "students", component : StudentsComponent},
-    {path : "payments", component : PaymentsComponent},
-    
-    
-    
-    {path : "load-students", component : LoadStudentsComponent, canActivate : [AuthorizationGuard],
-      data : {roles : ['ADMIN']}
-    },
-    {path : "load-payments", component : LoadPaymentsComponent, canActivate : [AuthorizationGuard],
-    data : {roles : ['ADMIN']}},
-  
-  ]}
+
+  // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
+  {
+    path: "admin", component: AdminComponent,  children: [
+
+      { path: "home", component: HomeComponent },
+      { path: "profile", component: ProfileComponent },
+      { path: "dashboard", component: DashboardComponent },
+      { path: "students", component: StudentsComponent },
+      { path: "payments", component: PaymentsComponent },
+
+
+
+      {
+        path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],
+        data: { roles: ['ADMIN'] }
+      },
+      {
+        path: "load-payments", component: LoadPaymentsComponent, canActivate: [AuthorizationGuard],
+        data: { roles: ['ADMIN'] }
+      },
+
+    ]
+  }
 ];
 
 @NgModule({

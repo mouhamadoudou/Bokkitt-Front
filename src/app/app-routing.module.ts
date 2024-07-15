@@ -11,11 +11,10 @@ import { LoadPaymentsComponent } from './load-payments/load-payments.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { HomePageComponent } from './home-page/home-page.component'
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  { path: "", component: HomePageComponent },
+  { path: "", component: LoginComponent },
 
 
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [

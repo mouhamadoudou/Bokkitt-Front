@@ -19,6 +19,7 @@ export interface Traject {
   bague : false,
   phone : false,
   payemnts : null,
+  isCompleted : boolean
 }
 
 @Component({
@@ -36,6 +37,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public displayedColumns = ["id"];
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
   public client = ["Mohammed", undefined]; 
+  public completed = [true, false, true]; 
+
 
   filterValues = {
     depart: '',
@@ -72,13 +75,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
           destination: this.city[Math.floor(Math.random() * this.city.length)],
           date : "Mercredi 10 Juillet",
           time : "12h30",
-          clients : ["Mohammed", "Abubakar", "Omar", undefined, undefined, undefined],
+          clients : [this.client[Math.floor(Math.random()  * 2)], this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)]],
           chair : 3,
           price : Math.round(800 + Math.random() * 10000),
           smoke : false,
           bague : false,
           phone : false,
           payemnts : null,
+          isCompleted: this.completed[Math.floor(Math.random()  * 3)]
         }
       )
     }

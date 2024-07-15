@@ -40,7 +40,6 @@ import {FormControl} from '@angular/forms';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -57,7 +56,6 @@ import { HomePageComponent } from './home-page/home-page.component';
     LoadPaymentsComponent,
     CardComponent,
     CardListComponent,
-    HomePageComponent
   ],
   imports: [
     BrowserModule,

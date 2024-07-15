@@ -1,13 +1,43 @@
 mat-card-header {
     background-color: rgba(165, 6, 91, 0.192);
+    /* max-width: 1200px;
+    border-radius: 40px;
+    overflow: hidden;  */
 }
 
+.table-comp[_ngcontent-ng-c2607460285] {
+  background-color: transparent;
+
+}
+
+
+.search-header {
+  background-color: rgba(165, 6, 91, 0.192);
+
+
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 80px;
+  max-width: 1200px;
+  border-radius: 40px;
+  overflow: hidden; 
+
+  justify-content: center;
+
+  margin-top: 10px;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
 
 .container {
   padding: 10px;
 }
 
 .card-table {
+background-color: transparent;
   margin: 0 auto;
   width: 100%;
   max-width: 800px;
@@ -50,6 +80,21 @@ mat-card-header {
   .disp-depart, .disp-place, .disp-price, .disp-smoke {
     margin: 5px 0;
   }
+
+  .search-header {
+    background-color: rgba(211, 204, 208, 0.192);
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 80px;
+    max-width: 1200px;
+    border-radius: 40px;
+    overflow: hidden; 
+  
+    justify-content: center;
+  
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -60,6 +105,20 @@ mat-card-header {
   .table-comp {
     width: 100%;
     height: 150px;
+  }
+
+  .search-header {
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 80px;
+    max-width: 1200px;
+    border-radius: 0px;
+    overflow: hidden; 
+  
+    justify-content: center;
+  
+    margin-top: 10px;
   }
 /* 
   .traject {
@@ -100,10 +159,14 @@ mat-card-header {
 }
 
 .search-button {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 10px;
+
+  /* margin-top: 10px; */
   width: 150px;
-  height: 55px;
+  height: 54px;
+  margin-top: 9px;
+  border-radius: 20px;
 }
 
 
@@ -117,3 +180,19 @@ mat-card-header {
   width: 200px;
   margin-left: 10px;
 }
+
+
+.custom-table {
+  border: none;
+  background-color: transparent;
+}
+
+.custom-table th, .custom-table td {
+  border: none; 
+}
+
+.custom-table th {
+  background-color: transparent;
+}
+
+

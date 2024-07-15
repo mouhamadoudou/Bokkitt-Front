@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card class="card-table">
-    <mat-card-header>
+    <mat-card-header class="search-header">
       <mat-form-field class="search-custom" appearance="outline">
         <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
@@ -27,11 +27,11 @@
 
 
     </mat-card-header>
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider> -->
     <mat-card-content>
 
 
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>
             <mat-card-title

@@ -1,11 +1,12 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
 
 mat-card-header {
-    background-color: rgba(165, 6, 91, 0.192);
-    /* max-width: 1200px;
+  background-color: rgba(165, 6, 91, 0.192);
+  /* max-width: 1200px;
     border-radius: 40px;
     overflow: hidden;  */
 }
@@ -23,7 +24,7 @@ mat-card-content {
   height: 80px;
   max-width: 1200px;
   border-radius: 40px;
-  overflow: hidden; 
+  overflow: hidden;
   justify-content: center;
   margin-top: 10px;
 }
@@ -37,7 +38,7 @@ mat-card-content {
 }
 
 .card-table {
-background-color: transparent;
+  background-color: transparent;
   margin: 0 auto;
   width: 100%;
   max-width: 800px;
@@ -60,8 +61,8 @@ background-color: transparent;
 }
 
 .table-comp.disabled {
-  background-color: #d3d3d32a; 
-  cursor: not-allowed; 
+  background-color: #d3d3d32a;
+  cursor: not-allowed;
   pointer-events: none;
 }
 
@@ -92,7 +93,10 @@ background-color: transparent;
     align-items: flex-start;
   }
 
-  .disp-depart, .disp-place, .disp-price, .disp-smoke {
+  .disp-depart,
+  .disp-place,
+  .disp-price,
+  .disp-smoke {
     margin: 5px 0;
   }
 
@@ -104,9 +108,9 @@ background-color: transparent;
     height: 80px;
     max-width: 1200px;
     border-radius: 4px;
-    overflow: hidden; 
+    overflow: hidden;
     justify-content: center;
-  
+
     margin-top: 10px;
   }
 }
@@ -119,7 +123,7 @@ background-color: transparent;
   .table-comp {
     width: 100%;
     height: 150px;
-    
+
   }
 
   .search-header {
@@ -127,7 +131,7 @@ background-color: transparent;
     border-radius: 4px;
   }
 
-/* 
+  /* 
   .traject {
     flex-direction: column;
     align-items: flex-start;
@@ -145,11 +149,14 @@ background-color: transparent;
   align-items: center;
 }
 
-.traject p, .traject mat-icon {
+.traject p,
+.traject mat-icon {
   margin: 0 5px;
 }
 
-.traject span p, .traject span h4, .traject mat-icon {
+.traject span p,
+.traject span h4,
+.traject mat-icon {
   margin: 0 5px;
 }
 
@@ -162,7 +169,8 @@ background-color: transparent;
   margin: 0 10px;
 }
 
-.disp-price, .disp-smoke {
+.disp-price,
+.disp-smoke {
   margin-left: 50px;
   background-color: #AD1457;
   margin-bottom: 40px;
@@ -198,8 +206,9 @@ background-color: transparent;
   background-color: transparent;
 }
 
-.custom-table th, .custom-table td {
-  border: none; 
+.custom-table th,
+.custom-table td {
+  border: none;
 }
 
 .custom-table th {
@@ -222,5 +231,3 @@ background-color: transparent;
 .spacer {
   flex: 1 1 auto;
 }
-
-

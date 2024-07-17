@@ -1,39 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthentificationService } from '../services/authentification.service';
-import { Router } from '@angular/router';
-
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
-  styleUrl: './trip.component.css'
+  styleUrl: './trip.component.css',
 })
-export class TripComponent implements OnInit{
-  public loginFormGroup! : FormGroup;
+export class TripComponent implements AfterViewInit {
 
-  constructor (private fb : FormBuilder, 
-    private authservice : AuthentificationService,
-    private router : Router) {
+  @ViewChild('stepper') private stepper!: MatStepper;
 
+  ngAfterViewInit() {
+    this.startStepper();
   }
 
-  ngOnInit(): void {
-    this.loginFormGroup = this.fb.group({
-      username : this.fb.control(''),
-      password : this.fb.control('')
-    });
+  startStepper() {
+    setTimeout(() => {
+      this.stepper.next();
+      setTimeout(() => {
+        this.stepper.next();
+        setTimeout(() => {
+          this.stepper.reset();
+          this.startStepper()
+        }, 3000);
+      }, 3000);
+    }, 3000);
   }
-
-  login() :void {
-    let username = this.loginFormGroup.value.username;
-    let password = this.loginFormGroup.value.password;
-    let auth = this.authservice.login(username, password);
-
-    if (auth == true) {
-      this.router.navigateByUrl("/admin/home")
-    } 
-    console.log(username, password)
-  }
-
 }

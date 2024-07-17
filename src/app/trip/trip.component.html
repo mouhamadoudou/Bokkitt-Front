@@ -1,43 +1,75 @@
 
-<mat-toolbar color="primary">
-    <button mat-icon-button >
-        <mat-icon> waves </mat-icon>
-        EvolBoost
-    </button>
-    <span class="spacer">
-    </span>
-    <button mat-button routerLink="/admin/home"> Offre trajet </button>
-    <button mat-button routerLink="/admin/profile"> Country </button>
+    <mat-toolbar color="primary">
+        <button mat-icon-button>
+            <mat-icon> waves </mat-icon>
+            EvolBoost
+        </button>
+        <span class="spacer">
+        </span>
+        <button mat-button routerLink="/admin/home"> Offre trajet </button>
+        <button mat-button routerLink="/admin/profile"> Country </button>
         <mat-menu #importMenu>
             <button mat-menu-item routerLink="/admin/load-students"> Load Students</button>
             <button mat-menu-item routerLink="/admin/load-payments"> Load Payments</button>
         </mat-menu>
-</mat-toolbar>
+    </mat-toolbar>
+    <div color="primary" class="trip-container">
+    <mat-drawer-container class="drawer-content">
+        <mat-drawer-content>
 
-<mat-drawer-container>
-    <div class="login-container">
-        <!-- {{loginFormGroup.value | json}} -->
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title> Mer. 17 juillet </mat-card-title>
+        <mat-card appearance="outlined" class="trip-header">
+            <mat-card-header color="primary">
+                <mat-card-title> Mer. 17 juillet</mat-card-title>
+                <!-- <mat-card-subtitle>Herding group</mat-card-subtitle> -->
             </mat-card-header>
-         
-            <mat-divider class="driver-contain"></mat-divider>
-    
-            <mat-card-content>
-                    <!-- <input type="password" matInput formControlName="password">      -->
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button 
-                    mat-raised-button 
-                    color="primary"
-                    (click)="login()"
-                >
-                Login
-
-            </button>
-
+            <mat-card-actions>
+                <mat-stepper orientation="vertical" #stepper>
+                    <mat-step>
+                      <form>
+                        <ng-template matStepLabel>Reservez en toute confiance </ng-template>
+                        <div>
+                            <button 
+                            mat-raised-button 
+                            color="primary"
+                        >
+                            Reserver
+                        </button>
+                        </div>
+                      </form>
+                    </mat-step>
+                    <mat-step>
+                      <form>
+                        <ng-template matStepLabel>En voiture</ng-template>
+                        <div>
+                            <mat-icon color="primary"> waves </mat-icon>
+                             <h1> Sans attente </h1>
+                          <!-- <button mat-button matStepperPrevious>Back</button>
+                          <button mat-button matStepperNext>Next</button> -->
+                        </div>
+                      </form>
+                    </mat-step>
+                    <mat-step>
+                      <ng-template matStepLabel>Arriver rapidement</ng-template>
+                      <mat-card-title> Vous etes arriver a destination ! </mat-card-title>
+                      <div>
+                        <!-- <button mat-button matStepperPrevious>Back</button> -->
+                        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+                      </div>
+                    </mat-step>
+                  </mat-stepper>
             </mat-card-actions>
         </mat-card>
-    </div>
-</mat-drawer-container>
+        <br>
+        <!-- <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>Mer. 17 juillet</mat-card-title>
+                <mat-card-subtitle>Non-sporting group</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+                <button mat-button>Learn More</button>
+            </mat-card-actions>
+        </mat-card> -->
+    </mat-drawer-content>
+
+    </mat-drawer-container>
+</div>

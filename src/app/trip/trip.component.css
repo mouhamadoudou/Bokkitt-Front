@@ -1,31 +1,67 @@
-html, body {
-    height: 100%;
+html,
+body {
+    height: 100vh;
     margin: 0;
-  }
-
-mat-form-field {
-    display: block;
-}
-
-.login-container {
-    width: 600px;
-    max-width: 8000px;
-    /* justify-content: center; */
-    /* margin: auto; */
-    margin-top: 15.7vh;
-    margin-bottom: 50vh;
-    background-color: aliceblue;
 }
 
 .spacer {
     flex: auto;
 }
 
-.admin_log {
-    background-color: black;
+.trip-container {
+    background-color: #303030;;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center; 
 }
 
-.driver-contain {
-    margin-top: 5px;
-    margin-bottom: 20px;
+mat-drawer-container {
+    padding-top: 20px;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    min-height: 600px;
+    box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    mat-drawer-container {
+        padding-top: 10px;
+        width: 90%;
+    }
+}
+
+mat-drawer-content {
+    background-color: rgba(65, 65, 65, 0.493);
+    width: 100%;
+  }
+
+.trip-header {
+    max-width: 900px;
+    width: 100%;
+    /* align-items:center; */
+}
+
+mat-card-title {
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center; 
+
+}
+
+mat-card-header {
+    text-align: center; 
+
+}
+
+
+.mat-stepper-vertical {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  

@@ -37,10 +37,12 @@ import { FormsModule } from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TripComponent } from './trip/trip.component';
+import {FormBuilder, Validators, } from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -81,6 +83,14 @@ import { TripComponent } from './trip/trip.component';
     HttpClientModule,
     FormsModule,
     MatAutocompleteModule,
+
+    MatButtonModule,
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    
     // FormControl
   ],
   providers: [

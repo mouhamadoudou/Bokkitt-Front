@@ -11,17 +11,20 @@ import { LoadPaymentsComponent } from './load-payments/load-payments.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
+import { TripComponent } from './trip/trip.component'
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "", component: LoginComponent },
+  { path: "trip", component: TripComponent },
 
 
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
   {
     path: "admin", component: AdminComponent,  children: [
-
+      
       { path: "home", component: HomeComponent },
+
       { path: "profile", component: ProfileComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "students", component: StudentsComponent },

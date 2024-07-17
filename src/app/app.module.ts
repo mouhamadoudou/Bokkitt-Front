@@ -40,6 +40,7 @@ import {FormControl} from '@angular/forms';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { TripComponent } from './trip/trip.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     LoadPaymentsComponent,
     CardComponent,
     CardListComponent,
+    TripComponent,
   ],
   imports: [
     BrowserModule,

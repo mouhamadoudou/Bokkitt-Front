@@ -9,11 +9,11 @@ body {
 }
 
 .trip-container {
-    background-color: #303030;;
+    background-color: #303030;
     padding: 0;
     height: 100%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 mat-drawer-container {
@@ -33,9 +33,10 @@ mat-drawer-container {
 }
 
 mat-drawer-content {
+    margin-top: 60px;
     background-color: rgba(65, 65, 65, 0.493);
     width: 100%;
-  }
+}
 
 .trip-header {
     max-width: 900px;
@@ -47,21 +48,108 @@ mat-card-title {
     width: 100%;
     font-size: 30px;
     font-weight: bold;
-    text-align: center; 
-
+    text-align: center;
 }
 
 mat-card-header {
-    text-align: center; 
+    text-align: center;
 
 }
 
 
 .mat-stepper-vertical {
     margin-top: 8px;
-  }
-  
-  .mat-mdc-form-field {
+}
+
+.mat-mdc-form-field {
     margin-top: 16px;
-  }
-  
+}
+
+.mat-action {
+    height: 330px;
+}
+
+.price-card {
+    width: 100%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-price {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.traject-price {
+    background-color: #c2185b;
+    max-width: 100%;
+    width: 200px;
+    padding: 4px;
+    border-radius: 20px;
+
+}
+
+
+.stepper-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+/* v2 --------------------------------------------------- */
+
+.contenair-dep-dest {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.depart-card {
+    background-color: #c2185b;
+    margin-top: 40px;
+    width: 400px;
+    height: 200px;
+}
+
+.destination-card {
+    background-color: #c2185b;
+    margin-top: 40px;
+    width: 400px;
+    height: 200px;
+}
+
+.reservation-button {
+    padding-top: 40px;
+    display:flex;
+    justify-content: center;
+
+}
+
+
+.arrow-icon {
+    margin-top: 40px;
+    transform: scale(1.5);
+}
+
+mat-card-content p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.depart-time {
+    display:flex;
+    margin-bottom: 5px;
+}
+
+.depart-time p {
+    margin: 4px 0 0 10px;
+    /* margin-top: 4px; */
+}

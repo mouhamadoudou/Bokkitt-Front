@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+import { DataService } from '../services/data.service';
 
 export interface Traject {
   depart: string;
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     destination: ''
   };
 
-  constructor (private router : Router) {
+  constructor (private router : Router, private dataService: DataService) {
 
   }
   
@@ -114,8 +115,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
-  onCardClick(element: any) {
-    console.log(this.dataSource)
+  onCardClick(traject: any) {
+    // console.log(this.dataSource)
+    this.dataService.setData(traject)
+    this.router.navigate(['/trip']);
   }
 }
 

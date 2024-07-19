@@ -16,6 +16,7 @@ mat-form-field {
     flex: auto;
 }
 
+
 .admin_log {
     background-color: black;
 }
@@ -23,4 +24,9 @@ mat-form-field {
 .driver-contain {
     margin-top: 5px;
     margin-bottom: 20px;
+}
+
+.mdc-card__actions {
+    background-color: aqua;
+    height: 330px;
 }

@@ -18,7 +18,7 @@
 
             <mat-card appearance="outlined" class="trip-header">
                 <mat-card-header color="primary" class="header1">
-                    <mat-card-title>Mer. 17 juillet</mat-card-title>
+                    <mat-card-title class="prim">Mer. 17 juillet</mat-card-title>
                     <!-- <mat-card-title> {{trajectData.date}} </mat-card-title> -->
 
                     <div class="container-price">
@@ -32,30 +32,34 @@
                 </mat-card-header>
                 <mat-card-content class="contenair-dep-dest">
                     <mat-card class="depart-card" appearance="outlined">
-                        <mat-card-header color="primary">
+                        <mat-card-header class="depart-header" color="primary">
                             <!-- <mat-icon> local_taxi</mat-icon> -->
                             <mat-card-title> Depart : Dakar </mat-card-title>
                             <!-- <mat-card-title> Depart : {{trajectData.depart}} </mat-card-title> -->
                         </mat-card-header>
                         <mat-card-content>
                             <br>
-                            <div class="depart-time">
+                            <div class="depart-icon">
                                 <mat-icon> access_time </mat-icon>
                                 <p>
                                     Heure de rendez vous : 10h30
                                 </p>
                             </div>
-                            <div class="depart-time">
+                            <div class="depart-icon">
                                 <mat-icon> airline_seat_legroom_normal </mat-icon>
-                                <p> Place disponible : 3 </p>
+                                <p> Place disponible : 3</p>
                             </div>
-                            <div class="depart-time">
+                            <div class="depart-icon">
                                 <mat-icon> work </mat-icon>
                                 <p> Capacité baguage : 3 valises </p>
                             </div>
-                            <div class="depart-time">
-                                <mat-icon> work </mat-icon>
-                                <p> Clime : 3 valises </p>
+                            <div class="depart-icon">
+                                <mat-icon> ac_unit </mat-icon>
+                                <p> Clime : Disponible </p>
+                            </div>
+                            <div class="depart-warning">
+                                <mat-icon> warning </mat-icon>
+                                <p> On vous recommande d'être en avance d'au moins 15 minutes. </p>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -74,7 +78,6 @@
                 <div class="reservation-button">
                     <button mat-raised-button color="primary">
                         <mat-icon> date_range </mat-icon>
-
                         Demande de reservation
                     </button>
                 </div>

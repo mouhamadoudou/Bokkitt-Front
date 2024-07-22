@@ -19,6 +19,17 @@ export class LoginComponent implements OnInit {
 
   }
 
+  signupObj:any = {
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    password:''
+  }
+
+  loginObj:any = {
+    phoneNumber: '',
+    password: ''
+  }
 
   ngOnInit(): void {
     this.loginFormGroup = this.fb.group({
@@ -33,14 +44,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() :void {
-    let username = this.loginFormGroup.value.username;
-    let password = this.loginFormGroup.value.password;
-    let auth = this.authservice.login(username, password);
+  onSignUp() :void {
+    console.log(this.signupObj)
+  }
+
+  onLogin() :void {
+    console.log(this.loginObj)
+    let phoneNumber = this.loginObj.phoneNumber;
+    let password = this.loginObj.password;
+    let auth = this.authservice.login(phoneNumber, password);
 
     if (auth == true) {
       this.router.navigateByUrl("/admin/home")
     } 
-    console.log(username, password)
+    console.log(phoneNumber, password)
   }
 }

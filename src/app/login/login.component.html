@@ -1,6 +1,5 @@
-
 <mat-toolbar color="primary">
-    <button mat-icon-button >
+    <button mat-icon-button>
         <mat-icon> waves </mat-icon>
         EvolBoost
     </button>
@@ -8,40 +7,67 @@
     </span>
     <button mat-button routerLink="/admin/home"> Offre trajet </button>
     <button mat-button routerLink="/admin/profile"> Country </button>
-        <mat-menu #importMenu>
-            <button mat-menu-item routerLink="/admin/load-students"> Load Students</button>
-            <button mat-menu-item routerLink="/admin/load-payments"> Load Payments</button>
-        </mat-menu>
+    <mat-menu #importMenu>
+        <button mat-menu-item routerLink="/admin/load-students"> Load Students</button>
+        <button mat-menu-item routerLink="/admin/load-payments"> Load Payments</button>
+    </mat-menu>
 </mat-toolbar>
 
 <mat-drawer-container>
-    <div class="login-container">
-        <!-- {{loginFormGroup.value | json}} -->
-        <mat-card [formGroup]="loginFormGroup">
-            <mat-card-header>
-                <mat-card-title>Authentification</mat-card-title>
-            </mat-card-header>
-            <mat-divider class="driver-contain"></mat-divider>
-    
-            <mat-card-content>
-                <mat-form-field appearance="outline">
-                    <mat-label>Username or email</mat-label>     
-                    <input matInput formControlName="username">     
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>     
-                    <input type="password" matInput formControlName="password">     
-                </mat-form-field>
-            </mat-card-content>
-            <mat-card-actions align="end">
-                <button 
-                    mat-raised-button 
-                    color="primary"
-                    (click)="login()"
-                >
-                    Login
-                </button>
-            </mat-card-actions>
-        </mat-card>
+
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <div class="signup">
+            <form>
+                <!-- <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                </mat-form-field> -->
+                <label for="chk" aria-hidden="true">S'inscrire</label>
+                <input type="text" name="firstName" placeholder="Nom" required="">
+                <input type="text" name="lastName" placeholder="Prenom" required="">
+                <input type="number" name="phoneNumber" placeholder="Numero de telephone" required="">
+                <input type="password" name="pswd" placeholder="Mot de passe" required="">
+                <input type="password" name="pswd" placeholder="Confirmer votre mot de passe" required="">
+                <button class="button-form"> Sign up</button>
+            </form>
+        </div>
+
+        <div class="login">
+            <form >
+                <label class="form-login" for="chk" aria-hidden="true">Se connecter</label>
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="pswd" placeholder="Password" required="">
+                <button class="button-form"> Se connecter</button>
+            </form>
+        </div>
     </div>
+    <!-- <span>
+        <div class="login-container">
+ 
+            <mat-card [formGroup]="loginFormGroup">
+                <mat-card-header>
+                    <mat-card-title>Authentification</mat-card-title>
+                </mat-card-header>
+                <mat-divider class="driver-contain"></mat-divider>
+
+                <mat-card-content>
+                        <mat-label>Username or email</mat-label>
+                        <input matInput formControlName="username">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password">
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary" (click)="login()">
+                        Login
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </span> -->
+
 </mat-drawer-container>

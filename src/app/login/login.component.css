@@ -5,8 +5,6 @@ mat-form-field {
 .login-container {
     width: 600px;
     max-width: 8000px;
-    /* justify-content: center; */
-    /* margin: auto; */
     margin-top: 15.7vh;
     margin-bottom: 50vh;
     background-color: aliceblue;
@@ -27,6 +25,101 @@ mat-form-field {
 }
 
 .mdc-card__actions {
-    background-color: aqua;
-    height: 330px;
+}
+
+
+
+/* okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+ */
+
+ mat-drawer-container {
+    height: 100%;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+
+ }
+
+.main{
+    margin-top: 90px;
+	width: 350px;
+	height: 500px;
+    	overflow: hidden;
+	border-radius: 10px;
+	box-shadow: 2px 2px 30px   #c2185b;
+}
+#chk{
+	display: none;
+}
+.signup{
+	position: relative;
+	width:100%;
+	height: 100%;
+}
+label{
+	color: #fff;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 50px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+input{
+	width: 60%;
+	height: 10px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 12px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.button-form{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+    background: #c2185b;
+
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+.button-form:hover{
+	background: #c2185b;
+}
+
+.login{
+    margin-top: 60px;
+	height: 460px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-170px);
+	transition: .8s ease-in-out;
+}
+.login label{
+	color: #c2185b;
+	transform: scale(.6);
+    padding-top: 20px;
+}
+
+#chk:checked ~ .login{
+	transform: translateY(-520px);
+}
+#chk:checked ~ .login label{
+	transform: scale(1);	
+}
+#chk:checked ~ .signup label{
+	transform: scale(.6);
 }

@@ -5,20 +5,21 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthentificationService {
-  public username! : any;
+  public phoneNumber! : any;
   public roles : any;
   public authentificated = false;
   public users : any = {
-    'admin' : ['STUDENT', 'ADMIN'],
-    'user1' : ['STUDENT']
+    '787536469' : ['STUDENT', 'ADMIN'],
+    '787536468' : ['STUDENT']
   }
 
   constructor(private router : Router) { }
 
-  public login(usernam : string, password : string) : boolean {
-    if (this.users[usernam] &&  password == "1234") {
-      this.username = usernam;
-      this.roles = this.users[usernam];
+  public login(phoneNumber : string, password : string) : boolean {
+    console.log(phoneNumber)
+    if (this.users[phoneNumber] &&  password == "1234") {
+      this.phoneNumber = phoneNumber;
+      this.roles = this.users[phoneNumber];
       this.authentificated = true;
 
       return true;
@@ -29,7 +30,7 @@ export class AuthentificationService {
 
   public logout (): void {
     this.authentificated = false;
-    this.username = undefined;
+    this.phoneNumber = undefined;
     this.roles = undefined;
     this.router.navigateByUrl("/login")
   }

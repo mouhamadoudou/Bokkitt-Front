@@ -8,16 +8,16 @@
     </button>
     <span class="spacer">
     </span>
-    <button mat-button routerLink="/admin/home"> Offre trajet </button>
-    <!-- <button mat-button routerLink="/admin/profile"> Mes-Trajets </button> -->
+    <button mat-button routerLink="home"> Offre trajet </button>
+    <!-- <button mat-button routerLink="profile"> Mes-Trajets </button> -->
     
     <!-- <button mat-button *ngIf="authService.roles.includes('ADMIN')">
         Annoncer un trajet
     </button> -->
     <mat-menu #importMenu class="profile-menu">
         <button mat-menu-item > Mes informations</button>
-        <!-- <button mat-menu-item routerLink="/admin/load-students" *ngIf="authService.roles.includes('ADMIN')"> Mes clients</button> -->
-        <button mat-menu-item routerLink="/admin/load-payments"> Hitstorique de trajet</button>
+        <!-- <button mat-menu-item routerLink="load-students" *ngIf="authService.roles.includes('ADMIN')"> Mes clients</button> -->
+        <button mat-menu-item routerLink="load-payments"> Hitstorique de trajet</button>
         <button  mat-menu-item (click)="logout()" >
             <!-- <mat-icon> exit_to_app </mat-icon> -->
             Déconnexion
@@ -34,19 +34,19 @@
     <!-- <mat-drawer #drawerId mode="side" class="side-nav" position="start" opened="true">
         <mat-nav-list>
             <mat-list-item>
-                <button mat-button routerLink="/admin/dashboard">
+                <button mat-button routerLink="dashboard">
                     <mat-icon>dashboard</mat-icon>
                     Mes Trajets
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button routerLink="/admin/students">
+                <button mat-button routerLink="students">
                     <mat-icon>dashboard</mat-icon>
                     Trajets en Demande
                 </button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button routerLink="/admin/payments">
+                <button mat-button routerLink="payments">
                     <mat-icon>dashboard</mat-icon>
                     Trajet prevus
                 </button>

@@ -2,6 +2,7 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trip',
@@ -13,7 +14,7 @@ export class TripComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router : Router) {}
 
   ngOnInit(): void {
     this.trajectData = this.dataService.getData();
@@ -25,6 +26,10 @@ export class TripComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.startStepper();
+  }
+
+  onClickReserved() {
+    this.router.navigateByUrl("login")
   }
 
   startStepper() {

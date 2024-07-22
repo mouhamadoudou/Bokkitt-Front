@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public loginFormGroup! : FormGroup;
+  public isSubscribe : boolean = true;
 
   constructor (private fb : FormBuilder, 
     private authservice : AuthentificationService,
@@ -18,8 +19,15 @@ export class LoginComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
     this.loginFormGroup = this.fb.group({
+      firstName : this.fb.control(''),
+      lastName: this.fb.control(''),
+      phoneNumber : this.fb.control(''),
+      city : this.fb.control(''),
+ 
+ 
       username : this.fb.control(''),
       password : this.fb.control('')
     });

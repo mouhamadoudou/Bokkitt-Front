@@ -59,7 +59,8 @@ export class LoginComponent implements OnInit {
     let auth = this.authservice.login(phoneNumber, password);
 
     if (auth == true) {
-      this.router.navigateByUrl("home")
+      this.router.navigateByUrl("/home")
+      // this.router.navigate(['/']);
     } 
     console.log(phoneNumber, password)
   }

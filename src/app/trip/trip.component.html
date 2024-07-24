@@ -16,9 +16,9 @@
     <mat-drawer-container class="drawer-content">
         <mat-drawer-content>
 
-            <mat-card appearance="outlined" class="trip-header">
+            <mat-card appearance="outlined" class="trip-card">
                 <mat-card-header color="primary" class="header1">
-                    <mat-card-title class="prim">Mer. 17 juillet</mat-card-title>
+                    <mat-card-title class="date">Mer. 17 juillet</mat-card-title>
                     <!-- <mat-card-title> {{trajectData.date}} </mat-card-title> -->
 
                     <div class="container-price">
@@ -34,7 +34,7 @@
                     <mat-card class="depart-card" appearance="outlined">
                         <mat-card-header class="depart-header" color="primary">
                             <!-- <mat-icon> local_taxi</mat-icon> -->
-                            <mat-card-title> Depart : Dakar </mat-card-title>
+                            <mat-card-title class="header-title"> Details Trajet </mat-card-title>
                             <!-- <mat-card-title> Depart : {{trajectData.depart}} </mat-card-title> -->
                         </mat-card-header>
                         <mat-card-content>
@@ -42,41 +42,104 @@
                             <div class="depart-icon">
                                 <mat-icon> access_time </mat-icon>
                                 <p>
-                                    Heure de rendez vous : 10h30
+                                    Depart: 10h30
                                 </p>
+                            </div>
+                            <div class="depart-icon">
+                                <!-- <mat-icon> work </mat-icon> -->
+                                <mat-icon> location_on </mat-icon>
+                                <p> Point de départ: Saly (Auchan Saly Centre)</p>
+                            </div>
+                            <div class="depart-icon">
+                                <!-- <mat-icon> work </mat-icon> -->
+                                <mat-icon> map </mat-icon>
+                                <p> Point de chute: Dakar (hopital)</p>
                             </div>
                             <div class="depart-icon">
                                 <mat-icon> airline_seat_legroom_normal </mat-icon>
                                 <p> Place disponible : 3</p>
                             </div>
-                            <div class="depart-icon">
-                                <mat-icon> work </mat-icon>
-                                <p> Capacité baguage : 3 valises </p>
-                            </div>
-                            <div class="depart-icon">
-                                <mat-icon> ac_unit </mat-icon>
-                                <p> Clime : Disponible </p>
-                            </div>
-                            <div class="depart-warning">
+                            <!-- <div class="depart-icon">
+                                    <mat-icon> ac_unit </mat-icon>
+                                    <p> Clime : Disponible </p>
+                                </div> -->
+                            <!-- <div class="depart-warning">
                                 <mat-icon> warning </mat-icon>
                                 <p> On vous recommande d'être en avance d'au moins 15 minutes. </p>
-                            </div>
+                            </div> -->
                         </mat-card-content>
                     </mat-card>
-                    <mat-icon class="arrow-icon" color="primary"> arrow_downward </mat-icon>
+                    <!-- <mat-icon class="arrow-icon" color="primary"> arrow_downward </mat-icon> -->
+
+                    <mat-card class="driver-contenair" appearance="outlined">
+                        <mat-card-header color="primary">
+                            <mat-card-title class="header-title"> Details: Chauffeur Voiture </mat-card-title>
+                        </mat-card-header>
+                        <div class="driver-conten">
+
+                            <div class="driver-card">
+                                <mat-card-header color="primary">
+                                    <mat-card-title class="header-driver"> Chauffeur </mat-card-title>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p> Nom: John Doe </p>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p> Notes: 4/5 </p>
+                                </mat-card-content>
+                            </div>
+
+                            <div class="driver-card">
+                                <mat-card-header color="primary">
+                                    <mat-card-title class="header-driver"> Voiture</mat-card-title>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p> Type: 4x4 </p>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p> Capacité Baggage: 2 </p>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p> Prix Baggage: 2000 FCFA </p>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p> Baggage Payant: Oui </p>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p> Clim: Oui </p>
+                                </mat-card-content>
+                            </div>
+                        </div>
+
+                    </mat-card>
 
                     <mat-card class="destination-card" appearance="outlined">
                         <mat-card-header color="primary">
-                            <mat-card-title> Destination : Saly </mat-card-title>
+                            <mat-card-title class="header-title"> Préférences </mat-card-title>
                         </mat-card-header>
                         <mat-card-content>
-                            <p> Heure d'arriver : 11h20 </p>
+                            <div class="depart-icon">
+                                <!-- <mat-icon> work </mat-icon> -->
+                                <mat-icon> smoke_free </mat-icon>
+                                <p> Non Fumeur</p>
+                            </div>
+                            <div class="depart-icon">
+                                <!-- <mat-icon> work </mat-icon> -->
+                                <mat-icon> work </mat-icon>
+                                <p> Capacité bagage limitee 3</p>
+                            </div>
+                            <div class="depart-icon">
+                                <!-- <mat-icon> work </mat-icon> -->
+                                <mat-icon> pets </mat-icon>
+                                <p> Animaux interdit</p>
+                            </div>
                         </mat-card-content>
                     </mat-card>
 
+
                 </mat-card-content>
                 <div class="reservation-button">
-                    <button mat-raised-button (click)="onClickReserved()" color="primary" >
+                    <button mat-raised-button (click)="onClickReserved()" color="primary">
                         <mat-icon> date_range </mat-icon>
                         Demande de reservation
                     </button>

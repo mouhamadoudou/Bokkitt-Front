@@ -18,10 +18,21 @@
 }
 
 .custom-icon {
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 .profile-menu {
     margin-top: 500px;
     background-color: #fff;
+}
+
+
+.person-contenair {
+    /* background-color: red; */
+    border-radius: 100%;
+    /* border-width: 10px; */
+    padding-top: 3px;
+    border-style: solid;
+    border-color:#9e0f48;
+    width: 40px;
 }

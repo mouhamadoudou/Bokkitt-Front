@@ -32,6 +32,6 @@ export class AuthentificationService {
     this.authentificated = false;
     this.phoneNumber = undefined;
     this.roles = undefined;
-    this.router.navigateByUrl("/login")
+    this.router.navigateByUrl("/home")
   }
 }

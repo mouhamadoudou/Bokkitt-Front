@@ -43,6 +43,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { TripComponent } from './trip/trip.component';
 import {FormBuilder, Validators, } from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
+import { ReservationComponent } from './reservation/reservation.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     CardComponent,
     CardListComponent,
     TripComponent,
+    ReservationComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,6 @@ mat-form-field {
     background-color: aliceblue;
 }
 
-.spacer {
-    flex: auto;
-}
-
-
 .admin_log {
     background-color: black;
 }

@@ -12,11 +12,10 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { TripComponent } from './trip/trip.component'
+import { ReservationComponent } from './reservation/reservation.component'
 
 const routes: Routes = [
-  { path: "login", component: LoginComponent },
   { path: "", component: LoginComponent },
-  { path: "trip", component: TripComponent },
 
 
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
@@ -24,11 +23,13 @@ const routes: Routes = [
     path: "", component: AdminComponent,  children: [
       
       { path: "home", component: HomeComponent },
-
+      { path: "trip", component: TripComponent },
+      { path: "login", component: LoginComponent },
       { path: "profile", component: ProfileComponent },
       { path: "dashboard", component: DashboardComponent },
       { path: "students", component: StudentsComponent },
       { path: "payments", component: PaymentsComponent },
+      { path: "reservation", component: ReservationComponent },
 
 
 

@@ -40,7 +40,7 @@ const routes: Routes = [
         path: "load-payments", component: LoadPaymentsComponent, canActivate: [AuthorizationGuard],
         data: { roles: ['ADMIN'] }
       },
-
+      
     ]
   }
 ];

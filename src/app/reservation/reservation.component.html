@@ -6,9 +6,9 @@
                 <div class="login-container">
                     <!-- {{loginFormGroup.value | json}} -->
                     <mat-card>
-                        <mat-card appearance="outlined" >
+                        <mat-card appearance="outlined">
                             <mat-card-header color="primary">
-                                <mat-card-title color="primary" > Veillez remplire le formulaire</mat-card-title>
+                                <mat-card-title color="primary"> Veillez remplire le formulaire</mat-card-title>
                                 <!-- <mat-card-subtitle>Herding group</mat-card-subtitle> -->
                             </mat-card-header>
                             <mat-card-actions>
@@ -20,17 +20,18 @@
                                                 <mat-form-field class="step-one-form">
                                                     <mat-label>Nombre de place</mat-label>
                                                     <mat-select disableRipple>
-                                                      <mat-option value="1">1 place</mat-option>
-                                                      <mat-option value="2">2 places</mat-option>
-                                                      <mat-option value="3">3 places</mat-option>
-                                                      <mat-option value="4">4 places</mat-option>
-                                                      <mat-option value="5">5 places</mat-option>
+                                                        <mat-option value="1">1 place</mat-option>
+                                                        <mat-option value="2">2 places</mat-option>
+                                                        <mat-option value="3">3 places</mat-option>
+                                                        <mat-option value="4">4 places</mat-option>
+                                                        <mat-option value="5">5 places</mat-option>
                                                     </mat-select>
-                                                  </mat-form-field>
-                                                  
+                                                </mat-form-field>
+
                                                 <!-- <button mat-button matStepperNext>Next</button> -->
 
-                                                <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
+                                                <button mat-raised-button class="step-one-button" color="primary"
+                                                    matStepperNext>
                                                     Confirmer
                                                 </button>
                                             </div>
@@ -44,21 +45,31 @@
                                             <div class="recap-contenair">
                                                 <div class="container">
                                                     <div class="point-container top">
-                                                      <div class="label">Dakar</div>
-                                                      <div class="point"></div>
+                                                        <div class="label"> <span class="descritpion">Dakar </span> (10h30)</div>
+                                                        <div class="point"></div>
                                                     </div>
                                                     <div class="line"></div>
                                                     <div class="point-container bottom">
-                                                      <div class="point"></div>
-                                                      <div class="label">Saly</div>
+                                                        <div class="point"></div>
+                                                        <div class="label"> <span class="descritpion"> Saly</span> (11h30)</div>
                                                     </div>
-                                                  </div>
-                                                  
+                                                </div>
+
+                                                <div class="container-2">
+                                                    <div> <span class="descritpion">Télephone</span> : 066175766 </div>
+
+                                                    <div class="label"> <span class="descritpion"> Prix passager :</span> 14 000 FCFA</div>
+                                                    <div class="label"> <span class="descritpion">Nombre de passager :</span> 4</div>
+                                                   
+                                                    <div class="total"> <span class="descritpion"> Prix total : </span>14 000 FCFA</div>
+
+                                                </div>
+
                                             </div>
-                                        
-                                        
-                                        
-                                        
+
+
+
+
                                         </form>
                                     </mat-step>
                                     <mat-step>

@@ -9,29 +9,11 @@ body {
 }
 
 .trip-container {
-    background-color: #303030;
+    /* background-color: #970e0e; */
     padding: 0;
-    height: auto;
+    height: 600px;
     display: flex;
     justify-content: center;
-}
-
-mat-drawer-container {
-    padding-top: 10px;
-    width: 100%;
-    max-width: 900px;
-    height: auto;
-    min-height: 1000px;
-    background-color: transparent;
-    box-sizing: border-box;
-    padding-bottom: 60px;
-}
-
-@media (max-width: 768px) {
-    mat-drawer-container {
-        padding-top: 10px;
-        width: 100%;
-    }
 }
 
 mat-drawer-content {
@@ -41,12 +23,8 @@ mat-drawer-content {
     width: 100%;
 }
 
-.trip-card {
-    max-width: 900px;
-    width: 100%;
-    height: 1000px;
-    border-radius: 20px;
-    /* align-items:center; */
+.mat-drawer-container {
+    /* background-color: aliceblue; */
 }
 
 mat-card-title {
@@ -65,177 +43,14 @@ mat-card-title {
     }
 }
 
-mat-card-header {
-    text-align: center;
 
-}
-
-.date {
-    color:  #c2185b;
-
-}
-
-
-.mat-stepper-vertical {
-    margin-top: 8px;
-}
-
-.mat-mdc-form-field {
-    margin-top: 16px;
-}
-
-.mat-action {
-    height: 330px;
-}
-
-.price-card {
-    width: 100%;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.header1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.container-price {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.traject-price {
-    background-color: #c2185b;
-    max-width: 100%;
-    width: 160px;
-    padding: 4px;
-    border-radius: 20px;
-
-}
-
-
-.stepper-title {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-
-
-/* v2 --------------------------------------------------- */
-
-.contenair-dep-dest {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.step-one-form {
     margin-top: 15px;
-    border: none;
 }
 
-.depart-card {
-    background-color: #c2185b;
-    margin-top: 40px;
-    width: 107%;
-    max-width: 400px;
-    height: 220px;
-    border-radius: 20px;
+.step-one-button {
+    margin-left: 30px;
+    height: 55px;
+    border-radius: 40px;
+    margin-bottom: 15px;
 }
-
-.destination-card {
-    background-color: #c2185b;
-    margin-top: 40px;
-    width: 107%;
-    max-width: 400px;
-    height: 200px;
-    border-radius: 20px;
-}
-
-.driver-contenair {
-    background-color: #c2185b;
-    margin-top: 40px;
-    width: 107%;
-    max-width: 400px;
-    height: 260px;
-    border-radius: 20px;
-}
-
-.reservation-button {
-    padding-top: 40px;
-    display:flex;
-    justify-content: center;
-
-}
-
-.header-title {
-    /* margin-left: 4; */
-    font-size: 19px;
-}
-
-.arrow-icon {
-    margin-top: 40px;
-    transform: scale(1.5);
-}
-
-mat-card-content p {
-    margin-top: 10px;
-    font-weight:400;
-}
-
-.depart-icon {
-    display:flex;
-    margin-bottom: 5px;
-}
-
-.depart-icon p {
-    margin: 5.5px 0 0 10px;
-    /* margin-top: 4px; */
-}
-
-/* .depart-warning {
-    display:flex;
-    margin-bottom: 5px;
-    margin-top: 18px;
-}
-
-.depart-warning p {
-    margin: 4px 0 0 10px;
-    font-style: italic;
-} */
-
-.depart-header {
-    /* background-color: rgba(194, 24, 91, 0.2); */
-    /* background-color:  rgba(0, 0, 0, 0.2); */
-    padding: 4px 4px 6px 20px;
-
-    
-}
-
-.driver-conten {
-    width: 100%;
-    height: 100%;
-    /* background-color: aqua; */
-    display: flex;
-    padding: 0px;
-    /* justify-content: center; */
-}
-
-
-.driver-card {
-    margin-left: 5px;
-    margin-right: 5px;
-    /* background-color: rgba(179, 11, 156, 0.315); */
-    width: 50%;
-    height: 100%;
-}
-
-.header-driver {
-    margin: 0px;
-    font-size: 18px;
-}
-
-.mat-mdc-card-header {
-    display: flex;
-    padding: 10px 10px 0;
-}
-

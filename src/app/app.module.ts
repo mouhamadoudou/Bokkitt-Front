@@ -24,7 +24,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,7 +43,8 @@ import { TripComponent } from './trip/trip.component';
 import {FormBuilder, Validators, } from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReservationComponent } from './reservation/reservation.component';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -85,7 +85,7 @@ import { ReservationComponent } from './reservation/reservation.component';
     HttpClientModule,
     FormsModule,
     MatAutocompleteModule,
-
+    MatSelectModule,
     MatButtonModule,
     MatStepperModule,
     FormsModule,

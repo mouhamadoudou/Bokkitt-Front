@@ -15,13 +15,12 @@ import { TripComponent } from './trip/trip.component'
 import { ReservationComponent } from './reservation/reservation.component'
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
 
 
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
   {
     path: "", component: AdminComponent,  children: [
-      
+      { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
       { path: "login", component: LoginComponent },

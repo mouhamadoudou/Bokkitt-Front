@@ -2,38 +2,48 @@
     <!-- <button mat-icon-button (click)="drawerId.toggle()">
         <mat-icon> menu </mat-icon>
     </button> -->
-    <button mat-icon-button >
-        <mat-icon> waves </mat-icon>
-        EvolBoost
-    </button>
-    <span class="spacer">
-    </span>
-    <button mat-button routerLink="/home"> Offre trajet </button>
-    <!-- <button mat-button routerLink="profile"> Mes-Trajets </button> -->
-    
-    <!-- <button mat-button *ngIf="authService.roles.includes('ADMIN')">
-        Annoncer un trajet
-    </button> -->
-    <mat-menu #importMenu class="profile-menu">
-        <button mat-menu-item > Mes informations</button>
-        <button mat-menu-item routerLink="load-students" *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button>
-        <button mat-menu-item routerLink="load-payments"> Hitstorique de trajet</button>
-        <button  mat-menu-item (click)="logout()" >
-            <mat-icon> exit_to_app </mat-icon>
-            Déconnexion
-        </button>
-    </mat-menu>
-    <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
-        Se connecter/s'inscrire
+    <button mat-icon-button class="bokkitt-icon">
+        <mat-icon> directions_car </mat-icon>
+        <span> Bokkitt</span>
+
     </button>
 
-    <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
-        <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
-        <div class="person-contenair">
-            <mat-icon class="custom-icon">person</mat-icon>
-        </div>
-        <!-- {{authService.username}} -->
-    </button>
+    <span class="spacer">
+    </span>
+    <div class="bokkitt-nav">
+        <button mat-button routerLink="/home"> Rechercher trajet </button>
+        <button mat-button routerLink="/home"> 
+        <mat-icon> add_circle </mat-icon>
+        Annoncer trajet </button>
+
+        <!-- <button mat-button routerLink="profile"> Mes-Trajets </button> -->
+
+        <!-- <button mat-button *ngIf="authService.roles.includes('ADMIN')">
+        Annoncer un trajet
+    </button> -->
+        <mat-menu #importMenu class="profile-menu">
+            <button mat-menu-item> Mes informations</button>
+            <button mat-menu-item routerLink="load-students"
+                *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button>
+            <button mat-menu-item routerLink="load-payments"> Hitstorique de trajet</button>
+            <button mat-menu-item (click)="logout()">
+                <mat-icon> exit_to_app </mat-icon>
+                Déconnexion
+            </button>
+        </mat-menu>
+        <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
+            Connexion
+        </button>
+
+        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
+            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+            <div class="person-contenair">
+                <mat-icon class="custom-icon">person</mat-icon>
+            </div>
+            <!-- {{authService.username}} -->
+        </button>
+    </div>
+
 </mat-toolbar>
 
 <mat-drawer-container>

@@ -166,6 +166,9 @@ background-color: transparent;
   background-color: #AD1457;
   margin-bottom: 40px;
 
+  padding: 0 6px 0 6px;
+  border-radius: 10px;
+
 }
 
 .search-button {

@@ -12,6 +12,7 @@
 }
 
 .toolbar {
+    padding: 0 12% 0 12%;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -33,6 +34,42 @@
     /* border-width: 10px; */
     padding-top: 3px;
     border-style: solid;
-    border-color:#9e0f48;
+    border-color: #9e0f48;
     width: 40px;
+}
+
+
+.bokkitt-icon {
+    /* margin-left: 400px; */
+
+    mat-icon {
+        transform: scale(1.5);
+    }
+
+    span {
+        font-weight: 600;
+    }
+}
+
+.bokkitt-nav {
+    button {
+        font-weight: 600;
+    }
+    mat-icon {
+        transform: scale(1.4);
+    }
+}
+
+@media (max-width: 768px) {
+    .bokkitt-icon {
+        margin-left: 0px;
+    }
+
+    .toolbar {
+        padding: 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
 }

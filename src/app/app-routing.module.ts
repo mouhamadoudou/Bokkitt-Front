@@ -11,8 +11,9 @@ import { LoadPaymentsComponent } from './load-payments/load-payments.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
-import { TripComponent } from './trip/trip.component'
-import { ReservationComponent } from './reservation/reservation.component'
+import { TripComponent } from './trip/trip.component';
+import { ReservationComponent } from './reservation/reservation.component';
+import { AddTripComponent } from './add-trip/add-trip.component';
 
 const routes: Routes = [
 
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: "students", component: StudentsComponent },
       { path: "payments", component: PaymentsComponent },
       { path: "reservation", component: ReservationComponent },
+      { path: "add-trip", component: AddTripComponent },
 
 
 

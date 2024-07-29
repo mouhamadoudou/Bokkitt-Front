@@ -1,0 +1,29 @@
+
+.trip-contenair {
+    background-color: rgb(143, 143, 143);
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center; 
+    /* padding: 1%; */
+}
+
+.trip-contenair mat-card {
+    margin-top: 10px;
+    padding: 20px;
+    background-color: rgb(92, 91, 91);
+    width: 100%;
+    max-width: 800px;
+    height: 800px;
+}
+
+mat-card-header {
+    background-color: #9e0f48e5;
+    display: flex;
+    justify-content: center; 
+    justify-items: center;
+    mat-card-title {
+        margin-bottom: 10px;
+    }
+
+}

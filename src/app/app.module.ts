@@ -45,6 +45,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReservationComponent } from './reservation/reservation.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AddTripComponent } from './add-trip/add-trip.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CardListComponent,
     TripComponent,
     ReservationComponent,
+    AddTripComponent,
   ],
   imports: [
     BrowserModule,

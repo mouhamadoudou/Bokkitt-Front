@@ -8,7 +8,7 @@ import { StudentsComponent } from './students/students.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { LoadStudentsComponent } from './load-students/load-students.component';
 import { LoadPaymentsComponent } from './load-payments/load-payments.component';
-import { AdminComponent } from './admin/admin.component';
+import { HeaderComponent } from './header/header.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { TripComponent } from './trip/trip.component';
@@ -20,7 +20,7 @@ const routes: Routes = [
 
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
   {
-    path: "", component: AdminComponent,  children: [
+    path: "", component: HeaderComponent,  children: [
       { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },

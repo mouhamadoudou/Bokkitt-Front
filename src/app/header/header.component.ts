@@ -4,11 +4,11 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css'
 })
-export class AdminComponent implements OnInit{
+export class HeaderComponent implements OnInit{
 
     constructor (public authService : AuthentificationService, private router: Router) {
 

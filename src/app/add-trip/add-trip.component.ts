@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DateInputComponent } from '../component/date-input/date-input.component'
 
 @Component({
   selector: 'app-add-trip',

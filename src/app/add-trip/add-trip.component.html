@@ -10,11 +10,93 @@
             <div class="time">
 
 
-                <app-date-input></app-date-input>
+                <mat-stepper orientation="vertical" #stepper>
+                    <mat-step>
+                        <form>
+                            <ng-template matStepLabel>Selectionner le nombre de place</ng-template>
+                            <div>
+                <app-date-input/>
+
+                                <!-- <mat-form-field class="step-one-form">
+                                    <mat-label>Nombre de place</mat-label>
+                                    <mat-select disableRipple>
+                                        <mat-option value="1">1 place</mat-option>
+                                        <mat-option value="2">2 places</mat-option>
+                                        <mat-option value="3">3 places</mat-option>
+                                        <mat-option value="4">4 places</mat-option>
+                                        <mat-option value="5">5 places</mat-option>
+                                    </mat-select>
+                                </mat-form-field> -->
+
+
+                                <!-- <button mat-button matStepperNext>Next</button> -->
+
+                                <!-- <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
+                                    Confirmer
+                                </button> -->
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <form>
+                            <ng-template matStepLabel>Récapitulatif de votre demande</ng-template>
+                            <div class="recap-contenair">
+                                <div class="container">
+                                    <div class="point-container top">
+                                        <div class="label"> <span class="descritpion">Dakar </span>
+                                            (10h30)</div>
+                                        <div class="point"></div>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="point-container bottom">
+                                        <div class="point"></div>
+                                        <div class="label"> <span class="descritpion"> Saly</span>
+                                            (11h30)</div>
+                                    </div>
+                                </div>
+
+                                <div class="container-2">
+                                    <div> <span class="descritpion">Télephone :</span> 066175766 </div>
+
+                                    <div class="label"> <span class="descritpion"> Prix passager
+                                            :</span> 14 000 FCFA</div>
+                                    <div class="label"> <span class="descritpion">Nombre de passager
+                                            :</span> 4</div>
+
+                                    <div class="total"> <span class="descritpion"> Prix total :
+                                        </span>14 000 FCFA</div>
+
+                                </div>
+                            </div>
+                            <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
+                                Confirmer
+                            </button>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Payment</ng-template>
+                        <div>
+                            <mat-card>
+                                <form class="payment-form" [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Numero wave</mat-label>
+                                        <input matInput formControlName="Number" required>
+                                    </mat-form-field>
+
+                                    <button mat-raised-button color="primary" type="submit"
+                                        [disabled]="creditCardForm.valid">Confirmer</button>
+                                    <button mat-raised-button matStepperPrevious>Modifier</button>
+
+                                </form>
+                            </mat-card>
+
+                            <!-- <button mat-raised-button (click)="stepper.reset()">Reset</button> -->
+                        </div>
+                    </mat-step>
+                </mat-stepper>
 
 
             </div>
         </mat-card-content>
     </mat-card>
 </div>
-

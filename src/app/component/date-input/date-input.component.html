@@ -1,20 +1,7 @@
-<div>
-  <form class="row row-cols-sm-auto">
-    <div class="col-12">
-      <div class="input-group">
-        <input
-          class="form-control"
-          [value]="getFormattedDate()"
-          (ngModelChange)="onDateChange($event)"
-          ngbDatepicker
-          #d="ngbDatepicker"
-          (click)="d.toggle()"
-        />
-        <button class="btn btn-outline-secondary bi bi-calendar2" (click)="d.toggle()" type="button">
-
-          <mat-icon class="clandar-icon"> calendar_today</mat-icon>
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
+<mat-form-field>
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-label>Selectionner la date<p></p></mat-label>
+  <input matInput [matDatepicker]="picker" [min]="minDate">
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

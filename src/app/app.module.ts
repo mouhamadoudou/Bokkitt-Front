@@ -46,6 +46,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +96,8 @@ import { MatStepperModule } from '@angular/material/stepper';
   providers: [
     AuthorizationGuard,
     AuthGuard,
-    { provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nFr }
+    { provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nFr },
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
   ],
   bootstrap: [AppComponent]
 })

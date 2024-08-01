@@ -1,38 +1,26 @@
 import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, } from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-date-input',
   templateUrl: './date-input.component.html',
   styleUrl: './date-input.component.css',
+
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class DateInputComponent {
-  model: {day: number, month: number, year: number};
+  minDate: Date;
+  todayDate: Date;
 
   constructor() {
-    const today = new Date();
-    this.model = {
-      day: today.getDate() ,
-      month: today.getMonth() + 1,
-      year: today.getFullYear()
-    }; 
-  }
-  
-  getFormattedDate(): string {
-    return `${this.model.day.toString().padStart(2, '0')}/${this.model.month.toString().padStart(2, '0')}/${this.model.year}`;
-  }
-
-  onDateChange(date: any): void {
-    console.log("hello worlld")
-    const [day, month, year] = date.split('/').map(Number);
-    if (this.isValidDate(day, month, year)) {
-      this.model = { day, month, year };
-      console.log('Date changed:', this.model);
-    }
-  }
-
-  isValidDate(day: number, month: number, year: number): boolean {
-    return day > 0 && month > 0 && month <= 12 && year > 0;
+    this.todayDate = new Date();
+    this.minDate = this.todayDate;
   }
 }
 

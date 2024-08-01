@@ -47,6 +47,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
 
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { TimePickerComponent } from './component/time-picker/time-picker.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     ReservationComponent,
     AddTripComponent,
     DateInputComponent,
+    TimePickerComponent,
   ],
   imports: [
     BrowserModule,

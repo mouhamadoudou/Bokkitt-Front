@@ -1,0 +1,13 @@
+<div>
+    <mat-form-field appearance="fill">
+        <!-- <mat-label>Heure de depart</mat-label> -->
+        <mat-select [(value)]="selectedTime">
+            <mat-option *ngFor="let time of times" [value]="time">
+                {{ time }}
+            </mat-option>
+        </mat-select>
+
+            {{ selectedTime }}
+        <mat-icon matSuffix>access_time</mat-icon>
+    </mat-form-field>
+</div>

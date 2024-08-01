@@ -55,50 +55,24 @@ mat-card-content {
 
 /* --------------------------------------------- */
 
-html,
-body {
-  height: 100vh;
-  margin: 0;
-}
 
-.spacer {
-  flex: auto;
-}
 
-.trip-container {
-  /* background-color: #970e0e; */
-  padding: 0;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-}
 
-mat-drawer-content {
-  margin-top: 60px;
-  /* background-color: rgba(65, 65, 65, 0.493); */
-  background-color: transparent;
-  width: 100%;
-}
-
-.mat-drawer-container {
-  /* background-color: aliceblue; */
-}
-
-mat-card-title {
+/* mat-card-title {
   width: 100%;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-}
+} */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   mat-card-title {
     width: 100%;
     font-size: 23px;
     font-weight: bold;
     text-align: center;
   }
-}
+} */
 
 
 .step-one-form {
@@ -202,4 +176,24 @@ mat-card-title {
 .payment-form {
   margin-top: 20px;
   border-width: none;
+}
+
+
+.date-time-conetainer {
+  margin-top: 15px;
+  display: flex;
+
+  app-time-picker {
+    margin-left: 10px;
+  }
+}
+
+.date-time-title {
+  display: flex;
+  
+  mat-icon {
+    margin-left: 10px;
+    color: #e1216d;
+    transform: scale(0.9);
+  }
 }

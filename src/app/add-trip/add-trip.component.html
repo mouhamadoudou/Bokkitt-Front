@@ -14,8 +14,15 @@
                     <mat-step>
                         <form>
                             <ng-template matStepLabel>Selectionner le nombre de place</ng-template>
-                            <div>
-                <app-date-input/>
+                            <div class="date-time-title">
+                                <h4> Date et heure : </h4> 
+                                <mat-icon matSuffix>calendar_today</mat-icon>
+                            </div>
+
+                            <div class="date-time-conetainer">
+                
+                                <app-date-input/>
+<app-time-picker/>
 
                                 <!-- <mat-form-field class="step-one-form">
                                     <mat-label>Nombre de place</mat-label>
@@ -51,7 +58,8 @@
                                     <div class="point-container bottom">
                                         <div class="point"></div>
                                         <div class="label"> <span class="descritpion"> Saly</span>
-                                            (11h30)</div>
+                                            (11h30)
+                                        </div>
                                     </div>
                                 </div>
 

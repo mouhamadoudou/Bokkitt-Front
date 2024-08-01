@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateInputComponent } from '../component/date-input/date-input.component'
 import { MatStepper } from '@angular/material/stepper';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-trip',
@@ -13,11 +16,23 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 })
 export class AddTripComponent implements OnInit {
 
-
+  public dataSource : any;
+  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"];
 
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
   creditCardForm!: FormGroup;
+
+  myControl = new FormControl('');
+  myControl2 = new FormControl('');
+
+  filteredOptions = new Observable<string[]>;
+  filteredOptions2 = new Observable<string[]>;
+
+  filterValues = {
+    depart: '',
+    destination: ''
+  };
 
   constructor(private fb: FormBuilder) {  }
 
@@ -25,8 +40,25 @@ export class AddTripComponent implements OnInit {
     this.creditCardForm = this.fb.group({
       Number: ['', [Validators.required, Validators.pattern('^[0-9]')]],
     });
+
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+
+    this.filteredOptions2 = this.myControl2.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
   }
 
+  private _filter(value: string): string[] {
+    console.log(this.dataSource)
+    const filterValue = value.toLowerCase();
+
+    return this.city.filter(option => option.toLowerCase().includes(filterValue));
+  }
+  
   onSubmit() {
     if (this.creditCardForm.valid) {
       console.log('Form Submitted', this.creditCardForm.value);

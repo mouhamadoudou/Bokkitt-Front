@@ -15,14 +15,13 @@
                         <form>
                             <ng-template matStepLabel>Selectionner le nombre de place</ng-template>
                             <div class="date-time-title">
-                                <h4> Date et heure : </h4> 
+                                <h4> Date et heure : </h4>
                                 <mat-icon matSuffix>calendar_today</mat-icon>
                             </div>
 
                             <div class="date-time-conetainer">
-                
-                                <app-date-input/>
-<app-time-picker/>
+                                <app-date-input />
+                                <app-time-picker />
 
                                 <!-- <mat-form-field class="step-one-form">
                                     <mat-label>Nombre de place</mat-label>
@@ -42,6 +41,86 @@
                                     Confirmer
                                 </button> -->
                             </div>
+                            <div class="date-time-title">
+                                <h4> Lieux de depart et arrivé : </h4>
+                                <mat-icon matSuffix>redo</mat-icon>
+                            </div>
+
+
+                            <div class="recap-contenair">
+                                <div class="principal-point-container">
+                                    <div class="point-container top">
+                                        <mat-form-field class="search-custom" appearance="outline">
+                                            <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart"
+                                                [matAutocomplete]="auto">
+                                            <mat-autocomplete #auto="matAutocomplete">
+            
+                                                @for (option of filteredOptions | async; track option) {
+                                                <mat-option [value]="option">{{option}}</mat-option>
+                                                }
+                                            </mat-autocomplete>
+                                            <mat-label>Depart</mat-label>
+                                        </mat-form-field>
+                                        <div class="point"></div>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="point-container bottom">
+                                        <div class="point"></div>
+                                        <mat-form-field class="destination-input" appearance="outline">
+                                            <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
+                                                [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
+                                            <mat-autocomplete #auto2="matAutocomplete">
+            
+                                                @for (option of filteredOptions2 | async; track option) {
+                                                <mat-option [value]="option">{{option}}</mat-option>
+                                                }
+                                            </mat-autocomplete>
+                                            <mat-label>Destination</mat-label>
+                                        </mat-form-field> 
+                                    </div>
+                                </div>
+
+
+                                <!-- <div class="container-2">
+                                    <div> <span class="descritpion">Télephone :</span> 066175766 </div>
+
+                                    <div class="label"> <span class="descritpion"> Prix passager
+                                            :</span> 14 000 FCFA</div>
+                                    <div class="label"> <span class="descritpion">Nombre de passager
+                                            :</span> 4</div>
+
+                                    <div class="total"> <span class="descritpion"> Prix total :
+                                        </span>14 000 FCFA</div>
+
+                                </div> -->
+                            </div>
+<!-- 
+                            <mat-form-field class="search-custom" appearance="outline">
+                                <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart"
+                                    [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete">
+
+                                    @for (option of filteredOptions | async; track option) {
+                                    <mat-option [value]="option">{{option}}</mat-option>
+                                    }
+                                </mat-autocomplete>
+                                <mat-label>Depart</mat-label>
+                            </mat-form-field>
+
+                            <mat-icon> redo </mat-icon>
+                            <mat-form-field class="destination-input" appearance="outline">
+                                <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
+                                    [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
+                                <mat-autocomplete #auto2="matAutocomplete">
+
+                                    @for (option of filteredOptions2 | async; track option) {
+                                    <mat-option [value]="option">{{option}}</mat-option>
+                                    }
+                                </mat-autocomplete>
+                                <mat-label>Destination</mat-label>
+                            </mat-form-field> -->
+
+
                         </form>
                     </mat-step>
                     <mat-step>

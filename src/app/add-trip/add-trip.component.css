@@ -1,55 +1,56 @@
-
 .trip-contenair {
-    background-color: rgb(143, 143, 143);
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center; 
+  background-color: rgb(143, 143, 143);
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .trip-contenair mat-card {
-    margin-top: 10px;
-    padding: 20px;
-    background-color: rgb(92, 91, 91);
-    width: 100%;
-    max-width: 800px;
-    height: 800px;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: rgb(92, 91, 91);
+  width: 100%;
+  max-width: 800px;
+  height: 800px;
 }
 
 mat-card-header {
-    background-color: #9e0f48e5;
-    display: flex;
-    justify-content: center; 
-    justify-items: center;
-    mat-card-title {
-        margin-bottom: 10px;
-    }
-    border-radius: 20px;
+  background-color: #9e0f48e5;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+
+  mat-card-title {
+    margin-bottom: 10px;
+  }
+
+  border-radius: 20px;
 }
 
 
-mat-card-content { 
-    margin-top: 20px;
-    background-color: rgb(78, 80, 79);
+mat-card-content {
+  margin-top: 20px;
+  background-color: rgb(78, 80, 79);
+  width: 100%;
+  height: 400px;
+  padding: 0;
+
+  .time {
+    /* padding: 10px; */
+    background-color: rgb(68, 75, 75);
     width: 100%;
-    height: 400px;
-    padding: 0;
+    height: 100px;
 
-    .time {
-        /* padding: 10px; */
-        background-color: rgb(68, 75, 75);
-        width: 100%;
-        height: 100px;
-
-        h3 span {
-            color: #9e0f48ee;
-            font-weight: 600;
-        }
+    h3 span {
+      color: #9e0f48ee;
+      font-weight: 600;
     }
+  }
 
-    .custom-input-time {
-        width: 150px;
-    }
+  .custom-input-time {
+    width: 150px;
+  }
 }
 
 
@@ -90,7 +91,7 @@ mat-card-content {
 .recap-contenair {
   margin-top: 10px;
   width: 100%;
-  height: 200px;
+  height: 250px;
   /* background-color: rgb(97, 66, 66); */
   display: flex;
 }
@@ -99,15 +100,14 @@ mat-card-content {
 
 /* ttttttttest */
 
-.container {
+.principal-point-container {
   /* background-color: #3a1926; */
-  width: 120px;
+  width: 320px;
   position: relative;
-  height: 140px;
+  height: 240px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 .point-container {
@@ -121,6 +121,7 @@ mat-card-content {
   height: 10px;
   background-color: #9e0f48;
   border-radius: 50%;
+  margin-bottom: 3px;
 }
 
 .label {
@@ -137,11 +138,12 @@ mat-card-content {
 }
 
 .line {
-  width: 2px;
-  background-color: #ffffff;
+  width: 4px; /* Augmenter la largeur pour mieux voir les points */
+  background-image: radial-gradient(circle, #e9e3e3 3px, transparent 2px);
+  background-size: 2px 10px; /* Augmenter les valeurs pour agrandir les points et les espacer */
+  background-repeat: repeat-y;
   flex-grow: 1;
 }
-
 
 .container-2 {
   padding-top: 10px;
@@ -190,7 +192,7 @@ mat-card-content {
 
 .date-time-title {
   display: flex;
-  
+
   mat-icon {
     margin-left: 10px;
     color: #e1216d;

@@ -106,6 +106,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     };
     return filterFunction;
   }
+  
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -12,5 +12,16 @@ export class PriceSliderComponent {
   showTicks = false;
   step = 100;
   thumbLabel = false;
-  value = 0;
+  value = 500;
+
+
+  increment() {
+    this.value += 50;
+  }
+
+  decrement() {
+    this.value -= 50;
+  }
 }
+
+

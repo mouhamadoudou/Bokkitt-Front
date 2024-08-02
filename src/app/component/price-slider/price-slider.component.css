@@ -47,3 +47,59 @@ label span {
     color: #c22d68;
     font-weight: bold;
 }
+
+.user-input {
+    width: 60px;
+    background-color: transparent;
+    border-color: #c22d68;
+    color: aliceblue;
+    font-weight: 900;
+    border-radius: 20px;
+}
+
+.custom-number-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-number-input button {
+    background-color: #c22d68;
+    border: none;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  .custom-number-input button:hover {
+    background-color: #a61d54;
+  }
+  
+  .user-input {
+    width: 40px;
+    background-color: transparent;
+    /* border-color: #c22d68; */
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    color: aliceblue;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 2px;
+  }
+  
+
+  .user-input {
+    -moz-appearance: textfield;
+  }
+  
+  .user-input::-webkit-outer-spin-button,
+  .user-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .increment-butt {
+    margin-left: 5px;
+  }

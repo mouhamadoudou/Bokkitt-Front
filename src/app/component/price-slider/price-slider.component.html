@@ -1,12 +1,25 @@
-    <mat-card-content>
-        <h2>Prix</h2>
+<mat-card-content>
+    <h2>Prix</h2>
 
-        <div class="example-label-container">
-            <label id="example-name-label" class="example-name-label">Prix par passager</label>
-            <label class="example-value-label"> {{slider.value}} <span>FCFA</span></label>
-        </div>
-        <mat-slider class="example-margin" [disabled]="disabled" [max]="max" [min]="min" [step]="step"
-            [discrete]="thumbLabel" [showTickMarks]="showTicks">
-            <input matSliderThumb [(ngModel)]="value" #slider>
-        </mat-slider>
-    </mat-card-content>
+    <div class="example-label-container">
+        <label id="example-name-label" class="example-name-label">
+            Prix par passager
+        </label>
+        <label class="example-value-label">
+            <!-- {{slider.value}} -->
+
+            <div class="custom-number-input">
+                <button (click)="decrement()">-</button>
+                <div class="input-container">
+                    <input matInput class="user-input" [(ngModel)]="value" type="number">
+                    <span class="unit">FCFA</span>
+                </div>
+                <button (click)="increment()" class="increment-butt">+</button>
+            </div>
+        </label>
+    </div>
+    <mat-slider class="example-margin" [disabled]="disabled" [max]="max" [min]="min" [step]="step"
+        [discrete]="thumbLabel" [showTickMarks]="showTicks">
+        <input matSliderThumb [(ngModel)]="value" #slider>
+    </mat-slider>
+</mat-card-content>

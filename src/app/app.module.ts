@@ -48,6 +48,11 @@ import { MatStepperModule } from '@angular/material/stepper';
 
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TimePickerComponent } from './component/time-picker/time-picker.component';
+import { PriceSliderComponent } from './component/price-slider/price-slider.component';
+
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +73,7 @@ import { TimePickerComponent } from './component/time-picker/time-picker.compone
     AddTripComponent,
     DateInputComponent,
     TimePickerComponent,
+    PriceSliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +100,8 @@ import { TimePickerComponent } from './component/time-picker/time-picker.compone
     MatFormFieldModule,
     MatSelectModule,
     MatStepperModule,
+    MatSliderModule,
+    MatCheckboxModule
   ],
   providers: [
     AuthorizationGuard,

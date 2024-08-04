@@ -119,8 +119,34 @@
 
                             <app-price-slider />
 
+                            <div class="place">
+                                <h2>Place/Trajet</h2>
+
+                                <mat-form-field appearance="fill" class="traject-input">
+                                    <mat-label>Place</mat-label>
+                                    <input matInput placeholder="Nombre de place" type="text" pattern="\d*" ngModel
+                                        name="nombrePlace" #nombrePlace="ngModel"
+                                        (keypress)="validateNumberInput($event)" required>
+
+                                    <mat-icon matSuffix color="primary">airline_seat_legroom_normal</mat-icon>
+                                    <!-- <mat-error *ngIf="nombrePlace.invalid && (nombrePlace.dirty || nombrePlace.touched)"
+                                        class="custom-error">
+                                        Entrer uniquement des chiffres
+                                    </mat-error> -->
+                                </mat-form-field>
+  
+                                <mat-form-field class="route-autoroute">
+                                    <mat-label>National/Autoroute</mat-label>
+                                    <mat-select>
+                                      @for (food of foods; track food) {
+                                        <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                                      }
+                                    </mat-select>
+                                  </mat-form-field>
+                            </div>
+
                             <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
-                                Confirmer
+                                Suivant
                             </button>
                         </form>
                     </mat-step>

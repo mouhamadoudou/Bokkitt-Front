@@ -7,6 +7,12 @@ import { FormControl} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-add-trip',
   templateUrl: './add-trip.component.html',
@@ -35,7 +41,10 @@ export class AddTripComponent implements OnInit {
   };
 
   
-  
+  foods: Food[] = [
+    {value: 'Autoroute', viewValue: 'Autoroute'},
+    {value: 'Nationale', viewValue: 'Nationale'},
+  ];
 
   constructor(private fb: FormBuilder) {  }
   
@@ -66,6 +75,14 @@ export class AddTripComponent implements OnInit {
     return this.city.filter(option => option.toLowerCase().includes(filterValue));
   }
   
+  validateNumberInput(event: KeyboardEvent): void {
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!/^\d$/.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+  
+
   onSubmit() {
     if (this.creditCardForm.valid) {
       console.log('Form Submitted', this.creditCardForm.value);

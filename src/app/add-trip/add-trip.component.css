@@ -198,4 +198,8 @@ mat-card-content {
     color: #e1216d;
     transform: scale(0.9);
   }
+
+  .mat-vertical-content {
+    padding: 0 24px 24px 15px;
+  }
 }

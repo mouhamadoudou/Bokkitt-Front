@@ -48,6 +48,10 @@ label span {
     font-weight: bold;
 }
 
+.price-name-label {
+    font-weight: 600;
+}
+
 .user-input {
     width: 60px;
     background-color: transparent;
@@ -124,3 +128,5 @@ input {
     font-size: 16px;
     font-weight: bold;
 }
+
+

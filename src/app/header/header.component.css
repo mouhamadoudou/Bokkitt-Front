@@ -55,6 +55,7 @@
     button {
         font-weight: 600;
     }
+
     mat-icon {
         transform: scale(1.4);
     }
@@ -70,6 +71,10 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+    }
+
+    .bokkitt-nav {
+        display: none;
     }
 
 }

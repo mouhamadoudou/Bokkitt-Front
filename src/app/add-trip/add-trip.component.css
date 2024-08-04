@@ -31,11 +31,11 @@ mat-card-header {
 
 mat-card-content {
   margin-top: 10px;
-  background-color: rgb(78, 80, 79);
+  /* background-color: rgb(78, 80, 79); */
   width: 100%;
   height: 400px;
   padding: 0;
-
+  
   .time {
     /* padding: 10px; */
     background-color: rgb(68, 75, 75);
@@ -245,11 +245,29 @@ mat-card-content {
     font-weight: bold;
   }
 
-  .route-autoroute {
-    max-width: 170px;
-  }
+}
+
+.route-autoroute {
+  max-width: 170px;
 }
 
 .traject-input {
   max-width: 150px;
 }
+
+
+@media (max-width: 768px) {
+  .traject-input {
+    max-width: 130px;
+  }
+
+  .route-autoroute {
+    max-width: 130px;
+  }
+
+}
+
+/* 
+.mat-stepper-vertical {
+  background-color:#d8296f;
+} */

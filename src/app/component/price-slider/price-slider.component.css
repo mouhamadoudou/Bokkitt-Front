@@ -1,20 +1,20 @@
-.example-h2 {
+.price-h2 {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.example-section {
+.price-section {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     align-items: center;
 }
 
-.example-margin {
+.price-margin {
     margin: 8px;
 }
 
-.example-width {
+.price-width {
     max-width: 180px;
     width: 100%;
 }
@@ -28,18 +28,18 @@
     margin-top: 8px;
 }
 
-.example-result-card h2 {
+.price-result-card h2 {
     margin: 0 8px;
 }
 
-.example-label-container {
+.price-label-container {
     display: flex;
     justify-content: space-between;
-    margin: 20px 10px 0;
-    max-width: 284px;
+    max-width: 315px;
+    margin-left: 5px;
 }
 
-.example-result-card .example-value-label {
+.price-result-card .price-value-label {
     font-weight: 600;
 }
 
@@ -57,12 +57,12 @@ label span {
     border-radius: 20px;
 }
 
-.custom-number-input {
+.custom-input {
     display: flex;
     align-items: center;
-  }
-  
-  .custom-number-input button {
+}
+
+.custom-input button {
     background-color: #c22d68;
     border: none;
     color: white;
@@ -70,14 +70,14 @@ label span {
     height: 20px;
     border-radius: 2px;
     cursor: pointer;
-  }
-  
-  .custom-number-input button:hover {
+}
+
+.custom-input button:hover {
     background-color: #a61d54;
-  }
-  
-  .user-input {
-    width: 40px;
+}
+
+.user-input {
+    width: 60px;
     background-color: transparent;
     /* border-color: #c22d68; */
     border-left: none;
@@ -87,19 +87,40 @@ label span {
     font-weight: 400;
     text-align: right;
     margin-right: 2px;
-  }
-  
+    padding-right: 4px;
+    outline: none;
+}
 
-  .user-input {
+
+.user-input {
     -moz-appearance: textfield;
-  }
-  
-  .user-input::-webkit-outer-spin-button,
-  .user-input::-webkit-inner-spin-button {
+}
+
+.user-input::-webkit-outer-spin-button,
+.user-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
-  }
+}
 
-  .increment-butt {
+.user-input:focus,
+.user-input:focus-visible {
+    border-bottom: 2px solid rgb(253, 253, 253);
+}
+
+
+.decrement-butt {
+    font-weight: bold;
+    padding-bottom: 2px;
+}
+
+.increment-butt {
     margin-left: 5px;
-  }
+    font-weight: bold;
+    padding-bottom: 2px;
+}
+
+
+input {
+    font-size: 16px;
+    font-weight: bold;
+}

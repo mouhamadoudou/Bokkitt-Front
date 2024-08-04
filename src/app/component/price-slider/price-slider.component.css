@@ -1,3 +1,7 @@
+h2 {
+    font-size: large;
+}
+
 .price-h2 {
     margin-left: 10px;
     margin-right: 10px;
@@ -29,7 +33,10 @@
 }
 
 .price-result-card h2 {
+    color: red;
+
     margin: 0 8px;
+    
 }
 
 .price-label-container {

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateInputComponent } from '../component/date-input/date-input.component'
 import { MatStepper } from '@angular/material/stepper';
 import {provideNativeDateAdapter} from '@angular/material/core';
-import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ import { map, startWith } from 'rxjs/operators';
   templateUrl: './add-trip.component.html',
   styleUrl: './add-trip.component.css',
 
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter()]
 })
 export class AddTripComponent implements OnInit {
 
@@ -34,7 +34,14 @@ export class AddTripComponent implements OnInit {
     destination: ''
   };
 
+  
+  
+
   constructor(private fb: FormBuilder) {  }
+  
+  alertFormValues(formGroup: FormGroup) {
+    alert(JSON.stringify(formGroup.value, null, 2));
+  }
 
   ngOnInit() {
     this.creditCardForm = this.fb.group({

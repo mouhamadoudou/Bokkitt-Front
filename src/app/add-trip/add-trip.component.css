@@ -85,6 +85,7 @@ mat-card-content {
   width: 50%;
   border-radius: 40px;
   margin-bottom: 15px;
+  margin-left: 15px;
 }
 
 
@@ -203,3 +204,26 @@ mat-card-content {
     padding: 0 24px 24px 15px;
   }
 }
+
+.price-form {
+  margin-left: -10px;
+}
+
+
+.preference {
+  h2 {
+    margin-left: 15px;
+    font-size: large;
+  }  
+}
+
+
+.preference-form {
+  /* background-color: gray; */
+  margin-left: 23px;
+  max-width: 315px;
+  display: flex;
+  justify-content: space-between;
+}
+
+

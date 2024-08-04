@@ -54,7 +54,7 @@
                                             <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart"
                                                 [matAutocomplete]="auto">
                                             <mat-autocomplete #auto="matAutocomplete">
-            
+
                                                 @for (option of filteredOptions | async; track option) {
                                                 <mat-option [value]="option">{{option}}</mat-option>
                                                 }
@@ -67,16 +67,17 @@
                                     <div class="point-container bottom">
                                         <div class="point"></div>
                                         <mat-form-field class="destination-input" appearance="outline">
-                                            <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
-                                                [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
+                                            <input matInput [(ngModel)]="filterValues.destination"
+                                                [formControl]="myControl2" [(ngModel)]="filterValues.destination"
+                                                [matAutocomplete]="auto2">
                                             <mat-autocomplete #auto2="matAutocomplete">
-            
+
                                                 @for (option of filteredOptions2 | async; track option) {
                                                 <mat-option [value]="option">{{option}}</mat-option>
                                                 }
                                             </mat-autocomplete>
                                             <mat-label>Destination</mat-label>
-                                        </mat-form-field> 
+                                        </mat-form-field>
                                     </div>
                                 </div>
 
@@ -102,38 +103,21 @@
                         </form>
                     </mat-step>
                     <mat-step>
-                        <form>
+                        <form class="price-form">
                             <ng-template matStepLabel>Prix et preference</ng-template>
-                            <div class="recap-contenair">
-                                <div class="container">
-                                    <div class="point-container top">
-                                        <div class="label"> <span class="descritpion">Dakar </span>
-                                            (10h30)</div>
-                                        <div class="point"></div>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class="point-container bottom">
-                                        <div class="point"></div>
-                                        <div class="label"> <span class="descritpion"> Saly</span>
-                                            (11h30)
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="container-2">
-                                    <div> <span class="descritpion">Télephone :</span> 066175766 </div>
+                            <div class="preference">
+                                <h2>Preference</h2>
+                                <form class="preference-form" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
+                                    <mat-slide-toggle ngModel name="enableWifi" color="primary"
+                                        class="custom-slide-toggle">Fumeur</mat-slide-toggle>
+                                    <mat-slide-toggle ngModel name="acceptTerms" color="primary"
+                                        class="custom-slide-toggle toggle-animal" required>Animaux</mat-slide-toggle>
+                                </form>
 
-                                    <div class="label"> <span class="descritpion"> Prix passager
-                                            :</span> 14 000 FCFA</div>
-                                    <div class="label"> <span class="descritpion">Nombre de passager
-                                            :</span> 4</div>
-
-                                    <div class="total"> <span class="descritpion"> Prix total :
-                                        </span>14 000 FCFA</div>
-
-                                </div>
                             </div>
-                            <app-price-slider/>
+
+                            <app-price-slider />
 
                             <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
                                 Confirmer

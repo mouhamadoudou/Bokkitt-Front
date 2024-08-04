@@ -152,23 +152,9 @@
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel>Payment</ng-template>
-                        <div>
-                            <mat-card>
-                                <form class="payment-form" [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Numero wave</mat-label>
-                                        <input matInput formControlName="Number" required>
-                                    </mat-form-field>
-
-                                    <button mat-raised-button color="primary" type="submit"
-                                        [disabled]="creditCardForm.valid">Confirmer</button>
-                                    <button mat-raised-button matStepperPrevious>Modifier</button>
-
-                                </form>
-                            </mat-card>
-
-                            <!-- <button mat-raised-button (click)="stepper.reset()">Reset</button> -->
-                        </div>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Confirmation</ng-template>
                     </mat-step>
                 </mat-stepper>
 

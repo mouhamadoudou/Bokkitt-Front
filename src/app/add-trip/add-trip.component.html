@@ -157,7 +157,7 @@
                                     </mat-select>
                                 </mat-form-field>
                                 <mat-form-field *ngIf="baggagePaid == true" appearance="fill" class="traject-input">
-                                    <mat-label>Capacité Bagage</mat-label>
+                                    <mat-label>Capacité bagage</mat-label>
                                     <input matInput placeholder="Ex : 4" type="text" pattern="\d*" ngModel
                                         name="capacityBaggage" #nombrePlace="ngModel"
                                         (keypress)="validateNumberInput($event)" required>
@@ -170,13 +170,11 @@
 
                             <div class="place">
                                 <mat-form-field class="route-autoroute">
-                                    <mat-label>Type de voiture</mat-label>
-                                    <mat-select>
-                                        @for (carType of carTypes; track carType) {
-                                        <mat-option [value]="carType.value">{{carType.viewValue}}</mat-option>
-                                        }
-                                    </mat-select>
-                                </mat-form-field>
+                                    <mat-label>Plaque d'immatriculation</mat-label>
+                                    <input matInput placeholder="ex: AA-123-AA" [(ngModel)]="licensePlate" (ngModelChange)="formatLicensePlate($event)" name="licensePlate" required>
+                                  </mat-form-field>
+
+
                                 <mat-form-field *ngIf="baggagePaid == true" appearance="fill" class="traject-input">
                                     <mat-label>Prix bagage</mat-label>
                                     <input matInput placeholder="Prix bagage" type="text" pattern="\d*" ngModel
@@ -190,7 +188,7 @@
                             </div>
 
                             <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
-                                Suivant
+                                Valider le trajet
                             </button>
                         </form>
                     </mat-step>

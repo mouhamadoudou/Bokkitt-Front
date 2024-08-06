@@ -2,8 +2,8 @@ import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DateInputComponent } from '../component/date-input/date-input.component'
 import { MatStepper } from '@angular/material/stepper';
-import {provideNativeDateAdapter} from '@angular/material/core';
-import { FormControl} from '@angular/forms';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -21,8 +21,9 @@ interface Road {
   providers: [provideNativeDateAdapter()]
 })
 export class AddTripComponent implements OnInit {
-  public baggagePaid : boolean = false;
-  public dataSource : any;
+  public licensePlate: string = '';
+  public baggagePaid: boolean = false;
+  public dataSource: any;
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"];
 
   @ViewChild('stepper') private stepper!: MatStepper;
@@ -40,24 +41,40 @@ export class AddTripComponent implements OnInit {
     destination: ''
   };
 
-  
+
   roads: Road[] = [
-    {value: 'Autoroute', viewValue: 'Autoroute'},
-    {value: 'Nationale', viewValue: 'Nationale'},
-    {value: 'Les deux', viewValue: 'Les deux'}
+    { value: 'Autoroute', viewValue: 'Autoroute' },
+    { value: 'Nationale', viewValue: 'Nationale' },
+    { value: 'Les deux', viewValue: 'Les deux' }
   ];
 
   carTypes: Road[] = [
-    {value: '7-places', viewValue: '7 places'},
-    {value: '4x4', viewValue: '4x4'},
-    {value: 'Berline', viewValue: 'Berline'},
-    {value: 'Car/Bus', viewValue: 'Car/Bus'},
-    {value: 'Mini-bus', viewValue: 'Mini bus'},
-    {value: 'Hybride', viewValue: 'Hybride'}
+    { value: '7-places', viewValue: '7 places' },
+    { value: '4x4', viewValue: '4x4' },
+    { value: 'Berline', viewValue: 'Berline' },
+    { value: 'Car/Bus', viewValue: 'Car/Bus' },
+    { value: 'Mini-bus', viewValue: 'Mini bus' },
+    { value: 'Hybride', viewValue: 'Hybride' }
   ];
 
-  constructor(private fb: FormBuilder) {  }
-  
+  constructor(private fb: FormBuilder) { }
+
+  formatLicensePlate(value: string) {
+    const cleanedValue = value.replace(/[^a-zA-Z0-9]/g, '');
+    let formattedValue = '';
+
+    if (cleanedValue.length > 0) {
+      formattedValue = cleanedValue.slice(0, 2);
+    }
+    if (cleanedValue.length > 2) {
+      formattedValue += '-' + cleanedValue.slice(2, 5);
+    }
+    if (cleanedValue.length > 5) {
+      formattedValue += '-' + cleanedValue.slice(5);
+    }
+    this.licensePlate = formattedValue;
+  }
+
   alertFormValues(formGroup: FormGroup) {
     alert(JSON.stringify(formGroup.value, null, 2));
   }
@@ -82,16 +99,16 @@ export class AddTripComponent implements OnInit {
     console.log(this.dataSource)
     const filterValue = value.toLowerCase();
 
-    return this.city.filter(option => option.toLowerCase().includes(filterValue)).slice(0,2);
+    return this.city.filter(option => option.toLowerCase().includes(filterValue)).slice(0, 2);
   }
-  
+
   validateNumberInput(event: KeyboardEvent): void {
     const inputChar = String.fromCharCode(event.charCode);
     if (!/^\d$/.test(inputChar)) {
       event.preventDefault();
     }
   }
-  
+
 
   onSubmit() {
     if (this.creditCardForm.valid) {

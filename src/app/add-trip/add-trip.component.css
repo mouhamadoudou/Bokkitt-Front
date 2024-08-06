@@ -65,7 +65,7 @@ mat-card-content {
   height: 40px;
   width: 50%;
   border-radius: 40px;
-  margin-bottom: 15px;
+  margin: 15px 0 15px 0;
 }
 
 .principal-point-container {
@@ -170,3 +170,19 @@ mat-card-content {
 .mat-stepper-vertical {
   background-color:#d8296f;
 } */
+
+.last-step {
+  .place {
+    margin-top: 25px;
+  }
+}
+
+
+.meeting-point {
+  width: 100%;
+}
+
+.no-resize {
+  max-height: 100px; 
+  resize: none;
+}

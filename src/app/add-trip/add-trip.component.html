@@ -50,11 +50,12 @@
 
                                 </mat-form-field>
                                 <mat-form-field class="meeting-point">
-                                    <mat-label>Details du point de rendez vous</mat-label>
-                                    <textarea matInput placeholder="Ex. Pat d'oie a coté du pont..."></textarea>
-                                </mat-form-field>
+                                    <mat-label>Détails du point de rendez-vous</mat-label>
+                                    <textarea matInput placeholder="Ex. Pat d'oie à côté du pont..." class="no-resize" maxlength="60"></textarea>
+                                  </mat-form-field>                                  
 
-                                <mat-icon>arrow_downward</mat-icon>
+
+                                <!-- <mat-icon>home</mat-icon> -->
                                 <mat-form-field class="destination-input" appearance="outline">
                                     <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
                                         [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
@@ -68,7 +69,7 @@
                                 </mat-form-field>
                                 <mat-form-field class="meeting-point">
                                     <mat-label>Details du point de chute</mat-label>
-                                    <textarea matInput placeholder="Ex. Pat d'oie a coté du pont..."></textarea>
+                                    <textarea matInput placeholder="Ex. Pat d'oie a coté du pont..." class="no-resize"></textarea>
                                 </mat-form-field>
                             </div>
 
@@ -78,6 +79,7 @@
 
                         </form>
                     </mat-step>
+
                     <mat-step>
                         <form class="price-form">
                             <ng-template matStepLabel>Prix et preference</ng-template>
@@ -114,8 +116,8 @@
                                 <mat-form-field class="route-autoroute">
                                     <mat-label>National/Autoroute</mat-label>
                                     <mat-select>
-                                        @for (food of foods; track food) {
-                                        <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                                        @for (road of roads; track road) {
+                                        <mat-option [value]="road.value">{{road.viewValue}}</mat-option>
                                         }
                                     </mat-select>
                                 </mat-form-field>
@@ -126,13 +128,73 @@
                             </button>
                         </form>
                     </mat-step>
+
+
+
+
                     <mat-step>
-                        <ng-template matStepLabel>Payment</ng-template>
+                        <ng-template matStepLabel>Voiture</ng-template>
+                        <form class="price-form last-step">
+                            <ng-template matStepLabel>Prix et preference</ng-template>
+
+                            <div class="preference">
+                                <h2>Preference</h2>
+                                <form class="preference-form" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
+                                    <mat-slide-toggle ngModel name="enableWifi" color="primary"
+                                        class="custom-slide-toggle">Climatisation</mat-slide-toggle>
+                                    <mat-slide-toggle ngModel name="acceptTerms" color="primary"
+                                        class="custom-slide-toggle toggle-animal" [(ngModel)]="baggagePaid" required>Baggage
+                                        Payant</mat-slide-toggle>
+                                </form>
+                            </div>
+                            <div class="place">
+                                <mat-form-field class="route-autoroute">
+                                    <mat-label>Type de voiture</mat-label>
+                                    <mat-select>
+                                        @for (carType of carTypes; track carType) {
+                                        <mat-option [value]="carType.value">{{carType.viewValue}}</mat-option>
+                                        }
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field *ngIf="baggagePaid == true" appearance="fill" class="traject-input">
+                                    <mat-label>Capacité Bagage</mat-label>
+                                    <input matInput placeholder="Ex : 4" type="text" pattern="\d*" ngModel
+                                        name="capacityBaggage" #nombrePlace="ngModel"
+                                        (keypress)="validateNumberInput($event)" required>
+                                    <!-- <mat-error *ngIf="nombrePlace.invalid && (nombrePlace.dirty || nombrePlace.touched)"
+                                        class="custom-error">
+                                        Entrer uniquement des chiffres
+                                    </mat-error> -->
+                                </mat-form-field>
+                            </div>
+
+                            <div class="place">
+                                <mat-form-field class="route-autoroute">
+                                    <mat-label>Type de voiture</mat-label>
+                                    <mat-select>
+                                        @for (carType of carTypes; track carType) {
+                                        <mat-option [value]="carType.value">{{carType.viewValue}}</mat-option>
+                                        }
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field *ngIf="baggagePaid == true" appearance="fill" class="traject-input">
+                                    <mat-label>Prix bagage</mat-label>
+                                    <input matInput placeholder="Prix bagage" type="text" pattern="\d*" ngModel
+                                        name="baggagePrice" #nombrePlace="ngModel"
+                                        (keypress)="validateNumberInput($event)" required>
+                                    <!-- <mat-error *ngIf="nombrePlace.invalid && (nombrePlace.dirty || nombrePlace.touched)"
+                                        class="custom-error">
+                                        Entrer uniquement des chiffres
+                                    </mat-error> -->
+                                </mat-form-field>
+                            </div>
+
+                            <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
+                                Suivant
+                            </button>
+                        </form>
                     </mat-step>
-
                 </mat-stepper>
-
-
             </div>
         </mat-card-content>
     </mat-card>

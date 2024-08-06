@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 
-interface Food {
+interface Road {
   value: string;
   viewValue: string;
 }
@@ -21,7 +21,7 @@ interface Food {
   providers: [provideNativeDateAdapter()]
 })
 export class AddTripComponent implements OnInit {
-
+  public baggagePaid : boolean = false;
   public dataSource : any;
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"];
 
@@ -41,9 +41,19 @@ export class AddTripComponent implements OnInit {
   };
 
   
-  foods: Food[] = [
+  roads: Road[] = [
     {value: 'Autoroute', viewValue: 'Autoroute'},
     {value: 'Nationale', viewValue: 'Nationale'},
+    {value: 'Les deux', viewValue: 'Les deux'}
+  ];
+
+  carTypes: Road[] = [
+    {value: '7-places', viewValue: '7 places'},
+    {value: '4x4', viewValue: '4x4'},
+    {value: 'Berline', viewValue: 'Berline'},
+    {value: 'Car/Bus', viewValue: 'Car/Bus'},
+    {value: 'Mini-bus', viewValue: 'Mini bus'},
+    {value: 'Hybride', viewValue: 'Hybride'}
   ];
 
   constructor(private fb: FormBuilder) {  }
@@ -72,7 +82,7 @@ export class AddTripComponent implements OnInit {
     console.log(this.dataSource)
     const filterValue = value.toLowerCase();
 
-    return this.city.filter(option => option.toLowerCase().includes(filterValue));
+    return this.city.filter(option => option.toLowerCase().includes(filterValue)).slice(0,2);
   }
   
   validateNumberInput(event: KeyboardEvent): void {

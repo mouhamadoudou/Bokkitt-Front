@@ -14,6 +14,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { TripComponent } from './trip/trip.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { AddTripComponent } from './add-trip/add-trip.component';
+import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component'
 
 const routes: Routes = [
 
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: "payments", component: PaymentsComponent },
       { path: "reservation", component: ReservationComponent },
       { path: "add-trip", component: AddTripComponent },
+      { path: "suggest-traject", component: SuggestTrajectComponent },
 
 
 

@@ -171,7 +171,7 @@
                             <div class="place">
                                 <mat-form-field class="route-autoroute">
                                     <mat-label>Plaque d'immatriculation</mat-label>
-                                    <input matInput placeholder="ex: AA-123-AA" [(ngModel)]="licensePlate" (ngModelChange)="formatLicensePlate($event)" name="licensePlate" required>
+                                    <input matInput placeholder="ex: AAA-123-AA" [(ngModel)]="licensePlate" maxlength="9" (ngModelChange)="formatLicensePlate($event)" name="licensePlate" required>
                                   </mat-form-field>
 
 

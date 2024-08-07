@@ -57,6 +57,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatSlideToggleModule,
   _MatSlideToggleRequiredValidatorModule,
 } from '@angular/material/slide-toggle';
+import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { MatSlideToggleModule,
     DateInputComponent,
     TimePickerComponent,
     PriceSliderComponent,
+    SuggestTrajectComponent,
   ],
   imports: [
     BrowserModule,

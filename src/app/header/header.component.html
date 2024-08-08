@@ -54,8 +54,8 @@
 
     </div>
     <!-- <button mat-button class="menu-drawer" (click)="drawerId.toggle()"> -->
-    <button mat-button class="menu-drawer">
-        
+    <button mat-button class="menu-drawer" >
+
         <mat-icon class="custom-menu-icon">menu</mat-icon>
 </button>
 
@@ -66,9 +66,9 @@
 
 
 </mat-toolbar>
-<!-- 
+
 <mat-drawer-container>
-    <mat-drawer #drawerId mode="side" class="side-nav" position="start">
+    <!-- <mat-drawer #drawerId mode="side" class="side-nav" position="start">
         <mat-nav-list>
             <mat-list-item>
                 <button mat-button routerLink="dashboard">
@@ -89,10 +89,10 @@
                 </button>
             </mat-list-item>
         </mat-nav-list>
-    </mat-drawer>
+    </mat-drawer> -->
     <mat-drawer-content>
         <div style="min-height: 868px;">
             <router-outlet></router-outlet>
         </div>
     </mat-drawer-content>
-</mat-drawer-container> -->
+</mat-drawer-container>

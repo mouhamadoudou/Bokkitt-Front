@@ -9,7 +9,7 @@ import { filter } from 'rxjs/operators';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit{
-
+    public isOpenDrawer : boolean = false;
     constructor (public authService : AuthentificationService, private router: Router) {
 
     }
@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit{
         window.scrollTo(0, 0);
       });
     }
+
     logout() : void {
+      console.log("okkke")
       this.authService.logout()
     }
 }

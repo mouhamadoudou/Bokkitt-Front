@@ -19,7 +19,7 @@
 }
 
 .custom-icon {
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 .profile-menu {
@@ -61,9 +61,22 @@
     }
 }
 
+.menu-drawer {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .bokkitt-icon {
         margin-left: 0px;
+    }
+
+    .custom-menu-icon {
+        transform: scale(2);
+    }
+
+    .menu-drawer {
+        display: block;
+        margin-top: 15px;
     }
 
     .toolbar {

@@ -51,7 +51,13 @@
             </div>
             <!-- {{authService.username}} -->
         </button>
+
     </div>
+    <!-- <button mat-button class="menu-drawer" (click)="drawerId.toggle()"> -->
+    <button mat-button class="menu-drawer">
+        
+        <mat-icon class="custom-menu-icon">menu</mat-icon>
+</button>
 
     <div class="bokkitt-nav-phone">
 
@@ -60,9 +66,9 @@
 
 
 </mat-toolbar>
-
+<!-- 
 <mat-drawer-container>
-    <mat-drawer #drawerId mode="side" class="side-nav" position="start" opened="true">
+    <mat-drawer #drawerId mode="side" class="side-nav" position="start">
         <mat-nav-list>
             <mat-list-item>
                 <button mat-button routerLink="dashboard">
@@ -89,4 +95,4 @@
             <router-outlet></router-outlet>
         </div>
     </mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container> -->

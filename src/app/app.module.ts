@@ -10,13 +10,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentsComponent } from './students/students.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { LoadStudentsComponent } from './load-students/load-students.component';
 import { LoadPaymentsComponent } from './load-payments/load-payments.component';
-import { CardComponent } from './card/card.component';
-import { CardListComponent } from './card-list/card-list.component';
 import { TripComponent } from './trip/trip.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { AddTripComponent } from './add-trip/add-trip.component';
@@ -26,7 +23,6 @@ import { AuthorizationGuard } from './guards/authorization.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 import { NgbModule, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
-import { NgbDatepickerI18nFr } from './class/ngb-datepicker-i18n-fr'; // Importer la classe de localisation
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -58,6 +54,7 @@ import { MatSlideToggleModule,
   _MatSlideToggleRequiredValidatorModule,
 } from '@angular/material/slide-toggle';
 import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component';
+import { DashboardComponent } from './User-infos/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -66,13 +63,10 @@ import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.compo
     HomeComponent,
     ProfileComponent,
     LoginComponent,
-    DashboardComponent,
     StudentsComponent,
     PaymentsComponent,
     LoadStudentsComponent,
     LoadPaymentsComponent,
-    CardComponent,
-    CardListComponent,
     TripComponent,
     ReservationComponent,
     AddTripComponent,
@@ -80,6 +74,7 @@ import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.compo
     TimePickerComponent,
     PriceSliderComponent,
     SuggestTrajectComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,7 +109,6 @@ import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.compo
   providers: [
     AuthorizationGuard,
     AuthGuard,
-    { provide: NgbDatepickerI18n, useClass: NgbDatepickerI18nFr },
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
   ],
   bootstrap: [AppComponent]

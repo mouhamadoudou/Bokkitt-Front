@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentsComponent } from './students/students.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { LoadStudentsComponent } from './load-students/load-students.component';
@@ -15,6 +14,8 @@ import { TripComponent } from './trip/trip.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component'
+import { DashboardComponent } from './User-infos/dashboard/dashboard.component'
+
 
 const routes: Routes = [
 
@@ -22,19 +23,18 @@ const routes: Routes = [
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
   {
     path: "", component: HeaderComponent,  children: [
-      { path: "", component: HomeComponent },
+      { path: "", component: DashboardComponent },
+      // { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
       { path: "login", component: LoginComponent },
       { path: "profile", component: ProfileComponent },
-      { path: "dashboard", component: DashboardComponent },
       { path: "students", component: StudentsComponent },
       { path: "payments", component: PaymentsComponent },
       { path: "reservation", component: ReservationComponent },
       { path: "add-trip", component: AddTripComponent },
       { path: "suggest-traject", component: SuggestTrajectComponent },
-
-
+      { path: "Dashboard", component: DashboardComponent },
 
       {
         path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],

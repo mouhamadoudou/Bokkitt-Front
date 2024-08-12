@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+  activeSection: string = 'profile';
 
+  activateSection(section: string): void {
+    this.activeSection = section;
+  }
 }

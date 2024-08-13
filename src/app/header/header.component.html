@@ -54,10 +54,28 @@
 
     </div>
     <!-- <button mat-button class="menu-drawer" (click)="drawerId.toggle()"> -->
-    <button mat-button class="menu-drawer" >
-
+    <button mat-button class="menu-drawer" [matMenuTriggerFor]="beforeMenu">
         <mat-icon class="custom-menu-icon">menu</mat-icon>
-</button>
+
+        <mat-menu #beforeMenu="matMenu" xPosition="before"  class="mat-menu-phone">
+            <button mat-menu-item routerLink="/home">
+                <mat-icon> search </mat-icon>
+                Rechercher trajet
+            </button>
+            <button mat-menu-item routerLink="/add-trip">
+                <mat-icon> person_add </mat-icon>
+                Demander trajet
+            </button>
+            <button mat-menu-item routerLink="/suggest-traject">
+                <mat-icon> add_circle </mat-icon>
+                Annoncer trajet
+            </button>
+            <button mat-menu-item>
+                <mat-icon> live_help </mat-icon>
+                A propos
+            </button>
+        </mat-menu>
+    </button>
 
     <div class="bokkitt-nav-phone">
 

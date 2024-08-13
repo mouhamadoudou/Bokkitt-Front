@@ -66,8 +66,9 @@ nav a {
 
   &:hover {
     color: #413a3c;
-    transform: scale(1.2);
+    transform: scale(1.1);
     cursor: pointer;
+    background-color: #8f0a447e;
   }
 
   &:first-child {
@@ -192,15 +193,15 @@ mat-card-header {
 }
 
 mat-list-item {
-  padding-left: 0px; 
+  padding-left: 0px;
 }
 
 .list-contenair {
   padding-left: 0px;
   display: flex;
   flex-direction: row;
-  align-items: center;  
-color: #272727;
+  align-items: center;
+  color: #272727;
 
   p {
     font-size: 14px;
@@ -225,19 +226,6 @@ mat-card-content {
 
 @media (max-width: 768px) {
   .container {
-    margin-top: 20px;
-    padding: 15px; 
-  }
-
-  .leftbox {
-    top: -5px;
-    left: 0px;
-    width: 5px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
     margin-top: 10px;
     padding: 0px;
     min-height: 50vh;
@@ -257,6 +245,44 @@ mat-card-content {
   .leftbox {
     top: -5px;
     left: 0px;
-    width: 60px;
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 10px;
+    padding: 0px;
+    min-height: 50vh;
+    padding-top: 5px;
+  }
+
+  .rightbox {
+    float: right;
+    width: 82%;
+    height: 95%;
+    border: #b9155c;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 10px 0px 0px 10px;
+    padding: 5px;
+  }
+
+  .leftbox {
+    top: 0px;
+    left: 0px;
+    width: 45px;
+  }
+
+  nav a {
+    list-style: none;
+    padding: 35px 0 35px 10px;
+
+    &:hover {
+      color: #413a3c;
+      transform: scale(1.1);
+      cursor: pointer;
+      background-color: #8f0a447e;
+    }
   }
 }

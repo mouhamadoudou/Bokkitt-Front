@@ -199,6 +199,7 @@ mat-list-item {
 .list-contenair {
   padding-left: 0px;
   display: flex;
+  
   flex-direction: row;
   align-items: center;
   color: #272727;
@@ -208,7 +209,17 @@ mat-list-item {
     font-weight: 500;
   }
 
+  div {
+    display: flex;
+  
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+
+  }
+
   button {
+
     width: 10px !important;
 
     height: 20px;
@@ -285,4 +296,20 @@ mat-card-content {
       background-color: #8f0a447e;
     }
   }
+}
+
+.insertLicense {
+  /* float: right; */
+  color:#AD1457;
+  margin-bottom: 4px;
+  margin-left: auto;
+  &:hover {
+    color: #413a3c;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.insert-licence-contanair {
+  margin-bottom: 17px;
 }

@@ -41,13 +41,15 @@
                                 <h2>
                                     Téléphone
                                 </h2>
-                                <p>
-                                    787536469
-                                </p>
+                                <div>
+                                    <p>
+                                        787536469
+                                    </p>
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
                             </div>
 
                         </mat-list-item>
@@ -58,13 +60,17 @@
                                 <h2>
                                     Mot de passe
                                 </h2>
-                                <p>
-                                    *********
-                                </p>
+                                <div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                                    <p>
+                                        *********
+                                    </p>
+
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
+
                             </div>
                         </mat-list-item>
                         <mat-divider></mat-divider>
@@ -75,105 +81,115 @@
             <mat-card class="card-2">
                 <mat-card-header>
                     <h1>
-                        Informations personnelles
+                        Informations
                     </h1>
                 </mat-card-header>
                 <mat-card-content>
                     <mat-list>
                         <mat-list-item>
                             <div class="list-contenair">
-
                                 <h2>
                                     Nom
                                 </h2>
-                                <p>
-                                    Uzumaki
-                                </p>
+                                <div>
+                                    <p>
+                                        Uzumaki
+                                    </p>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
+
                             </div>
 
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
                             <div class="list-contenair">
-
                                 <h2>
                                     Prénom
                                 </h2>
-                                <p>
-                                    Naruto
-                                </p>
+                                <div>
+                                    <p>
+                                        Naruto
+                                    </p>
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
                             </div>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
                             <div class="list-contenair">
-
                                 <h2>
                                     Age
                                 </h2>
-                                <p>
-                                    24
-                                </p>
+                                <div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                                    <p>
+                                        24
+                                    </p>
+
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
+
                             </div>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
                             <div class="list-contenair">
-
                                 <h2>
                                     Sex
                                 </h2>
-                                <p>
-                                    Male
-                                </p>
+                                <div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                                    <p>
+                                        Male
+                                    </p>
+
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
+
                             </div>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
                             <div class="list-contenair">
-
                                 <h2>
                                     Ville
                                 </h2>
-                                <p>
-                                    Dakar
-                                </p>
+                                <div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
+                                    <p>
+                                        Dakar
+                                    </p>
+
+                                    <button mat-raised-button color="primary">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
+
                             </div>
                         </mat-list-item>
                         <mat-divider></mat-divider>
                         <mat-list-item>
                             <div class="list-contenair">
-
                                 <h2>
-                                    Copie permis de conduire
+                                    Permis de conduire
                                 </h2>
-                                <p>
-                                    permis-de-conduire
-                                </p>
+                                <div class="insert-licence-contanair">
+                                    <a href="path/to/your/document.pdf" target="_blank">Voir le permis</a>
+                                    <mat-icon (click)="insertLicense()" class="insertLicense">
+                                        insert_drive_file</mat-icon>
+                                </div>
 
-                                <button mat-raised-button color="primary">
-                                    <mat-icon>edit</mat-icon>
-                                </button>
                             </div>
                         </mat-list-item>
                     </mat-list>

@@ -11,4 +11,8 @@ export class DashboardComponent {
   activateSection(section: string): void {
     this.activeSection = section;
   }
+
+  insertLicense() {
+    
+  }
 }

@@ -92,10 +92,6 @@ nav a {
   padding: 5px;
 }
 
-.test {
-  background-color: blue;
-}
-
 .profile,
 .payment,
 .subscription,
@@ -212,6 +208,8 @@ color: #272727;
   }
 
   button {
+    width: 10px !important;
+
     height: 20px;
     margin: 0 0 12px 10px;
     font-size: 12px;
@@ -224,3 +222,41 @@ mat-card-content {
   padding-left: 2px;
 }
 
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: 20px;
+    padding: 15px; 
+  }
+
+  .leftbox {
+    top: -5px;
+    left: 0px;
+    width: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 10px;
+    padding: 0px;
+    min-height: 50vh;
+  }
+
+  .rightbox {
+    float: right;
+    width: 79%;
+    height: 95%;
+    border: #b9155c;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 10px 0px 0px 10px;
+    padding: 5px;
+  }
+
+  .leftbox {
+    top: -5px;
+    left: 0px;
+    width: 60px;
+  }
+}

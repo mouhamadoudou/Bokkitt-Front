@@ -182,15 +182,34 @@
                         <mat-list-item>
                             <div class="list-contenair">
                                 <h2>
-                                    Permis de conduire
+                                    Permis
                                 </h2>
                                 <div class="insert-licence-contanair">
-                                    <a href="path/to/your/document.pdf" target="_blank">Voir le permis</a>
-                                    <mat-icon (click)="insertLicense()" class="insertLicense">
-                                        insert_drive_file</mat-icon>
+                                    <a href="path/to/your/document.pdf" target="_blank">{{ licenceName }}</a>
                                 </div>
 
                             </div>
+
+                        </mat-list-item>
+                        <mat-list-item>
+                            <div class="list-contenair">
+                                <h2>
+                                </h2>
+                                <div class="insert-licence-contanair">
+                                    <!-- <mat-icon (click)="insertLicense()"  class="insertLicense">
+                                        insert_drive_file</mat-icon> -->
+                                    <label for="fileUpload" class="custom-file-upload">
+                                        <span class="fileName"> inserer un permis </span>
+                                        <mat-icon class="insert-license-icon"> move_to_inbox </mat-icon>
+
+                                    </label>
+                                    <input id="fileUpload" class="licence-upload" type="file"
+                                        (change)="onFileSelected($event)" style="display: none;">
+                                    <!-- <span id="fileName" class="fileName">{{ licenceName }}</span> -->
+
+                                </div>
+                            </div>
+
                         </mat-list-item>
                     </mat-list>
 

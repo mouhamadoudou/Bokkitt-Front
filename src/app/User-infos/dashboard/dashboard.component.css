@@ -298,10 +298,10 @@ mat-card-content {
   }
 }
 
-.insertLicense {
+.insert-license-icon {
   /* float: right; */
   color:#AD1457;
-  margin-bottom: 4px;
+  margin-top: 1px;
   margin-left: auto;
   &:hover {
     color: #413a3c;
@@ -312,4 +312,18 @@ mat-card-content {
 
 .insert-licence-contanair {
   margin-bottom: 17px;
+}
+
+.licence-upload {
+  width: 200px;
+  color: #FFFFFF;
+  font-weight: 500;
+  background-color: #b9155c;
+}
+
+.fileName {
+  color: rgb(74, 127, 206);
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: -15px;
 }

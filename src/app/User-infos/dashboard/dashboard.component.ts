@@ -13,6 +13,16 @@ export class DashboardComponent {
   }
 
   insertLicense() {
-    
+
+  }
+
+  licenceName: string = 'Aucun permis sélectionné';
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    console.log(file)
+    if (file) {
+      this.licenceName = file.name;
+    }
   }
 }

@@ -1,0 +1,9 @@
+.main-div {
+    background-color: #a81650
+}
+
+.form-contanair {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

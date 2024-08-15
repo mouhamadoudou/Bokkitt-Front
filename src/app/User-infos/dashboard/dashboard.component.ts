@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../component/popup/popup.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,16 +10,15 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   activeSection: string = 'profile';
+  licenceName: string = 'Aucun permis sélectionné';
+  componentChange = ["phone", "passworld", "firstName", "lastName", "old", "sex", "city" ];
 
-  activateSection(section: string): void {
+  activateSection(section: any): void {
     this.activeSection = section;
   }
 
-  insertLicense() {
+  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
-  }
-
-  licenceName: string = 'Aucun permis sélectionné';
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -25,4 +27,18 @@ export class DashboardComponent {
       this.licenceName = file.name;
     }
   }
+
+  
+  openDialog(component : {}): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: component
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log('Received data:', result);
+    });
+  }
+
+
 }

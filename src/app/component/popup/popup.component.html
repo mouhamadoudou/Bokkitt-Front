@@ -1,0 +1,25 @@
+<div class="main-div">
+    <h2 mat-dialog-title>Changer de {{ data.En }}</h2>
+
+    <mat-dialog-content>
+        <div class="form-contanair">
+            <mat-form-field *ngIf="data.En != 'password'">
+                <mat-label>Numero telephone</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <app-new-password *ngIf="data.En == 'password'" />
+        </div>
+
+        <!-- <h2 mat-dialog-title>Popup Information</h2>
+        <mat-dialog-content>
+            <p>Name: {{data.componentChange}}</p>
+            <p>Age: {{data.age}}</p>
+            <p>Job: {{data.job}}</p>
+        </mat-dialog-content> -->
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+        <!-- <button mat-button mat-dialog-close (click)="onNoClick()">Close</button>
+        <button mat-button mat-dialog-close (click)="onNoClick()">Close</button> -->
+    </mat-dialog-actions>
+</div>

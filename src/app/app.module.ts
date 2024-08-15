@@ -41,7 +41,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TimePickerComponent } from './component/time-picker/time-picker.component';
 import { PriceSliderComponent } from './component/price-slider/price-slider.component';
@@ -55,6 +55,8 @@ import { MatSlideToggleModule,
 } from '@angular/material/slide-toggle';
 import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component';
 import { DashboardComponent } from './User-infos/dashboard/dashboard.component';
+import { PopupComponent } from './component/popup/popup.component';
+import { NewPasswordComponent } from './component/new-password/new-password.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { DashboardComponent } from './User-infos/dashboard/dashboard.component';
     PriceSliderComponent,
     SuggestTrajectComponent,
     DashboardComponent,
+    PopupComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +108,7 @@ import { DashboardComponent } from './User-infos/dashboard/dashboard.component';
     MatSliderModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatDialogModule,
     _MatSlideToggleRequiredValidatorModule
   ],
   providers: [

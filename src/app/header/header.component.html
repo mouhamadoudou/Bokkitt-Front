@@ -4,14 +4,26 @@
     </button> -->
     <button routerLink="/home" mat-icon-button class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
-        <span> Bokkitt</span>
-
+        <span> Bokkitt </span>
     </button>
+
+    <div class="login-phone">
+        <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
+            Connexion
+        </button>
+
+        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
+            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+            <div class="person-contenair">
+                <mat-icon class="custom-icon">person</mat-icon>
+            </div>
+            <!-- {{authService.username}} -->
+        </button>
+    </div>
 
     <span class="spacer">
     </span>
     <div class="bokkitt-nav">
-
         <button mat-button routerLink="/home">
             <mat-icon> search </mat-icon>
             Rechercher trajet
@@ -30,7 +42,7 @@
         <!-- <button mat-button *ngIf="authService.roles.includes('ADMIN')">
         Annoncer un trajet
     </button> -->
-        <mat-menu #importMenu class="profile-menu">
+        <mat-menu #importMenu class="profile-menu mat-menu-phone-profile">
             <button mat-menu-item routerLink=""> Mes informations</button>
             <button mat-menu-item routerLink="load-students"
                 *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button>
@@ -53,11 +65,12 @@
         </button>
 
     </div>
+
     <!-- <button mat-button class="menu-drawer" (click)="drawerId.toggle()"> -->
     <button mat-button class="menu-drawer" [matMenuTriggerFor]="beforeMenu">
         <mat-icon class="custom-menu-icon">menu</mat-icon>
 
-        <mat-menu #beforeMenu="matMenu" xPosition="before"  class="mat-menu-phone">
+        <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu-phone">
             <button mat-menu-item routerLink="/home">
                 <mat-icon> search </mat-icon>
                 Rechercher trajet

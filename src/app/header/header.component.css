@@ -34,7 +34,7 @@
     /* border-width: 10px; */
     padding-top: 3px;
     border-style: solid;
-    border-color: #9e0f48;
+    border-color: #e9e6e6;
     width: 40px;
 }
 
@@ -61,11 +61,24 @@
     }
 }
 
+.login-phone {
+    display: none;
+}
+
 .menu-drawer {
     display: none;
 }
 
 @media (max-width: 768px) {
+
+    .bokkitt-icon {
+        display: none;
+    }
+
+    .login-phone {
+        display: flex;
+    }
+
     .bokkitt-icon {
         margin-left: 0px;
     }
@@ -99,4 +112,12 @@
     border-radius: 20px !important;
 }
 
+
+
+::ng-deep .mat-menu-phone-profile {
+    margin-left: 5px;
+    margin-top: 15px;
+    background-color: #7a7a7a !important;
+    border-radius: 20px !important;
+}
 

@@ -9,9 +9,8 @@ import { NewPasswordComponent } from '../new-password/new-password.component'
   styleUrl: './popup.component.css'
 })
 export class PopupComponent {
-  currentPassword: string = '';
-  newPassword: string = '';
-  confirmPassword: string = '';
+  genders = ["Homme", "Femme"];
+  selectedGender: string = 'Homme';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

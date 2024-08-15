@@ -150,7 +150,7 @@
                                         Male
                                     </p>
 
-                                    <button mat-raised-button (click)="openDialog({En : 'sex'})" color="primary">
+                                    <button mat-raised-button (click)="openDialog({En : 'sex', Fr :  'genre'})" color="primary">
                                         <mat-icon>edit</mat-icon>
                                     </button>
                                 </div>
@@ -193,13 +193,18 @@
                                 <div class="insert-licence-contanair">
                                     <!-- <mat-icon (click)="insertLicense()"  class="insertLicense">
                                         insert_drive_file</mat-icon> -->
-                                    <label for="fileUpload" class="custom-file-upload">
+                                        <div  class="licence-upload">
+                                  
+                                        <label for="fileUpload" class="custom-file-upload">
                                         <span class="fileName"> inserer un permis </span>
                                         <mat-icon class="insert-license-icon"> move_to_inbox </mat-icon>
 
                                     </label>
-                                    <input id="fileUpload" class="licence-upload" type="file"
+
+
+                                    <input id="fileUpload" type="file"
                                         (change)="onFileSelected($event)" style="display: none;">
+                                    </div>
                                     <!-- <span id="fileName" class="fileName">{{ licenceName }}</span> -->
 
                                 </div>

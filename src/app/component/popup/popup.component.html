@@ -1,12 +1,38 @@
 <div class="main-div">
-    <h2 mat-dialog-title>Changer de {{ data.En }}</h2>
+    <h2 mat-dialog-title *ngIf="data.En != 'old'" >Changer de {{ data.Fr }}</h2>
+    <h2 mat-dialog-title *ngIf="data.En == 'old'" >Changer d'{{ data.Fr }}</h2>
 
     <mat-dialog-content>
         <div class="form-contanair">
-            <mat-form-field *ngIf="data.En != 'password'">
-                <mat-label>Numero telephone</mat-label>
-                <input matInput>
+            <mat-form-field *ngIf="data.En == 'phone'">
+                <mat-label> {{data.Fr}}</mat-label>
+                <input matInput maxlength="14" matInput maxlength="14">
             </mat-form-field>
+
+            <mat-form-field *ngIf="data.En == 'firstName' || data.En == 'lastName' || data.En == 'city'">
+                <mat-label> {{data.Fr}}</mat-label>
+                <input matInput maxlength="14" matInput>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="data.En == 'old'">
+                <mat-label> Votre {{data.Fr}}</mat-label>
+                <input matInput maxlength="2" matInput>
+            </mat-form-field>
+
+            <!-- <mat-form-field *ngIf="data.En == 'sex'">
+                <mat-label> {{data.Fr}}</mat-label>
+                <input matInput maxlength="14" matInput>
+            </mat-form-field> -->
+            <mat-form-field appearance="fill" *ngIf="data.En == 'sex'">
+                <!-- <mat-label>Heure de depart</mat-label> -->
+                <mat-select [(value)]="selectedGender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender">
+                        {{ gender }}
+                    </mat-option>
+                </mat-select>
+                    {{ selectedGender }}
+            </mat-form-field>
+
             <app-new-password *ngIf="data.En == 'password'" />
         </div>
 
@@ -18,8 +44,8 @@
         </mat-dialog-content> -->
     </mat-dialog-content>
 
-    <mat-dialog-actions>
-        <!-- <button mat-button mat-dialog-close (click)="onNoClick()">Close</button>
-        <button mat-button mat-dialog-close (click)="onNoClick()">Close</button> -->
+    <mat-dialog-actions *ngIf="data.En != 'password'">
+        <button mat-button mat-dialog-close (click)="onNoClick()">Annuler</button>
+        <button mat-button mat-dialog-close (click)="onNoClick()">Valider</button>
     </mat-dialog-actions>
 </div>

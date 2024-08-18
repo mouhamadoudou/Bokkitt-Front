@@ -57,6 +57,8 @@ import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.compo
 import { DashboardComponent } from './User-infos/dashboard/dashboard.component';
 import { PopupComponent } from './component/popup/popup.component';
 import { NewPasswordComponent } from './component/new-password/new-password.component';
+import { ProfileInfosComponent } from './User-infos/profile-infos/profile-infos.component';
+import { ReservationListComponent } from './User-infos/reservation-list/reservation-list.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,8 @@ import { NewPasswordComponent } from './component/new-password/new-password.comp
     DashboardComponent,
     PopupComponent,
     NewPasswordComponent,
+    ProfileInfosComponent,
+    ReservationListComponent,
   ],
   imports: [
     BrowserModule,

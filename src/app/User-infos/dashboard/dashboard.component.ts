@@ -11,34 +11,34 @@ import { PopupComponent } from '../../component/popup/popup.component';
 export class DashboardComponent {
   activeSection: string = 'profile';
   licenceName: string = 'Aucun permis sélectionné';
-  componentChange = ["phone", "passworld", "firstName", "lastName", "old", "sex", "city" ];
+  // componentChange = ["phone", "passworld", "firstName", "lastName", "old", "sex", "city" ];
 
   activateSection(section: any): void {
     this.activeSection = section;
   }
 
-  constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) { }
+  // constructor(private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    console.log(file)
-    if (file) {
-      this.licenceName = file.name;
-    }
-  }
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
+  //   console.log(file)
+  //   if (file) {
+  //     this.licenceName = file.name;
+  //   }
+  // }
 
   
-  openDialog(component : {}): void {
-    const dialogRef = this.dialog.open(PopupComponent, {
-      data: component
-    });
+  // openDialog(component : {}): void {
+  //   const dialogRef = this.dialog.open(PopupComponent, {
+  //     data: component
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log('Received data:', result);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     console.log('Received data:', result);
+  //   });
+  // }
 
 
 }

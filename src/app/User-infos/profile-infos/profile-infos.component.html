@@ -1,3 +1,4 @@
+<div *ngIf="activeSection === 'profile'" class="profile-contenair">
     <mat-card>
         <mat-card-header>
             <h1>
@@ -173,9 +174,12 @@
                                     <mat-icon class="insert-license-icon"> move_to_inbox </mat-icon>
 
                                 </label>
+
+
                                 <input id="fileUpload" type="file" (change)="onFileSelected($event)"
                                     style="display: none;">
                             </div>
+
                         </div>
                     </div>
 
@@ -184,3 +188,4 @@
 
         </mat-card-content>
     </mat-card>
+</div>

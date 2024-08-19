@@ -1,0 +1,208 @@
+/** mini-clean-css **/
+p, h1, h2{ margin:0; padding:0 }
+ul{ list-style:none; margin:0; padding:0 }
+/********************/
+
+.case{
+  position: relative;
+  background-color: red;
+  width: 100%;
+  max-width: 550px;
+}
+
+.content{ 
+  padding-top: 40px;
+  background-color: #b9155c;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300; 
+  width: 100%;
+  height: 480px;
+  margin: 15px auto;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #000;
+}
+
+.content:after {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 100%;
+  background: linear-gradient(transparent, rgb(102, 102, 102));
+  z-index: 10;
+  bottom: 0px;
+}
+
+  .screen{
+    padding: 15px;
+    h1{
+      font-weight: 300; 
+      display: inline;
+    }
+    h2{
+      font-weight: 300;
+      display: inline;
+      float: right;
+      margin-top: 15px;
+      font-size: 20px;
+    }
+  }
+
+  .info{
+    .info-list{ 
+      overflow: hidden;
+      padding: 20px;
+      
+      .info-sms{
+        float: right;
+      }
+      .info-calls{
+        float: left;
+      }
+      
+      .info-list-item{
+        position: relative;
+        margin: 0 20px;
+        
+        .info-number{ 
+          display: inline; 
+          position: absolute;
+          font-weight: 700; 
+          font-size: 18px;
+          margin-top: 2px;
+
+        }
+        
+        .info-label{ 
+          display: inline; 
+          font-size: 13px;
+        }
+        
+        .fa{ 
+          color:  rgb(102, 102, 102);
+          font-size: 3em; 
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  mat-icon {
+    transform: scale(0.8);
+  }
+
+  .time-line{
+    height: 400px;
+    width: 100%;
+    border-radius: 1000px;
+    
+    article{ 
+      height: 100%;
+      overflow: auto; 
+    }
+    
+    .time-line-list{
+      margin: 0 15px;
+      position: relative;
+
+      .time-line-list-item:first-child::before{
+        top: 10px;
+      }
+      
+      .time-line-list-item::before {
+        content: "";
+        position: absolute;
+        left: 55px;
+        width: 15px;
+        height: 100%;
+        background-color: rgb(102, 102, 102);
+        top: 0px;
+        z-index: -1;
+      }
+      
+      .time-line-list-item{
+        overflow: hidden;
+        padding-bottom: 15px;
+        position: relative;
+        z-index: 3;
+        
+        .time-line-structure{ 
+          border-radius: 90px;
+          float: left; }
+        
+        .time-line-clock{          
+          .time-line-clock-text {
+            font-size: 14px;
+            font-weight: 400;
+            text-align: right;
+            line-height: 0.9;
+            margin: 12px 0;
+            
+            span{ 
+              display:block; 
+              font-size: 12px; 
+              font-weight: 300;
+            }
+          }
+        }
+        
+        .time-line-icon.call{
+          span{
+            font-size: 15px; 
+            padding: 2px 6px;
+            margin: 0 1px;
+          }
+        }
+        
+        .time-line-icon.message{
+          span{ 
+            font-size: 14px;
+            padding: 3px 6px;
+          }
+        }
+        
+        .time-line-icon{
+          margin: 0 10px;
+          
+          span{ 
+            display: block;
+            border: 5px solid  rgb(117, 108, 108);
+            border-radius: 50%;
+            background-color: rgb(75, 72, 72);
+          }
+          
+        }
+        
+        .time-line-text::before {
+          content: "";
+          position: absolute;
+          left: -5px;
+          width: 10px;
+          height: 10px;
+          background-color:rgb(255, 255, 255);
+          transform: rotate(45deg);
+          top: 10px;
+        }
+        
+        .time-line-text{
+          position: relative;
+          background-color:rgb(81, 185, 77);
+          padding: 5px 10px;
+          border-radius: 5px;
+          margin-left: 5px;
+          width: 60%;
+          
+          .log-type {
+            font-size: 12px;
+          }
+          .contact-name {
+            font-weight: 400;
+            font-size: 20px;
+          }
+          
+        }
+        
+      }
+    }
+  }

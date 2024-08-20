@@ -113,8 +113,8 @@ ul{ list-style:none; margin:0; padding:0 }
       .time-line-list-item::before {
         content: "";
         position: absolute;
-        left: 55px;
-        width: 15px;
+        left: 84px;
+        width: 5px;
         height: 100%;
         background-color: rgb(102, 102, 102);
         top: 0px;

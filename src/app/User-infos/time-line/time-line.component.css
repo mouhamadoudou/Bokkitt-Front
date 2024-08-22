@@ -79,20 +79,29 @@ h2 {
   left: -44px;
   width: 10px;
   height: 10px;
-  background: #b9155c;
+  background: #27e027;
   border: 5px solid #eee9dc;
   border-radius: 50%;
   display: block;
   position: absolute;
 }
 
-.radio:checked+label .circle {
-  background: #48b379;
-  /* Couleur de fond du cercle après clic */
-  border-color: #b9155c;
-  /* Couleur de la bordure après clic */
+.radio:checked + .relative .circle {
+  border: 5px solid #b6c9b0;
 }
 
+.circle-past {
+  margin-top: -10px;
+  top: 50%;
+  left: -44px;
+  width: 10px;
+  height: 10px;
+  background: rgb(138, 138, 138);
+  border: 8px solid #eee9dc;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+}
 
 .content {
   max-height: 20px;

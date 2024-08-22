@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './time-line.component.css'
 })
 export class TimeLineComponent {
+  timelineItems = [
+    { title: 'Item 1', isOpen: false },
+    { title: 'Item 2', isOpen: false },
+    { title: 'Item 3', isOpen: false }
+  ];
 
+  toggleOpen(item: any) {
+    item.isOpen = !item.isOpen;
+  }
 }

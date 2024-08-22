@@ -270,12 +270,12 @@ mat-card-content {
 
   .rightbox {
     float: right;
-    width: 82%;
+    width: 85%;
     height: 95%;
     border: #b9155c;
     border-style: solid;
     border-radius: 10px;
-    border-width: 10px 0px 0px 10px;
+    border-width: 10px 0px 0px 0px;
     padding: 5px;
   }
 

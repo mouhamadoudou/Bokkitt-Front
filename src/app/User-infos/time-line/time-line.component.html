@@ -1,114 +1,158 @@
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Mes trajets
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- <h2>CSS3 Timeline</h2>
+        <p>Please set the $vertical variable to false to see the horizontal version.</p> -->
+        <ul id='timeline'>
+            <li class='work'>
+                <input class='radio' id='work5' name='works' type='radio' checked>
+                <div class="relative">
+                    <label class="title" for='work5'>Dakar -> Sacre Coeur</label>
+                    <span class='date'>12 Janvier 2013</span>
+                    <span class='circle'></span>
+                </div>
+                <div class='content'>
+                    <div class="card">
+                        <div class="card-comp">
+                            <h2 class="comp-title">Benefice :</h2>
+                            <h2>40 000FCFA</h2>
+                        </div>
+                        <div class="card-comp">
+                            <h2 class="comp-title">ID :</h2>
+                            <h2>BKT-04</h2>
+                        </div>
+                        <div class="card-comp">
+                            <h2 class="comp-title">Nombre de passager :</h2>
+                            <h2>4</h2>
+                        </div>
+                        <div class="card-comp">
+                            <button mat-raised-button color="primary">Consulter</button>
+                            <button mat-raised-button class="cancel-btn">Annuler</button>
+                        </div>
 
-<div class="case">
+                    </div>
+                </div>
+            </li>
+            <li class='work'>
+                <input class='radio' id='work4' name='works' type='radio'>
+                <div class="relative">
+                    <label class="title" for='work4'>Dakar -> Thies</label>
+                    <span class='date'>11 Janvier 2013</span>
+                    <span class='circle'></span>
+                </div>
+                <div class='content'>
+                    <div class="card">
+                        <div class="card-comp">
+                            <h2 class="comp-title">Benefice :</h2>
+                            <h2>40 000FCFA</h2>
+                        </div>
+                        <div class="card-comp">
+                            <h2 class="comp-title">ID :</h2>
+                            <h2>BKT-04</h2>
+                        </div>
+                        <div class="card-comp">
+                            <h2 class="comp-title">Nombre de passager :</h2>
+                            <h2>4</h2>
+                        </div>
+                        <div class="card-comp">
+                            <button mat-raised-button color="primary">Consulter</button>
+                            <button mat-raised-button class="cancel-btn">Annuler</button>
+                        </div>
 
-    <div class="content">
-        <section class="time-line">
-            <article>
-                <ul class="time-line-list">
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>
+                    </div>
+                </div>
+            </li>
+            <li class='work'>
+                <input class='radio' id='work3' name='works' type='radio'>
+                <div class="relative">
+                    <label for='work3' class="title">Dakar -> Thies 24 2024</label>
+                    <span class='date'>10 Janvier 2013</span>
+                    <span class='circle'></span>
+                </div>
+                <div class='content'>
+                    <div class="card">
+                        <div class="card-comp">
+                            <h2 class="comp-title">Benefice :</h2>
+                            <h2>40 000FCFA</h2>
                         </div>
-                        <div class="time-line-structure time-line-icon call">
-                            <span><i class="fa fa-calendar-o"> </i> </span>
+                        <div class="card-comp">
+                            <h2 class="comp-title">ID :</h2>
+                            <h2>BKT-04</h2>
                         </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Numero : 1475</p>
-                            <p class="contact-name">Mermoz Thies</p>
+                        <div class="card-comp">
+                            <h2 class="comp-title">Nombre de passager :</h2>
+                            <h2>4</h2>
                         </div>
-                    </li>
+                        <div class="card-comp">
+                            <button mat-raised-button color="primary">Consulter</button>
+                            <button mat-raised-button class="cancel-btn">Annuler</button>
+                        </div>
 
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon message">
-                            <span><i class="fa fa-calendar-o">
-                                </i></span>
+                    </div>
+                </div>
+            </li>
+            <li class='work'>
+                <input class='radio' id='work2' name='works' type='radio'>
+                <div class="relative">
+                    <label for='work2' class="title">Dakar -> Thies</label>
+                    <span class='date'>09 Janvier 2013</span>
+                    <span class='circle'></span>
+                </div>
+                <div class='content'>
+                    <div class="card">
+                        <div class="card-comp">
+                            <h2 class="comp-title">Benefice :</h2>
+                            <h2>40 000FCFA</h2>
                         </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Numero : 6987</p>
-                            <p class="contact-name">Saly Dakar </p>
+                        <div class="card-comp">
+                            <h2 class="comp-title">ID :</h2>
+                            <h2>BKT-04</h2>
                         </div>
-                    </li>
+                        <div class="card-comp">
+                            <h2 class="comp-title">Nombre de passager :</h2>
+                            <h2>4</h2>
+                        </div>
+                        <div class="card-comp">
+                            <button mat-raised-button color="primary">Consulter</button>
+                            <button mat-raised-button class="cancel-btn">Annuler</button>
+                        </div>
 
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon message">
-                            <span><i class="fa fa-calendar-o"></i> </span>
+                    </div>
+                </div>
+            </li>
+            <li class='work'>
+                <input class='radio' id='work1' name='works' type='radio'>
+                <div class="relative">
+                    <label for='work1' class="title">Dakar -> Thies</label>
+                    <span class='date'>08 Janvier 2013</span>
+                    <span class='circle'></span>
+                </div>
+                <div class='content'>
+                    <div class="card">
+                        <div class="card-comp">
+                            <h2 class="comp-title">Benefice :</h2>
+                            <h2>40 000FCFA</h2>
                         </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Numer : 5546</p>
-                            <p class="contact-name">Saly Dakar </p>
+                        <div class="card-comp">
+                            <h2 class="comp-title">ID :</h2>
+                            <h2>BKT-04</h2>
                         </div>
-                    </li>
+                        <div class="card-comp">
+                            <h2 class="comp-title">Nombre de passager :</h2>
+                            <h2>4</h2>
+                        </div>
+                        <div class="card-comp">
+                            <button mat-raised-button color="primary">Consulter</button>
+                            <button mat-raised-button class="cancel-btn">Annuler</button>
+                        </div>
 
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon call">
-                            <span><i class="fa fa-calendar-o"></i> </span>
-                        </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Numer : 6855</p>
-                            <p class="contact-name">Saly Dakar </p>
-                        </div>
-                    </li>
-
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon call">
-                            <span><i class="fa fa-calendar-o"></i> </span>
-                        </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Received Call</p>
-                            <p class="contact-name">Dakar Thies </p>
-                        </div>
-                    </li>
-
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon message">
-                            <span><i class="fa fa-calendar-o"></i> </span>
-                        </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Numer : 5546</p>
-                            <p class="contact-name">Dakar Thies </p>
-                        </div>
-                    </li>
-
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon call">
-                            <span><i class="fa fa-calendar-o"></i> </span>
-                        </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Missed Call</p>
-                            <p class="contact-name">Dakar Thies </p>
-                        </div>
-                    </li>
-
-                    <li class="time-line-list-item">
-                        <div class="time-line-structure time-line-clock">
-                            <p class="time-line-clock-text"> Lundi 12  <span>Matin</span>                     </div>
-                        <div class="time-line-structure time-line-icon message">
-                            <span><i class="fa fa-calendar-o"></i> </span>
-                        </div>
-                        <div class="time-line-structure time-line-text">
-                            <p class="log-type">Numero : 6655</p>
-                            <p class="contact-name">Dakar Thies </p>
-                        </div>
-                    </li>
-
-                </ul>
-            </article>
-        </section>
-
-    </div>
-
-</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </mat-card-content>
+</mat-card>

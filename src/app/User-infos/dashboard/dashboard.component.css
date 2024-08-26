@@ -84,12 +84,12 @@ nav a {
 
 .rightbox {
   float: right;
-  width: 70%;
+  width: 84%;
   height: 95%;
   border: #b9155c;
   border-style: solid;
   border-radius: 10px;
-  border-width: 10px 0px 0px 10px;
+  border-width: 10px 0px 10px 0px;
   padding: 5px;
 }
 
@@ -244,12 +244,12 @@ mat-card-content {
 
   .rightbox {
     float: right;
-    width: 79%;
+    width: 84%;
     height: 95%;
     border: #b9155c;
     border-style: solid;
     border-radius: 10px;
-    border-width: 10px 0px 0px 10px;
+    border-width: 10px 0px 10px 0px;
     padding: 5px;
   }
 
@@ -275,7 +275,7 @@ mat-card-content {
     border: #b9155c;
     border-style: solid;
     border-radius: 10px;
-    border-width: 10px 0px 0px 0px;
+    border-width: 10px 0px 10px 0px;
     padding: 5px;
   }
 

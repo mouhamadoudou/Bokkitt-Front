@@ -60,6 +60,7 @@ import { NewPasswordComponent } from './component/new-password/new-password.comp
 import { ProfileInfosComponent } from './User-infos/profile-infos/profile-infos.component';
 import { ReservationListComponent } from './User-infos/reservation-list/reservation-list.component';
 import { TimeLineComponent } from './User-infos/time-line/time-line.component';
+import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { TimeLineComponent } from './User-infos/time-line/time-line.component';
     ProfileInfosComponent,
     ReservationListComponent,
     TimeLineComponent,
+    MyTripComponent,
   ],
   imports: [
     BrowserModule,

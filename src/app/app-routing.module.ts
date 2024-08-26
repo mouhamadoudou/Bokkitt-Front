@@ -15,7 +15,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { AddTripComponent } from './add-trip/add-trip.component';
 import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component'
 import { DashboardComponent } from './User-infos/dashboard/dashboard.component'
-
+import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 
 const routes: Routes = [
 
@@ -35,6 +35,7 @@ const routes: Routes = [
       { path: "add-trip", component: AddTripComponent },
       { path: "suggest-traject", component: SuggestTrajectComponent },
       { path: "Dashboard", component: DashboardComponent },
+      { path: "my-trip", component: MyTripComponent },
 
       {
         path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],

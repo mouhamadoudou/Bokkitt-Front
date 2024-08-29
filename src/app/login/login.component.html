@@ -14,6 +14,9 @@
                 <input type="number" name="number" placeholder="Numero de telephone" [(ngModel)]="loginObj.phoneNumber">
                 <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="loginObj.password">
                 <button class="button-form" (click)="onLogin()"> Se connecter</button>
+                <div class="forgot-password-comp">
+                    <a routerLink="/forgot-password" class="forgot-password-link">Mot de passe oublié ?</a>
+                </div>
             </form>
         </div>
 

@@ -61,6 +61,8 @@ import { ProfileInfosComponent } from './User-infos/profile-infos/profile-infos.
 import { ReservationListComponent } from './User-infos/reservation-list/reservation-list.component';
 import { TimeLineComponent } from './User-infos/time-line/time-line.component';
 import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
+import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
+import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
     ReservationListComponent,
     TimeLineComponent,
     MyTripComponent,
+    ForgotPasswordComponent,
+    VerificationComponent,
   ],
   imports: [
     BrowserModule,

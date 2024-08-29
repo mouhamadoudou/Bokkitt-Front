@@ -16,6 +16,8 @@ import { AddTripComponent } from './add-trip/add-trip.component';
 import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component'
 import { DashboardComponent } from './User-infos/dashboard/dashboard.component'
 import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
+import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
+import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 
 const routes: Routes = [
 
@@ -36,6 +38,9 @@ const routes: Routes = [
       { path: "suggest-traject", component: SuggestTrajectComponent },
       { path: "Dashboard", component: DashboardComponent },
       { path: "my-trip", component: MyTripComponent },
+      { path: "forgot-password", component: ForgotPasswordComponent },
+      { path: "verification", component: VerificationComponent },
+
 
       {
         path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],

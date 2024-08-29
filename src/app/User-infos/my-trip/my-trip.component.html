@@ -16,7 +16,7 @@
 
                         </mat-card-header>
                         <mat-card-content>
-                            (Auchan Mermoz)
+                            (Auchan Mermoz coté du pont & en face de la post)
                         </mat-card-content>
                     </mat-card>
                     <div class="arrow-icon">
@@ -34,9 +34,52 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
-
+                <div class="list-contenair">
+                    <h2>
+                        ID Trajet
+                    </h2>
+                    <div>
+                        <p>
+                            ID Trajet
+                        </p>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="list-contenair">
+                    <h2>
+                        Date & Heure
+                    </h2>
+                    <div>
+                        <p>
+                            22 Août 2024, 8:00
+                        </p>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="list-contenair">
+                    <h2>
+                        Nombre de place
+                    </h2>
+                    <div>
+                        <p>
+                            4
+                        </p>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="list-contenair">
+                    <h2>
+                        Revenu
+                    </h2>
+                    <div>
+                        <p>
+                            10500 FCFA
+                        </p>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
+        <mat-divider></mat-divider>
         <mat-card class="card-2">
             <mat-card-header>
                 <h1>
@@ -44,37 +87,129 @@
                 </h1>
             </mat-card-header>
             <mat-card-content>
-                <mat-list>
-                    <mat-list-item>
-         
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-  
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
- 
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-   
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-        
-                    </mat-list-item>
-                    <mat-divider></mat-divider>
-                    <mat-list-item>
-      
+                <div class="passager-content">
+                        <mat-card class="depart-card" appearance="outlined">
+                            <mat-card-header class="depart-header" color="primary">
+                                <!-- <mat-icon> local_taxi</mat-icon> -->
+                                <mat-card-title class="header-title"> Zakaria Ciré </mat-card-title>
+                                <!-- <mat-card-title> Depart : {{trajectData.depart}} </mat-card-title> -->
+                            </mat-card-header>
+                            <mat-card-content>
+                                <br>
+                                <div class="depart-icon">
+                                    <mat-icon> phone </mat-icon>
+                                    <p>
+                                        Numéro : (+221)787536469
+                                    </p>
+                                </div>
+                                <div class="depart-icon">
+                                    <!-- <mat-icon> work </mat-icon> -->
+                                    <mat-icon> markunread_mailbox </mat-icon>
+                                    <p> Nombre de bagage:  1</p>
+                                </div>
+                                <div class="depart-icon">
+                                    <!-- <mat-icon> work </mat-icon> -->
+                                    <mat-icon> whatshot </mat-icon>
+                                    <p> Nombre d’animaux:  1</p>
+                                </div>
+                                <div class="depart-icon">
+                                    <mat-icon> payment </mat-icon>
+                                    <p> Total à payer:  3500 FCFA</p>
+                                </div>
+                                <!-- <div class="depart-icon">
+                                        <mat-icon> ac_unit </mat-icon>
+                                        <p> Clime : Disponible </p>
+                                    </div> -->
+                                <!-- <div class="depart-warning">
+                                    <mat-icon> warning </mat-icon>
+                                    <p> On vous recommande d'être en avance d'au moins 15 minutes. </p>
+                                </div> -->
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card class="depart-card" appearance="outlined">
+                            <mat-card-header class="depart-header" color="primary">
+                                <!-- <mat-icon> local_taxi</mat-icon> -->
+                                <mat-card-title class="header-title"> Abdallah Niang </mat-card-title>
+                                <!-- <mat-card-title> Depart : {{trajectData.depart}} </mat-card-title> -->
+                            </mat-card-header>
+                            <mat-card-content>
+                                <br>
+                                <div class="depart-icon">
+                                    <mat-icon> phone </mat-icon>
+                                    <p>
+                                        Numéro : (+221)787536469
+                                    </p>
+                                </div>
+                                <div class="depart-icon">
+                                    <!-- <mat-icon> work </mat-icon> -->
+                                    <mat-icon> markunread_mailbox </mat-icon>
+                                    <p> Nombre de bagage:  1</p>
+                                </div>
+                                <div class="depart-icon">
+                                    <!-- <mat-icon> work </mat-icon> -->
+                                    <mat-icon> whatshot </mat-icon>
+                                    <p> Nombre d’animaux:  1</p>
+                                </div>
+                                <div class="depart-icon">
+                                    <mat-icon> payment </mat-icon>
+                                    <p> Total à payer:  3500 FCFA</p>
+                                </div>
+                                <!-- <div class="depart-icon">
+                                        <mat-icon> ac_unit </mat-icon>
+                                        <p> Clime : Disponible </p>
+                                    </div> -->
+                                <!-- <div class="depart-warning">
+                                    <mat-icon> warning </mat-icon>
+                                    <p> On vous recommande d'être en avance d'au moins 15 minutes. </p>
+                                </div> -->
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-card class="depart-card" appearance="outlined">
+                            <mat-card-header class="depart-header" color="primary">
+                                <!-- <mat-icon> local_taxi</mat-icon> -->
+                                <mat-card-title class="header-title"> Issa Camara </mat-card-title>
+                                <!-- <mat-card-title> Depart : {{trajectData.depart}} </mat-card-title> -->
+                            </mat-card-header>
+                            <mat-card-content>
+                                <br>
+                                <div class="depart-icon">
+                                    <mat-icon> phone </mat-icon>
+                                    <p>
+                                        Numéro : (+221)787536469
+                                    </p>
+                                </div>
+                                <div class="depart-icon">
+                                    <!-- <mat-icon> work </mat-icon> -->
+                                    <mat-icon> markunread_mailbox </mat-icon>
+                                    <p> Nombre de bagage:  1</p>
+                                </div>
+                                <div class="depart-icon">
+                                    <!-- <mat-icon> work </mat-icon> -->
+                                    <mat-icon> whatshot </mat-icon>
+                                    <p> Nombre d’animaux:  1</p>
+                                </div>
+                                <div class="depart-icon">
+                                    <mat-icon> payment </mat-icon>
+                                    <p> Total à payer:  3500 FCFA</p>
+                                </div>
+                                <!-- <div class="depart-icon">
+                                        <mat-icon> ac_unit </mat-icon>
+                                        <p> Clime : Disponible </p>
+                                    </div> -->
+                                <!-- <div class="depart-warning">
+                                    <mat-icon> warning </mat-icon>
+                                    <p> On vous recommande d'être en avance d'au moins 15 minutes. </p>
+                                </div> -->
+                            </mat-card-content>
+       
+                        </mat-card>
 
-                    </mat-list-item>
-                    <mat-list-item>
-          
-
-                    </mat-list-item>
-                </mat-list>
-
+                    </div>
+                    <div class="last-btn">
+                        <button mat-raised-button class="step-one-button" color="primary">
+                            Revenir sur l'historique
+                        </button> 
+                    </div>        
             </mat-card-content>
         </mat-card>
     </div>

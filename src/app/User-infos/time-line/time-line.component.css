@@ -23,21 +23,17 @@ mat-card-title {
 
 
 .title-comp {
-  width: 88%;
+  width: 92%;
   height: 70px;
-  background-color:#19a107b5;
+  background-color: #19a107b5;
   padding: 10px 2px 2px 15px;
-  border-left: 5px solid #179207;
-  border-radius: 20px;
 }
 
 .title-comp-past {
-  width: 88%;
+  width: 92%;
   height: 70px;
-  background-color:#5e5e5eb5;
+  background-color: #5e5e5eb5;
   padding: 10px 2px 2px 15px;
-  border-left: 5px solid #272727;
-  border-radius: 20px;
 }
 
 .title {
@@ -197,7 +193,7 @@ label {
 
 .radio:checked~.content {
   max-height: 180px;
-  border-color: #0aad17;
+  /* border-color: #0aad17; */
   background-color: #35df354f;
   margin-right: 20px;
   transform: translateX(8px);
@@ -205,7 +201,7 @@ label {
 }
 
 .radio:checked~.past {
-  border-color: #555555;
+  /* border-color: #555555; */
   background-color: #5f5e5e4f;
 
   button {

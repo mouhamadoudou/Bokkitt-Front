@@ -21,6 +21,16 @@ mat-form-field {
 
 .mdc-card__actions {}
 
+.forgot-password-link {
+    font-size: 12px;
+    font-weight: bold;
+    color: #c2185b;
+}
+
+.forgot-password-comp {
+    display: flex;
+    justify-content: y;
+}
 
 
 /* second option ----------------------------------------------

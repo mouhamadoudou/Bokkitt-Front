@@ -68,7 +68,7 @@ input {
 }
 
 .contanair {
-    width : 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -80,19 +80,19 @@ input {
     width: 100%;
     max-width: 800px;
     padding: 10px;
-    height:600px;
+    height: 600px;
 
 }
 
 mat-card {
-    background-color:#a61e59;
+    background-color: #a61e59;
     width: 100%;
     padding: 10px;
 }
 
 mat-card-header {
-    background-color:#4d4b4c;
-    color: black;
+    background-color: #4d4b4c;
+    color: rgb(255, 255, 255);
     justify-content: center;
     padding: 0px;
 }
@@ -101,26 +101,32 @@ mat-list-item {
     padding-left: 0px;
 }
 
-/* .list-contenair {
+.list-contenair {
+    width: 100%;
+    /* max-width: 400px; */
+    /* background-color: red; */
     padding-left: 0px;
     display: flex;
 
     flex-direction: row;
     align-items: center;
-    color: #272727;
+    color: #ffffff;
 
     p {
         font-size: 14px;
         font-weight: 500;
+        white-space: nowrap;
+    }
+
+    h2 {
+        color: white;
     }
 
     div {
-        display: flex;
-
-        flex-direction: row;
-        align-items: center;
+        /* display: flex; */
+        /* flex-direction: row; */
+        align-items: end;
         margin-left: auto;
-
     }
 
     button {
@@ -131,7 +137,7 @@ mat-list-item {
         margin: 0 0 12px 10px;
         font-size: 12px;
     }
-} */
+}
 
 mat-card-content {
     /* background-color: rgb(148, 148, 148); */
@@ -142,9 +148,9 @@ mat-card-content {
 
 .depart-dest {
     width: 100%;
-    height: 400px;
+    height: 270px;
     /* background-color: #d60606; */
-    display:block;
+    display: block;
     justify-content: center;
 }
 
@@ -175,12 +181,76 @@ mat-card-content {
     }
 }
 
+.depart-card {
+    background-color: #c2185b;
+    margin-top: 20px;
+    width: 360px;
+    max-width: 400px;
+    height: 220px;
+    border-radius: 20px;
+}
+
+.header-title {
+    /* margin-left: 4; */
+    font-size: 19px;
+}
+
+.depart-icon {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.depart-icon p {
+    margin: 5.5px 0 0 10px;
+    /* margin-top: 4px; */
+}
+
+.passager-content {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.depart-header {
+    /* background-color: rgba(194, 24, 91, 0.2); */
+    /* background-color:  rgba(0, 0, 0, 0.2); */
+    padding: 4px 4px 6px 20px;
+}
+
+.step-one-button {
+    height: 40px;
+    width: 50%;
+    border-radius: 40px;
+    margin: 15px 0 15px 0;
+}
+
+.last-btn {
+    width: 100%;
+    height: auto;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+
+
 @media (max-width: 768px) {
     .container {
         margin-top: 10px;
         padding: 0px;
         min-height: 50vh;
     }
+
+    .passager-content {
+        /* width: 100%; */
+        /* height: 600px; */
+        display: block;
+        justify-items: center;
+
+        /* justify-content: space-between; */
+    }
+
 
     mat-card {
         width: 100%;
@@ -189,6 +259,7 @@ mat-card-content {
     .profile-contenair {
         width: 100%;
     }
+
     .rightbox {
         float: right;
         width: 79%;
@@ -215,22 +286,12 @@ mat-card-content {
         padding-top: 5px;
     }
 
-    .rightbox {
-        float: right;
-        width: 82%;
-        height: 95%;
-        border: #b9155c;
-        border-style: solid;
-        border-radius: 10px;
-        border-width: 10px 0px 0px 10px;
-        padding: 5px;
+    .passager-content {
+        display: block;
+        justify-items: center;
+        height: auto;
     }
 
-    .leftbox {
-        top: 0px;
-        left: 0px;
-        width: 45px;
-    }
 
     nav a {
         list-style: none;

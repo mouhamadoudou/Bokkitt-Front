@@ -259,6 +259,7 @@ label {
 .date-depart {
   font-style: italic;
   font-size: 17px;
+  display: none;
 }
 
 .time-component {
@@ -291,47 +292,12 @@ label {
     margin: 50px 0;
   }
 
-
-  /* 
-  label {
-    width: 85%;
-    font-size: 1.1em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: block;
-    transform: translateX(18px);
-  }
-
-  .content {
-    padding-top: 45px;
-    border-color: #eee9dc;
-  }
-
-  .content:before {
-    border-bottom-color: inherit;
-    border-width: 17px;
-    top: -16px;
-    left: 50px;
-    margin-left: -17px;
-  }
-
-  .content:after {
-    border-bottom-color: #b9155c;
-    border-width: 20px;
-    top: -20px;
-    left: 50px;
-    margin-left: -20px;
-  }
-
-  .content p {
-    font-size: 0.9em;
-    line-height: 1.4;
-  }
-
-  .circle, */
   .date {
     display: none;
+  }
+
+  .date-depart {
+    display: flex;
   }
 }
 
@@ -340,6 +306,11 @@ label {
 
 @media (max-width : 480px) {
 
+  .date-depart {
+    font-style: italic;
+    font-size: 17px;
+  }
+  
   mat-card {
     width: 100%;
   }

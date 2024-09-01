@@ -63,6 +63,7 @@ import { TimeLineComponent } from './User-infos/time-line/time-line.component';
 import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
+import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { VerificationComponent } from './Forgot-Password/verification/verificati
     MyTripComponent,
     ForgotPasswordComponent,
     VerificationComponent,
+    RideRequestListComponent,
   ],
   imports: [
     BrowserModule,

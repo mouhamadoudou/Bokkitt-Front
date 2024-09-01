@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './forgot-password.component.css'
 })
 export class ForgotPasswordComponent {
-  selectedCountryCode: string = '+224';
+  selectedCountryCode: string = '+221';
   phoneNumber: string = '';
 
   countryCodes = [

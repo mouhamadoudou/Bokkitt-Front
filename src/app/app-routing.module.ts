@@ -18,6 +18,7 @@ import { DashboardComponent } from './User-infos/dashboard/dashboard.component'
 import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
+import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
 
 const routes: Routes = [
 
@@ -40,6 +41,8 @@ const routes: Routes = [
       { path: "my-trip", component: MyTripComponent },
       { path: "forgot-password", component: ForgotPasswordComponent },
       { path: "verification", component: VerificationComponent },
+      { path: "ride-request", component: RideRequestListComponent },
+
 
 
       {

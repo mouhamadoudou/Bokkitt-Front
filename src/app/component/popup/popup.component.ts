@@ -11,6 +11,8 @@ import { NewPasswordComponent } from '../new-password/new-password.component'
 export class PopupComponent {
   genders = ["Homme", "Femme"];
   selectedGender: string = 'Homme';
+  nbPlace = [1 , 2, 3, 4, 5, 6];
+  selectedNbPlace: number = 1;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

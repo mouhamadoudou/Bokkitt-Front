@@ -51,8 +51,9 @@
                         {{filterValues.destination}}</mat-card-title>
 
                     <td mat-cell *matCellDef="let element">
-                        <mat-card class="table-comp"
-                            (click)="openDialog({ Encode : 'add-me', Element : element})">
+                        <mat-card 
+                        *ngIf="!element.isSubscribe"
+                        class="table-comp" (click)="openDialog({ Encode : 'add-me', Element : element})">
                             <mat-card-header>
                                 <p> {{element.depart}} </p>
                                 <mat-icon color="primary">redo</mat-icon>
@@ -63,7 +64,7 @@
                                 <div class="traject">
                                     <div class="depart-date">
                                         <mat-icon>calendar_today</mat-icon>
-                                        <p> {{ element.date}}  </p>
+                                        <p> {{ element.date}} </p>
                                     </div>
                                     <div class="nb-place">
                                         <p> +5 Places </p>
@@ -79,7 +80,44 @@
                                 </div>
                             </mat-card-content>
                         </mat-card>
+
+
+                        <mat-card 
+                        *ngIf="element.isSubscribe"
+                        class="table-comp subscribe" (click)="openDialog({ Encode : 'cancel-me', Element : element})">
+                            <mat-card-header>
+                                <p> {{element.depart}} </p>
+                                <mat-icon color="primary">redo</mat-icon>
+                                <p> {{element.destination}} </p>
+                                <mat-divider></mat-divider>
+                            </mat-card-header>
+                            <mat-card-content class="traject-contanair">
+                                <div class="traject">
+                                    <div class="depart-date">
+                                        <mat-icon>calendar_today</mat-icon>
+                                        <p> {{ element.date}} </p>
+                                    </div>
+                                    <div class="nb-place">
+                                        <p> +5 Places </p>
+                                    </div>
+                                </div>
+                                <div class="add-me">
+                                    <button mat-raised-button color="primary">
+                                        7h/9h
+                                    </button>
+                                    <button mat-raised-button class="btn-await">
+                                        En attente de confirmation 
+                                    </button>
+                                    <button mat-raised-button class="btn-cancel">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
                     </td>
+
+
+
                 </ng-container>
                 <ng-container matColumnDef="">
                     <th mat-header-cell *matHeaderCellDef> </th>

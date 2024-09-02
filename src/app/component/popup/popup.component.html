@@ -1,7 +1,9 @@
 <div class="main-div">
-    <h2 mat-dialog-title *ngIf="data.En != 'old' && data.Encode != 'add-me'">Changer de {{ data.Fr }}</h2>
+    <h2 mat-dialog-title *ngIf="data.En != 'old' && data.Encode != 'add-me' && data.Encode != 'cancel-me'">Changer de {{ data.Fr }}</h2>
     <h2 mat-dialog-title *ngIf="data.En == 'old'">Changer d'{{ data.Fr }}</h2>
     <h2 mat-dialog-title *ngIf="data.Encode == 'add-me'"> Selectionner le nombre de place</h2>
+    <h2 mat-dialog-title *ngIf="data.Encode == 'cancel-me'"> Êtes-vous sûr de vouloir annuler votre demande ? </h2>
+
 
     <mat-dialog-content>
         <div class="form-contanair">
@@ -48,6 +50,16 @@
                 </mat-select>
                 {{ selectedNbPlace }}
             </mat-form-field>
+            <mat-form-field *ngIf="data.Encode == 'cancel-me'">
+                <!-- <mat-select [(value)]="selectedNbPlace">
+                    <mat-option *ngFor="let place of nbPlace" [value]="place">
+                        {{ place }}
+                    </mat-option>
+                </mat-select> -->
+                <!-- {{ selectedNbPlace }} -->
+                <button mat-button mat-dialog-close (click)="onNoClick()">Annuler</button>
+                <button mat-button mat-dialog-close (click)="onNoClick()">Maintenir</button>
+            </mat-form-field>
         </div>
 
         <!-- <h2 mat-dialog-title>Popup Information</h2>
@@ -58,7 +70,7 @@
         </mat-dialog-content> -->
     </mat-dialog-content>
 
-    <mat-dialog-actions *ngIf="data.En != 'password'">
+    <mat-dialog-actions *ngIf="data.En != 'password' && data.Encode != 'cancel-me'">
         <button mat-button mat-dialog-close (click)="onNoClick()">Annuler</button>
         <button mat-button mat-dialog-close (click)="onNoClick()">Valider</button>
     </mat-dialog-actions>

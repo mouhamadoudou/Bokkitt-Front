@@ -13,12 +13,13 @@ import { PopupComponent } from '../component/popup/popup.component';
 
 
 export interface Traject {
+  id : number;
   depart: string;
   destination: string;
   date : string,
   time : string,
-  clients : any,
   chair : number,
+  isSubscribe : boolean,
 }
 
 @Component({
@@ -69,12 +70,13 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
     for (let i = 1; i < 100; i++) {
       traject.push(
         {
+          id : i,
           depart : this.city[Math.floor(Math.random() * this.city.length)],
           destination: this.city[Math.floor(Math.random() * this.city.length)],
           date : "Mercredi 10 Juillet",
           time : "12h30",
-          clients : [this.client[Math.floor(Math.random()  * 2)], this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)]],
           chair : 3,
+          isSubscribe : i == 1 || i == 2 ? true : false
           }
       )
     }

@@ -91,6 +91,13 @@ mat-card-content {
     margin-left: 10px;
 }
 
+.btn-cancel {
+    background-color: red;
+}
+
+.btn-await {
+    background-color: rgba(197, 197, 197, 0.274);
+}
 
 @media (max-width: 1200px) {
     .container {
@@ -245,4 +252,9 @@ mat-card-content {
 
 .spacer {
     flex: 1 1 auto;
+}
+
+
+.subscribe {
+    background-color: green;
 }

@@ -84,7 +84,7 @@
 
                         <mat-card 
                         *ngIf="element.isSubscribe"
-                        class="table-comp subscribe" (click)="openDialog({ Encode : 'cancel-me', Element : element})">
+                        class="table-comp-subscribe">
                             <mat-card-header>
                                 <p> {{element.depart}} </p>
                                 <mat-icon color="primary">redo</mat-icon>
@@ -108,7 +108,7 @@
                                     <button mat-raised-button class="btn-await">
                                         En attente de confirmation 
                                     </button>
-                                    <button mat-raised-button class="btn-cancel">
+                                    <button mat-raised-button class="btn-cancel" (click)="openDialog({ Encode : 'cancel-me', Element : element})">
                                         Annuler
                                     </button>
                                 </div>

@@ -19,11 +19,6 @@ export interface Traject {
   time : string,
   clients : any,
   chair : number,
-  price : number,
-  smoke : false,
-  bague : false,
-  phone : false,
-  payemnts : null,
 }
 
 @Component({
@@ -80,12 +75,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
           time : "12h30",
           clients : [this.client[Math.floor(Math.random()  * 2)], this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)]],
           chair : 3,
-          price : Math.round(800 + Math.random() * 10000),
-          smoke : false,
-          bague : false,
-          phone : false,
-          payemnts : null,
-        }
+          }
       )
     }
     this.dataSource = new MatTableDataSource(traject)

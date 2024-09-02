@@ -33,9 +33,7 @@
                 </mat-select>
                 {{ selectedGender }}
             </mat-form-field>
-
             <app-new-password *ngIf="data.En == 'password'" />
-
 
             <mat-form-field *ngIf="data.En == 'add-me'">
                 <mat-label> {{data.Fr}}</mat-label>
@@ -49,7 +47,6 @@
                     </mat-option>
                 </mat-select>
                 {{ selectedNbPlace }}
-
             </mat-form-field>
         </div>
 

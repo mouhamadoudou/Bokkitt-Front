@@ -26,8 +26,7 @@ const routes: Routes = [
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
   {
     path: "", component: HeaderComponent,  children: [
-      { path: "", component: DashboardComponent },
-      // { path: "", component: HomeComponent },
+      { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
       { path: "login", component: LoginComponent },
@@ -42,6 +41,7 @@ const routes: Routes = [
       { path: "forgot-password", component: ForgotPasswordComponent },
       { path: "verification", component: VerificationComponent },
       { path: "ride-request", component: RideRequestListComponent },
+      { path: "informations", component: DashboardComponent },
 
 
 

@@ -6,27 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./time-picker.component.css']
 })
 export class TimePickerComponent {
-  times: string[] = [];
-  selectedTime: string | null = "13:00";
+  times: string[] = [
+    "00h-02h",
+    "02h-04h",
+    "04h-06h",
+    "06h-08h",
+    "08h-10h",
+    "10h-12h",
+    "12h-14h",
+    "14h-16h",
+    "16h-18h",
+    "18h-20h",
+    "20h-22h",
+    "22h-00h"
+  ]
+  
+  selectedTime: string | null = "12h-14h";
 
   constructor() {
-    this.generateTimes();
-  }
-
-  generateTimes() {
-    const start = 0;
-    const end = 24 * 60; 
-    const interval = 15;
-
-    for (let i = start; i < end; i += interval) {
-      const hours = Math.floor(i / 60);
-      const minutes = i % 60;
-      const time = `${this.padZero(hours)}:${this.padZero(minutes)}`;
-      this.times.push(time);
-    }
-  }
-
-  padZero(num: number): string {
-    return num < 10 ? `0${num}` : `${num}`;
   }
 }

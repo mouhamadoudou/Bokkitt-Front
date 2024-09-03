@@ -1,31 +1,14 @@
 <mat-toolbar color="primary" class="toolbar">
-    <!-- <button mat-icon-button (click)="drawerId.toggle()">
-        <mat-icon> menu </mat-icon>
-    </button> -->
     <button routerLink="/home" mat-icon-button class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>
 
-    <div class="login-phone">
-        <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
-            Connexion
-        </button>
-
-        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
-            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
-            <div class="person-contenair">
-                <mat-icon class="custom-icon">person</mat-icon>
-            </div>
-            <!-- {{authService.username}} -->
-        </button>
-    </div>
-
     <span class="spacer">
     </span>
     <div class="bokkitt-nav">
         <button mat-button routerLink="/home">
-            <mat-icon> search </mat-icon>
+            <mat-icon> search </mat-icon>   
             Rechercher trajet
         </button>
         <button mat-button routerLink="/ride-request">
@@ -43,7 +26,7 @@
         Annoncer un trajet
     </button> -->
         <mat-menu #importMenu class="profile-menu mat-menu-phone-profile">
-            <button mat-menu-item routerLink=""> Mes informations</button>
+            <button mat-menu-item routerLink="informations"> Mes informations</button>
             <button mat-menu-item routerLink="load-students"
                 *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button>
             <button mat-menu-item routerLink="load-payments"> Hitstorique de trajet</button>
@@ -52,17 +35,6 @@
                 Déconnexion
             </button>
         </mat-menu>
-        <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
-            Connexion
-        </button>
-
-        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
-            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
-            <div class="person-contenair">
-                <mat-icon class="custom-icon">person</mat-icon>
-            </div>
-            <!-- {{authService.username}} -->
-        </button>
 
     </div>
 
@@ -71,6 +43,20 @@
         <mat-icon class="custom-menu-icon">menu</mat-icon>
 
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="mat-menu-phone">
+            <mat-card class="user-profile">
+                <mat-card-header>
+                    <mat-icon color="primary"> person </mat-icon>
+                    
+                </mat-card-header>
+                <mat-card-content>
+                    <button mat-raised-button *ngIf="authService.authentificated==true" routerLink="/informations">
+                        Hello Mohammed
+                    </button>
+                    <button mat-raised-button *ngIf="authService.authentificated==false" routerLink="/login">
+                        Connexion
+                    </button>
+                </mat-card-content>
+            </mat-card>
             <button mat-menu-item routerLink="/home">
                 <mat-icon> search </mat-icon>
                 Rechercher trajet
@@ -86,6 +72,14 @@
             <button mat-menu-item>
                 <mat-icon> live_help </mat-icon>
                 A propos
+            </button>
+            <button mat-menu-item routerLink="/informations" *ngIf="authService.authentificated==true">
+                <mat-icon> filter_b_and_w </mat-icon>
+                Mes informations
+            </button>
+            <button mat-menu-item *ngIf="authService.authentificated==true" (click)="logout()">
+                <mat-icon> exit_to_app </mat-icon>
+                Deconnexion
             </button>
         </mat-menu>
     </button>

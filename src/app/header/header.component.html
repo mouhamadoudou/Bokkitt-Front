@@ -7,22 +7,41 @@
     <span class="spacer">
     </span>
     <div class="bokkitt-nav">
-        <button mat-button routerLink="/home">
-            <mat-icon> search </mat-icon>   
+        <button mat-button routerLink="/home"
+            *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+            <mat-icon> search </mat-icon>
             Rechercher trajet
         </button>
-        <button mat-button routerLink="/ride-request">
+        <button mat-button routerLink="/ride-request"
+            *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>
-        <button mat-button routerLink="/add-trip">
+        <button mat-button routerLink="/add-trip"
+            *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
             <mat-icon> add_circle </mat-icon>
             Annoncer trajet
         </button>
+        <button mat-button routerLink="/add-trip"
+            *ngIf=" authService.roles && authService.roles.includes('DRIVER')">
+            <mat-icon> query_builder </mat-icon>
+            Mes trajets
+        </button>
 
-        <button mat-button routerLink="/login">
+        <!-- <button mat-button routerLink="/login">
             <mat-icon> perm_identity </mat-icon>
             Connexion
+        </button> -->
+        <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
+            Connexion
+        </button>
+
+        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
+            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+            <div class="person-contenair">
+                <mat-icon class="custom-icon">person</mat-icon>
+            </div>
+            <!-- {{authService.username}} -->
         </button>
         <!-- <button mat-button routerLink="profile"> Mes-Trajets </button> -->
 
@@ -51,7 +70,7 @@
             <mat-card class="user-profile">
                 <mat-card-header>
                     <mat-icon color="primary"> person </mat-icon>
-                    
+
                 </mat-card-header>
                 <mat-card-content>
                     <button mat-raised-button *ngIf="authService.authentificated==true" routerLink="/informations">
@@ -62,25 +81,29 @@
                     </button>
                 </mat-card-content>
             </mat-card>
-            <button mat-menu-item routerLink="/home">
+            <button mat-menu-item routerLink="/home"
+                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+
                 <mat-icon> search </mat-icon>
                 Rechercher trajet
             </button>
-            <button mat-menu-item routerLink="/ride-request">
+            <button mat-menu-item routerLink="/ride-request"
+                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
                 <mat-icon> person_add </mat-icon>
                 Demander trajet
             </button>
-            <button mat-menu-item routerLink="/suggest-traject">
+            <button mat-menu-item routerLink="/suggest-traject"
+                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
                 <mat-icon> add_circle </mat-icon>
                 Annoncer trajet
-            </button>
-            <button mat-menu-item>
-                <mat-icon> live_help </mat-icon>
-                A propos
             </button>
             <button mat-menu-item routerLink="/informations" *ngIf="authService.authentificated==true">
                 <mat-icon> filter_b_and_w </mat-icon>
                 Mes informations
+            </button>
+            <button mat-menu-item>
+                <mat-icon> live_help </mat-icon>
+                A propos
             </button>
             <button mat-menu-item *ngIf="authService.authentificated==true" (click)="logout()">
                 <mat-icon> exit_to_app </mat-icon>

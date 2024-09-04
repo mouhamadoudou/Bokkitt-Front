@@ -13,7 +13,8 @@
                 </label>
                 <input type="number" name="number" placeholder="Numero de telephone" [(ngModel)]="loginObj.phoneNumber">
                 <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="loginObj.password">
-                <button class="button-form" (click)="onLogin()"> Se connecter</button>
+                <button class="button-form" (click)="onLoginClient()"> Se connecter client</button>
+                <button class="button-form" (click)="onLoginDriver()"> Se connecter driver</button>
                 <div class="forgot-password-comp">
                     <a routerLink="/forgot-password" class="forgot-password-link">Mot de passe oublié ?</a>
                 </div>

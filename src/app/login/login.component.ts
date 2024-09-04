@@ -52,11 +52,24 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUser))
   }
 
-  onLogin() :void {
+  onLoginDriver() :void {
     console.log(this.loginObj)
     let phoneNumber = this.loginObj.phoneNumber;
     let password = this.loginObj.password;
-    let auth = this.authservice.login(phoneNumber, password);
+    let auth = this.authservice.loginDriver(phoneNumber, password);
+
+    if (auth == true) {
+      this.router.navigateByUrl("/DriverDashboardComponent")
+      // this.router.navigate(['/']);
+    } 
+    console.log(phoneNumber, password)
+  }
+
+  onLoginClient() :void {
+    console.log(this.loginObj)
+    let phoneNumber = this.loginObj.phoneNumber;
+    let password = this.loginObj.password;
+    let auth = this.authservice.loginClient(phoneNumber, password);
 
     if (auth == true) {
       this.router.navigateByUrl("/home")

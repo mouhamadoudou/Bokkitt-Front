@@ -19,13 +19,21 @@ import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
+import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
 
 const routes: Routes = [
 
 
   // {path : "admin", component : AdminComponent, canActivate : [AuthGuard], children : [
   {
-    path: "", component: HeaderComponent,  children: [
+    path: "", component: HeaderComponent, children: [
+      // {
+      //   path: "", canActivate: [AuthGuard], children: [
+      //     { path: "", component: DashboardComponent },
+      //     { path: "Dashboard", component: DashboardComponent },
+
+      //   ]
+      // },
       { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
@@ -42,6 +50,10 @@ const routes: Routes = [
       { path: "verification", component: VerificationComponent },
       { path: "ride-request", component: RideRequestListComponent },
       { path: "informations", component: DashboardComponent },
+      {
+        path: "DriverDashboardComponent", component: DriverDashboardComponent,
+        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
+      },
 
 
 
@@ -53,7 +65,7 @@ const routes: Routes = [
         path: "load-payments", component: LoadPaymentsComponent, canActivate: [AuthorizationGuard],
         data: { roles: ['ADMIN'] }
       },
-      
+
     ]
   }
 ];

@@ -11,9 +11,7 @@ import { filter } from 'rxjs/operators';
 export class HeaderComponent implements OnInit{
     public isOpenDrawer : boolean = false;
     constructor (public authService : AuthentificationService, private router: Router) {
-
     }
-
     ngOnInit(): void {
       this.router.events.pipe(
         filter(event => event instanceof NavigationEnd)

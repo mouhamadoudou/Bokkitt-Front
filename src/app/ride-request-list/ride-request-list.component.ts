@@ -37,6 +37,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Tambacounda", "Tambacounda", "Mermoz", "Pikine"]; 
   public client = ["Mohammed", undefined]; 
   public completed = [true, false, true]; 
+  public tmpDate : string = "";
 
 
   filterValues = {
@@ -73,7 +74,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
           id : i,
           depart : this.city[Math.floor(Math.random() * this.city.length)],
           destination: this.city[Math.floor(Math.random() * this.city.length)],
-          date : "Mercredi 10 Juillet",
+          date : i < 5 ? "Mercredi 10 Juillet" : "Mercredi 30 Juillet",
           time : "12h30",
           chair : 3,
           isSubscribe : i == 1 || i == 2 ? true : false
@@ -82,6 +83,11 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
     }
     this.dataSource = new MatTableDataSource(traject)
     this.dataSource.filterPredicate = this.createFilter();
+  }
+
+
+  updateTmpDate (newDate : string) : void {
+    this.tmpDate = newDate;
   }
 
   private _filter(value: string): string[] {

@@ -34,7 +34,7 @@ const routes: Routes = [
 
       //   ]
       // },
-      { path: "", component: DriverDashboardComponent },
+      { path: "", component: RideRequestListComponent },
 
       // { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
@@ -52,10 +52,10 @@ const routes: Routes = [
       { path: "verification", component: VerificationComponent },
       { path: "ride-request", component: RideRequestListComponent },
       { path: "informations", component: DashboardComponent },
-      // {
-      //   path: "DriverDashboardComponent", component: DriverDashboardComponent,
-      //   canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
-      // },
+      {
+        path: "DriverDashboardComponent", component: DriverDashboardComponent,
+        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
+      },
 
 
 

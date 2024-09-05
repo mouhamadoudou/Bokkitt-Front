@@ -64,7 +64,7 @@ import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
-import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
+import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-dashboard.component';
 
 @NgModule({
   declarations: [

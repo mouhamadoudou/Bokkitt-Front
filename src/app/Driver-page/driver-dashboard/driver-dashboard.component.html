@@ -1,0 +1,95 @@
+<div class="main-container">
+    <mat-card class="mat-container">
+        <mat-card-header class="page-title">
+            <div class="traject-container">
+                <div class="nb-traject">
+                    <h3>Trajets actifs</h3>
+                    <h3>3</h3>
+                </div>
+                <div class="nb-traject">
+                    <h3>Revenu potentiel</h3>
+                    <h3>470,000 FCFA</h3>
+                </div>
+            </div>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="mat-container-1">
+            <div class="content-container">
+                <div class="container-1">
+                    <button mat-raised-button routerLink="/add-trip" color="primary" class="btn-new-traject">
+                        Annoncer Trajet
+                    </button>
+                    <button mat-raised-button color="primary" class="btn-new-traject">
+                        Historique
+                    </button>
+                </div>
+                <div class="container-2">
+                    <h2>
+                        Vos trajets à venir
+                    </h2>
+                </div>
+
+                <div class="container-3">
+
+                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table request-container">
+                        <ng-container matColumnDef="id">
+                            <!-- <th mat-header-cell *matHeaderCellDef>
+                            </th> -->
+                            <mat-card-title *ngIf="dataSource === []" color="primary">Hello world</mat-card-title>
+        
+                            <td mat-cell *matCellDef="let element">
+                                <div class="date-header" *ngIf="tmpDate !== element.date">
+                                    {{updateTmpDate(element.date)}}
+                                    <h2 >
+                                        {{element.date}}
+                                    </h2>
+                                </div>
+                                <mat-card class="table-comp-subscribe">
+                                    <mat-card-header class="traject-card-title">
+                                        <p> {{element.depart}} </p>
+                                        <mat-icon color="primary">redo</mat-icon>
+                                        <p> {{element.destination}} </p>
+                                        <mat-divider></mat-divider>
+                                    </mat-card-header>
+                                    <mat-card-content class="traject-contanair">
+                                        <div class="traject">
+                                            <div class="depart-date">
+                                                <mat-icon color="primary" >person_pin</mat-icon>
+                                                <p> Places : {{ element.chair}} </p>
+                                            </div>
+                                            <div class="nb-place">
+                                                <p> 35,000 FCFA </p>
+                                            </div>
+                                        </div>
+                                        <div class="add-me">
+                                            <button mat-raised-button color="primary">
+                                                7h30
+                                            </button>
+                                            <!-- <button mat-raised-button class="btn-await">
+                                            </button> -->
+                                            <button mat-raised-button color="primary"
+                                                (click)="openDialog({ Encode : 'cancel-me', Element : element})">
+                                                Consulter
+                                            </button>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card>
+                            </td>
+        
+        
+                        </ng-container>
+                        <ng-container matColumnDef="">
+                            <!-- <th mat-header-cell *matHeaderCellDef> </th> -->
+                            <td mat-cell *matCellDef="let element">
+                                <!-- <button (click)="getPayments(element)" mat-raised-button color="primary">Payements</button> -->
+                            </td>
+                        </ng-container>
+                        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -19,7 +19,7 @@ import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
-import { DriverDashboardComponent } from './driver-dashboard/driver-dashboard.component';
+import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-dashboard.component';
 
 const routes: Routes = [
 
@@ -34,7 +34,9 @@ const routes: Routes = [
 
       //   ]
       // },
-      { path: "", component: HomeComponent },
+      { path: "", component: DriverDashboardComponent },
+
+      // { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
       { path: "login", component: LoginComponent },
@@ -50,10 +52,10 @@ const routes: Routes = [
       { path: "verification", component: VerificationComponent },
       { path: "ride-request", component: RideRequestListComponent },
       { path: "informations", component: DashboardComponent },
-      {
-        path: "DriverDashboardComponent", component: DriverDashboardComponent,
-        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
-      },
+      // {
+      //   path: "DriverDashboardComponent", component: DriverDashboardComponent,
+      //   canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
+      // },
 
 
 

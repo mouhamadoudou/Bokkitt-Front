@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgo
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
 import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-dashboard.component';
+import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/driver-ride-request.component'
 
 const routes: Routes = [
 
@@ -34,7 +35,7 @@ const routes: Routes = [
 
       //   ]
       // },
-      { path: "", component: RideRequestListComponent },
+      { path: "", component: DriverRideRequestComponent },
 
       // { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
@@ -57,7 +58,7 @@ const routes: Routes = [
         canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
       },
 
-
+      { path: "DriverRideRequestComponent", component: DriverRideRequestComponent },
 
       {
         path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],

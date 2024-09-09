@@ -65,6 +65,7 @@ import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgo
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
 import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-dashboard.component';
+import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/driver-ride-request.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-
     VerificationComponent,
     RideRequestListComponent,
     DriverDashboardComponent,
+    DriverRideRequestComponent,
   ],
   imports: [
     BrowserModule,

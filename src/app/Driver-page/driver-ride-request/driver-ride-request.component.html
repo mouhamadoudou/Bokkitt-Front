@@ -4,7 +4,6 @@
             <mat-form-field class="search-custom" appearance="outline">
                 <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
-
                     @for (option of filteredOptions | async; track option) {
                     <mat-option [value]="option">{{option}}</mat-option>
                     }
@@ -16,7 +15,6 @@
                 <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
                     [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
                 <mat-autocomplete #auto2="matAutocomplete">
-
                     @for (option of filteredOptions2 | async; track option) {
                     <mat-option [value]="option">{{option}}</mat-option>
                     }
@@ -25,8 +23,6 @@
             </mat-form-field>
             <button class="search-button" (click)="filterTraject()" mat-raised-button
                 color="primary">Rechercher</button>
-
-
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content>
@@ -38,6 +34,7 @@
                             <h2>
                                 Si vous ne trouvez pas de trajet correspondant a vos critéres vous pouvez créé une
                                 demande
+
                                 <button mat-raised-button routerLink="/suggest-traject" color="primary"
                                     class="demand-traject">Faire une
                                     proposition</button>
@@ -71,73 +68,48 @@
                                 {{element.date}}
                             </h2>
                         </div>
-                        <div class="date-header vdem" *ngIf="element.isSubscribe && tmpDate !== 'Vdem'">
+                        <!-- <div class="date-header vdem" *ngIf="element.isSubscribe && tmpDate !== 'Vdem'">
                             {{updateTmpDate("Vdem")}}
-                            <h2>
+                            <h2 >
                                 Vos demandes en cours
                             </h2>
-                        </div>
+                        </div> -->
                         <mat-card *ngIf="!element.isSubscribe" class="table-comp"
                             (click)="openDialog({ Encode : 'add-me', Element : element})">
                             <mat-card-header>
-                                <p> {{element.depart}} </p>
-                                <mat-icon color="primary">redo</mat-icon>
-                                <p> {{element.destination}} </p>
+                                <div class="depart-dest">
+                                    <p> {{element.depart}} </p>
+                                    <mat-icon color="primary" class="custom-mat-icon">arrow_right_alt</mat-icon>
+                                    <p> {{element.destination}} </p>
+                                </div>
+                                <div class="btn-dest-dep">
+                                    <button mat-raised-button color="primary">
+                                        ajouter moi
+                                    </button>
+                                </div>
                                 <mat-divider></mat-divider>
                             </mat-card-header>
                             <mat-card-content class="traject-contanair">
                                 <div class="traject">
                                     <div class="depart-date">
                                         <mat-icon>access_time</mat-icon>
-                                        <!-- <p> {{ element.date}} </p> -->
+                                        <p> 7h-9h </p>
                                     </div>
                                     <div class="nb-place">
-                                        <p> +5 Places </p>
+                                        <p> +5 Demandes </p>
                                     </div>
                                 </div>
-                                <div class="add-me">
+                                <!-- <div class="add-me">
                                     <button mat-raised-button color="primary">
                                         7h/9h
                                     </button>
                                     <button mat-raised-button color="primary">
                                         ajouter moi
                                     </button>
-                                </div>
+                                </div> -->
                             </mat-card-content>
                         </mat-card>
 
-
-                        <mat-card *ngIf="element.isSubscribe" class="table-comp-subscribe">
-                            <mat-card-header>
-                                <p> {{element.depart}} </p>
-                                <mat-icon color="primary">redo</mat-icon>
-                                <p> {{element.destination}} </p>
-                                <mat-divider></mat-divider>
-                            </mat-card-header>
-                            <mat-card-content class="traject-contanair">
-                                <div class="traject">
-                                    <div class="depart-date">
-                                        <mat-icon>access_time</mat-icon>
-                                        <!-- <p> {{ element.date}} </p> -->
-                                    </div>
-                                    <div class="nb-place">
-                                        <p> +5 Places </p>
-                                    </div>
-                                </div>
-                                <div class="add-me">
-                                    <button mat-raised-button color="primary">
-                                        7h/9h
-                                    </button>
-                                    <button mat-raised-button class="btn-await">
-                                        En attente de confirmation
-                                    </button>
-                                    <button mat-raised-button class="btn-cancel"
-                                        (click)="openDialog({ Encode : 'cancel-me', Element : element})">
-                                        Annuler
-                                    </button>
-                                </div>
-                            </mat-card-content>
-                        </mat-card>
                     </td>
 
 
@@ -157,16 +129,3 @@
         </mat-card-content>
     </mat-card>
 </div>
-
-<!-- <div>
-    <footer >
-      <mat-toolbar class="footer">
-        <span>&copy; 2024 EvolBoost</span>
-        <span class="spacer"></span>
-        <a mat-button href="/about">À propos</a>
-        <a mat-button href="/contact">Contact</a>
-        <a mat-button href="/privacy">Politique de confidentialité</a>
-      </mat-toolbar>
-    </footer>
-    
-  </div> -->

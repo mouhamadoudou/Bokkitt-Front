@@ -23,7 +23,7 @@ mat-card-content {
 
 .traject-contanair {
     width: 100%;
-    height: 62px;
+    height: 42px;
     /* background-color: green; */
 }
 
@@ -67,13 +67,43 @@ mat-card-content {
 
 .table-comp {
     display: flex;
-    justify-content: space-around;
-    width: 98%;
+    justify-content: space-between;
+    width: 100%;
     height: 100px;
     margin: 15px 0 0 2%;
     cursor: pointer;
-
+    border: 9px solid #c2185bc9;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 20px;
     background-color: transparent;
+
+    .custom-mat-icon {
+        transform: scale(2);
+    }
+
+    button {
+        margin-bottom: 15px;
+    }
+
+    .depart-dest {
+        margin-left: -30px;
+        width: 50%;
+        height: 100%;
+        /* background-color: red; */
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-dest-dep {
+        width: 20%;
+        height: 100%;
+        /* background-color: green; */
+        justify-content: center;
+        justify-items: center;
+        margin-bottom: 10px;
+    }
 }
 
 .table-comp-subscribe {
@@ -84,7 +114,7 @@ mat-card-content {
     margin: 15px 0 0 2%;
     cursor: pointer;
 
-    background-color: green;
+    /* background-color: green; */
 }
 
 .table-comp:hover {
@@ -124,7 +154,7 @@ mat-card-content {
 }
 
 .date-header {
-    margin-top: 55px;
+    margin-top: 25px;
     width: 100%;
     height: 35px;
     background-color: #AD1457;
@@ -202,7 +232,7 @@ mat-card-content {
 
 .traject {
     width: 100%;
-    height: 30px;
+    height: 38px;
     color: black;
     background-color: beige;
     display: flex;
@@ -242,7 +272,8 @@ mat-card-content {
     padding-left: 10px;
 
     p {
-        margin-top: 5px;
+        margin-top: 3px;
+        margin-left: 3px;
         font-weight: 500;
     }
 }
@@ -262,6 +293,7 @@ mat-card-content {
 .custom-table {
     border: none;
     background-color: transparent;
+    min-height: 620px;
 }
 
 .custom-table th,
@@ -296,4 +328,8 @@ mat-card-content {
 
 .subscribe {
     background-color: green;
+}
+
+.mat-mdc-paginator {
+    margin-top: 20px;
 }

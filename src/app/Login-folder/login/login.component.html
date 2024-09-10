@@ -1,0 +1,44 @@
+<mat-drawer-container>
+
+    <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="introduction">
+            <p>
+                Connexion Conducteur : Accédez à votre tableau de bord et gérez vos trajets.
+            </p>
+        </div>
+        <div class="signup">
+            <form>
+                <label for="chk" aria-hidden="true">
+                    <span>
+                        Se connecter
+
+                    </span>
+                </label>
+                <input type="number" name="number" placeholder="Numero de telephone" [(ngModel)]="loginObj.phoneNumber">
+                <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="loginObj.password">
+                <button class="button-form" (click)="onLoginClient()"> Se connecter passager</button>
+                <div class="forgot-password-comp">
+                    <a routerLink="/forgot-password" class="forgot-password-link">Mot de passe oublié ?</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="login">
+            <form>
+                <label class="form-login" for="chk" aria-hidden="true"> 
+                    <mat-icon class="subscribe-icon" color="primary">person_add</mat-icon>
+                    S'inscrire</label>
+
+
+                <input type="text" name="firstName" placeholder="Nom" [(ngModel)]="signupObj.firstName">
+                <input type="text" name="lastName" placeholder="Prenom" [(ngModel)]="signupObj.lastName">
+                <input type="number" name="phoneNumber" placeholder="Numero de telephone" [(ngModel)]="signupObj.phoneNumber">
+                <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="signupObj.password">
+                <button class="button-form" (click)="onSignUp()">
+                    En route
+                </button>
+            </form>
+        </div>
+    </div>
+</mat-drawer-container>

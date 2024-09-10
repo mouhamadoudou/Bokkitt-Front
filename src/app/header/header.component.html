@@ -12,27 +12,33 @@
             <mat-icon> search </mat-icon>
             Rechercher trajet
         </button>
-        <button mat-button routerLink="/ride-request"
-            *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+        <button mat-button routerLink="/suggest-traject"
+            *ngIf=" !authService.roles">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>
+        <button mat-button routerLink="/ride-request"
+            *ngIf="authService.roles && authService.roles.includes('USER')">
+            <mat-icon> person_add </mat-icon>
+            Demander trajet
+        </button>
+
         <button mat-button routerLink="/add-trip"
             *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
             <mat-icon> add_circle </mat-icon>
             Annoncer trajet
         </button>
-        <button mat-button routerLink="/add-trip"
+        <button mat-button routerLink="/driver-ride-request"
             *ngIf=" authService.roles && authService.roles.includes('DRIVER')">
             <mat-icon> query_builder </mat-icon>
-            Mes trajets
+            Liste de demande
         </button>
 
         <!-- <button mat-button routerLink="/login">
             <mat-icon> perm_identity </mat-icon>
             Connexion
         </button> -->
-        <button mat-button routerLink="/login" *ngIf="authService.authentificated==false">
+        <button mat-button routerLink="/choose-profile" *ngIf="authService.authentificated==false">
             Connexion
         </button>
 
@@ -96,6 +102,11 @@
                 *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
                 <mat-icon> add_circle </mat-icon>
                 Annoncer trajet
+            </button>
+            <button mat-menu-item routerLink="/driver-ride-request"
+                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
+                <mat-icon> query_builder </mat-icon>
+                Liste de demande
             </button>
             <button mat-menu-item routerLink="/informations" *ngIf="authService.authentificated==true">
                 <mat-icon> filter_b_and_w </mat-icon>

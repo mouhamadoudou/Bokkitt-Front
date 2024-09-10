@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Login-folder/login/login.component';
 import { StudentsComponent } from './students/students.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { LoadStudentsComponent } from './load-students/load-students.component';
@@ -66,6 +66,8 @@ import { VerificationComponent } from './Forgot-Password/verification/verificati
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
 import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-dashboard.component';
 import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/driver-ride-request.component';
+import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-type-user.component';
+import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,8 @@ import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/dr
     RideRequestListComponent,
     DriverDashboardComponent,
     DriverRideRequestComponent,
+    ChooseTypeUserComponent,
+    ConnexionDriverComponent,
   ],
   imports: [
     BrowserModule,

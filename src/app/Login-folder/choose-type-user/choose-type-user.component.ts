@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthentificationService } from '../services/authentification.service';
+import { AuthentificationService } from '../../services/authentification.service';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  selector: 'app-choose-type-user',
+  templateUrl: './choose-type-user.component.html',
+  styleUrl: './choose-type-user.component.css'
 })
-export class LoginComponent implements OnInit {
+export class ChooseTypeUserComponent implements OnInit {
 
   public loginFormGroup! : FormGroup;
   public isSubscribe : boolean = true;
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
     let auth = this.authservice.loginDriver(phoneNumber, password);
 
     if (auth == true) {
-      this.router.navigateByUrl("/DriverDashboardComponent")
+      this.router.navigateByUrl("/driver-dashboard")
       // this.router.navigate(['/']);
     } 
     console.log(phoneNumber, password)

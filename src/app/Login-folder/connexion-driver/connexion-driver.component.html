@@ -2,7 +2,11 @@
 
     <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
-
+        <div class="introduction">
+            <p>
+                Connexion Conducteur : Accédez à votre tableau de bord et gérez vos trajets.
+            </p>
+        </div>
         <div class="signup">
             <form>
                 <label for="chk" aria-hidden="true">
@@ -13,8 +17,8 @@
                 </label>
                 <input type="number" name="number" placeholder="Numero de telephone" [(ngModel)]="loginObj.phoneNumber">
                 <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="loginObj.password">
-                <button class="button-form" (click)="onLoginClient()"> Se connecter client</button>
-                <button class="button-form" (click)="onLoginDriver()"> Se connecter driver</button>
+                <!-- <button class="button-form" (click)="onLoginClient()"> Se connecter client</button> -->
+                <button class="button-form" (click)="onLoginDriver()"> Se connecter Chauffeur</button>
                 <div class="forgot-password-comp">
                     <a routerLink="/forgot-password" class="forgot-password-link">Mot de passe oublié ?</a>
                 </div>
@@ -23,14 +27,15 @@
 
         <div class="login">
             <form>
-                <label class="form-login" for="chk" aria-hidden="true"> 
+                <label class="form-login" for="chk" aria-hidden="true">
                     <mat-icon class="subscribe-icon" color="primary">person_add</mat-icon>
                     S'inscrire</label>
 
 
                 <input type="text" name="firstName" placeholder="Nom" [(ngModel)]="signupObj.firstName">
                 <input type="text" name="lastName" placeholder="Prenom" [(ngModel)]="signupObj.lastName">
-                <input type="number" name="phoneNumber" placeholder="Numero de telephone" [(ngModel)]="signupObj.phoneNumber">
+                <input type="number" name="phoneNumber" placeholder="Numero de telephone"
+                    [(ngModel)]="signupObj.phoneNumber">
                 <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="signupObj.password">
                 <button class="button-form" (click)="onSignUp()">
                     En route

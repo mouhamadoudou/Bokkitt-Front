@@ -5,7 +5,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
+import { AuthentificationService } from '../services/authentification.service';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-suggest-traject',
@@ -35,7 +36,8 @@ export class SuggestTrajectComponent implements OnInit {
     destination: ''
   };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, authService : AuthentificationService, private router: Router) {
+  }
 
 
   ngOnInit() {

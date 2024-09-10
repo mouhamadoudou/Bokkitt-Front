@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Login-folder/login/login.component';
 import { StudentsComponent } from './students/students.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { LoadStudentsComponent } from './load-students/load-students.component';
@@ -21,6 +21,8 @@ import { VerificationComponent } from './Forgot-Password/verification/verificati
 import { RideRequestListComponent } from './ride-request-list/ride-request-list.component';
 import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-dashboard.component';
 import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/driver-ride-request.component'
+import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-type-user.component';
+import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
 
 const routes: Routes = [
 
@@ -35,12 +37,16 @@ const routes: Routes = [
 
       //   ]
       // },
-      { path: "", component: DriverRideRequestComponent },
+      // { path: "", component: ChooseTypeUserComponent },
 
-      // { path: "", component: HomeComponent },
+      { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
-      { path: "login", component: LoginComponent },
+
+      { path: "login-client", component: LoginComponent },
+      { path: "login-driver", component: ConnexionDriverComponent },
+      { path: "choose-profile", component: ChooseTypeUserComponent },
+
       { path: "profile", component: ProfileComponent },
       { path: "students", component: StudentsComponent },
       { path: "payments", component: PaymentsComponent },
@@ -54,11 +60,13 @@ const routes: Routes = [
       { path: "ride-request", component: RideRequestListComponent },
       { path: "informations", component: DashboardComponent },
       {
-        path: "DriverDashboardComponent", component: DriverDashboardComponent,
+        path: "driver-dashboard", component: DriverDashboardComponent,
         canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
       },
-
-      { path: "DriverRideRequestComponent", component: DriverRideRequestComponent },
+      {
+        path: "driver-ride-request", component: DriverRideRequestComponent,
+        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
+      },
 
       {
         path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],

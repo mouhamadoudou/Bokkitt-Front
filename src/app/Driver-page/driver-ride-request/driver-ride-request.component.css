@@ -68,7 +68,7 @@ mat-card-content {
 .table-comp {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 96%;
     height: 100px;
     margin: 15px 0 0 2%;
     cursor: pointer;
@@ -84,7 +84,7 @@ mat-card-content {
     }
 
     button {
-        margin-bottom: 15px;
+        margin-top: -12px;
     }
 
     .depart-dest {

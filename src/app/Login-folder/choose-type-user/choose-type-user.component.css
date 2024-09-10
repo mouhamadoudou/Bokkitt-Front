@@ -1,0 +1,67 @@
+
+/* second option ----------------------------------------------
+ */
+
+mat-drawer-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.main {
+    margin-top: 90px;
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 30px #c2185b;
+    text-align: center;
+}
+
+
+label {
+    color: #fff;
+    font-size: 2.3em;
+    justify-content: center;
+    display: flex;
+    margin: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.button-form {
+    width: 80%;
+    height: 100px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #c2185b;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+}
+
+.button-form:hover {
+    background: #726e70;
+}
+
+.login {
+    margin-top: -37px;
+    height: 510px;
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(-170px);
+    transition: .8s ease-in-out;
+}
+

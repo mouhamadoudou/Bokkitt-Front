@@ -24,7 +24,7 @@ mat-form-field {
 .forgot-password-link {
     font-size: 12px;
     font-weight: bold;
-    color: #c2185b;
+    color: #437F97;
 }
 
 .forgot-password-comp {
@@ -44,6 +44,13 @@ mat-drawer-container {
 
 }
 
+.introduction {
+    /* color: #437F97; */
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -61,7 +68,8 @@ input[type=number] {
     height: 500px;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 2px 2px 30px #c2185b;
+    box-shadow: 2px 2px 30px #437F97;
+    text-align: center;
 }
 
 #chk {
@@ -105,7 +113,7 @@ input {
     justify-content: center;
     display: block;
     color: #fff;
-    background: #c2185b;
+    background: #437F97;
 
     font-size: 1em;
     font-weight: bold;
@@ -118,12 +126,16 @@ input {
 }
 
 .button-form:hover {
-    background: #c2185b;
+    background: #437F97;
+}
+
+mat-icon {
+    color: #437F97;
 }
 
 .login {
-    margin-top: 60px;
-    height: 460px;
+    margin-top: -37px;
+    height: 510px;
     background: #eee;
     border-radius: 60% / 10%;
     transform: translateY(-170px);
@@ -131,7 +143,7 @@ input {
 }
 
 .login label {
-    color: #c2185b;
+    color: #437F97;
     transform: scale(.6);
     padding-top: 20px;
 }

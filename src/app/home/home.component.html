@@ -24,9 +24,8 @@
         <mat-label>Destination</mat-label>
       </mat-form-field>
       <button class="search-button" (click)="filterTraject()" mat-raised-button color="primary">Rechercher</button>
-
-
     </mat-card-header>
+
     <!-- <mat-divider></mat-divider> -->
     <mat-card-content>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table">
@@ -48,31 +47,52 @@
             {{filterValues.destination}}</mat-card-title>
 
           <td mat-cell *matCellDef="let element">
-            <mat-card class="table-comp" [ngClass]="{ 'disabled': !element.isCompleted}" (click)="onCardClick(element)">
-              <mat-card-header>
+            <!-- <div >
+              {{tmpDate + 'et' +  element.date}}
+              {{updateTmpDate(element.date)}}
+
+            </div> -->
+            <div class="date-header" *ngIf="tmpDate !== element.date">
+              <!-- {{updateDate(element.date)}} -->
+              <h2>
                 {{element.date}}
+              </h2>
+              
+            </div>
+
+            <mat-card class="table-comp">
+              <mat-card-header>
+                <!-- {{element.date}} -->
+                <p class="disp-depart">{{element.depart}}</p>
+                <mat-icon>redo</mat-icon>
+                <p>{{element.destination}}</p>
                 <mat-divider></mat-divider>
               </mat-card-header>
               <mat-card-content>
                 <div class="traject">
-                  <mat-icon color="primary">access_time</mat-icon>
-                  <p>{{element.time}}</p>
-                  <p class="disp-depart">{{element.depart}}</p>
-                  <mat-icon color="primary">redo</mat-icon>
-                  <p>{{element.destination}}</p>
-                  <p class="disp-place">Place Disponible</p>
-                  <span *ngFor="let chair of element.clients">
-                    <mat-icon [ngStyle]="{'color': chair === undefined ? 'primary' : 'orange'}">chair</mat-icon>
-                  </span>
+                  <div class="traject-first-comp">
+                    <mat-icon color="primary">access_time</mat-icon>
+                    <p>{{element.time}}</p>
+                    
+                    <p class="disp-place">Place</p>
+                      <mat-icon color="primary">chair</mat-icon> 
+                      <p>
+                        41
+                      </p> 
+                  </div>
+
                   <!-- <mat-icon class="disp-smoke" color="primary">smoke_free</mat-icon>
                   <mat-icon color="primary">local_mall</mat-icon>
                   <mat-icon color="primary">pets</mat-icon> -->
-                  <span *ngIf="!element.isCompleted">
-                    <h4 class="disp-price">Complet</h4>
-                  </span>
-                  <span *ngIf="element.isCompleted">
-                    <h4 class="disp-price">{{element.price}} FCFA</h4>
-                  </span>
+                  <div class="traject-second-comp">
+                    <span *ngIf="!element.isCompleted">
+                      <h4 class="disp-price">Complet</h4>
+                    </span>
+                    <span *ngIf="element.isCompleted">
+                      <h4 class="disp-price">{{element.price}} FCFA</h4>
+                    </span>
+                  </div>
+
                 </div>
               </mat-card-content>
             </mat-card>

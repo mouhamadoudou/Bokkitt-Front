@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, viewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, viewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   
   public dataSource : any;
   public displayedColumns = ["id"];
-  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"]; 
+  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine", "Tambacounda", "Tambacounda"]; 
   public client = ["Mohammed", undefined]; 
   public completed = [true, false, true]; 
+  public tmpDate : string = "";
 
 
   filterValues = {
@@ -46,10 +47,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     destination: ''
   };
 
-  constructor (private router : Router, private dataService: DataService) {
+  constructor (private router : Router, private dataService: DataService, private cdr: ChangeDetectorRef) {
 
   }
   
+  updateDate(elementDate: string) {
+    console.log('hello wold')
+      this.tmpDate = elementDate;
+      console.log(this.tmpDate)
+  }
+
   myControl = new FormControl('');
   myControl2 = new FormControl('');
 
@@ -106,10 +113,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     };
     return filterFunction;
   }
-  
+
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.cdr.detectChanges(); // Manually trigger change detection after view initialization
+
   }   
 
   filterTraject() :void {

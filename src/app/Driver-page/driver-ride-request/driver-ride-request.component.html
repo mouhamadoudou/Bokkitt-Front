@@ -24,6 +24,7 @@
             <button class="search-button" (click)="filterTraject()" mat-raised-button
                 color="primary">Rechercher</button>
         </mat-card-header>
+
         <mat-divider></mat-divider>
         <mat-card-content>
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table request-container">
@@ -62,19 +63,19 @@
                         {{filterValues.destination}}</mat-card-title>
 
                     <td mat-cell *matCellDef="let element">
-                        <div class="date-header" *ngIf="tmpDate !== element.date && !element.isSubscribe">
+                        <div class="date-header" *ngIf="tmpDate !== element.date">
                             {{updateTmpDate(element.date)}}
                             <h2>
                                 {{element.date}}
                             </h2>
                         </div>
-                        <!-- <div class="date-header vdem" *ngIf="element.isSubscribe && tmpDate !== 'Vdem'">
+                        <div class="date-header vdem" *ngIf="element.isSubscribe && tmpDate !== 'Vdem'">
                             {{updateTmpDate("Vdem")}}
                             <h2 >
                                 Vos demandes en cours
                             </h2>
-                        </div> -->
-                        <mat-card *ngIf="!element.isSubscribe" class="table-comp"
+                        </div>
+                        <mat-card  class="table-comp"
                             (click)="openDialog({ Encode : 'add-me', Element : element})">
                             <mat-card-header>
                                 <div class="depart-dest">

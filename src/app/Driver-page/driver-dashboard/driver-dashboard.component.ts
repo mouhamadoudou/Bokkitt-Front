@@ -85,16 +85,5 @@ export class DriverDashboardComponent implements OnInit, AfterViewInit {
     this.dataService.setData(traject)
     this.router.navigate(['/trip']);
   }
-
-  openDialog(component : {}): void {
-    const dialogRef = this.dialog.open(PopupComponent, {
-      data: component
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log('Received data:', result);
-    });
-  }
 }
 

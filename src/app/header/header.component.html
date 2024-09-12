@@ -1,5 +1,18 @@
 <mat-toolbar color="primary" class="toolbar">
-    <button routerLink="/home" mat-icon-button class="bokkitt-icon">
+    <button *ngIf="!authService.roles" mat-icon-button routerLink="/home"
+        class="bokkitt-icon">
+        <mat-icon> directions_car </mat-icon>
+        <span> Bokkitt </span>
+    </button>
+
+    <button *ngIf="authService.roles && authService.roles.includes('DRIVER')" [routerLink]="['/driver-dashboard']" mat-icon-button
+        class="bokkitt-icon">
+        <mat-icon> directions_car </mat-icon>
+        <span> Bokkitt </span>
+    </button>
+
+    <button *ngIf="authService.roles && authService.roles.includes('USER')" [routerLink]="['/home']" mat-icon-button
+        class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>
@@ -12,13 +25,11 @@
             <mat-icon> search </mat-icon>
             Rechercher trajet
         </button>
-        <button mat-button routerLink="/suggest-traject"
-            *ngIf=" !authService.roles">
+        <button mat-button routerLink="/suggest-traject" *ngIf=" !authService.roles">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>
-        <button mat-button routerLink="/ride-request"
-            *ngIf="authService.roles && authService.roles.includes('USER')">
+        <button mat-button routerLink="/ride-request" *ngIf="authService.roles && authService.roles.includes('USER')">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>

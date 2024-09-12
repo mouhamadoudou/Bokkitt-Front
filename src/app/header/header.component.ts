@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit{
       ).subscribe(() => {
         window.scrollTo(0, 0);
       });
+
+      if (this.authService.roles && this.authService.roles.includes('DRIVER')) {
+        this.router.navigate(['/driver-dashboard']);
+      }
     }
 
     logout() : void {

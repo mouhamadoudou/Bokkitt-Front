@@ -3,8 +3,10 @@
         <h1 class="logo">Bokkitt</h1>
     </div> -->
 
-    <div class="leftbox">
-        <nav class="nav-left">
+    <div class="leftbox"
+    [ngStyle]="{'background-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+    >
+        <nav class="nav-left" >
             <a (click)="activateSection('profile')" [ngClass]="{'active': activeSection === 'profile'}">
                 <mat-icon> person</mat-icon>
             </a>
@@ -25,7 +27,10 @@
         </nav>
     </div>
 
-    <div class="rightbox">
+    <div class="rightbox" 
+    [ngStyle]="{'border-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+    
+    >
         <div *ngIf="activeSection === 'profile'" class="profile-contenair">
             <app-profile-infos />
         </div>

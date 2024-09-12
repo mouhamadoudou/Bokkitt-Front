@@ -19,9 +19,9 @@ export class HeaderComponent implements OnInit{
         window.scrollTo(0, 0);
       });
 
-      if (this.authService.roles && this.authService.roles.includes('DRIVER')) {
-        this.router.navigate(['/driver-dashboard']);
-      }
+      // if (this.authService.roles && this.authService.roles.includes('DRIVER')) {
+      //   this.router.navigate(['/driver-dashboard']);
+      // }
     }
 
     logout() : void {

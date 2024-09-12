@@ -1,7 +1,9 @@
 <div *ngIf="activeSection === 'profile'" class="profile-contenair">
+
     <mat-card>
         <mat-card-header>
-            <h1>
+            <h1
+                [ngStyle]="{'color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
                 Identifiants
             </h1>
         </mat-card-header>
@@ -17,6 +19,7 @@
                                 787536469
                             </p>
                             <button mat-raised-button (click)="openDialog({ En: 'phone', Fr: 'numéro de téléphone' })"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -35,6 +38,7 @@
                                 *********
                             </p>
                             <button mat-raised-button (click)="openDialog({ En :'password', Fr : 'mot de passe' })"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -47,7 +51,8 @@
     </mat-card>
     <mat-card class="card-2">
         <mat-card-header>
-            <h1>
+            <h1
+                [ngStyle]="{'color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
                 Informations
             </h1>
         </mat-card-header>
@@ -63,6 +68,7 @@
                                 Uzumaki
                             </p>
                             <button mat-raised-button (click)="openDialog({ En : 'firstName', Fr : 'prénom' })"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -80,6 +86,7 @@
                                 Naruto
                             </p>
                             <button mat-raised-button (click)="openDialog({ En : 'lastName', Fr : 'Nom' })"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -99,7 +106,8 @@
                                 24
                             </p>
 
-                            <button mat-raised-button (click)="openDialog({En :'old', Fr : 'age'})" color="primary">
+                            <button mat-raised-button (click)="openDialog({En :'old', Fr : 'age'})" color="primary"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
@@ -118,7 +126,8 @@
                                 Male
                             </p>
 
-                            <button mat-raised-button (click)="openDialog({En : 'sex', Fr :  'genre'})" color="primary">
+                            <button mat-raised-button (click)="openDialog({En : 'sex', Fr :  'genre'})" color="primary"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
@@ -135,7 +144,8 @@
                             <p>
                                 Dakar
                             </p>
-                            <button mat-raised-button (click)="openDialog({En : 'city', Fr : 'ville'})" color="primary">
+                            <button mat-raised-button (click)="openDialog({En : 'city', Fr : 'ville'})" color="primary"
+                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>

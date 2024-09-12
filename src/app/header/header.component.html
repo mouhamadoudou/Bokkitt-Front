@@ -1,4 +1,5 @@
-<mat-toolbar color="primary" class="toolbar">
+<mat-toolbar
+    [ngStyle]="{'background-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }" class="toolbar">
     <button *ngIf="!authService.roles" mat-icon-button routerLink="/home"
         class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
@@ -66,10 +67,10 @@
         Annoncer un trajet
     </button> -->
         <mat-menu #importMenu class="profile-menu mat-menu-phone-profile">
-            <button mat-menu-item routerLink="informations"> Mes informations</button>
-            <button mat-menu-item routerLink="load-students"
-                *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button>
-            <button mat-menu-item routerLink="load-payments"> Hitstorique de trajet</button>
+            <button mat-menu-item routerLink="/informations" *ngIf="authService.roles"> Mes informations</button>
+            <!-- <button mat-menu-item routerLink="load-students"
+                *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button> -->
+            <button mat-menu-item routerLink="/informations" *ngIf="authService.roles"> Hitstorique de trajet</button>
 
             <button mat-menu-item (click)="logout()">
                 <mat-icon> exit_to_app </mat-icon>
@@ -143,6 +144,7 @@
 </mat-toolbar>
 
 <mat-drawer-container>
+    
     <!-- <mat-drawer #drawerId mode="side" class="side-nav" position="start">
         <mat-nav-list>
             <mat-list-item>

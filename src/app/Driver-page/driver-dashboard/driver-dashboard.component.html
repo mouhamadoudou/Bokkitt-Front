@@ -1,4 +1,8 @@
 <div class="main-container">
+    <div class="scrolling-banner">
+        <p>Veuillez compléter vos informations. Il manque votre permis de conduire pour pouvoir mettre des trajets en
+            ligne</p>
+    </div>
     <mat-card class="mat-container">
         <mat-card-header class="page-title">
             <div class="traject-container">
@@ -16,11 +20,16 @@
         <mat-card-content class="mat-container-1">
             <div class="content-container">
                 <div class="container-1">
-                    <button mat-raised-button routerLink="/add-trip" color="primary" class="btn-new-traject">
+                    <button mat-raised-button class="btn-color" routerLink="/add-trip" color="primary">
                         Annoncer Trajet
                     </button>
-                    <button mat-raised-button color="primary" class="btn-new-traject">
+                    <button mat-raised-button color="primary" routerLink="/informations" class="btn-new-traject btn-color">
                         Historique
+                    </button>
+
+                    <button mat-raised-button class="btn-color" color="primary" routerLink="/driver-ride-request"
+                        class="btn-new-traject-phone">
+                        Liste de demande
                     </button>
                 </div>
                 <div class="container-2">
@@ -36,11 +45,11 @@
                             <!-- <th mat-header-cell *matHeaderCellDef>
                             </th> -->
                             <mat-card-title *ngIf="dataSource === []" color="primary">Hello world</mat-card-title>
-        
+
                             <td mat-cell *matCellDef="let element">
                                 <div class="date-header" *ngIf="tmpDate !== element.date">
                                     {{updateTmpDate(element.date)}}
-                                    <h2 >
+                                    <h2>
                                         {{element.date}}
                                     </h2>
                                 </div>
@@ -54,7 +63,7 @@
                                     <mat-card-content class="traject-contanair">
                                         <div class="traject">
                                             <div class="depart-date">
-                                                <mat-icon color="primary" >person_pin</mat-icon>
+                                                <mat-icon color="primary">person_pin</mat-icon>
                                                 <p> Places : {{ element.chair}} </p>
                                             </div>
                                             <div class="nb-place">
@@ -62,20 +71,20 @@
                                             </div>
                                         </div>
                                         <div class="add-me">
-                                            <button mat-raised-button color="primary">
+                                            <button mat-raised-button class="btn-color" color="primary">
                                                 7h30
                                             </button>
                                             <!-- <button mat-raised-button class="btn-await">
                                             </button> -->
-                                            <button mat-raised-button color="primary" routerLink="/my-trip">
+                                            <button mat-raised-button class="btn-color" color="primary" routerLink="/my-trip">
                                                 Consulter
                                             </button>
                                         </div>
                                     </mat-card-content>
                                 </mat-card>
                             </td>
-        
-        
+
+
                         </ng-container>
                         <ng-container matColumnDef="">
                             <!-- <th mat-header-cell *matHeaderCellDef> </th> -->

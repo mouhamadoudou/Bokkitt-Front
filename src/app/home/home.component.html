@@ -60,7 +60,7 @@
               {{updateDate(element.date)}}
             </div>
 
-            <mat-card class="table-comp">
+            <mat-card class="table-comp" [ngClass]="{ 'disabled': !element.isCompleted}" (click)="onCardClick(element)">
               <mat-card-header>
                 <!-- {{element.date}} -->
                 <p class="disp-depart">{{element.depart}}</p>

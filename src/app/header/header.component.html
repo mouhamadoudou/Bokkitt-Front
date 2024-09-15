@@ -106,17 +106,22 @@
                 Rechercher trajet
             </button>
             <button mat-menu-item routerLink="/ride-request"
-                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+                *ngIf="authService.roles && authService.roles.includes('USER')">
                 <mat-icon> person_add </mat-icon>
                 Demander trajet
             </button>
             <button mat-menu-item routerLink="/suggest-traject"
+                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+                <mat-icon> person_add </mat-icon>
+                Demander trajet
+            </button>
+            <button mat-menu-item routerLink="/add-trip"
                 *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
                 <mat-icon> add_circle </mat-icon>
                 Annoncer trajet
             </button>
             <button mat-menu-item routerLink="/driver-ride-request"
-                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
+                *ngIf="authService.roles && authService.roles.includes('DRIVER')">
                 <mat-icon> query_builder </mat-icon>
                 Liste de demande
             </button>

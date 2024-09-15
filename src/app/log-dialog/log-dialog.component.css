@@ -1,0 +1,16 @@
+h1 {
+    color: red;
+}
+
+.main {
+    background-color:  #2b2b2b;
+    text-align: center;
+    /* margin-top: -145px; */
+}
+
+.btn-comp {
+    width: 100%;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+}

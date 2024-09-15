@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthentificationService } from '../../services/authentification.service';
 import { Router } from '@angular/router';
+import { LogDialogComponent } from '../../log-dialog/log-dialog.component';
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,7 @@ export class LoginComponent implements OnInit {
   public isSubscribe : boolean = true;
 
   constructor (private fb : FormBuilder, 
+    private dialog: MatDialog,
     private authservice : AuthentificationService,
     private router : Router) {
 
@@ -52,19 +55,6 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUser))
   }
 
-  onLoginDriver() :void {
-    console.log(this.loginObj)
-    let phoneNumber = this.loginObj.phoneNumber;
-    let password = this.loginObj.password;
-    let auth = this.authservice.loginDriver(phoneNumber, password);
-
-    if (auth == true) {
-      this.router.navigateByUrl("/driver-dashboard")
-      // this.router.navigate(['/']);
-    } 
-    console.log(phoneNumber, password)
-  }
-
   onLoginClient() :void {
     console.log(this.loginObj)
     let phoneNumber = this.loginObj.phoneNumber;
@@ -72,9 +62,11 @@ export class LoginComponent implements OnInit {
     let auth = this.authservice.loginClient(phoneNumber, password);
 
     if (auth == true) {
-      this.router.navigateByUrl("/home")
+      this.router.navigateByUrl("/driver-dashboard")
       // this.router.navigate(['/']);
-    } 
+    } else {
+      this.dialog.open(LogDialogComponent)
+    }
     console.log(phoneNumber, password)
   }
 }

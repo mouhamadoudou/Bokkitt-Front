@@ -3,7 +3,7 @@
 
         <mat-card-header>
             <mat-card-title>
-                Proposer un trajet
+                Demander un trajet
             </mat-card-title>
         </mat-card-header>
 
@@ -50,7 +50,7 @@
                                 </mat-form-field>
 
                                 <mat-form-field appearance="fill" class="traject-input">
-                                    <mat-label>Place voulu</mat-label>
+                                    <mat-label>Nb de place</mat-label>
                                     <input matInput placeholder="ex: 4" type="text" pattern="\d*" ngModel
                                         name="nombrePlace" #nombrePlace="ngModel"
                                         (keypress)="validateNumberInput($event)" required>

@@ -120,15 +120,10 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/trip']);
   }
 
-  openDialog(component : {}): void {
-    const dialogRef = this.dialog.open(PopupComponent, {
-      data: component
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log('Received data:', result);
-    });
+  openAddTrip(component : {}): void {
+    this.router.navigate(['/add-trip'], { 
+      queryParams: { key: 'id' } 
+    });    
   }
 }
 

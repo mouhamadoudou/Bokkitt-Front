@@ -30,33 +30,11 @@
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table request-container">
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef>
-                        <div class="title-suggest" *ngIf="dataSource.length !== 0 || dataSource.length !== null">
 
-                            <h2>
-                                Si vous ne trouvez pas de trajet correspondant a vos critéres vous pouvez créé une
-                                demande
-
-                                <button mat-raised-button routerLink="/suggest-traject" color="primary"
-                                    class="demand-traject">Faire une
-                                    proposition</button>
-                            </h2>
-                        </div>
-
-                        <mat-card-title
-                            *ngIf="filterValues.depart && filterValues.destination && dataSource.filteredData.length !== 0"
-                            color="primary">
-                            <!-- Demande en cours {{filterValues.depart}} vers -->
-                            <!-- {{filterValues.destination}} -->
-
+                        <mat-card-title class="title-demand">
+                            Voici la liste des demandes en cours
                         </mat-card-title>
-                        <div *ngIf="dataSource.filteredData.length === 0" class="no-results" color="primary">
-                            <h2>Aucun covoiturage trouvé pour vos critères. Vous pouvez faire une proposition de trajet
-                                pour qu'un
-                                chauffeur réponde à votre demande.</h2>
-                            <button mat-raised-button routerLink="/suggest-traject" color="primary"
-                                class="demand-traject">Faire une
-                                proposition</button>
-                        </div>
+                    
                     </th>
                     <mat-card-title *ngIf="dataSource === []" color="primary">Demande en cours {{filterValues.depart}}
                         vers
@@ -76,7 +54,7 @@
                             </h2>
                         </div>
                         <mat-card  class="table-comp"
-                            (click)="openDialog({ Encode : 'add-me', Element : element})">
+                            (click)="openAddTrip({ Encode : 'add-traject', Element : element})">
                             <mat-card-header>
                                 <div class="depart-dest">
                                     <p> {{element.depart}} </p>

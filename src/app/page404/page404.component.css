@@ -1,0 +1,12 @@
+.main {
+    width: 100%;
+    height: 500px;
+    /* background-color: red; */
+    padding-top: 270px;
+    text-align: center;
+
+    p {
+        margin-top: 30px;
+        font-size: 40px;
+    }
+}

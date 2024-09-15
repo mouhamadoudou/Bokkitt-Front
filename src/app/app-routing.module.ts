@@ -23,6 +23,7 @@ import { DriverDashboardComponent } from './Driver-page/driver-dashboard/driver-
 import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/driver-ride-request.component'
 import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-type-user.component';
 import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
+import { Page404Component } from './page404/page404.component';
 
 const routes: Routes = [
 
@@ -39,6 +40,7 @@ const routes: Routes = [
       // },
       // { path: "", component: ChooseTypeUserComponent },
 
+      { path: "**", component: Page404Component },
       { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },

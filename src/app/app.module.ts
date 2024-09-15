@@ -69,6 +69,7 @@ import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/dr
 import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-type-user.component';
 import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
 import { LogDialogComponent } from './log-dialog/log-dialog.component';
+import { Page404Component } from './page404/page404.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { LogDialogComponent } from './log-dialog/log-dialog.component';
     ChooseTypeUserComponent,
     ConnexionDriverComponent,
     LogDialogComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,

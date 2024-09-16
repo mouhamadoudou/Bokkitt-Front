@@ -24,6 +24,7 @@ import { DriverRideRequestComponent } from './Driver-page/driver-ride-request/dr
 import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-type-user.component';
 import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
 import { Page404Component } from './page404/page404.component';
+import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
 
 const routes: Routes = [
 
@@ -56,6 +57,9 @@ const routes: Routes = [
       { path: "suggest-traject", component: SuggestTrajectComponent },
       { path: "Dashboard", component: DashboardComponent },
       { path: "my-trip", component: MyTripComponent },
+      { path: "my-trip-client", component: ClientMyTripComponent },
+
+
       { path: "forgot-password", component: ForgotPasswordComponent },
       { path: "verification", component: VerificationComponent },
       { path: "ride-request", component: RideRequestListComponent },

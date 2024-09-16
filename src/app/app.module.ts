@@ -70,6 +70,7 @@ import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-
 import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
 import { LogDialogComponent } from './log-dialog/log-dialog.component';
 import { Page404Component } from './page404/page404.component';
+import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import { Page404Component } from './page404/page404.component';
     ConnexionDriverComponent,
     LogDialogComponent,
     Page404Component,
+    ClientMyTripComponent,
   ],
   imports: [
     BrowserModule,

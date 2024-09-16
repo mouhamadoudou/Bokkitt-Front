@@ -4,6 +4,7 @@
     height: 900px;
     display: flex;
     justify-content: center;
+  padding-top: 30px;
   }
   
   .trip-contenair mat-card {

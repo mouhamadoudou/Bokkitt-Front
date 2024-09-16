@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
       phoneNumber : this.fb.control(''),
       city : this.fb.control(''),
  
- 
       username : this.fb.control(''),
       password : this.fb.control('')
     });
@@ -62,7 +61,7 @@ export class LoginComponent implements OnInit {
     let auth = this.authservice.loginClient(phoneNumber, password);
 
     if (auth == true) {
-      this.router.navigateByUrl("/driver-dashboard")
+      this.router.navigateByUrl("/home")
       // this.router.navigate(['/']);
     } else {
       this.dialog.open(LogDialogComponent)

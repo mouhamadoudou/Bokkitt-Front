@@ -5,6 +5,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { AuthentificationService } from '../services/authentification.service';
 
 
 interface Road {
@@ -56,7 +57,7 @@ export class AddTripComponent implements OnInit {
     { value: 'Hybride', viewValue: 'Hybride' }
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public authService : AuthentificationService) { }
 
   formatLicensePlate(value: string) {
     const cleanedValue = value.replace(/[^a-zA-Z0-9]/g, '');

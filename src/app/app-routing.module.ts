@@ -40,7 +40,6 @@ const routes: Routes = [
       // },
       // { path: "", component: ChooseTypeUserComponent },
 
-      { path: "**", component: Page404Component },
       { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
@@ -78,6 +77,7 @@ const routes: Routes = [
         path: "load-payments", component: LoadPaymentsComponent, canActivate: [AuthorizationGuard],
         data: { roles: ['ADMIN'] }
       },
+      { path: "**", component: Page404Component },
 
     ]
   }

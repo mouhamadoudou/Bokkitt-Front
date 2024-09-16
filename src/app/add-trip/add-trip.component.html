@@ -1,6 +1,14 @@
 <div class="trip-contenair">
     <mat-card>
-        <mat-card-header>
+        <mat-card-header class="driver-mode" *ngIf="authService.roles && authService.roles.includes('DRIVER')">
+            
+            <mat-card-title>
+                Annoncer un trajet
+            </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-header  *ngIf="!authService.roles">
+            
             <mat-card-title>
                 Annoncer un trajet
             </mat-card-title>
@@ -9,9 +17,8 @@
         <mat-card-content>
             <div class="time">
 
-
                 <mat-stepper orientation="vertical" #stepper>
-                    <mat-step>
+                    <mat-step class="driver-mo  de">
                         <form>
                             <ng-template matStepLabel> Ville de départ / arrivée et prix</ng-template>
                             <div class="date-time-title">
@@ -33,7 +40,6 @@
                                 <h4> Lieux de depart et arrivé : </h4>
                                 <mat-icon matSuffix>redo</mat-icon>
                             </div>
-
 
                             <div class="principal-point-container">
                                 <mat-form-field class="search-custom" appearance="outline">

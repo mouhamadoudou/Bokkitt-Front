@@ -1,15 +1,16 @@
 .trip-contenair {
-  background-color: rgb(55, 55, 55);
+  background-color: rgb(48, 48, 48);
   width: 100%;
-  height: 930px;
+  height: 1100px;
   display: flex;
   justify-content: center;
+  padding-top: 30px;
 }
 
 .trip-contenair mat-card {
   margin-top: 10px;
   padding: 0 5px 0 5px;
-  background-color: rgb(92, 91, 91);
+  background-color: transparent;
   width: 100%;
   max-width: 800px;
   height: 930px;
@@ -24,10 +25,12 @@ mat-card-header {
   mat-card-title {
     margin-bottom: 10px;
   }
-
   border-radius: 20px;
 }
 
+.driver-mode {
+  background-color: #437F97;
+}
 
 mat-card-content {
   margin-top: 10px;

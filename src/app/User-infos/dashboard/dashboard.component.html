@@ -36,12 +36,13 @@
         </div>
 
         <div *ngIf="activeSection === 'payment'" class="payment">
-            <app-reservation-list/>
+            <app-reservation-list *ngIf="authService.roles && authService.roles.includes('DRIVER')" />
+            <app-reservation-client />
+            <!-- <app-reservation-client *ngIf="authService.roles && authService.roles.includes('USER')" /> -->
         </div>
 
         <div *ngIf="activeSection === 'subscription'" class="subscription">
             <app-reservation-list/>
-
         </div>
 
         <div *ngIf="activeSection === 'privacy'" class="privacy">

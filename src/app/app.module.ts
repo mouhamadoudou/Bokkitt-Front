@@ -71,6 +71,7 @@ import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connex
 import { LogDialogComponent } from './log-dialog/log-dialog.component';
 import { Page404Component } from './page404/page404.component';
 import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
+import { ReservationClientComponent } from './User-infos/reservation-client/reservation-client.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-tri
     LogDialogComponent,
     Page404Component,
     ClientMyTripComponent,
+    ReservationClientComponent,
   ],
   imports: [
     BrowserModule,

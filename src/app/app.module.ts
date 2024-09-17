@@ -72,6 +72,7 @@ import { LogDialogComponent } from './log-dialog/log-dialog.component';
 import { Page404Component } from './page404/page404.component';
 import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
 import { ReservationClientComponent } from './User-infos/reservation-client/reservation-client.component';
+import { InformationsClientComponent } from './User-infos/informations-client/informations-client.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { ReservationClientComponent } from './User-infos/reservation-client/rese
     Page404Component,
     ClientMyTripComponent,
     ReservationClientComponent,
+    InformationsClientComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ mat-card-content {
 }
 
 mat-card-title {
-  color: #b9155c;
+  color: rgb(67, 127, 151);
   font-size: 26px;
 }
 
@@ -101,7 +101,7 @@ h2 {
   left: -44px;
   width: 10px;
   height: 10px;
-  background: #27e027;
+  background: rgba(67, 127, 151, 0.822);
   border: 5px solid #eee9dc;
   border-radius: 50%;
   display: block;

@@ -32,13 +32,14 @@
     
     >
         <div *ngIf="activeSection === 'profile'" class="profile-contenair">
-            <app-profile-infos />
+            <app-profile-infos *ngIf="authService.roles && authService.roles.includes('DRIVER')" />
+            <app-informations-client *ngIf="authService.roles && authService.roles.includes('USER')" />
+
         </div>
 
         <div *ngIf="activeSection === 'payment'" class="payment">
             <app-reservation-list *ngIf="authService.roles && authService.roles.includes('DRIVER')" />
-            <app-reservation-client />
-            <!-- <app-reservation-client *ngIf="authService.roles && authService.roles.includes('USER')" /> -->
+            <app-reservation-client *ngIf="authService.roles && authService.roles.includes('USER')" />
         </div>
 
         <div *ngIf="activeSection === 'subscription'" class="subscription">

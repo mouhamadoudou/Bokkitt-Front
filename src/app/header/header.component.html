@@ -1,13 +1,13 @@
 <mat-toolbar
-    [ngStyle]="{'background-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }" class="toolbar">
-    <button *ngIf="!authService.roles" mat-icon-button routerLink="/home"
-        class="bokkitt-icon">
+    [ngStyle]="{'background-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+    class="toolbar">
+    <button *ngIf="!authService.roles" mat-icon-button routerLink="/home" class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>
 
-    <button *ngIf="authService.roles && authService.roles.includes('DRIVER')" [routerLink]="['/driver-dashboard']" mat-icon-button
-        class="bokkitt-icon">
+    <button *ngIf="authService.roles && authService.roles.includes('DRIVER')" [routerLink]="['/driver-dashboard']"
+        mat-icon-button class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>
@@ -26,7 +26,7 @@
             <mat-icon> search </mat-icon>
             Rechercher trajet
         </button>
-        <button mat-button routerLink="/suggest-traject" *ngIf=" !authService.roles">
+        <button mat-button routerLink="/suggest-traject" *ngIf="!authService.roles  ">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>
@@ -88,7 +88,6 @@
             <mat-card class="user-profile">
                 <mat-card-header>
                     <mat-icon color="primary"> person </mat-icon>
-
                 </mat-card-header>
                 <mat-card-content>
                     <button mat-raised-button *ngIf="authService.authentificated==true" routerLink="/informations">
@@ -149,7 +148,7 @@
 </mat-toolbar>
 
 <mat-drawer-container>
-    
+
     <!-- <mat-drawer #drawerId mode="side" class="side-nav" position="start">
         <mat-nav-list>
             <mat-list-item>

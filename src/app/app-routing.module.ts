@@ -41,47 +41,79 @@ const routes: Routes = [
       // },
       // { path: "", component: ChooseTypeUserComponent },
 
+
       { path: "", component: HomeComponent },
       { path: "home", component: HomeComponent },
       { path: "trip", component: TripComponent },
+
 
       { path: "login-client", component: LoginComponent },
       { path: "login-driver", component: ConnexionDriverComponent },
       { path: "choose-profile", component: ChooseTypeUserComponent },
 
-      { path: "profile", component: ProfileComponent },
-      { path: "students", component: StudentsComponent },
-      { path: "payments", component: PaymentsComponent },
-      { path: "reservation", component: ReservationComponent },
       { path: "add-trip", component: AddTripComponent },
       { path: "suggest-traject", component: SuggestTrajectComponent },
-      { path: "Dashboard", component: DashboardComponent },
-      { path: "my-trip", component: MyTripComponent },
-      { path: "my-trip-client", component: ClientMyTripComponent },
-
-
       { path: "forgot-password", component: ForgotPasswordComponent },
       { path: "verification", component: VerificationComponent },
-      { path: "ride-request", component: RideRequestListComponent },
-      { path: "informations", component: DashboardComponent },
-      {
-        path: "driver-dashboard", component: DriverDashboardComponent,
-        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
-      },
-      {
-        path: "driver-ride-request", component: DriverRideRequestComponent,
-        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER'] }
-      },
+
+      // { path: "students", component: StudentsComponent },
+      // { path: "payments", component: PaymentsComponent },
+      // { path: "profile", component: ProfileComponent },
+
+            // ---------------------DRIVER && PASSAGER LOGIN-----
 
       {
-        path: "load-students", component: LoadStudentsComponent, canActivate: [AuthorizationGuard],
-        data: { roles: ['ADMIN'] }
+        path: "informations", component: DashboardComponent,
+        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER', 'USER'] }
       },
+
+      // ---------------------DRIVER-----------------------
       {
-        path: "load-payments", component: LoadPaymentsComponent, canActivate: [AuthorizationGuard],
-        data: { roles: ['ADMIN'] }
+        path: '',
+        canActivate: [AuthorizationGuard],
+        data: { roles: ['DRIVER'] },
+        children: [
+          { path: 'driver-dashboard', component: DriverDashboardComponent },
+          { path: 'driver-ride-request', component: DriverRideRequestComponent },
+          { path: "my-trip", component: MyTripComponent },
+          // { path: "informations", component: DashboardComponent },
+        ]
       },
+
+      // ---------------------PASSAGER---------------------
+      {
+        path: '',
+        canActivate: [AuthorizationGuard],
+        data: { roles: ['USER'] },
+        children: [
+          { path: "reservation", component: ReservationComponent },
+          { path: "my-trip-client", component: ClientMyTripComponent },
+          { path: "ride-request", component: RideRequestListComponent },
+          // { path: "informations", component: DashboardComponent },
+        ]
+      },
+
+
+      // ---------------------DRIVER && PASSAGER LOGIN-----
+
+      // {
+      //   path: "informations", component: DashboardComponent,
+      //   canActivate: [AuthorizationGuard], data: { roles: ['DRIVER', 'USER'] }
+      // },
+      // {
+      //   path: '',
+      //   canActivate: [AuthorizationGuard],
+      //   data: { roles: ['DRIVER', 'USER'] },
+      //   children: [
+      //     { path: "informations", component: DashboardComponent },
+      //   ]
+      // },
+
+
+
+
       { path: "**", component: Page404Component },
+
 
     ]
   }

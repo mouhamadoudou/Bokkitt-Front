@@ -139,7 +139,8 @@
 
 ::ng-deep .mat-menu-phone {
     margin-top: 10px;
-    background-color: #a81650 !important;
+    background-color: #383838 !important;
+    /* background-color: #a81650 !important; */
     border-radius: 20px !important;
 }
 

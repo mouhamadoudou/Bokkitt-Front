@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { DataService } from '../../services/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../component/popup/popup.component';
@@ -33,7 +32,7 @@ export class DriverDashboardComponent implements OnInit, AfterViewInit {
   public tmpDate : string = "";
 
 
-  constructor (private router : Router, private dataService: DataService, 
+  constructor (private router : Router,
     private _snackBar: MatSnackBar, public dialog: MatDialog) {
   }
   
@@ -82,7 +81,6 @@ export class DriverDashboardComponent implements OnInit, AfterViewInit {
 
 
   onCardClick(traject: any) {
-    this.dataService.setData(traject)
     this.router.navigate(['/trip']);
   }
 }

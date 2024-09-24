@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
-import { DataService } from '../services/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../component/popup/popup.component';
@@ -45,7 +44,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
     destination: ''
   };
 
-  constructor (private router : Router, private dataService: DataService, 
+  constructor (private router : Router, 
     private _snackBar: MatSnackBar, public dialog: MatDialog) {
   }
   
@@ -117,7 +116,6 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
 
   onCardClick(traject: any) {
     // console.log(this.dataSource)
-    this.dataService.setData(traject)
     this.router.navigate(['/trip']);
   }
 

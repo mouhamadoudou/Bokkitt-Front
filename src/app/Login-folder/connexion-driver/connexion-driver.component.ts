@@ -37,36 +37,49 @@ export class ConnexionDriverComponent implements OnInit {
   public signUpUser : any[] = []
 
   ngOnInit(): void {
-    this.loginFormGroup = this.fb.group({
-      firstName : this.fb.control(''),
-      lastName: this.fb.control(''),
-      phoneNumber : this.fb.control(''),
-      city : this.fb.control(''),
+    // this.loginFormGroup = this.fb.group({
+    //   firstName : this.fb.control(''),
+    //   lastName: this.fb.control(''),
+    //   phoneNumber : this.fb.control(''),
+    //   city : this.fb.control(''),
  
  
-      username : this.fb.control(''),
-      password : this.fb.control('')
-    });
+    //   username : this.fb.control(''),
+    //   password : this.fb.control('')
+    // });
   }
 
   onSignUp() :void {
-    console.log(this.signupObj)
-    this.signUpUser.push(this.signupObj)
-    localStorage.setItem('signUpUsers', JSON.stringify(this.signUpUser))
+    let phoneNumber : string = this.signupObj.phoneNumber;
+    let password : string = this.signupObj.password;
+    let firstName : string = this.signupObj.firstName;
+    let lastName : string = this.signupObj.lastName;
+    let role :string = "DRIVER";
+
+    this.authservice.register(firstName, "NiangTMP", phoneNumber, password, role).then((userData) => {
+      console.log("Le Driver est inscrit : ", userData);
+      
+      this.router.navigateByUrl("/driver-dashboard")
+    }).catch((error) => {
+      console.error("Échec de lors de l'inscription : ", error);
+      this.dialog.open(LogDialogComponent)
+    });
   }
 
   onLoginDriver() :void {
     console.log(this.loginObj)
-    let phoneNumber = this.loginObj.phoneNumber;
-    let password = this.loginObj.password;
-    let auth = this.authservice.loginDriver(phoneNumber, password);
+    let phoneNumber : string = this.loginObj.phoneNumber;
+    let password : string = this.loginObj.password;
+    let role : string = "DRIVER";
 
-    if (auth == true) {
+    this.authservice.login(phoneNumber, password, role).then((userData) => {
+      console.log("Driver authentifié : ", userData);
       this.router.navigateByUrl("/driver-dashboard")
-      // this.router.navigate(['/']);
-    } else {
+    }).catch((error) => {
+      console.error("Échec de l'authentification : ", error);
       this.dialog.open(LogDialogComponent)
-    }
+    });
+
     console.log(phoneNumber, password)
   }
 }

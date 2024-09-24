@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
-import { DataService } from '../services/data.service';
 
 export interface Traject {
   depart: string;
@@ -41,20 +40,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public completed = [true, false, true]; 
   public tmpDate : string = "";
 
-
   filterValues = {
     depart: '',
     destination: ''
   };
 
-  constructor (private router : Router, private dataService: DataService, private cdr: ChangeDetectorRef) {
-
+  constructor (private router : Router, private cdr: ChangeDetectorRef) {
   }
   
   updateDate(elementDate: string) {
-    console.log('hello wold')
       this.tmpDate = elementDate;
-      console.log(this.tmpDate)
+      // console.log(this.tmpDate)
   }
 
   myControl = new FormControl('');
@@ -64,7 +60,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   filteredOptions2 = new Observable<string[]>;
   
   ngOnInit(): void {
-    
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -127,7 +122,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onCardClick(traject: any) {
     // console.log(this.dataSource)
-    this.dataService.setData(traject)
     this.router.navigate(['/trip']);
   }
 }

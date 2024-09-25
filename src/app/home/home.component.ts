@@ -112,6 +112,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
   
+  formatTime(time: string): string {
+    const [hours, minutes] = time.split(':');
+    return `${hours}h${minutes}`;
+  }
 
   private _filter(value: string): string[] {
     // console.log(this.dataSource)

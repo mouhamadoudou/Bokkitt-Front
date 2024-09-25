@@ -73,7 +73,12 @@
                 <div class="traject">
                   <div class="traject-first-comp">
                     <mat-icon color="primary">access_time</mat-icon>
-                    <p>{{element.time}}</p>
+                    <p>
+                      {{ formatTime(element.time) }}
+
+                      <!-- {{element.time}} -->
+                    </p>
+                    
                     <mat-icon color="primary">chair</mat-icon> 
                     <p class="disp-place">Place :</p>
                       <p>

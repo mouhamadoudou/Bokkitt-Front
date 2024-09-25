@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import {ChangeDetectionStrategy, } from '@angular/core';
 
 @Component({
   selector: 'app-time-picker',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./time-picker.component.css']
 })
 export class TimePickerComponent {
+  @Output() timeChange = new EventEmitter<string>();
+  selectedTime: string | null = "12h-14h";
   times: string[] = [
     "00h-02h",
     "02h-04h",
@@ -21,8 +24,9 @@ export class TimePickerComponent {
     "22h-00h"
   ]
   
-  selectedTime: string | null = "12h-14h";
 
-  constructor() {
+  onTimeChange(time: string) {
+    this.selectedTime = time;
+    this.timeChange.emit(time); 
   }
 }

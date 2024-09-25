@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 import { filter } from 'rxjs/operators';
+import { TmpTripDataService } from '../services/tmp-trip-data.service';
 
 @Component({
   selector: 'app-trip',
@@ -15,9 +16,14 @@ export class TripComponent implements OnInit, AfterViewInit {
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
 
-  constructor(private  router: Router, public authService: AuthentificationService) { }
+  constructor(
+    private  router: Router, 
+    public authService: AuthentificationService,
+    private tmpTripData : TmpTripDataService
+  ) { }
 
   ngOnInit(): void {
+    this.trajectData = this.tmpTripData.getTmpTrip();
     console.log(this.trajectData)
     if (!this.trajectData) {
       console.error("error : data");
@@ -40,6 +46,11 @@ export class TripComponent implements OnInit, AfterViewInit {
     } else {
       this.router.navigateByUrl("login")
     }
+  }
+  
+  formatTime(time: string): string {
+    const [hours, minutes] = time.split(':');
+    return `${hours}h${minutes}`;
   }
 
   startStepper() {

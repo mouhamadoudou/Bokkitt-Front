@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import {ChangeDetectionStrategy, } from '@angular/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {provideNativeDateAdapter} from '@angular/material/core';
-import { MatNativeDateModule } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-date-input',
@@ -17,11 +13,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 export class DateInputComponent {
   minDate: Date;
   todayDate: Date;
+  @Output() dateChange = new EventEmitter<string>();
 
   constructor() {
     this.todayDate = new Date();
     this.minDate = this.todayDate;
   }
+  onDateChange(newDate: Date) {
+    this.dateChange.emit(newDate.toISOString());
+  }
+
+  
 }
 
 

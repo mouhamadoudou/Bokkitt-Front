@@ -8,25 +8,8 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { TripService } from '../services/trip.service';
 import { DatePipe } from '@angular/common';
-
-export interface Traject {
-  bag: boolean,
-  bagcap: string,
-  bagpay: string,
-  date: string,
-  departure: string,
-  departuredesc: string,
-  destination: string,
-  destinationdesc: string,
-  driverid: number,
-  id: number,
-  isfull: boolean,
-  phonenumber: string,
-  price: string,
-  seat: number,
-  smoke: boolean,
-  time: string
-}
+import { TripModel } from '../models/traject.model';
+import { TmpTripDataService } from '../services/tmp-trip-data.service';
 
 @Component({
   selector: 'app-home',
@@ -54,7 +37,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router, private cdr: ChangeDetectorRef,
     private tripService: TripService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private tripDataService: TmpTripDataService,
   ) {
   }
 
@@ -87,25 +71,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   loadAndInitTrips(): Promise<void> {
     return new Promise((resolve, reject) => {
-      // this.loading = true; 
       this.tripService.getAllTrips().subscribe(
         (data) => {
-
-          // console.log(data.data[0].date)
-          // data = data.data.map((trip: Traject) => 
-          //   this.datePipe.transform(trip.date, 'EEEE d MMMM', 'UTC')!
-          // );
-          console.log("hello ", data)
           this.dataSource = new MatTableDataSource(data.data);
-          // this.dataSource.filterPredicate = this.createFilter();
-          // this.loading = false; 
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           resolve();
         },
         (error) => {
-          console.error('Error fetching trips:', error);
-          // this.loading = false; 
+          console.error('Error fetching trip:', error);
           reject(error);
         }
       );
@@ -145,6 +119,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onCardClick(traject: any) {
     // console.log(this.dataSource)
+    this.tripDataService.setTmpTrip(traject);
     this.router.navigate(['/trip']);
   }
 }

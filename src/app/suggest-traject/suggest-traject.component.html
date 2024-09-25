@@ -18,8 +18,8 @@
                             </div>
 
                             <div class="date-time-conetainer">
-                                <app-date-input />
-                                <app-time-picker />
+                                <app-date-input (dateChange)="onDateSelected($event)" />
+                                <app-time-picker (timeChange)="onTimeSelected($event)"/>
                             </div>
                             <div class="date-time-title">
                                 <h4> Lieux de depart et arrivé : </h4>
@@ -51,16 +51,14 @@
 
                                 <mat-form-field appearance="fill" class="traject-input">
                                     <mat-label>Nb de place</mat-label>
-                                    <input matInput placeholder="ex: 4" type="text" pattern="\d*" ngModel
+                                    <input matInput placeholder="ex: 4" [(ngModel)]="filterValues.nbSeat" type="text" pattern="\d*" ngModel
                                         name="nombrePlace" #nombrePlace="ngModel"
                                         (keypress)="validateNumberInput($event)" required>
                                     <mat-icon matSuffix color="primary">airline_seat_legroom_normal</mat-icon>
                                 </mat-form-field>
                             </div>
 
-                            <button mat-raised-button class="step-one-button" color="primary" 
-                            
-                             routerLink="/login-client">
+                            <button mat-raised-button class="step-one-button" color="primary"  (click)="onSubmitbtn()">
                                 Confirmer la demande
                             </button>
 

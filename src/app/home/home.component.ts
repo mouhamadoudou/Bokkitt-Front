@@ -4,53 +4,63 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+import { TripService } from '../services/trip.service';
+import { DatePipe } from '@angular/common';
 
 export interface Traject {
-  depart: string;
-  destination: string;
-  date : string,
-  time : string,
-  clients : any,
-  chair : number,
-  price : number,
-  smoke : false,
-  bague : false,
-  phone : false,
-  payemnts : null,
-  isCompleted : boolean
+  bag: boolean,
+  bagcap: string,
+  bagpay: string,
+  date: string,
+  departure: string,
+  departuredesc: string,
+  destination: string,
+  destinationdesc: string,
+  driverid: number,
+  id: number,
+  isfull: boolean,
+  phonenumber: string,
+  price: string,
+  seat: number,
+  smoke: boolean,
+  time: string
 }
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
+  providers: [DatePipe],
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator) paginator! : MatPaginator;
-  @ViewChild(MatSort) sort! : MatSort;
-  
-  public dataSource : any;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  public dataSource: any;
   public displayedColumns = ["id"];
-  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine", "Tambacounda", "Tambacounda"]; 
-  public client = ["Mohammed", undefined]; 
-  public completed = [true, false, true]; 
-  public tmpDate : string = "";
+  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine", "Tambacounda", "Tambacounda"];
+  public client = ["Mohammed", undefined];
+  public completed = [true, false, true];
+  public tmpDate: string = "";
 
   filterValues = {
-    depart: '',
+    departure: '',
     destination: ''
   };
 
-  constructor (private router : Router, private cdr: ChangeDetectorRef) {
+  constructor(private router: Router, private cdr: ChangeDetectorRef,
+    private tripService: TripService,
+    private datePipe: DatePipe
+  ) {
   }
-  
+
   updateDate(elementDate: string) {
-      this.tmpDate = elementDate;
-      // console.log(this.tmpDate)
+    this.tmpDate = elementDate;
+    // console.log(this.tmpDate)
   }
 
   myControl = new FormControl('');
@@ -58,8 +68,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   filteredOptions = new Observable<string[]>;
   filteredOptions2 = new Observable<string[]>;
-  
+
   ngOnInit(): void {
+
+    this.loadAndInitTrips()
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -70,53 +83,59 @@ export class HomeComponent implements OnInit, AfterViewInit {
       map(value => this._filter(value || '')),
     );
 
-    const traject: Traject[] = [];
-    for (let i = 1; i < 100; i++) {
-      traject.push(
-        {
-          depart : this.city[Math.floor(Math.random() * this.city.length)],
-          destination: this.city[Math.floor(Math.random() * this.city.length)],
-          date : i == 1 || i == 2 ? "Mercredi 10 Juillet" : "Mercredi 11 Juillet" ,
-          time : "12h30",
-          clients : [this.client[Math.floor(Math.random()  * 2)], this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)]],
-          chair : 3,
-          price : Math.round(800 + Math.random() * 10000),
-          smoke : false,
-          bague : false,
-          phone : false,
-          payemnts : null,
-          isCompleted: this.completed[Math.floor(Math.random()  * 3)]
-        }
-      )
-    }
-    this.dataSource = new MatTableDataSource(traject)
-    this.dataSource.filterPredicate = this.createFilter();
   }
 
+  loadAndInitTrips(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      // this.loading = true; 
+      this.tripService.getAllTrips().subscribe(
+        (data) => {
+
+          // console.log(data.data[0].date)
+          // data = data.data.map((trip: Traject) => 
+          //   this.datePipe.transform(trip.date, 'EEEE d MMMM', 'UTC')!
+          // );
+          console.log("hello ", data)
+          this.dataSource = new MatTableDataSource(data.data);
+          // this.dataSource.filterPredicate = this.createFilter();
+          // this.loading = false; 
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          resolve();
+        },
+        (error) => {
+          console.error('Error fetching trips:', error);
+          // this.loading = false; 
+          reject(error);
+        }
+      );
+    });
+  }
+  
+
   private _filter(value: string): string[] {
-    console.log(this.dataSource)
+    // console.log(this.dataSource)
     const filterValue = value.toLowerCase();
 
     return this.city.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  createFilter(): (data: Traject, filter: string) => boolean {
-    const filterFunction = (data: Traject, filter: string): boolean => {
+  createFilter(): (data: any, filter: string) => boolean {
+    const filterFunction = (data :any, filter: string): boolean => {
       const searchTerms = JSON.parse(filter);
-      return data.depart.toLowerCase().indexOf(searchTerms.depart.toLowerCase()) !== -1
-         && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
+      console.log(searchTerms)
+      return data.departure.toLowerCase().indexOf(searchTerms.departure.toLowerCase()) !== -1
+        && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
     };
     return filterFunction;
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.cdr.detectChanges(); // Manually trigger change detection after view initialization
+    this.cdr.detectChanges();
 
-  }   
+  }
 
-  filterTraject() :void {
+  filterTraject(): void {
     this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 

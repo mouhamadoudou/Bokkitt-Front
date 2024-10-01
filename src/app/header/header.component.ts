@@ -3,6 +3,8 @@ import { AuthentificationService } from '../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthcheckService } from '../services/authcheck.service';
+import { UserService } from '../services/user.service';
+import { jwtDecode } from "jwt-decode"
 
 @Component({
   selector: 'app-header',
@@ -10,18 +12,15 @@ import { AuthcheckService } from '../services/authcheck.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
-
-
   public isOpenDrawer: boolean = false;
-  constructor(public authService: AuthentificationService, 
+  public userName: string = "";
+  constructor(public authService: AuthentificationService,
     private router: Router,
-    public authCheck : AuthcheckService
+    public authCheck: AuthcheckService,
+    public userService: UserService
   ) {
   }
   ngOnInit(): void {
-    const tmp =  this.authCheck.getRoles()
-
-    console.log(tmp)
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -31,6 +30,30 @@ export class HeaderComponent implements OnInit {
     // if (this.authService.roles && this.authService.roles.includes('DRIVER')) {
     //   this.router.navigate(['/driver-dashboard']);
     // }
+  }
+
+  // new Promise((resolve, reject) => {
+  //   this.userService.getUserById("5").subscribe(
+  //     (data) => {
+  //      console.log("looooooooooooool", data)
+  //       resolve("ok");  
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching user:', error);
+  //       reject(error);
+  //     }
+  //   );
+  // });
+
+  getName(): void {
+    // console.log("hello worldddd")
+    const token = localStorage.getItem('token');
+    if (token != null) {
+      const decodedToken: any = jwtDecode(token);
+      // console.log(decodedToken)
+        this.userName = decodedToken.firstName;
+    }
+    // console.log(this.userName)
   }
 
   logout(): void {

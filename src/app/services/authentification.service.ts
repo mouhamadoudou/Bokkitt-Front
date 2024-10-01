@@ -18,13 +18,7 @@ export class AuthentificationService {
 
   // public phoneNumber! : any;
   public roles: any;
-  // public users : any = {
-  //   '787536469' : ['USER', 'ADMIN'],
-  // }
 
-  // public driver : any = {
-  //   '787536468' : ['DRIVER']
-  // }
 
   constructor(private router: Router, private http: HttpClient,
   ) { }

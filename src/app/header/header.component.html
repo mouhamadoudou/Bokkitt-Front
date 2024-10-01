@@ -90,10 +90,11 @@
                     <mat-icon color="primary"> person </mat-icon>
                 </mat-card-header>
                 <mat-card-content>
-                    <button mat-raised-button *ngIf="authService.authentificated==true" routerLink="/informations">
-                        Hello Mohammed
+                    <button mat-raised-button *ngIf="authCheck.isConnected()" routerLink="/informations">
+                        {{ getName() }}
+                        Hello {{userName}}
                     </button>
-                    <button mat-raised-button *ngIf="authService.authentificated==false" routerLink="/choose-profile">
+                    <button mat-raised-button *ngIf="!authCheck.isConnected()" routerLink="/choose-profile">
                         Connexion
                     </button>
                 </mat-card-content>
@@ -124,7 +125,7 @@
                 <mat-icon> query_builder </mat-icon>
                 Liste de demande
             </button>
-            <button mat-menu-item routerLink="/informations" *ngIf="authService.authentificated==true">
+            <button mat-menu-item routerLink="/informations" *ngIf="authCheck.isConnected()">
                 <mat-icon> filter_b_and_w </mat-icon>
                 Mes informations
             </button>
@@ -132,7 +133,7 @@
                 <mat-icon> live_help </mat-icon>
                 A propos
             </button>
-            <button mat-menu-item *ngIf="authService.authentificated==true" (click)="logout()">
+            <button mat-menu-item *ngIf="authCheck.isConnected()" (click)="logout()">
                 <mat-icon> exit_to_app </mat-icon>
                 Deconnexion
             </button>

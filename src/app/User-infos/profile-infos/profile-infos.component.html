@@ -3,7 +3,7 @@
     <mat-card>
         <mat-card-header>
             <h1
-                [ngStyle]="{'color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
+                [ngStyle]="{'color': authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }">
                 Identifiants
             </h1>
         </mat-card-header>
@@ -19,7 +19,7 @@
                                 787536469
                             </p>
                             <button mat-raised-button (click)="openDialog({ En: 'phone', Fr: 'numéro de téléphone' })"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -38,7 +38,7 @@
                                 *********
                             </p>
                             <button mat-raised-button (click)="openDialog({ En :'password', Fr : 'mot de passe' })"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -52,7 +52,7 @@
     <mat-card class="card-2">
         <mat-card-header>
             <h1
-                [ngStyle]="{'color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
+                [ngStyle]="{'color': authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }">
                 Informations
             </h1>
         </mat-card-header>
@@ -65,10 +65,10 @@
                         </h2>
                         <div>
                             <p>
-                                Uzumaki
+                                {{ userData.firstname }}
                             </p>
                             <button mat-raised-button (click)="openDialog({ En : 'firstName', Fr : 'prénom' })"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -83,10 +83,10 @@
                         </h2>
                         <div>
                             <p>
-                                Naruto
+                                {{ userData.lastname }}
                             </p>
                             <button mat-raised-button (click)="openDialog({ En : 'lastName', Fr : 'Nom' })"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
                                 color="primary">
                                 <mat-icon>edit</mat-icon>
                             </button>
@@ -103,11 +103,11 @@
                         <div>
 
                             <p>
-                                24
+                                {{ userData.age }}
                             </p>
 
                             <button mat-raised-button (click)="openDialog({En :'old', Fr : 'age'})" color="primary"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
@@ -118,16 +118,16 @@
                 <mat-list-item>
                     <div class="list-contenair">
                         <h2>
-                            Sex
+                            Genre
                         </h2>
                         <div>
 
                             <p>
-                                Male
+                                {{userData.gender}}
                             </p>
 
                             <button mat-raised-button (click)="openDialog({En : 'sex', Fr :  'genre'})" color="primary"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>
@@ -142,10 +142,10 @@
                         </h2>
                         <div>
                             <p>
-                                Dakar
+                                {{ userData.city }}
                             </p>
                             <button mat-raised-button (click)="openDialog({En : 'city', Fr : 'ville'})" color="primary"
-                                [ngStyle]="{'background-color' : authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }">
+                                [ngStyle]="{'background-color' : authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </div>

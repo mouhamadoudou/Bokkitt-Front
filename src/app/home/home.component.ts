@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.tripService.getAllTrips().subscribe(
         (data) => {
           this.dataSource = new MatTableDataSource(data.data);
+          this.dataSource.filterPredicate = this.createFilter();
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           resolve();  
@@ -100,8 +101,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   createFilter(): (data: any, filter: string) => boolean {
     const filterFunction = (data :any, filter: string): boolean => {
+
       const searchTerms = JSON.parse(filter);
-      console.log(searchTerms)
       return data.departure.toLowerCase().indexOf(searchTerms.departure.toLowerCase()) !== -1
         && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
     };
@@ -118,7 +119,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   onCardClick(traject: any) {
-    // console.log(this.dataSource)
     this.tripDataService.setTmpTrip(traject);
     this.router.navigate(['/trip']);
   }

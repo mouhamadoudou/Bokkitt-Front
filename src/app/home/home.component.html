@@ -58,7 +58,7 @@
                 <!-- {{element.date}} -->
                 {{ element.date | date: 'EEEE d MMMM' : 'UTC' }}
               </h2>
-              {{updateDate(element.date)}}
+              {{ updateDate(element.date) }}
             </div>
 
             <mat-card class="table-comp" [ngClass]="{ 'disabled': element.isfull}" (click)="onCardClick(element)">

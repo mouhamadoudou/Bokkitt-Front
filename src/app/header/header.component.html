@@ -1,7 +1,7 @@
 <mat-toolbar
     [ngStyle]="{'background-color': authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
     class="toolbar">
-    <button *ngIf="!authCheck.getRoles()" mat-icon-button routerLink="/home" class="bokkitt-icon">
+    <button *ngIf="!authCheck.isConnected()" mat-icon-button routerLink="/home" class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>

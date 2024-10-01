@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthentificationService } from '../../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthcheckService } from '../../services/authcheck.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,10 @@ export class DashboardComponent {
     this.activeSection = section;
   }
 
-  constructor (public authService : AuthentificationService, private router: Router) {
+  constructor (public authService : AuthentificationService, private router: Router,
+    public authCheck : AuthcheckService
+    
+  ) {
   }
 
 

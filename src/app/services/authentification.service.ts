@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from "jwt-decode"
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class AuthentificationService {
   //   '787536468' : ['DRIVER']
   // }
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient,
+  ) { }
 
   public async login(phoneNumber: string, password: string, role: string): Promise<any> {
 
@@ -40,7 +42,12 @@ export class AuthentificationService {
             this.userData = response;
             localStorage.setItem('token', response.token);
 
-            console.log("--------------------Réponse reçue :", this.userData);
+            // const decodedToken: any = jwtDecode(response.token);
+            // const userId = decodedToken.id;
+            // const role = decodedToken.role;
+
+            // console.log("--------------------Réponse reçue :", this.userData);
+
             this.roles = [role];
             this.authentificated = true;
             myResolve(this.userData);
@@ -59,19 +66,27 @@ export class AuthentificationService {
 
   public async register(firstname: string, lastname: string, number: string, password: string, role: string): Promise<any> {
 
-    const body = { firstName: firstname, lastName: lastname, password: password, phonenumber : number, role : (role == "USER" ? "clients" : "driver")};
+    const body = { firstName: firstname, lastName: lastname, password: password, phonenumber: number, role: (role == "USER" ? "clients" : "driver") };
 
     console.log("hello world i wannt to connnecttbekkkkkkkkkkkk")
     const req = this.http.post(this.apiUrl + "register", body);
 
     let request = new Promise((myResolve, myReject) => {
       req.subscribe(
-        (response) => {
+        (response: any) => {
           if (response) {
             this.userData = response;
             console.log("Réponse reçue :", this.userData);
-            this.roles = [role];
+            // this.roles = [role];
             this.authentificated = true;
+            this.userData = response;
+            localStorage.setItem('token', response.token);
+
+            // const decodedToken: any = jwt_decode(this.userData.token);
+            // const userId = decodedToken.id;
+            // const userName = decodedToken.name;
+            // console.log('ID Utilisateur:', userId);
+            // console.log('Nom Utilisateur:', userName);
             myResolve(this.userData);
           } else {
             myReject("Réponse vide ou invalide.");
@@ -91,7 +106,7 @@ export class AuthentificationService {
     this.authentificated = false;
     // this.phoneNumber = undefined;
     this.userData = {};
-    this.roles = undefined;
+    // this.roles = undefined;
     this.router.navigateByUrl("/home")
   }
 }

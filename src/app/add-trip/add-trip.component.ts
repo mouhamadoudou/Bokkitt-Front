@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { AuthentificationService } from '../services/authentification.service';
+import { TripService } from '../services/trip.service';
 
 
 interface Road {
@@ -17,12 +18,10 @@ interface Road {
   selector: 'app-add-trip',
   templateUrl: './add-trip.component.html',
   styleUrl: './add-trip.component.css',
-
   providers: [provideNativeDateAdapter()]
 })
 export class AddTripComponent implements OnInit {
   public licensePlate: string = '';
-  public baggagePaid: boolean = false;
   public dataSource: any;
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"];
 
@@ -38,9 +37,24 @@ export class AddTripComponent implements OnInit {
 
   filterValues = {
     depart: '',
-    destination: ''
+    departuredesc: '',
+    destination: '',
+    destinationdesc: '',
+    nbSeat: '',
+    bagCap: '',
+    bagPrice: '',
+    smoke: false,
+    pets: false,
+    clim: false,
+    baggagePaid: false,
+    carType: '',
+    selectedRoad: ''
   };
+  
 
+  selectedDate: string = "null";
+  selectedTime: string = "null";
+  selectedPrice: string = "null";
 
   roads: Road[] = [
     { value: 'Autoroute', viewValue: 'Autoroute' },
@@ -57,7 +71,10 @@ export class AddTripComponent implements OnInit {
     { value: 'Hybride', viewValue: 'Hybride' }
   ];
 
-  constructor(private fb: FormBuilder, public authService : AuthentificationService) { }
+  constructor(private fb: FormBuilder, 
+    public authService: AuthentificationService,
+    private tripService: TripService,
+  ) { }
 
   formatLicensePlate(value: string) {
     const cleanedValue = value.replace(/[^a-zA-Z0-9]/g, '');
@@ -109,10 +126,57 @@ export class AddTripComponent implements OnInit {
     }
   }
 
+  onDateSelected(date: string) {
+    this.selectedDate = date;
+    console.log("date === ", this.selectedDate)
+  }
+
+  onTimeSelected(time: string) {
+    this.selectedTime = time;
+    console.log("time == ", time)
+  }
+
+  onPriceSelected(price: any) {
+    this.selectedPrice = price;
+    console.log("price == ", price)
+  }
+
 
   onSubmit() {
-    if (this.creditCardForm.valid) {
-      console.log('Form Submitted', this.creditCardForm.value);
+    console.log(this.licensePlate, "ress == ", this.filterValues)
+
+    const body = {
+      time: this.selectedTime,
+      date: this.selectedDate ,
+      licensePlate: this.licensePlate,
+      bagcap: parseInt(this.filterValues.bagCap),
+      bagpay: parseInt(this.filterValues.bagPrice),
+      bag: this.filterValues.baggagePaid,
+      carType: this.filterValues.carType,
+      clim: this.filterValues.clim,
+      departure: this.filterValues.depart,
+      departuredesc: this.filterValues.departuredesc,
+      destination: this.filterValues.destination,
+      destinationdesc: this.filterValues.destinationdesc,
+      seat: parseInt(this.filterValues.nbSeat),
+      pets: this.filterValues.pets,
+      selectedroad: this.filterValues.selectedRoad,
+      smoke: this.filterValues.smoke,
+      price: parseInt(this.selectedPrice),
+      // driverid:parseInt()
     }
+
+    return new Promise((resolve, reject) => {
+      this.tripService.createTrip(body).subscribe(
+        (data) => {
+          console.log("mohammed")
+          resolve(data);
+        },
+        (error) => {
+          console.error('Error fetching trip:', error);
+          reject(error);
+        }
+      );
+    });
   }
 }

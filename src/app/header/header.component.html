@@ -1,18 +1,18 @@
 <mat-toolbar
-    [ngStyle]="{'background-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+    [ngStyle]="{'background-color': authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
     class="toolbar">
-    <button *ngIf="!authService.roles" mat-icon-button routerLink="/home" class="bokkitt-icon">
+    <button *ngIf="!authCheck.getRoles()" mat-icon-button routerLink="/home" class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>
 
-    <button *ngIf="authService.roles && authService.roles.includes('DRIVER')" [routerLink]="['/driver-dashboard']"
+    <button *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')" [routerLink]="['/driver-dashboard']"
         mat-icon-button class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
     </button>
 
-    <button *ngIf="authService.roles && authService.roles.includes('USER')" [routerLink]="['/home']" mat-icon-button
+    <button *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('USER')" [routerLink]="['/home']" mat-icon-button
         class="bokkitt-icon">
         <mat-icon> directions_car </mat-icon>
         <span> Bokkitt </span>
@@ -22,26 +22,26 @@
     </span>
     <div class="bokkitt-nav">
         <button mat-button routerLink="/home"
-            *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+            *ngIf=" !authCheck.isConnected() || authCheck.isConnected() && authCheck.getRoles().includes('USER')">
             <mat-icon> search </mat-icon>
             Rechercher trajet
         </button>
-        <button mat-button routerLink="/suggest-traject" *ngIf="!authService.roles  ">
+        <button mat-button routerLink="/suggest-traject" *ngIf="!authCheck.isConnected()  ">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>
-        <button mat-button routerLink="/ride-request" *ngIf="authService.roles && authService.roles.includes('USER')">
+        <button mat-button routerLink="/ride-request" *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('USER')">
             <mat-icon> person_add </mat-icon>
             Demander trajet
         </button>
 
         <button mat-button routerLink="/add-trip"
-            *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
+            *ngIf=" !authCheck.isConnected() || authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')">
             <mat-icon> add_circle </mat-icon>
             Annoncer trajet
         </button>
         <button mat-button routerLink="/driver-ride-request"
-            *ngIf=" authService.roles && authService.roles.includes('DRIVER')">
+            *ngIf=" authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')">
             <mat-icon> query_builder </mat-icon>
             Liste de demande
         </button>
@@ -50,11 +50,11 @@
             <mat-icon> perm_identity </mat-icon>
             Connexion
         </button> -->
-        <button mat-button routerLink="/choose-profile" *ngIf="authService.authentificated==false">
+        <button mat-button routerLink="/choose-profile" *ngIf="!authCheck.isConnected()">
             Connexion
         </button>
 
-        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authService.authentificated==true">
+        <button mat-button [mat-menu-trigger-for]="importMenu" *ngIf="authCheck.isConnected()">
             <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
             <div class="person-contenair">
                 <mat-icon class="custom-icon">person</mat-icon>
@@ -63,14 +63,14 @@
         </button>
         <!-- <button mat-button routerLink="profile"> Mes-Trajets </button> -->
 
-        <!-- <button mat-button *ngIf="authService.roles.includes('ADMIN')">
+        <!-- <button mat-button *ngIf="authCheck.getRoles().includes('ADMIN')">
         Annoncer un trajet
     </button> -->
         <mat-menu #importMenu class="profile-menu mat-menu-phone-profile">
-            <button mat-menu-item routerLink="/informations" *ngIf="authService.roles"> Mes informations</button>
+            <button mat-menu-item routerLink="/informations" *ngIf="authCheck.getRoles()"> Mes informations</button>
             <!-- <button mat-menu-item routerLink="load-students"
-                *ngIf="authService.roles && authService.roles.includes('ADMIN')"> Mes clients</button> -->
-            <button mat-menu-item routerLink="/informations" *ngIf="authService.roles"> Hitstorique de trajet</button>
+                *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('ADMIN')"> Mes clients</button> -->
+            <button mat-menu-item routerLink="/informations" *ngIf="authCheck.getRoles()"> Hitstorique de trajet</button>
 
             <button mat-menu-item (click)="logout()">
                 <mat-icon> exit_to_app </mat-icon>
@@ -99,28 +99,28 @@
                 </mat-card-content>
             </mat-card>
             <button mat-menu-item routerLink="/home"
-                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+                *ngIf=" !authCheck.isConnected() || authCheck.isConnected() && authCheck.getRoles().includes('USER')">
 
                 <mat-icon> search </mat-icon>
                 Rechercher trajet
             </button>
             <button mat-menu-item routerLink="/ride-request"
-                *ngIf="authService.roles && authService.roles.includes('USER')">
+                *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('USER')">
                 <mat-icon> person_add </mat-icon>
                 Demander trajet
             </button>
             <button mat-menu-item routerLink="/suggest-traject"
-                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('USER')">
+                *ngIf=" !authCheck.isConnected() || authCheck.isConnected() && authCheck.getRoles().includes('USER')">
                 <mat-icon> person_add </mat-icon>
                 Demander trajet
             </button>
             <button mat-menu-item routerLink="/add-trip"
-                *ngIf=" !authService.roles || authService.roles && authService.roles.includes('DRIVER')">
+                *ngIf=" !authCheck.isConnected() || authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')">
                 <mat-icon> add_circle </mat-icon>
                 Annoncer trajet
             </button>
             <button mat-menu-item routerLink="/driver-ride-request"
-                *ngIf="authService.roles && authService.roles.includes('DRIVER')">
+                *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')">
                 <mat-icon> query_builder </mat-icon>
                 Liste de demande
             </button>

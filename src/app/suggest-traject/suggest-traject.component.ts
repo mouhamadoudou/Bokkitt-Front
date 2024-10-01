@@ -8,7 +8,7 @@ import { map, startWith } from 'rxjs/operators';
 import { AuthentificationService } from '../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { TripService } from '../services/trip.service';
-import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-suggest-traject',
   templateUrl: './suggest-traject.component.html',
@@ -53,7 +53,6 @@ export class SuggestTrajectComponent implements OnInit {
 
   constructor(private fb: FormBuilder, authService: AuthentificationService, private router: Router,
     private tripService: TripService,
-    private http: HttpClient
 
   ) {
   }

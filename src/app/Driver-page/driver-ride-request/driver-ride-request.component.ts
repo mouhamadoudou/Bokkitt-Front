@@ -9,7 +9,7 @@ import { map, startWith } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../component/popup/popup.component';
-
+import { TripService } from '../../services/trip.service';
 
 export interface Traject {
   id : number;
@@ -40,12 +40,14 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
 
 
   filterValues = {
-    depart: '',
+    departure: '',
     destination: ''
   };
 
   constructor (private router : Router,
-    private _snackBar: MatSnackBar, public dialog: MatDialog) {
+    private _snackBar: MatSnackBar, public dialog: MatDialog,
+    private tripService: TripService,
+  ) {
   }
   
   myControl = new FormControl('');
@@ -55,7 +57,7 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
   filteredOptions2 = new Observable<string[]>;
   
   ngOnInit(): void {
-    
+    this.loadAndInitRequest()
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -66,23 +68,40 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
       map(value => this._filter(value || '')),
     );
 
-    const traject: Traject[] = [];
-    for (let i = 1; i < 100; i++) {
-      traject.push(
-        {
-          id : i,
-          depart : this.city[Math.floor(Math.random() * this.city.length)],
-          destination: this.city[Math.floor(Math.random() * this.city.length)],
-          date : i < 5 ? "Mercredi 10 Juillet" : "Mercredi 30 Juillet",
-          time : "12h30",
-          chair : 3,
-          }
-      )
-    }
-    this.dataSource = new MatTableDataSource(traject)
-    this.dataSource.filterPredicate = this.createFilter();
+    // const traject: Traject[] = [];
+    // for (let i = 1; i < 100; i++) {
+    //   traject.push(
+    //     {
+    //       id : i,
+    //       depart : this.city[Math.floor(Math.random() * this.city.length)],
+    //       destination: this.city[Math.floor(Math.random() * this.city.length)],
+    //       date : i < 5 ? "Mercredi 10 Juillet" : "Mercredi 30 Juillet",
+    //       time : "12h30",
+    //       chair : 3,
+    //       }
+    //   )
+    // }
+    // this.dataSource = new MatTableDataSource(traject)
+    // this.dataSource.filterPredicate = this.createFilter();
   }
 
+
+  loadAndInitRequest(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.tripService.getAlltripRequest().subscribe(
+        (data) => {
+          this.dataSource = new MatTableDataSource(data.data);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          resolve();
+        },
+        (error) => {
+          console.error('Error fetching trip:', error);
+          reject(error);
+        }
+      );
+    });
+  }
 
   updateTmpDate (newDate : string) : void {
     this.tmpDate = newDate;
@@ -105,17 +124,10 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }   
 
   filterTraject() :void {
     this.dataSource.filter = JSON.stringify(this.filterValues);
-  }
-
-  onCardClick(traject: any) {
-    // console.log(this.dataSource)
-    this.router.navigate(['/trip']);
   }
 
   openAddTrip(component : {}): void {

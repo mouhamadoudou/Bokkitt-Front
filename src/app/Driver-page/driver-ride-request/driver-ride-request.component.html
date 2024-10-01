@@ -2,7 +2,7 @@
     <mat-card class="card-table">
         <mat-card-header class="search-header">
             <mat-form-field class="search-custom" appearance="outline">
-                <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart" [matAutocomplete]="auto">
+                <input matInput [formControl]="myControl" [(ngModel)]="filterValues.departure" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
                     @for (option of filteredOptions | async; track option) {
                     <mat-option [value]="option">{{option}}</mat-option>
@@ -36,7 +36,7 @@
                         </mat-card-title>
                     
                     </th>
-                    <mat-card-title *ngIf="dataSource === []" color="primary">Demande en cours {{filterValues.depart}}
+                    <mat-card-title *ngIf="dataSource === []" color="primary">Demande en cours {{filterValues.departure}}
                         vers
                         {{filterValues.destination}}</mat-card-title>
 
@@ -44,7 +44,8 @@
                         <div class="date-header" *ngIf="tmpDate !== element.date">
                             {{updateTmpDate(element.date)}}
                             <h2>
-                                {{element.date}}
+                                {{ element.date | date: 'EEEE d MMMM' : 'UTC' }}
+                                <!-- {{element.date}} -->
                             </h2>
                         </div>
                         <div class="date-header vdem" *ngIf="element.isSubscribe && tmpDate !== 'Vdem'">
@@ -57,7 +58,7 @@
                             (click)="openAddTrip({ Encode : 'add-traject', Element : element})">
                             <mat-card-header>
                                 <div class="depart-dest">
-                                    <p> {{element.depart}} </p>
+                                    <p> {{element.departure}} </p>
                                     <mat-icon color="primary" class="custom-mat-icon">arrow_right_alt</mat-icon>
                                     <p> {{element.destination}} </p>
                                 </div>

@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-price-slider',
   templateUrl: './price-slider.component.html',
-  styleUrl: './price-slider.component.css'
+  styleUrls: ['./price-slider.component.css']
 })
 export class PriceSliderComponent {
+  @Output() priceOnchange = new EventEmitter<string>();
   disabled = false;
   max = 50000;
   min = 500;
@@ -14,14 +15,20 @@ export class PriceSliderComponent {
   thumbLabel = false;
   value = 500;
 
-
   increment() {
     this.value += 50;
+    this.onPriceChange(this.value);
   }
 
   decrement() {
-    this.value -= 50;
+    if (this.value > this.min) {
+      this.value -= 50;
+      this.onPriceChange(this.value);
+    }
+  }
+
+  onPriceChange(price: number) {
+    const res = price.toString();
+    this.priceOnchange.emit(res);
   }
 }
-
-

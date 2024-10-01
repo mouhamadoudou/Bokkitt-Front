@@ -14,17 +14,20 @@ export class TripService {
     getAllTrips(): Observable<any> {
       return this.http.get(`${this.baseUrl + "all-trip"}`);
     }
+
+    getAlltripRequest(): Observable<any> {
+      return this.http.get(`${this.baseUrl + "all-request-trip"}`);
+    }
   
     getTripById(tripId: number): Observable<any> {
       return this.http.get(`${this.baseUrl + "trip"}/${tripId}`);
     }
   
     createTrip(tripData: any): Observable<any> {
-      return this.http.post(`${this.baseUrl}`, tripData);
+      return this.http.post(`${this.baseUrl}create-trip`, tripData);
     }
 
     createRequestTrip(tripData: any): Observable<any> {
-      console.log("okkkkkkkkkkkkk");
-      return this.http.post(`${this.baseUrl}trip-requests`, tripData); 
+      return this.http.post(`${this.baseUrl}creat-trip-requests`, tripData); 
     }
 }

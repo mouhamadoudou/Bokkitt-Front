@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.dataSource = new MatTableDataSource(data.data);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-          resolve();
+          resolve();  
         },
         (error) => {
           console.error('Error fetching trip:', error);

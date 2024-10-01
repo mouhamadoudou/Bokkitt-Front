@@ -22,8 +22,6 @@ export class DateInputComponent {
   onDateChange(newDate: Date) {
     this.dateChange.emit(newDate.toISOString());
   }
-
-  
 }
 
 

@@ -19,8 +19,14 @@ export class PopupComponent {
     public dialogRef: MatDialogRef<PopupComponent>
   ) { }
 
-  onNoClick(): void {
-    this.dialogRef.close({ confirmed: true });
+  setCancel(confirmed : boolean) : void {
+    // console.log("date ===0",  this.data.Element.id)
+    this.dialogRef.close({ type : "cancel", confirmed: confirmed, tripId: this.data.Element.id });
+  }
+
+  setAddMe(confirmed : boolean): void {
+    console.log("helooo wollll", confirmed)
+    this.dialogRef.close({ selectedNbPlace: this.selectedNbPlace, confirmed: confirmed, tripId: this.data.Element.id  });
   }
 
 }

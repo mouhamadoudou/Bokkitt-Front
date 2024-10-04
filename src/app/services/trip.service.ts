@@ -19,6 +19,19 @@ export class TripService {
       return this.http.get(`${this.baseUrl + "all-request-trip"}`);
     }
   
+
+    getClienttripRequestById(clientId : string): Observable<any> {
+      return this.http.get(`${this.baseUrl}get-trips-request-by-client/${clientId}`);
+    }
+  
+    addClienTriprequests(tripClientData: any): Observable<any> {
+      return this.http.post(`${this.baseUrl}add-client-triprequests`, tripClientData);
+    }
+
+    cancelClienTriprequests(tripClientData: any): Observable<any> {
+      return this.http.post(`${this.baseUrl}delete-client-triprequests`, tripClientData);
+    }
+
     getTripById(tripId: number): Observable<any> {
       return this.http.get(`${this.baseUrl + "trip"}/${tripId}`);
     }

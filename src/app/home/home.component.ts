@@ -26,8 +26,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   public dataSource: any;
   public displayedColumns = ["id"];
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine", "Tambacounda", "Tambacounda"];
-  public client = ["Mohammed", undefined];
-  public completed = [true, false, true];
   public tmpDate: string = "";
 
   filterValues = {

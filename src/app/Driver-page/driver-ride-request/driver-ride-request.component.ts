@@ -13,7 +13,7 @@ import { TripService } from '../../services/trip.service';
 
 export interface Traject {
   id : number;
-  depart: string;
+  departure: string;
   destination: string;
   date : string,
   time : string,
@@ -91,6 +91,7 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
       this.tripService.getAlltripRequest().subscribe(
         (data) => {
           this.dataSource = new MatTableDataSource(data.data);
+          this.dataSource.filterPredicate = this.createFilter();
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           resolve();
@@ -117,7 +118,7 @@ export class DriverRideRequestComponent implements OnInit, AfterViewInit {
   createFilter(): (data: Traject, filter: string) => boolean {
     const filterFunction = (data: Traject, filter: string): boolean => {
       const searchTerms = JSON.parse(filter);
-      return data.depart.toLowerCase().indexOf(searchTerms.depart.toLowerCase()) !== -1
+      return data.departure.toLowerCase().indexOf(searchTerms.departure.toLowerCase()) !== -1
          && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
     };
     return filterFunction;

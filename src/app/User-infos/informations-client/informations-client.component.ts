@@ -1,23 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../component/popup/popup.component';
 import { AuthentificationService } from '../../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { AuthcheckService } from '../../services/authcheck.service';
+import { jwtDecode } from "jwt-decode"
+
 
 @Component({
   selector: 'app-informations-client',
   templateUrl: './informations-client.component.html',
   styleUrl: './informations-client.component.css'
 })
-export class InformationsClientComponent {
+export class InformationsClientComponent implements OnInit {
   activeSection: string = 'profile';
   licenceName: string = 'Aucun permis sélectionné';
+  public userData: any;
 
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog,
-    public authService : AuthentificationService, private router: Router
+    public authService : AuthentificationService, private router: Router,
+    public userService: UserService,
+    public authCheck: AuthcheckService
   ) { }
 
+
+  ngOnInit(): void {
+      this.uploadUserData()
+  }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
@@ -27,6 +38,23 @@ export class InformationsClientComponent {
     }
   }
 
+  uploadUserData() {
+    new Promise((resolve, reject) => {
+      const token : any = localStorage.getItem('token');
+      const decodedToken: any = jwtDecode(token);
+
+      this.userService.getUserById(decodedToken.id, "clients").subscribe(
+        (data) => {
+          this.userData = data;
+          resolve("ok");
+        },
+        (error) => {
+          console.error('Error fetching user:', error);
+          reject(error);
+        }
+      );
+    });
+  }
   
   openDialog(component : {}): void {
     const dialogRef = this.dialog.open(PopupComponent, {

@@ -37,32 +37,18 @@ export class TripComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.startStepper();
   }
 
   onClickReserved() {
     if (this.authService.authentificated) {
       this.router.navigateByUrl("reservation")
     } else {
-      this.router.navigateByUrl("login")
+      this.router.navigateByUrl("login-client")
     }
   }
   
   formatTime(time: string): string {
     const [hours, minutes] = time.split(':');
     return `${hours}h${minutes}`;
-  }
-
-  startStepper() {
-    // setTimeout(() => {
-    //   this.stepper.next();
-    //   setTimeout(() => {
-    //     this.stepper.next();
-    //     setTimeout(() => {
-    //       this.stepper.reset();
-    //       this.startStepper()
-    //     }, 3000);
-    //   }, 3000);
-    // }, 3000);
   }
 }

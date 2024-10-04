@@ -6,6 +6,8 @@ import { AuthentificationService } from '../../services/authentification.service
 import { Router, NavigationEnd } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { AuthcheckService } from '../../services/authcheck.service';
+import { jwtDecode } from "jwt-decode"
+
 
 @Component({
   selector: 'app-profile-infos',
@@ -37,10 +39,12 @@ export class ProfileInfosComponent implements OnInit {
 
   uploadUserData() {
     new Promise((resolve, reject) => {
-      this.userService.getUserById("5").subscribe(
+      const token : any = localStorage.getItem('token');
+      const decodedToken: any = jwtDecode(token);
+  
+      this.userService.getUserById(decodedToken.id, "driver").subscribe(
         (data) => {
           this.userData = data;
-          console.log("looooooooooooool", data)
           resolve("ok");
         },
         (error) => {

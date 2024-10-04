@@ -88,7 +88,7 @@ export class SuggestTrajectComponent implements OnInit {
       departure: this.filterValues.depart,
       destination: this.filterValues.destination,
       date: this.selectedDate,
-      time: this.selectedDate,
+      time: this.selectedTime,
       numberrequest: this.filterValues.nbSeat
     }
 

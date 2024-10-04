@@ -57,8 +57,8 @@
                     </mat-option>
                 </mat-select> -->
                 <!-- {{ selectedNbPlace }} -->
-                <button mat-button mat-dialog-close (click)="onNoClick()">Oui</button>
-                <button mat-button mat-dialog-close (click)="onNoClick()">  Non</button>
+                <button mat-button mat-dialog-close (click)="setCancel(true)">Oui</button>
+                <button mat-button mat-dialog-close (click)="setCancel(false)">  Non</button>
             </mat-form-field>
             
         </div>
@@ -72,7 +72,7 @@
     </mat-dialog-content>
 
     <mat-dialog-actions *ngIf="data.En != 'password' && data.Encode != 'cancel-me'">
-        <button mat-button mat-dialog-close (click)="onNoClick()">Annuler</button>
-        <button mat-button mat-dialog-close (click)="onNoClick()">Valider</button>
+        <button mat-button mat-dialog-close (click)="setAddMe(false)">Annuler</button>
+        <button mat-button mat-dialog-close (click)="setAddMe(true)">Valider</button>
     </mat-dialog-actions>
 </div>

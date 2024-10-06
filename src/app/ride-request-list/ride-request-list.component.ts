@@ -100,6 +100,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
         (data) => {
           resolve("ok");
           this.getClientRequest()
+          this.loadAndInitRequest()
         },
         (error) => {
           console.error('Fail:', error);
@@ -122,6 +123,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
       this.tripService.addClienTriprequests(body).subscribe(
         (data) => {
           this.getClientRequest()
+          this.loadAndInitRequest()
           resolve("ok");
         },
         (error) => {

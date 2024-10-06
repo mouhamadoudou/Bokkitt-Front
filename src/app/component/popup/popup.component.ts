@@ -25,7 +25,7 @@ export class PopupComponent {
   }
 
   setAddMe(confirmed : boolean): void {
-    console.log("helooo wollll", confirmed)
+    // console.log("helooo wollll", confirmed)
     this.dialogRef.close({ selectedNbPlace: this.selectedNbPlace, confirmed: confirmed, tripId: this.data.Element.id  });
   }
 

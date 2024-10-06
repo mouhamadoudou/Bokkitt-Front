@@ -94,7 +94,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
       triprequest_id: triprequest_id
     }
 
-    console.log("heolooooooooo worldddddddd")
+    // console.log("heolooooooooo worldddddddd")
     return new Promise((resolve, reject) => {
       this.tripService.cancelClienTriprequests(body).subscribe(
         (data) => {
@@ -111,7 +111,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
 
   addClienTripRequest(triprequest_id: string, nbPlaceRequest: string) {
 
-    console.log("lll ", triprequest_id)
+    // console.log("lll ", triprequest_id)
     const body = {
       client_id: this.getToken.getId(),
       triprequest_id: triprequest_id,
@@ -137,7 +137,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
       this.tripService.getClienttripRequestById(this.getToken.getId()).subscribe(
         (data) => {
           this.clientRequestList = data.data
-          console.log("dataa ok => ", this.clientRequestList)
+          // console.log("dataa ok => ", this.clientRequestList)
           resolve();
         },
         (error) => {
@@ -152,7 +152,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
     return new Promise((resolve, reject) => {
       this.tripService.getAlltripRequest().subscribe(
         (data) => {
-          console.log(data.data)
+          // console.log(data.data)
           this.dataSource = new MatTableDataSource(data.data);
           this.dataSource.filterPredicate = this.createFilter();
           this.dataSource.paginator = this.paginator;
@@ -172,7 +172,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
     this.tmpDate = newDate;
   }
   private _filter(value: string): string[] {
-    console.log(this.dataSource)
+    // console.log(this.dataSource)
     const filterValue = value.toLowerCase();
     return this.city.filter(option => option.toLowerCase().includes(filterValue));
   }
@@ -194,7 +194,7 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
   }
 
   onCardClick(traject: any) {
-    // console.log(this.dataSource)
+    console.log(this.dataSource)
     this.router.navigate(['/trip']);
   }
 
@@ -204,13 +204,13 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Received data:', result);
+      // console.log('Received data:', result);
       if (result.confirmed && result.type == "cancel") {
         this.cancelClienTriprequests(result.tripId)
       } else if (result.confirmed) {
         this.addClienTripRequest(result.tripId, result.selectedNbPlace)
       } else {
-        console.log("ok just cancel action")
+        // console.log("ok just cancel action")
       }
     });
   }

@@ -9,25 +9,20 @@
         <div class="form-contanair">
             <mat-form-field *ngIf="data.En == 'phone'">
                 <mat-label> {{data.Fr}}</mat-label>
-                <input matInput maxlength="14" matInput maxlength="14">
+                <input matInput maxlength="14"  maxlength="14">
             </mat-form-field>
 
             <mat-form-field *ngIf="data.En == 'firstName' || data.En == 'lastName' || data.En == 'city'">
                 <mat-label> {{data.Fr}}</mat-label>
-                <input matInput maxlength="14" matInput>
+                <input matInput maxlength="14" >
             </mat-form-field>
 
             <mat-form-field *ngIf="data.En == 'old'">
                 <mat-label> Votre {{data.Fr}}</mat-label>
-                <input matInput maxlength="2" matInput>
+                <input matInput maxlength="2" >
             </mat-form-field>
 
-            <!-- <mat-form-field *ngIf="data.En == 'sex'">
-                <mat-label> {{data.Fr}}</mat-label>
-                <input matInput maxlength="14" matInput>
-            </mat-form-field> -->
             <mat-form-field appearance="fill" *ngIf="data.En == 'sex'">
-                <!-- <mat-label>Heure de depart</mat-label> -->
                 <mat-select [(value)]="selectedGender">
                     <mat-option *ngFor="let gender of genders" [value]="gender">
                         {{ gender }}
@@ -39,7 +34,7 @@
 
             <mat-form-field *ngIf="data.En == 'add-me'">
                 <mat-label> {{data.Fr}}</mat-label>
-                <input matInput maxlength="14" matInput maxlength="14">
+                <input matInput maxlength="14" maxlength="14">
             </mat-form-field>
 
             <mat-form-field *ngIf="data.Encode == 'add-me'">
@@ -50,27 +45,14 @@
                 </mat-select>
                 {{ selectedNbPlace }}
             </mat-form-field>
-            <mat-form-field *ngIf="data.Encode == 'cancel-me'">
-                <!-- <mat-select [(value)]="selectedNbPlace">
-                    <mat-option *ngFor="let place of nbPlace" [value]="place">
-                        {{ place }}
-                    </mat-option>
-                </mat-select> -->
-                <!-- {{ selectedNbPlace }} -->
-                <button mat-button mat-dialog-close (click)="setCancel(true)">Oui</button>
-                <button mat-button mat-dialog-close (click)="setCancel(false)">  Non</button>
-            </mat-form-field>
-            
         </div>
-
-        <!-- <h2 mat-dialog-title>Popup Information</h2>
-        <mat-dialog-content>
-            <p>Name: {{data.componentChange}}</p>
-            <p>Age: {{data.age}}</p>
-            <p>Job: {{data.job}}</p>
-        </mat-dialog-content> -->
     </mat-dialog-content>
 
+
+    <mat-dialog-actions *ngIf="data.Encode == 'cancel-me'">
+        <button mat-button mat-dialog-close (click)="setCancel(true)">Oui</button>
+        <button mat-button mat-dialog-close (click)="setCancel(false)">  Non</button>
+    </mat-dialog-actions>
     <mat-dialog-actions *ngIf="data.En != 'password' && data.Encode != 'cancel-me'">
         <button mat-button mat-dialog-close (click)="setAddMe(false)">Annuler</button>
         <button mat-button mat-dialog-close (click)="setAddMe(true)">Valider</button>

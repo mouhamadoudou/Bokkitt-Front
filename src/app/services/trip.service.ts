@@ -11,36 +11,39 @@ export class TripService {
 
   constructor(private http: HttpClient) { }
 
-    getAllTrips(): Observable<any> {
-      return this.http.get(`${this.baseUrl + "all-trip"}`);
-    }
+  updateUserPassword(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}update-password`, userData);
+  }
 
-    getAlltripRequest(): Observable<any> {
-      return this.http.get(`${this.baseUrl + "all-request-trip"}`);
-    }
-  
+  getAllTrips(): Observable<any> {
+    return this.http.get(`${this.baseUrl + "all-trip"}`);
+  }
 
-    getClienttripRequestById(clientId : string): Observable<any> {
-      return this.http.get(`${this.baseUrl}get-trips-request-by-client/${clientId}`);
-    }
-  
-    addClienTriprequests(tripClientData: any): Observable<any> {
-      return this.http.post(`${this.baseUrl}add-client-triprequests`, tripClientData);
-    }
+  getAlltripRequest(): Observable<any> {
+    return this.http.get(`${this.baseUrl + "all-request-trip"}`);
+  }
 
-    cancelClienTriprequests(tripClientData: any): Observable<any> {
-      return this.http.post(`${this.baseUrl}delete-client-triprequests`, tripClientData);
-    }
+  getClienttripRequestById(clientId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}get-trips-request-by-client/${clientId}`);
+  }
 
-    getTripById(tripId: number): Observable<any> {
-      return this.http.get(`${this.baseUrl + "trip"}/${tripId}`);
-    }
-  
-    createTrip(tripData: any): Observable<any> {
-      return this.http.post(`${this.baseUrl}create-trip`, tripData);
-    }
+  addClienTriprequests(tripClientData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}add-client-triprequests`, tripClientData);
+  }
 
-    createRequestTrip(tripData: any): Observable<any> {
-      return this.http.post(`${this.baseUrl}creat-trip-requests`, tripData); 
-    }
+  cancelClienTriprequests(tripClientData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}delete-client-triprequests`, tripClientData);
+  }
+
+  getTripById(tripId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl + "trip"}/${tripId}`);
+  }
+
+  createTrip(tripData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}create-trip`, tripData);
+  }
+
+  createRequestTrip(tripData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}creat-trip-requests`, tripData);
+  }
 }

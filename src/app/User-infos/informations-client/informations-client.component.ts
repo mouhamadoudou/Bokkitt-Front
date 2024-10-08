@@ -7,6 +7,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { AuthcheckService } from '../../services/authcheck.service';
 import { jwtDecode } from "jwt-decode"
+import { TripService } from '../../services/trip.service';
+import { GetTokenService } from '../../services/get-token.service';
 
 
 @Component({
@@ -22,7 +24,9 @@ export class InformationsClientComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, public dialog: MatDialog,
     public authService : AuthentificationService, private router: Router,
     public userService: UserService,
-    public authCheck: AuthcheckService
+    public authCheck: AuthcheckService,
+    public tripService: TripService,
+    public getToken: GetTokenService
   ) { }
 
 
@@ -55,15 +59,33 @@ export class InformationsClientComponent implements OnInit {
       );
     });
   }
+
+  updatePassword(newPassword : string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.tripService.updateUserPassword({ client_id : this.getToken.getId(), newPassword}).subscribe(
+        (data) => {
+          // this.clientRequestList = data.data
+          // console.log("dataa ok => ", this.clientRequestList)
+          resolve();
+        },
+        (error) => {
+          console.error('Error fetching trip request:', error);
+          reject(error);
+        }
+      );
+    });
+  }
   
-  openDialog(component : {}): void {
+  openDialog(component: {}): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       data: component
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       console.log('Received data:', result);
+      if (result.confirmed) {
+        this.updatePassword(result.tripId)
+      }
     });
   }
 }

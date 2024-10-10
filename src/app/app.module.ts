@@ -59,7 +59,6 @@ import { PopupComponent } from './component/popup/popup.component';
 import { NewPasswordComponent } from './component/new-password/new-password.component';
 import { ProfileInfosComponent } from './User-infos/profile-infos/profile-infos.component';
 import { ReservationListComponent } from './User-infos/reservation-list/reservation-list.component';
-import { TimeLineComponent } from './User-infos/time-line/time-line.component';
 import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
@@ -105,7 +104,6 @@ registerLocaleData(localeFr, 'fr');
     NewPasswordComponent,
     ProfileInfosComponent,
     ReservationListComponent,
-    TimeLineComponent,
     MyTripComponent,
     ForgotPasswordComponent,
     VerificationComponent,

@@ -61,7 +61,6 @@ export class ProfileInfosComponent implements OnInit {
     });
   }
 
-
   updateUserData(infoData : any): Promise<void> {
     const body = {
       client_id: this.getToken.getId(),

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { AuthentificationService } from '../services/authentification.service';
 import { TripService } from '../services/trip.service';
+import { GetTokenService } from '../services/get-token.service';
 
 
 interface Road {
@@ -74,7 +75,7 @@ export class AddTripComponent implements OnInit {
   constructor(private fb: FormBuilder, 
     public authService: AuthentificationService,
     private tripService: TripService,
-  ) { }
+    private getToken: GetTokenService) { }
 
   formatLicensePlate(value: string) {
     const cleanedValue = value.replace(/[^a-zA-Z0-9]/g, '');
@@ -163,7 +164,7 @@ export class AddTripComponent implements OnInit {
       selectedroad: this.filterValues.selectedRoad,
       smoke: this.filterValues.smoke,
       price: parseInt(this.selectedPrice),
-      // driverid:parseInt()
+      driverid: parseInt(this.getToken.getId())
     }
 
     return new Promise((resolve, reject) => {

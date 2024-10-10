@@ -1,20 +1,11 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../component/popup/popup.component';
-
-
-
-export interface Traject {
-  id : number;
-  depart: string;
-  destination: string;
-  date : string,
-  time : string,
-  chair : number,
-}
+import { TripService } from '../../services/trip.service';
+import { GetTokenService } from '../../services/get-token.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,66 +13,57 @@ export interface Traject {
   templateUrl: './driver-dashboard.component.html',
   styleUrl: './driver-dashboard.component.css'
 })
-export class DriverDashboardComponent implements OnInit, AfterViewInit {
-
-  public dataSource : any;
+export class DriverDashboardComponent implements OnInit {
+  dataSource = [];
+  tmpData : any = {}
+  today : any;
+  tmpDate: string = ''
   public displayedColumns = ["id"];
-  public city = ["Dakar", "Thies", "Mbour", "Saly", "Tambacounda", "Tambacounda", "Mermoz", "Pikine"]; 
-  public client = ["Mohammed", undefined]; 
-  public completed = [true, false, true]; 
-  public tmpDate : string = "";
 
+  constructor(private _snackBar: MatSnackBar, 
+    public dialog: MatDialog,
+    private tripService: TripService,
+    private router: Router,
+    private getToken: GetTokenService) {
 
-  constructor (private router : Router,
-    private _snackBar: MatSnackBar, public dialog: MatDialog) {
+    const currentDate = new Date();
+    this.today = new Date(currentDate.toLocaleDateString()); 
   }
-  
-  
+
   ngOnInit(): void {
-    
-    const traject: Traject[] = [];
-    for (let i = 1; i < 5; i++) {
-      traject.push(
-        {
-          id : i,
-          depart : this.city[Math.floor(Math.random() * this.city.length)],
-          destination: this.city[Math.floor(Math.random() * this.city.length)],
-          date : i == 1 || i == 2 ? "Mercredi 10 Juillet" : "Mercredi 20 Juillet" ,
-          time : "12h30",
-          chair : 3
-          }
-      )
-    }
-    this.dataSource = new MatTableDataSource(traject)
-    this.dataSource.filterPredicate = this.createFilter();
+    this.dataSource = []
+    this.loadAndInitTrips()
+    console.log(this.dataSource)
   }
 
-  private _filter(value: string): string[] {
-    console.log(this.dataSource)
-    const filterValue = value.toLowerCase();
-
-    return this.city.filter(option => option.toLowerCase().includes(filterValue));
+  checkDate(date : string) {
+    if (this.today > new Date(date)) {
+      return false 
+    }
+    return true;
   }
 
   updateTmpDate (newDate : string) : void {
     this.tmpDate = newDate;
   }
 
-  createFilter(): (data: Traject, filter: string) => boolean {
-    const filterFunction = (data: Traject, filter: string): boolean => {
-      const searchTerms = JSON.parse(filter);
-      return data.depart.toLowerCase().indexOf(searchTerms.depart.toLowerCase()) !== -1
-         && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
-    };
-    return filterFunction;
+  setTmpData (item : any) {
+    this.tmpData = item
   }
-  
-  ngAfterViewInit(): void {
-  }   
 
-
-  onCardClick(traject: any) {
-    this.router.navigate(['/trip']);
+  loadAndInitTrips(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.tripService.getDriverHistoryById(this.getToken.getId()).subscribe(
+        (data) => {
+          this.dataSource = data.data
+          console.log("dataaaaaa == ", this.dataSource)
+          resolve();  
+        },
+        (error) => {
+          console.error('Error fetching trip:', error);
+          reject(error);
+        }
+      );
+    });
   }
 }
-

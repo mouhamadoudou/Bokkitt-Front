@@ -15,19 +15,19 @@ import { Router } from '@angular/router';
 })
 export class DriverDashboardComponent implements OnInit {
   dataSource = [];
-  tmpData : any = {}
-  today : any;
+  tmpData: any = {}
+  today: any;
   tmpDate: string = ''
   public displayedColumns = ["id"];
 
-  constructor(private _snackBar: MatSnackBar, 
+  constructor(private _snackBar: MatSnackBar,
     public dialog: MatDialog,
     private tripService: TripService,
     private router: Router,
     private getToken: GetTokenService) {
 
     const currentDate = new Date();
-    this.today = new Date(currentDate.toLocaleDateString()); 
+    this.today = new Date(currentDate.toLocaleDateString());
   }
 
   ngOnInit(): void {
@@ -36,28 +36,31 @@ export class DriverDashboardComponent implements OnInit {
     console.log(this.dataSource)
   }
 
-  checkDate(date : string) {
+  checkDate(date: string) {
     if (this.today > new Date(date)) {
-      return false 
+      return false
     }
     return true;
   }
 
-  updateTmpDate (newDate : string) : void {
+  updateTmpDate(newDate: string): void {
     this.tmpDate = newDate;
   }
 
-  setTmpData (item : any) {
+  setTmpData(item: any) {
     this.tmpData = item
   }
 
   loadAndInitTrips(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.tripService.getDriverHistoryById(this.getToken.getId()).subscribe(
+      const date = new Date(this.today);
+      const formattedDate = date.toISOString().split('T')[0];
+
+      this.tripService.getDriverNextTrip5(this.getToken.getId(), formattedDate).subscribe(
         (data) => {
           this.dataSource = data.data
           console.log("dataaaaaa == ", this.dataSource)
-          resolve();  
+          resolve();
         },
         (error) => {
           console.error('Error fetching trip:', error);

@@ -35,14 +35,6 @@ export class InformationsClientComponent implements OnInit {
       this.uploadUserData()
   }
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    console.log(file)
-    if (file) {
-      this.licenceName = file.name;
-    }
-  }
-
   uploadUserData() {
     new Promise((resolve, reject) => {
       const token : any = localStorage.getItem('token');

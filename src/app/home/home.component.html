@@ -47,15 +47,8 @@
             {{filterValues.destination}}</mat-card-title>
 
           <td mat-cell *matCellDef="let element">
-            <!-- <div >
-              {{tmpDate + 'et' +  element.date}}
-              {{updateTmpDate(element.date)}}
-
-            </div> -->
-            <!-- {{tmpDate}} -->
             <div class="date-header" *ngIf="tmpDate !== element.date">
               <h2>
-                <!-- {{element.date}} -->
                 {{ element.date | date: 'EEEE d MMMM' : 'UTC' }}
               </h2>
               {{ updateDate(element.date) }}
@@ -63,7 +56,6 @@
 
             <mat-card class="table-comp" [ngClass]="{ 'disabled': element.isfull}" (click)="onCardClick(element)">
               <mat-card-header>
-                <!-- {{element.date}} -->
                 <p class="disp-depart">{{element.departure}}</p>
                 <mat-icon>redo</mat-icon>
                 <p>{{element.destination}}</p>
@@ -76,7 +68,6 @@
                     <p>
                       {{ formatTime(element.time) }}
 
-                      <!-- {{element.time}} -->
                     </p>
                     
                     <mat-icon color="primary">chair</mat-icon> 

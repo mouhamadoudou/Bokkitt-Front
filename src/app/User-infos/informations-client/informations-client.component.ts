@@ -31,6 +31,7 @@ export class InformationsClientComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this. userData = {}
       this.uploadUserData()
   }
 
@@ -60,9 +61,16 @@ export class InformationsClientComponent implements OnInit {
     });
   }
 
-  updatePassword(newPassword : string): Promise<void> {
+  updateUserData(infoData : any): Promise<void> {
+    const body = {
+      client_id: this.getToken.getId(),
+      new_value: infoData.newValue,
+      role: "clients",
+      column: infoData.column
+    }
+    
     return new Promise((resolve, reject) => {
-      this.tripService.updateUserPassword({ client_id : this.getToken.getId(), newPassword}).subscribe(
+      this.tripService.updateUserData(body).subscribe(
         (data) => {
           // this.clientRequestList = data.data
           // console.log("dataa ok => ", this.clientRequestList)
@@ -82,9 +90,12 @@ export class InformationsClientComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Received data:', result);
-      if (result.confirmed) {
-        this.updatePassword(result.tripId)
+      // console.log('Received data:', result);
+      if (!result) {
+        return
+      }
+      if (result.confirmed && result.type == "nValue" || result.column == "gender") {
+        this.updateUserData(result)
       }
     });
   }

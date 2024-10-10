@@ -11,12 +11,16 @@ export class TripService {
 
   constructor(private http: HttpClient) { }
 
-  updateUserPassword(userData: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}update-password`, userData);
+  updateUserData(userData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}update-column`, userData);
   }
 
   getAllTrips(): Observable<any> {
     return this.http.get(`${this.baseUrl + "all-trip"}`);
+  }
+
+  getClientTripById(clientId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}get-trips-history-by-client/${clientId}`);
   }
 
   getAlltripRequest(): Observable<any> {

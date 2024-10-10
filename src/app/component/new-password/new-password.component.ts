@@ -10,7 +10,7 @@ import { GetTokenService } from '../../services/get-token.service';
 })
 export class NewPasswordComponent {
   passwordForm: FormGroup;
-  newPassword : string = "";
+  newPassword: string = "";
   constructor(private fb: FormBuilder,
     private tripService: TripService,
     private getToken: GetTokenService
@@ -25,8 +25,8 @@ export class NewPasswordComponent {
   checkPasswords(group: FormGroup) {
     const newPassword = group.get('newPassword')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
-    if ( newPassword === confirmPassword ) {
-      return  null;
+    if (newPassword === confirmPassword) {
+      return null;
     } else {
       return { passwordMismatch: true };
     }
@@ -35,13 +35,14 @@ export class NewPasswordComponent {
   updatePassword() {
     const body = {
       client_id: this.getToken.getId(),
-     new_password: this.passwordForm.value.newPassword,
-     role : "clients"
+      new_value: this.passwordForm.value.newPassword,
+      role: "clients",
+      column: "password"
     }
 
     // console.log("heolooooooooo worldddddddd")
     return new Promise((resolve, reject) => {
-      this.tripService.updateUserPassword(body).subscribe(
+      this.tripService.updateUserData(body).subscribe(
         (data) => {
           resolve("ok");
         },

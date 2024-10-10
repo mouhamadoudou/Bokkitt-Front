@@ -14,12 +14,12 @@
 
             <mat-form-field *ngIf="data.En == 'firstName' || data.En == 'lastName' || data.En == 'city'">
                 <mat-label> {{data.Fr}}</mat-label>
-                <input matInput maxlength="14" >
+                <input [(ngModel)]="nValue" matInput maxlength="14" >
             </mat-form-field>
 
             <mat-form-field *ngIf="data.En == 'old'">
                 <mat-label> Votre {{data.Fr}}</mat-label>
-                <input matInput maxlength="2" >
+                <input [(ngModel)]="nValue" matInput maxlength="2" >
             </mat-form-field>
 
             <mat-form-field appearance="fill" *ngIf="data.En == 'sex'">
@@ -48,13 +48,16 @@
         </div>
     </mat-dialog-content>
 
-
     <mat-dialog-actions *ngIf="data.Encode == 'cancel-me'">
         <button mat-button mat-dialog-close (click)="setCancel(true)">Oui</button>
         <button mat-button mat-dialog-close (click)="setCancel(false)">  Non</button>
     </mat-dialog-actions>
-    <mat-dialog-actions *ngIf="data.En != 'password' && data.Encode != 'cancel-me'">
+    <mat-dialog-actions *ngIf="data.Encode == 'add-me'">
         <button mat-button mat-dialog-close (click)="setAddMe(false)">Annuler</button>
         <button mat-button mat-dialog-close (click)="setAddMe(true)">Valider</button>
+    </mat-dialog-actions>
+    <mat-dialog-actions *ngIf="data.En != 'password' && data.Encode != 'cancel-me' && data.Encode != 'add-me'">
+        <button mat-button mat-dialog-close (click)="setChangeValue(false)">Annuler</button>
+        <button mat-button mat-dialog-close (click)="setChangeValue(true)">Valider</button>
     </mat-dialog-actions>
 </div>

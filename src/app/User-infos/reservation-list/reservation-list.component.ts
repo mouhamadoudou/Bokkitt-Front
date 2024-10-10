@@ -47,7 +47,7 @@ export class ReservationListComponent implements OnInit {
 
   loadAndInitTrips(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.tripService.getClientTripById(this.getToken.getId()).subscribe(
+      this.tripService.getDriverHistoryById(this.getToken.getId()).subscribe(
         (data) => {
           this.dataSource = data.data
           console.log("dataaaaaa == ", this.dataSource)

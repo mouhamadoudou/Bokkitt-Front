@@ -19,8 +19,12 @@ export class TripService {
     return this.http.get(`${this.baseUrl + "all-trip"}`);
   }
 
-  getClientTripById(clientId: string): Observable<any> {
+  getClientHistoryById(clientId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}get-trips-history-by-client/${clientId}`);
+  }
+
+  getDriverHistoryById(driverId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}get-driver-history-by-driverId/${driverId}`);
   }
 
   getAlltripRequest(): Observable<any> {

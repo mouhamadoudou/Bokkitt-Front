@@ -31,6 +31,7 @@ export class ReservationListComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource = []
     this.loadAndInitTrips()
+    console.log(this.dataSource)
   }
 
   checkDate(date : string) {
@@ -38,6 +39,10 @@ export class ReservationListComponent implements OnInit {
       return false 
     }
     return true;
+  }
+
+  setTmpData (item : any) {
+    this.tmpData = item
   }
 
   loadAndInitTrips(): Promise<void> {

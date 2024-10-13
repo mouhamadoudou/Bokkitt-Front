@@ -14,10 +14,6 @@ export class AuthentificationService {
   private apiUrl = 'http://localhost:3001/api/';
 
 
-  // public phoneNumber! : any;
-  public roles: any;
-
-
   constructor(private router: Router, private http: HttpClient,
   ) { }
 
@@ -32,8 +28,8 @@ export class AuthentificationService {
         (response: any) => {
           if (response) {
             localStorage.setItem('token', response.token);
-
-            this.roles = [role];
+            console.log("locallll host sett")
+            myResolve(true)
           } else {
             myReject("Réponse vide");
           }
@@ -57,7 +53,6 @@ export class AuthentificationService {
       req.subscribe(
         (response: any) => {
           if (response) {
-            // this.roles = [role];
             localStorage.setItem('token', response.token);
 
           } else {

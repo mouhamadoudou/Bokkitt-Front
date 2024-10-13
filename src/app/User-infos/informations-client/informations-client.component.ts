@@ -5,11 +5,10 @@ import { PopupComponent } from '../../component/popup/popup.component';
 import { AuthentificationService } from '../../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { AuthcheckService } from '../../services/authcheck.service';
 import { jwtDecode } from "jwt-decode"
 import { TripService } from '../../services/trip.service';
 import { GetTokenService } from '../../services/get-token.service';
-
+import { AuthcheckService } from '../../services/authcheck.service';
 
 @Component({
   selector: 'app-informations-client',

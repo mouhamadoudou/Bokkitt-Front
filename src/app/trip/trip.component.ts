@@ -83,6 +83,7 @@ export class TripComponent implements OnInit {
       );
     });
   }
+  
 
   onClickReserved() {
     if (this.authCheck.isConnected()) {

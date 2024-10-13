@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     let lastName : string = this.signupObj.lastName;
     let role :string = "USER";
 
-    this.authservice.register(firstName, "NiangTMP", phoneNumber, password, role).then((userData) => {
+    this.authservice.register(firstName, lastName, phoneNumber, password, role).then((userData) => {
       console.log("Utilisateur est inscrit : ", userData);
       this.router.navigateByUrl("/home")
     }).catch((error) => {
@@ -66,10 +66,12 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginClient(): void {
-    console.log(this.loginObj)
+    // console.log(this.loginObj)
     let phoneNumber : string = this.loginObj.phoneNumber;
     let password : string = this.loginObj.password;
     let role : string = "USER";
+
+    console.log("mohaeeeeeeeeeee")
 
     this.authservice.login(phoneNumber, password, role).then((userData) => {
       console.log("Utilisateur authentifié : ", userData);
@@ -79,6 +81,6 @@ export class LoginComponent implements OnInit {
       this.dialog.open(LogDialogComponent)
     });
 
-    console.log(phoneNumber, password)
+    // console.log(phoneNumber, password)
   }
 }

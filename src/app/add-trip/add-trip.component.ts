@@ -8,7 +8,7 @@ import { map, startWith } from 'rxjs/operators';
 import { AuthentificationService } from '../services/authentification.service';
 import { TripService } from '../services/trip.service';
 import { GetTokenService } from '../services/get-token.service';
-
+import { AuthcheckService } from '../services/authcheck.service';
 
 interface Road {
   value: string;
@@ -51,7 +51,7 @@ export class AddTripComponent implements OnInit {
     carType: '',
     selectedRoad: ''
   };
-  
+
 
   selectedDate: string = "null";
   selectedTime: string = "null";
@@ -72,10 +72,12 @@ export class AddTripComponent implements OnInit {
     { value: 'Hybride', viewValue: 'Hybride' }
   ];
 
-  constructor(private fb: FormBuilder, 
+  constructor(private fb: FormBuilder,
     public authService: AuthentificationService,
     private tripService: TripService,
-    private getToken: GetTokenService) { }
+    private getToken: GetTokenService,
+    public autCheck: AuthcheckService
+  ) { }
 
   formatLicensePlate(value: string) {
     const cleanedValue = value.replace(/[^a-zA-Z0-9]/g, '');
@@ -148,7 +150,7 @@ export class AddTripComponent implements OnInit {
 
     const body = {
       time: this.selectedTime,
-      date: this.selectedDate ,
+      date: this.selectedDate,
       licensePlate: this.licensePlate,
       bagcap: parseInt(this.filterValues.bagCap),
       bagpay: parseInt(this.filterValues.bagPrice),

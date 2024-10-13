@@ -1,13 +1,13 @@
 <div class="trip-contenair">
     <mat-card>
-        <mat-card-header class="driver-mode" *ngIf="authService.roles && authService.roles.includes('DRIVER')">
+        <mat-card-header class="driver-mode" *ngIf="autCheck.getRoles() && autCheck.getRoles().includes('DRIVER')">
 
             <mat-card-title>
                 Annoncer un trajet
             </mat-card-title>
         </mat-card-header>
 
-        <mat-card-header *ngIf="!authService.roles">
+        <mat-card-header *ngIf="!autCheck.getRoles()">
 
             <mat-card-title>
                 Annoncer un trajet

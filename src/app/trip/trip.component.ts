@@ -6,6 +6,7 @@ import { AuthentificationService } from '../services/authentification.service';
 import { filter } from 'rxjs/operators';
 import { TmpTripDataService } from '../services/tmp-trip-data.service';
 import { TripService } from '../services/trip.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-trip',
@@ -17,13 +18,15 @@ export class TripComponent implements OnInit {
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
   tripId: number | undefined;
+  userData : any = {}
 
   constructor(
     private route: ActivatedRoute,
-    private  router: Router, 
+    private router: Router,
     public authService: AuthentificationService,
-    private tmpTripData : TmpTripDataService,
-    public tripService : TripService
+    private tmpTripData: TmpTripDataService,
+    public userService: UserService,
+    public tripService: TripService
   ) { }
 
   ngOnInit(): void {
@@ -43,13 +46,33 @@ export class TripComponent implements OnInit {
     });
   }
 
-  loadAndInitTrips(tripId : number): Promise<void> {
+  uploadDriverData(driverId: string) {
+    new Promise((resolve, reject) => {
+      const token: any = localStorage.getItem('token');
+
+      this.userService.getUserById(driverId, "driver").subscribe(
+        (data) => {
+          this.userData = data;
+          console.log("user date == ", this.userData)
+          resolve("ok");
+        },
+        (error) => {
+          console.error('Error fetching user:', error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+
+  loadAndInitTrips(tripId: number): Promise<void> {
     return new Promise((resolve, reject) => {
       this.tripService.getTripById(tripId).subscribe(
         (data) => {
           this.trajectData = data
+          this.uploadDriverData(this.trajectData.driverid)
           console.log("ddd = ", this.trajectData)
-          resolve();  
+          resolve();
         },
         (error) => {
           console.error('Error fetching trip:', error);
@@ -66,7 +89,7 @@ export class TripComponent implements OnInit {
       this.router.navigateByUrl("login-client")
     }
   }
-  
+
   formatTime(time: string): string {
     const [hours, minutes] = time.split(':');
     return `${hours}h${minutes}`;

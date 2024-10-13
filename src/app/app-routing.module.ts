@@ -85,7 +85,6 @@ const routes: Routes = [
           { path: "choose-profile", component: ChooseTypeUserComponent },
           { path: "forgot-password", component: ForgotPasswordComponent },
           { path: "verification", component: VerificationComponent },
-
         ]
       },
       // ---------------------DRIVER-----------------------
@@ -109,7 +108,7 @@ const routes: Routes = [
         canActivate: [AuthorizationGuard],
         data: { roles: ['USER'] },
         children: [
-          { path: "reservation", component: ReservationComponent },
+          { path: "reservation/:id", component: ReservationComponent },
           { path: "my-trip-client", component: ClientMyTripComponent },
           { path: "ride-request", component: RideRequestListComponent },
           // { path: "informations", component: DashboardComponent },

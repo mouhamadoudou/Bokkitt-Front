@@ -16,15 +16,13 @@
                                         <ng-template matStepLabel>Selectionner le nombre de place</ng-template>
                                         <div>
                                             <mat-form-field class="step-one-form">
-                                                <mat-label>Nombre de place</mat-label>
-                                                <mat-select disableRipple>
-                                                    <mat-option value="1">1 place</mat-option>
-                                                    <mat-option value="2">2 places</mat-option>
-                                                    <mat-option value="3">3 places</mat-option>
-                                                    <mat-option value="4">4 places</mat-option>
-                                                    <mat-option value="5">5 places</mat-option>
+                                                <mat-label>Nombre de places</mat-label>
+                                                <mat-select disableRipple [(ngModel)]="selectedNbSeats">
+                                                  <mat-option *ngFor="let i of [].constructor(tripData.seat); let index = index" [value]="index + 1">
+                                                    {{ index + 1 }} place{{ index + 1 > 1 ? 's' : '' }}
+                                                  </mat-option>
                                                 </mat-select>
-                                            </mat-form-field>
+                                              </mat-form-field>
 
                                             <!-- <button mat-button matStepperNext>Next</button> -->
 

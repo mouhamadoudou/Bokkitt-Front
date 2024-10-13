@@ -19,7 +19,7 @@ export class TripComponent implements OnInit {
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
   tripId: number | undefined;
-  userData : any = {}
+  userData: any = {}
 
   constructor(
     private route: ActivatedRoute,
@@ -83,13 +83,13 @@ export class TripComponent implements OnInit {
       );
     });
   }
-  
+
 
   onClickReserved() {
     if (this.authCheck.isConnected()) {
-      this.router.navigateByUrl("reservation")
+      this.router.navigate(["/reservation", this.trajectData.id]);
     } else {
-      this.router.navigateByUrl("login-client")
+      this.router.navigate(["login-client", this.trajectData])
     }
   }
 

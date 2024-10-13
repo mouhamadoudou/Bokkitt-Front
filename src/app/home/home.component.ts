@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onCardClick(traject: any) {
     this.tripDataService.setTmpTrip(traject);
-    this.router.navigate(['/trip']);
+    this.router.navigate(['/trip', traject.id]);
   }
 }
 

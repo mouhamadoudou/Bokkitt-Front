@@ -88,16 +88,16 @@
                                     <p> Type: 4x4 </p>
                                 </mat-card-content>
                                 <mat-card-content>
+                                    <p> Baggage Payant:  {{trajectData.bag ? "Oui" : "Non"}} </p>
+                                </mat-card-content>
+                                <mat-card-content>
                                     <p> Capacité Baggage: 2 </p>
                                 </mat-card-content>
-                                <mat-card-content>
-                                    <p> Prix Baggage: 2000 FCFA </p>
+                                <mat-card-content *ngIf="trajectData.bag">
+                                    <p> Prix Baggage: {{trajectData.bagpay}} FCFA </p>
                                 </mat-card-content>
                                 <mat-card-content>
-                                    <p> Baggage Payant: Oui </p>
-                                </mat-card-content>
-                                <mat-card-content>
-                                    <p> Clim: Oui </p>
+                                    <p> Clim: {{trajectData.clim ? "Oui" : "Non"}} </p>
                                 </mat-card-content>
                             </div>
                         </div>

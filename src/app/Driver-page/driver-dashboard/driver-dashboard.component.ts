@@ -59,7 +59,6 @@ export class DriverDashboardComponent implements OnInit {
       this.tripService.getDriverNextTrip5(this.getToken.getId(), formattedDate).subscribe(
         (data) => {
           this.dataSource = data.data
-          console.log("dataaaaaa == ", this.dataSource)
           resolve();
         },
         (error) => {

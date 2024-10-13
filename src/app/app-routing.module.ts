@@ -52,7 +52,7 @@ const routes: Routes = [
         children: [
           { path: "", component: HomeComponent },
           { path: "home", component: HomeComponent },
-          { path: "trip", component: TripComponent },
+          { path: "trip/:id", component: TripComponent },
           { path: "suggest-traject", component: SuggestTrajectComponent },
         ]
       },

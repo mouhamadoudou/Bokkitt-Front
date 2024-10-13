@@ -69,23 +69,6 @@ export class RideRequestListComponent implements OnInit, AfterViewInit {
       startWith(''),
       map(value => this._filter(value || '')),
     );
-
-    // const traject: Traject[] = [];
-    // for (let i = 1; i < 100; i++) {
-    //   traject.push(
-    //     {
-    //       id : i,
-    //       departure : this.city[Math.floor(Math.random() * this.city.length)],
-    //       destination: this.city[Math.floor(Math.random() * this.city.length)],
-    //       date : i < 5 ? "Mercredi 10 Juillet" : "Mercredi 30 Juillet",
-    //       time : "12h30",
-    //       chair : 3,
-    //       isSubscribe : i == 1 || i == 2 ? true : false
-    //       }
-    //   )
-    // }
-    // this.dataSource = new MatTableDataSource(traject)
-    // this.dataSource.filterPredicate = this.createFilter();
   }
 
   cancelClienTriprequests(triprequest_id: string) {

@@ -48,7 +48,7 @@ export class TripService {
   }
 
   getTripById(tripId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl + "trip"}/${tripId}`);
+    return this.http.get(`${this.baseUrl}get-trip-by-id/7`);
   }
 
   createTrip(tripData: any): Observable<any> {

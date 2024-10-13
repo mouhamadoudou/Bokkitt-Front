@@ -27,19 +27,14 @@ export class TripComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.trajectData = {};
+
     this.route.paramMap.subscribe(params => {
       this.tripId = +params.get('id')!;
       if (this.tripId != undefined) {
-        this.loadAndInitTrips(this.tripId.toString())
+        this.loadAndInitTrips(this.tripId)
       }
-      // Tu peux utiliser this.productId pour récupérer les détails du produit
     });
-
-    this.trajectData = this.tmpTripData.getTmpTrip();
-    console.log(this.trajectData)
-    if (!this.trajectData) {
-      console.error("error : data");
-    }
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -48,12 +43,12 @@ export class TripComponent implements OnInit {
     });
   }
 
-  loadAndInitTrips(tripId : string): Promise<void> {
+  loadAndInitTrips(tripId : number): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.tripService.getClientHistoryById(tripId).subscribe(
+      this.tripService.getTripById(tripId).subscribe(
         (data) => {
-          this.trajectData = data.data
-          console.log("dataaaaaa == ", this.trajectData)
+          this.trajectData = data
+          console.log("ddd = ", this.trajectData)
           resolve();  
         },
         (error) => {

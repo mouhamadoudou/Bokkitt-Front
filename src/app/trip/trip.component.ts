@@ -7,6 +7,7 @@ import { filter } from 'rxjs/operators';
 import { TmpTripDataService } from '../services/tmp-trip-data.service';
 import { TripService } from '../services/trip.service';
 import { UserService } from '../services/user.service';
+import { AuthcheckService } from '../services/authcheck.service';
 
 @Component({
   selector: 'app-trip',
@@ -26,7 +27,8 @@ export class TripComponent implements OnInit {
     public authService: AuthentificationService,
     private tmpTripData: TmpTripDataService,
     public userService: UserService,
-    public tripService: TripService
+    public tripService: TripService,
+    public authCheck: AuthcheckService,
   ) { }
 
   ngOnInit(): void {
@@ -53,11 +55,11 @@ export class TripComponent implements OnInit {
       this.userService.getUserById(driverId, "driver").subscribe(
         (data) => {
           this.userData = data;
-          console.log("user date == ", this.userData)
+          // console.log("user date == ", this.userData)
           resolve("ok");
         },
         (error) => {
-          console.error('Error fetching user:', error);
+          // console.error('Error fetching user:', error);
           reject(error);
         }
       );
@@ -71,11 +73,11 @@ export class TripComponent implements OnInit {
         (data) => {
           this.trajectData = data
           this.uploadDriverData(this.trajectData.driverid)
-          console.log("ddd = ", this.trajectData)
+          // console.log("ddd = ", this.trajectData)
           resolve();
         },
         (error) => {
-          console.error('Error fetching trip:', error);
+          // console.error('Error fetching trip:', error);
           reject(error);
         }
       );
@@ -83,7 +85,7 @@ export class TripComponent implements OnInit {
   }
 
   onClickReserved() {
-    if (this.authService.authentificated) {
+    if (this.authCheck.isConnected()) {
       this.router.navigateByUrl("reservation")
     } else {
       this.router.navigateByUrl("login-client")

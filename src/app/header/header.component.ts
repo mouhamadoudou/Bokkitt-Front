@@ -26,34 +26,15 @@ export class HeaderComponent implements OnInit {
     ).subscribe(() => {
       window.scrollTo(0, 0);
     });
-
-    // if (this.authService.roles && this.authService.roles.includes('DRIVER')) {
-    //   this.router.navigate(['/driver-dashboard']);
-    // }
   }
 
-  // new Promise((resolve, reject) => {
-  //   this.userService.getUserById("5").subscribe(
-  //     (data) => {
-  //      console.log("looooooooooooool", data)
-  //       resolve("ok");  
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching user:', error);
-  //       reject(error);
-  //     }
-  //   );
-  // });
 
   getName(): void {
-    // console.log("hello worldddd")
     const token = localStorage.getItem('token');
     if (token != null) {
       const decodedToken: any = jwtDecode(token);
-      // console.log(decodedToken)
         this.userName = decodedToken.firstName;
     }
-    // console.log(this.userName)
   }
 
   logout(): void {

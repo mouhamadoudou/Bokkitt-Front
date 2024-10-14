@@ -47,14 +47,15 @@
 
                             <td mat-cell *matCellDef="let element">
                                 <div class="date-header" *ngIf="tmpDate !== element.date">
-                                    {{updateTmpDate(element.date)}}
                                     <h2>
-                                        {{element.date}}
+                                        {{ element.date | date: 'EEEE d MMMM' : 'UTC' }}
                                     </h2>
+                                    <!-- {{updateTmpDate(element.date)}} -->
+
                                 </div>
                                 <mat-card class="table-comp-subscribe">
                                     <mat-card-header class="traject-card-title">
-                                        <p> {{element.depart}} </p>
+                                        <p> {{element.departure}} </p>
                                         <mat-icon color="primary">redo</mat-icon>
                                         <p> {{element.destination}} </p>
                                         <mat-divider></mat-divider>

@@ -46,11 +46,11 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { TimePickerComponent } from './component/time-picker/time-picker.component';
 import { PriceSliderComponent } from './component/price-slider/price-slider.component';
 
-import {MatSliderModule} from '@angular/material/slider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
-import { MatSlideToggleModule,
+import {
+  MatSlideToggleModule,
   _MatSlideToggleRequiredValidatorModule,
 } from '@angular/material/slide-toggle';
 import { SuggestTrajectComponent } from './suggest-traject/suggest-traject.component';
@@ -59,7 +59,6 @@ import { PopupComponent } from './component/popup/popup.component';
 import { NewPasswordComponent } from './component/new-password/new-password.component';
 import { ProfileInfosComponent } from './User-infos/profile-infos/profile-infos.component';
 import { ReservationListComponent } from './User-infos/reservation-list/reservation-list.component';
-import { TimeLineComponent } from './User-infos/time-line/time-line.component';
 import { MyTripComponent } from './User-infos/my-trip/my-trip.component';
 import { ForgotPasswordComponent } from './Forgot-Password/forgot-password/forgot-password.component';
 import { VerificationComponent } from './Forgot-Password/verification/verification.component';
@@ -73,6 +72,14 @@ import { Page404Component } from './page404/page404.component';
 import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
 import { ReservationClientComponent } from './User-infos/reservation-client/reservation-client.component';
 import { InformationsClientComponent } from './User-infos/informations-client/informations-client.component';
+
+
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -97,7 +104,6 @@ import { InformationsClientComponent } from './User-infos/informations-client/in
     NewPasswordComponent,
     ProfileInfosComponent,
     ReservationListComponent,
-    TimeLineComponent,
     MyTripComponent,
     ForgotPasswordComponent,
     VerificationComponent,
@@ -146,7 +152,8 @@ import { InformationsClientComponent } from './User-infos/informations-client/in
   providers: [
     AuthorizationGuard,
     AuthGuard,
-    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
+    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
+    { provide: LOCALE_ID, useValue: 'fr-FR' } 
   ],
   bootstrap: [AppComponent]
 })

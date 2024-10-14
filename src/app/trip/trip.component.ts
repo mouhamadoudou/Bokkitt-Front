@@ -1,29 +1,45 @@
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../services/data.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthentificationService } from '../services/authentification.service';
 import { filter } from 'rxjs/operators';
+import { TmpTripDataService } from '../services/tmp-trip-data.service';
+import { TripService } from '../services/trip.service';
+import { UserService } from '../services/user.service';
+import { AuthcheckService } from '../services/authcheck.service';
 
 @Component({
   selector: 'app-trip',
   templateUrl: './trip.component.html',
   styleUrl: './trip.component.css',
 })
-export class TripComponent implements OnInit, AfterViewInit {
+export class TripComponent implements OnInit {
 
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
+  tripId: number | undefined;
+  userData: any = {}
 
-  constructor(private dataService: DataService, private router: Router, public authService: AuthentificationService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public authService: AuthentificationService,
+    private tmpTripData: TmpTripDataService,
+    public userService: UserService,
+    public tripService: TripService,
+    public authCheck: AuthcheckService,
+  ) { }
 
   ngOnInit(): void {
-    this.trajectData = this.dataService.getData();
-    console.log(this.trajectData)
-    if (!this.trajectData) {
-      console.error("error : data");
-    }
+    this.trajectData = {};
+
+    this.route.paramMap.subscribe(params => {
+      this.tripId = +params.get('id')!;
+      if (this.tripId != undefined) {
+        this.loadAndInitTrips(this.tripId)
+      }
+    });
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -32,28 +48,53 @@ export class TripComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
-    this.startStepper();
+  uploadDriverData(driverId: string) {
+    new Promise((resolve, reject) => {
+      const token: any = localStorage.getItem('token');
+
+      this.userService.getUserById(driverId, "driver").subscribe(
+        (data) => {
+          this.userData = data;
+          // console.log("user date == ", this.userData)
+          resolve("ok");
+        },
+        (error) => {
+          // console.error('Error fetching user:', error);
+          reject(error);
+        }
+      );
+    });
   }
 
+
+  loadAndInitTrips(tripId: number): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.tripService.getTripById(tripId).subscribe(
+        (data) => {
+          this.trajectData = data
+          this.uploadDriverData(this.trajectData.driverid)
+          // console.log("ddd = ", this.trajectData)
+          resolve();
+        },
+        (error) => {
+          // console.error('Error fetching trip:', error);
+          reject(error);
+        }
+      );
+    });
+  }
+
+
   onClickReserved() {
-    if (this.authService.authentificated) {
-      this.router.navigateByUrl("reservation")
+    if (this.authCheck.isConnected()) {
+      this.router.navigate(["/reservation", this.trajectData.id]);
     } else {
-      this.router.navigateByUrl("login")
+      this.router.navigate(["login-client", this.trajectData.id])
     }
   }
 
-  startStepper() {
-    // setTimeout(() => {
-    //   this.stepper.next();
-    //   setTimeout(() => {
-    //     this.stepper.next();
-    //     setTimeout(() => {
-    //       this.stepper.reset();
-    //       this.startStepper()
-    //     }, 3000);
-    //   }, 3000);
-    // }, 3000);
+  formatTime(time: string): string {
+    const [hours, minutes] = time.split(':');
+    return `${hours}h${minutes}`;
   }
 }

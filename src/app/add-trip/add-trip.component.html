@@ -1,14 +1,14 @@
 <div class="trip-contenair">
     <mat-card>
-        <mat-card-header class="driver-mode" *ngIf="authService.roles && authService.roles.includes('DRIVER')">
-            
+        <mat-card-header class="driver-mode" *ngIf="autCheck.getRoles() && autCheck.getRoles().includes('DRIVER')">
+
             <mat-card-title>
                 Annoncer un trajet
             </mat-card-title>
         </mat-card-header>
 
-        <mat-card-header  *ngIf="!authService.roles">
-            
+        <mat-card-header *ngIf="!autCheck.getRoles()">
+
             <mat-card-title>
                 Annoncer un trajet
             </mat-card-title>
@@ -26,8 +26,8 @@
                             </div>
 
                             <div class="date-time-conetainer">
-                                <app-date-input />
-                                <app-time-picker />
+                                <app-date-input (dateChange)="onDateSelected($event)" />
+                                <app-time-picker (timeChange)="onTimeSelected($event)" />
                                 <!-- <button mat-button matStepperNext>Next</button> -->
 
                                 <!-- <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
@@ -41,40 +41,44 @@
 
                             <div class="principal-point-container">
                                 <mat-form-field class="search-custom" appearance="outline">
-                                    <input matInput [formControl]="myControl" [(ngModel)]="filterValues.depart"
-                                        [matAutocomplete]="auto">
+                                    <input [(ngModel)]="filterValues.depart" name="depart" matInput
+                                        [formControl]="myControl" [matAutocomplete]="auto">
                                     <mat-autocomplete #auto="matAutocomplete">
-
-                                        @for (option of filteredOptions | async; track option) {
-                                        <mat-option [value]="option">{{option}}</mat-option>
-                                        }
+                                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                            {{option}}
+                                        </mat-option>
                                     </mat-autocomplete>
-
                                     <mat-label>Depart</mat-label>
-
                                 </mat-form-field>
+                                
                                 <mat-form-field class="meeting-point">
                                     <mat-label>Détails du point de rendez-vous</mat-label>
-                                    <textarea matInput placeholder="Ex. Pat d'oie à côté du pont..." class="no-resize" maxlength="60"></textarea>
-                                  </mat-form-field>                                  
+                                    <textarea matInput [(ngModel)]="filterValues.departuredesc" name="departuredesc"
+                                        placeholder="Ex. Pat d'oie à côté du pont..." class="no-resize"
+                                        maxlength="60"></textarea>
+                                </mat-form-field>
+                                
 
 
                                 <!-- <mat-icon>home</mat-icon> -->
-                                <mat-form-field class="destination-input" appearance="outline">
-                                    <input matInput [(ngModel)]="filterValues.destination" [formControl]="myControl2"
-                                        [(ngModel)]="filterValues.destination" [matAutocomplete]="auto2">
-                                    <mat-autocomplete #auto2="matAutocomplete">
 
-                                        @for (option of filteredOptions2 | async; track option) {
-                                        <mat-option [value]="option">{{option}}</mat-option>
-                                        }
+                                <mat-form-field class="destination-input" appearance="outline">
+                                    <input [(ngModel)]="filterValues.destination" name="destination" matInput
+                                        [formControl]="myControl2" [matAutocomplete]="auto2">
+                                    <mat-autocomplete #auto2="matAutocomplete">
+                                        <mat-option *ngFor="let option of filteredOptions2 | async" [value]="option">
+                                            {{option}}
+                                        </mat-option>
                                     </mat-autocomplete>
                                     <mat-label>Destination</mat-label>
                                 </mat-form-field>
+                                
                                 <mat-form-field class="meeting-point">
-                                    <mat-label>Details du point de chute</mat-label>
-                                    <textarea matInput placeholder="Ex. Pat d'oie a coté du pont..." class="no-resize"></textarea>
+                                    <mat-label>Détails du point de chute</mat-label>
+                                    <textarea matInput [(ngModel)]="filterValues.destinationdesc" name="destinationdesc"
+                                        placeholder="Ex. Pat d'oie a côté du pont..." class="no-resize"></textarea>
                                 </mat-form-field>
+                                
                             </div>
 
                             <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
@@ -91,38 +95,37 @@
                             <div class="preference">
                                 <h2>Preference</h2>
                                 <form class="preference-form" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
-                                    <mat-slide-toggle ngModel name="enableWifi" color="primary"
-                                        class="custom-slide-toggle">Fumeur</mat-slide-toggle>
-                                    <mat-slide-toggle ngModel name="acceptTerms" color="primary"
-                                        class="custom-slide-toggle toggle-animal" required>Animaux</mat-slide-toggle>
+                                    <mat-slide-toggle ngModel [(ngModel)]="filterValues.smoke" name="enableWifi"
+                                        color="primary" class="custom-slide-toggle">Fumeur</mat-slide-toggle>
+                                    <mat-slide-toggle ngModel name="acceptTerms" [(ngModel)]="filterValues.pets"
+                                        color="primary" class="custom-slide-toggle toggle-animal"
+                                        required>Animaux</mat-slide-toggle>
                                 </form>
                             </div>
-                            <app-price-slider />
+                            <app-price-slider (priceOnchange)="onPriceSelected($event)" />
 
                             <div class="place">
                                 <h2>Place/Trajet</h2>
 
                                 <mat-form-field appearance="fill" class="traject-input">
                                     <mat-label>Place</mat-label>
-                                    <input matInput placeholder="Nombre de place" type="text" pattern="\d*" ngModel
-                                        name="nombrePlace" #nombrePlace="ngModel"
-                                        (keypress)="validateNumberInput($event)" required>
+                                    <input [(ngModel)]="filterValues.nbSeat" name="nombrePlace" matInput
+                                        placeholder="Nombre de place" type="text" pattern="\d*" ngModel
+                                        #nombrePlace="ngModel" (keypress)="validateNumberInput($event)" required>
 
                                     <mat-icon matSuffix color="primary">airline_seat_legroom_normal</mat-icon>
-                                    <!-- <mat-error *ngIf="nombrePlace.invalid && (nombrePlace.dirty || nombrePlace.touched)"
-                                        class="custom-error">
-                                        Entrer uniquement des chiffres
-                                    </mat-error> -->
+                
                                 </mat-form-field>
 
                                 <mat-form-field class="route-autoroute">
                                     <mat-label>National/Autoroute</mat-label>
-                                    <mat-select>
+                                    <mat-select [(ngModel)]="filterValues.selectedRoad" name="selectedRoad">
                                         @for (road of roads; track road) {
                                         <mat-option [value]="road.value">{{road.viewValue}}</mat-option>
                                         }
                                     </mat-select>
                                 </mat-form-field>
+                                
                             </div>
 
                             <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
@@ -142,26 +145,29 @@
                             <div class="preference">
                                 <h2>Preference</h2>
                                 <form class="preference-form" #form="ngForm" (ngSubmit)="alertFormValues(form.form)">
-                                    <mat-slide-toggle ngModel name="enableWifi" color="primary"
-                                        class="custom-slide-toggle">Climatisation</mat-slide-toggle>
+                                    <mat-slide-toggle ngModel [(ngModel)]="filterValues.clim" name="enableWifi"
+                                        color="primary" class="custom-slide-toggle">Climatisation</mat-slide-toggle>
                                     <mat-slide-toggle ngModel name="acceptTerms" color="primary"
-                                        class="custom-slide-toggle toggle-animal" [(ngModel)]="baggagePaid" required>Baggage
+                                        class="custom-slide-toggle toggle-animal" [(ngModel)]="filterValues.baggagePaid"
+                                        required>Baggage
                                         Payant</mat-slide-toggle>
                                 </form>
                             </div>
                             <div class="place">
                                 <mat-form-field class="route-autoroute">
                                     <mat-label>Type de voiture</mat-label>
-                                    <mat-select>
-                                        @for (carType of carTypes; track carType) {
-                                        <mat-option [value]="carType.value">{{carType.viewValue}}</mat-option>
-                                        }
+                                    <mat-select [(ngModel)]="filterValues.carType"  name="carType">
+                                        <mat-option *ngFor="let carType of carTypes" [value]="carType.value">
+                                            {{ carType.viewValue }}
+                                        </mat-option>
                                     </mat-select>
                                 </mat-form-field>
+
+
                                 <mat-form-field appearance="fill" class="traject-input">
                                     <mat-label>Capacité bagage</mat-label>
-                                    <input matInput placeholder="Ex : 4" type="text" pattern="\d*" ngModel
-                                        name="capacityBaggage" #nombrePlace="ngModel"
+                                    <input [(ngModel)]="filterValues.bagCap" name="capacityBaggage" matInput
+                                        placeholder="Ex : 4" type="text" pattern="\d*" ngModel #nombrePlace="ngModel"
                                         (keypress)="validateNumberInput($event)" required>
                                     <!-- <mat-error *ngIf="nombrePlace.invalid && (nombrePlace.dirty || nombrePlace.touched)"
                                         class="custom-error">
@@ -173,23 +179,21 @@
                             <div class="place">
                                 <mat-form-field class="route-autoroute">
                                     <mat-label>Plaque d'immatriculation</mat-label>
-                                    <input matInput placeholder="ex: AAA-123-AA" [(ngModel)]="licensePlate" maxlength="9" (ngModelChange)="formatLicensePlate($event)" name="licensePlate" required>
-                                  </mat-form-field>
+                                    <input [(ngModel)]="licensePlate" name="dzds" matInput placeholder="ex: AAA-123-AA"
+                                        maxlength="9" (ngModelChange)="formatLicensePlate($event)" name="licensePlate"
+                                        required>
+                                </mat-form-field>
 
 
-                                <mat-form-field *ngIf="baggagePaid == true" appearance="fill" class="traject-input">
+                                <mat-form-field *ngIf="filterValues.baggagePaid" appearance="fill" class="traject-input">
                                     <mat-label>Prix bagage</mat-label>
-                                    <input matInput placeholder="Prix bagage" type="text" pattern="\d*" ngModel
-                                        name="baggagePrice" #nombrePlace="ngModel"
-                                        (keypress)="validateNumberInput($event)" required>
-                                    <!-- <mat-error *ngIf="nombrePlace.invalid && (nombrePlace.dirty || nombrePlace.touched)"
-                                        class="custom-error">
-                                        Entrer uniquement des chiffres
-                                    </mat-error> -->
+                                    <input [(ngModel)]="filterValues.bagPrice" name="baggagePrice" matInput
+                                        placeholder="Prix bagage" type="text" pattern="\d*" ngModel
+                                        #nombrePlace="ngModel" (keypress)="validateNumberInput($event)" required>
                                 </mat-form-field>
                             </div>
 
-                            <button mat-raised-button class="step-one-button" color="primary" routerLink="/login-driver">
+                            <button mat-raised-button class="step-one-button" color="primary" (click)="onSubmit()">
                                 Valider le trajet
                             </button>
                         </form>

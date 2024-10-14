@@ -26,6 +26,8 @@ import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connex
 import { Page404Component } from './page404/page404.component';
 import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
 
+import { AuthGuardUserService } from './guards/auth-guard-user.service';
+
 const routes: Routes = [
 
 
@@ -42,31 +44,50 @@ const routes: Routes = [
       // { path: "", component: ChooseTypeUserComponent },
 
 
-      { path: "", component: HomeComponent },
-      { path: "home", component: HomeComponent },
-      { path: "trip", component: TripComponent },
 
 
-      { path: "login-client", component: LoginComponent },
-      { path: "login-driver", component: ConnexionDriverComponent },
-      { path: "choose-profile", component: ChooseTypeUserComponent },
+      {
+        path: '',
+        canActivate: [AuthGuardUserService], data: { profile: 'p-user' },
+        children: [
+          { path: "", component: HomeComponent },
+          { path: "home", component: HomeComponent },
+          { path: "trip/:id", component: TripComponent },
+          { path: "suggest-traject", component: SuggestTrajectComponent },
+        ]
+      },
 
-      { path: "add-trip", component: AddTripComponent },
-      { path: "suggest-traject", component: SuggestTrajectComponent },
-      { path: "forgot-password", component: ForgotPasswordComponent },
-      { path: "verification", component: VerificationComponent },
+      {
+        path: '',
+        canActivate: [AuthGuardUserService], data: { profile: 'p-driver' },
+        children: [
+          { path: "add-trip", component: AddTripComponent },
+        ]
+      },
 
       // { path: "students", component: StudentsComponent },
       // { path: "payments", component: PaymentsComponent },
       // { path: "profile", component: ProfileComponent },
 
-            // ---------------------DRIVER && PASSAGER LOGIN-----
+      // ---------------------DRIVER && PASSAGER LOGIN-----
 
       {
         path: "informations", component: DashboardComponent,
         canActivate: [AuthorizationGuard], data: { roles: ['DRIVER', 'USER'] }
       },
 
+      {
+        path: '',
+        canActivate: [AuthGuard],
+        children: [
+          { path: "login-client", component: LoginComponent },
+          { path: "login-client/:id", component: LoginComponent },
+          { path: "login-driver", component: ConnexionDriverComponent },
+          { path: "choose-profile", component: ChooseTypeUserComponent },
+          { path: "forgot-password", component: ForgotPasswordComponent },
+          { path: "verification", component: VerificationComponent },
+        ]
+      },
       // ---------------------DRIVER-----------------------
       {
         path: '',
@@ -76,6 +97,8 @@ const routes: Routes = [
           { path: 'driver-dashboard', component: DriverDashboardComponent },
           { path: 'driver-ride-request', component: DriverRideRequestComponent },
           { path: "my-trip", component: MyTripComponent },
+          { path: "add-trip", component: AddTripComponent },
+
           // { path: "informations", component: DashboardComponent },
         ]
       },
@@ -86,7 +109,7 @@ const routes: Routes = [
         canActivate: [AuthorizationGuard],
         data: { roles: ['USER'] },
         children: [
-          { path: "reservation", component: ReservationComponent },
+          { path: "reservation/:id", component: ReservationComponent },
           { path: "my-trip-client", component: ClientMyTripComponent },
           { path: "ride-request", component: RideRequestListComponent },
           // { path: "informations", component: DashboardComponent },

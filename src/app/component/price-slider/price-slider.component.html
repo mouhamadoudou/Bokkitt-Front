@@ -1,25 +1,23 @@
 <mat-card-content>
     <h2>Prix</h2>
-
     <div class="price-label-container">
-        <label class="price-name-label">
-            1 passager :
-        </label>
-        <label class="price-value-label">
-            <!-- {{slider.value}} -->
-
-            <div class="custom-input">
-                <button (click)="decrement()" class="decrement-butt">-</button>
-                <div class="input-container">
-                    <input matInput class="user-input" [(ngModel)]="value" type="number">
-                    <span class="unit">FCFA</span>
-                </div>
-                <button (click)="increment()" class="increment-butt">+</button>
-            </div>
-        </label>
+      <label class="price-name-label">
+        1 passager :
+      </label>
+      <label class="price-value-label">
+        <div class="custom-input">
+          <button (click)="decrement()" class="decrement-butt">-</button>
+  
+          <div class="input-container">
+            <input matInput class="user-input" [(ngModel)]="value" (ngModelChange)="onPriceChange($event)" type="number" min="{{min}}" max="{{max}}" />
+            <span class="unit">FCFA</span>
+          </div>
+          <button (click)="increment()" class="increment-butt">+</button>
+        </div>
+      </label>
     </div>
-    <mat-slider class="price-margin" [disabled]="disabled" [max]="max" [min]="min" [step]="step"
-        [discrete]="thumbLabel" [showTickMarks]="showTicks">
-        <input matSliderThumb [(ngModel)]="value" #slider>
+    <mat-slider class="price-margin" [disabled]="disabled" [max]="max" [min]="min" [step]="step" [discrete]="thumbLabel" [showTickMarks]="showTicks">
+      <input matSliderThumb [(ngModel)]="value" (ngModelChange)="onPriceChange($event)" />
     </mat-slider>
-</mat-card-content>
+  </mat-card-content>
+  

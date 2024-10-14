@@ -15,16 +15,14 @@
                                     <form>
                                         <ng-template matStepLabel>Selectionner le nombre de place</ng-template>
                                         <div>
-                                            <mat-form-field class="step-one-form">
-                                                <mat-label>Nombre de place</mat-label>
-                                                <mat-select disableRipple>
-                                                    <mat-option value="1">1 place</mat-option>
-                                                    <mat-option value="2">2 places</mat-option>
-                                                    <mat-option value="3">3 places</mat-option>
-                                                    <mat-option value="4">4 places</mat-option>
-                                                    <mat-option value="5">5 places</mat-option>
+                                            <mat-form-field class="step-one-form" required>
+                                                <mat-label>Nombre de places</mat-label>
+                                                <mat-select disableRipple (selectionChange)="onNbSeatsChange($event)">
+                                                  <mat-option *ngFor="let i of [].constructor(tripData.seat); let index = index" [value]="index + 1">
+                                                    {{ index + 1 }} place{{ index + 1 > 1 ? 's' : '' }}
+                                                  </mat-option>
                                                 </mat-select>
-                                            </mat-form-field>
+                                              </mat-form-field>
 
                                             <!-- <button mat-button matStepperNext>Next</button> -->
 
@@ -42,27 +40,27 @@
                                             <div class="container">
                                                 <div class="point-container top">
                                                     <div class="label"> <span class="descritpion">Dakar </span>
-                                                        (10h30)</div>
+                                                        ({{tripData.time}})</div>
                                                     <div class="point"></div>
                                                 </div>
                                                 <div class="line"></div>
                                                 <div class="point-container bottom">
                                                     <div class="point"></div>
-                                                    <div class="label"> <span class="descritpion"> Saly</span>
-                                                        (11h30)</div>
+                                                    <div class="label"> <span class="descritpion"> {{ tripData.departure}}</span>
+                                                        ({{tripData.time}})</div>
                                                 </div>
                                             </div>
 
                                             <div class="container-2">
-                                                <div> <span class="descritpion">Télephone :</span> 066175766 </div>
+                                                <div> <span class="descritpion">Télephone :</span> {{userData.phonenumber}} </div>
 
                                                 <div class="label"> <span class="descritpion"> Prix passager
-                                                        :</span> 14 000 FCFA</div>
+                                                        :</span> {{tripData.price}} FCFA</div>
                                                 <div class="label"> <span class="descritpion">Nombre de passager
-                                                        :</span> 4</div>
+                                                        :</span> {{selectedNbSeats}} </div>
 
                                                 <div class="total"> <span class="descritpion"> Prix total :
-                                                    </span>14 000 FCFA</div>
+                                                    </span> {{totalPrice}} FCFA</div>
 
                                             </div>
                                         </div>

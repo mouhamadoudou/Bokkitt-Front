@@ -4,57 +4,45 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
-import { DataService } from '../services/data.service';
-
-export interface Traject {
-  depart: string;
-  destination: string;
-  date : string,
-  time : string,
-  clients : any,
-  chair : number,
-  price : number,
-  smoke : false,
-  bague : false,
-  phone : false,
-  payemnts : null,
-  isCompleted : boolean
-}
+import { TripService } from '../services/trip.service';
+import { DatePipe } from '@angular/common';
+import { TripModel } from '../models/traject.model';
+import { TmpTripDataService } from '../services/tmp-trip-data.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
+  providers: [DatePipe],
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatPaginator) paginator! : MatPaginator;
-  @ViewChild(MatSort) sort! : MatSort;
-  
-  public dataSource : any;
-  public displayedColumns = ["id"];
-  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine", "Tambacounda", "Tambacounda"]; 
-  public client = ["Mohammed", undefined]; 
-  public completed = [true, false, true]; 
-  public tmpDate : string = "";
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
+  public dataSource: any;
+  public displayedColumns = ["id"];
+  public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine", "Tambacounda", "Tambacounda"];
+  public tmpDate: string = "";
 
   filterValues = {
-    depart: '',
+    departure: '',
     destination: ''
   };
 
-  constructor (private router : Router, private dataService: DataService, private cdr: ChangeDetectorRef) {
-
+  constructor(private router: Router, private cdr: ChangeDetectorRef,
+    private tripService: TripService,
+    private datePipe: DatePipe,
+    private tripDataService: TmpTripDataService,
+  ) {
   }
-  
+
   updateDate(elementDate: string) {
-    console.log('hello wold')
-      this.tmpDate = elementDate;
-      console.log(this.tmpDate)
+    this.tmpDate = elementDate;
+    // console.log(this.tmpDate)
   }
 
   myControl = new FormControl('');
@@ -62,9 +50,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   filteredOptions = new Observable<string[]>;
   filteredOptions2 = new Observable<string[]>;
-  
+
   ngOnInit(): void {
-    
+
+    this.loadAndInitTrips()
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -75,60 +65,60 @@ export class HomeComponent implements OnInit, AfterViewInit {
       map(value => this._filter(value || '')),
     );
 
-    const traject: Traject[] = [];
-    for (let i = 1; i < 100; i++) {
-      traject.push(
-        {
-          depart : this.city[Math.floor(Math.random() * this.city.length)],
-          destination: this.city[Math.floor(Math.random() * this.city.length)],
-          date : i == 1 || i == 2 ? "Mercredi 10 Juillet" : "Mercredi 11 Juillet" ,
-          time : "12h30",
-          clients : [this.client[Math.floor(Math.random()  * 2)], this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)],this.client[Math.floor(Math.random()  * 2)]],
-          chair : 3,
-          price : Math.round(800 + Math.random() * 10000),
-          smoke : false,
-          bague : false,
-          phone : false,
-          payemnts : null,
-          isCompleted: this.completed[Math.floor(Math.random()  * 3)]
+  }
+
+  loadAndInitTrips(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.tripService.getAllTrips().subscribe(
+        (data) => {
+          this.dataSource = new MatTableDataSource(data.data);
+          this.dataSource.filterPredicate = this.createFilter();
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+          resolve();  
+        },
+        (error) => {
+          console.error('Error fetching trip:', error);
+          reject(error);
         }
-      )
-    }
-    this.dataSource = new MatTableDataSource(traject)
-    this.dataSource.filterPredicate = this.createFilter();
+      );
+    });
+  }
+  
+  formatTime(time: string): string {
+    const [hours, minutes] = time.split(':');
+    return `${hours}h${minutes}`;
   }
 
   private _filter(value: string): string[] {
-    console.log(this.dataSource)
+    // console.log(this.dataSource)
     const filterValue = value.toLowerCase();
 
     return this.city.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  createFilter(): (data: Traject, filter: string) => boolean {
-    const filterFunction = (data: Traject, filter: string): boolean => {
+  createFilter(): (data: any, filter: string) => boolean {
+    const filterFunction = (data :any, filter: string): boolean => {
+
       const searchTerms = JSON.parse(filter);
-      return data.depart.toLowerCase().indexOf(searchTerms.depart.toLowerCase()) !== -1
-         && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
+      return data.departure.toLowerCase().indexOf(searchTerms.departure.toLowerCase()) !== -1
+        && data.destination.toLowerCase().indexOf(searchTerms.destination.toLowerCase()) !== -1;
     };
     return filterFunction;
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.cdr.detectChanges(); // Manually trigger change detection after view initialization
+    this.cdr.detectChanges();
 
-  }   
+  }
 
-  filterTraject() :void {
+  filterTraject(): void {
     this.dataSource.filter = JSON.stringify(this.filterValues);
   }
 
   onCardClick(traject: any) {
-    // console.log(this.dataSource)
-    this.dataService.setData(traject)
-    this.router.navigate(['/trip']);
+    this.tripDataService.setTmpTrip(traject);
+    this.router.navigate(['/trip', traject.id]);
   }
 }
 

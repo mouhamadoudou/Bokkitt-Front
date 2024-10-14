@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { AuthentificationService } from '../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { TripService } from '../services/trip.service';
 
 @Component({
   selector: 'app-suggest-traject',
@@ -20,6 +21,8 @@ export class SuggestTrajectComponent implements OnInit {
   public baggagePaid: boolean = false;
   public dataSource: any;
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"];
+  selectedDate: string | null = null;
+  selectedTime: string | null = null;
 
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
@@ -33,10 +36,25 @@ export class SuggestTrajectComponent implements OnInit {
 
   filterValues = {
     depart: '',
-    destination: ''
+    destination: '',
+    nbSeat: ''
   };
 
-  constructor(private fb: FormBuilder, authService : AuthentificationService, private router: Router) {
+
+  onDateSelected(date: string) {
+    this.selectedDate = date;
+    console.log("date === ", this.selectedDate)
+  }
+
+  onTimeSelected(time: string) {
+    this.selectedTime = time;
+    console.log("time == ", time)
+  }
+
+  constructor(private fb: FormBuilder, authService: AuthentificationService, private router: Router,
+    private tripService: TripService,
+
+  ) {
   }
 
 
@@ -65,9 +83,29 @@ export class SuggestTrajectComponent implements OnInit {
   }
 
 
-  onSubmit() {
-    if (this.creditCardForm.valid) {
-      console.log('Form Submitted', this.creditCardForm.value);
+  onSubmitbtn(): Promise<void> {
+    const body = {
+      departure: this.filterValues.depart,
+      destination: this.filterValues.destination,
+      date: this.selectedDate,
+      time: this.selectedTime,
+      numberrequest: this.filterValues.nbSeat
     }
+
+    return new Promise((resolve, reject) => {
+      this.tripService.createRequestTrip(body).subscribe(
+        (data) => {
+          console.log("mohammed")
+          resolve();
+        },
+        (error) => {
+          console.error('Error fetching trip:', error);
+          reject(error);
+        }
+      );
+    });
   }
+  // if (this.creditCardForm.valid) {
+  //   console.log('Form Submitted', this.creditCardForm.value);
+  // }
 }

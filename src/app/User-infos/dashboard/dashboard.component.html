@@ -4,7 +4,7 @@
     </div> -->
 
     <div class="leftbox"
-    [ngStyle]="{'background-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+    [ngStyle]="{'background-color': authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
     >
         <nav class="nav-left" >
             <a (click)="activateSection('profile')" [ngClass]="{'active': activeSection === 'profile'}">
@@ -28,18 +28,18 @@
     </div>
 
     <div class="rightbox" 
-    [ngStyle]="{'border-color': authService.roles && authService.roles.includes('DRIVER') ? '#437F97' : '#AD1457' }"
+    [ngStyle]="{'border-color': authCheck.isConnected() && authCheck.getRoles().includes('DRIVER') ? '#437F97' : '#AD1457' }"
     
     >
         <div *ngIf="activeSection === 'profile'" class="profile-contenair">
-            <app-profile-infos *ngIf="authService.roles && authService.roles.includes('DRIVER')" />
-            <app-informations-client *ngIf="authService.roles && authService.roles.includes('USER')" />
+            <app-profile-infos *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')" />
+            <app-informations-client *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('USER')" />
 
         </div>
 
         <div *ngIf="activeSection === 'payment'" class="payment">
-            <app-reservation-list *ngIf="authService.roles && authService.roles.includes('DRIVER')" />
-            <app-reservation-client *ngIf="authService.roles && authService.roles.includes('USER')" />
+            <app-reservation-list *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('DRIVER')" />
+            <app-reservation-client *ngIf="authCheck.isConnected() && authCheck.getRoles().includes('USER')" />
         </div>
 
         <div *ngIf="activeSection === 'subscription'" class="subscription">

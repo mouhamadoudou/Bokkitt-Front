@@ -4,13 +4,18 @@
 
             <mat-card appearance="outlined" class="trip-card">
                 <mat-card-header color="primary" class="header1">
-                    <mat-card-title class="date">Mer. 17 juillet</mat-card-title>
+                    <mat-card-title class="date">
+                        <!-- Mer. 17 juillet -->
+                        {{ trajectData.date | date: 'EEEE d MMMM' : 'UTC' }}
+                    </mat-card-title>
                     <!-- <mat-card-title> {{trajectData.date}} </mat-card-title> -->
 
                     <div class="container-price">
                         <div class="traject-price">
                             <mat-card-title class="price-card">
-                                Place : 14 000 FCFA
+                                Place :
+                                    {{ trajectData.price}}                                
+                                FCFA
                                 <!-- Place : {{trajectData.price}} FCFA -->
                             </mat-card-title>
                         </div>
@@ -28,22 +33,23 @@
                             <div class="depart-icon">
                                 <mat-icon> access_time </mat-icon>
                                 <p>
-                                    Depart: 10h30
+                                    {{trajectData.time}}
+                                    <!-- {{formatTime(trajectData.time)}} -->
                                 </p>
                             </div>
                             <div class="depart-icon">
                                 <!-- <mat-icon> work </mat-icon> -->
                                 <mat-icon> location_on </mat-icon>
-                                <p> Point de départ: Saly (Auchan Saly Centre)</p>
+                                <p> Point de départ: {{trajectData.departuredesc }}</p>
                             </div>
                             <div class="depart-icon">
                                 <!-- <mat-icon> work </mat-icon> -->
                                 <mat-icon> map </mat-icon>
-                                <p> Point de chute: Dakar (hopital)</p>
+                                <p> Point de chute: {{trajectData.destinationdesc}}</p>
                             </div>
                             <div class="depart-icon">
                                 <mat-icon> airline_seat_legroom_normal </mat-icon>
-                                <p> Place disponible : 3</p>
+                                <p> Place disponible : {{trajectData.seat}}</p>
                             </div>
                             <!-- <div class="depart-icon">
                                     <mat-icon> ac_unit </mat-icon>
@@ -68,7 +74,7 @@
                                     <mat-card-title class="header-driver"> Chauffeur </mat-card-title>
                                 </mat-card-header>
                                 <mat-card-content>
-                                    <p> Nom: John Doe </p>
+                                    <p> Nom: {{userData.firstname}} {{userData.lastname}} </p>
                                 </mat-card-content>
                                 <mat-card-content>
                                     <p> Notes: 4/5 </p>
@@ -83,20 +89,19 @@
                                     <p> Type: 4x4 </p>
                                 </mat-card-content>
                                 <mat-card-content>
+                                    <p> Baggage Payant:  {{trajectData.bag ? "Oui" : "Non"}} </p>
+                                </mat-card-content>
+                                <mat-card-content>
                                     <p> Capacité Baggage: 2 </p>
                                 </mat-card-content>
-                                <mat-card-content>
-                                    <p> Prix Baggage: 2000 FCFA </p>
+                                <mat-card-content *ngIf="trajectData.bag">
+                                    <p> Prix Baggage: {{trajectData.bagpay}} FCFA </p>
                                 </mat-card-content>
                                 <mat-card-content>
-                                    <p> Baggage Payant: Oui </p>
-                                </mat-card-content>
-                                <mat-card-content>
-                                    <p> Clim: Oui </p>
+                                    <p> Clim: {{trajectData.clim ? "Oui" : "Non"}} </p>
                                 </mat-card-content>
                             </div>
                         </div>
-
                     </mat-card>
 
                     <mat-card class="destination-card" appearance="outlined">
@@ -107,16 +112,18 @@
                             <div class="depart-icon">
                                 <!-- <mat-icon> work </mat-icon> -->
                                 <mat-icon> smoke_free </mat-icon>
-                                <p> Non Fumeur</p>
+                                <p *ngIf="trajectData.smoke"> Fumeur accepter</p>
+                                <p *ngIf="!trajectData.smoke"> Non Fumeur</p>
                             </div>
                             <div class="depart-icon">
                                 <!-- <mat-icon> work </mat-icon> -->
                                 <mat-icon> work </mat-icon>
-                                <p> Capacité bagage limitee 3</p>
+                                <p> Capacité bagage limitee {{trajectData.bagcap}}</p>
                             </div>
                             <div class="depart-icon">
                                 <!-- <mat-icon> work </mat-icon> -->
                                 <mat-icon> pets </mat-icon>
+                                <!-- <p *ngIf="trajectData." > Animaux autoriser</p> -->
                                 <p> Animaux interdit</p>
                             </div>
                         </mat-card-content>

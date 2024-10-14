@@ -1,1 +1,55 @@
-<app-time-line></app-time-line>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Mes trajets
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <ul *ngFor="let item of dataSource;  index as i" id="timeline">
+                 {{setTmpData(item)}}
+                <!-- {{tmpData.departure }} {{i}} -->
+
+                <li class='work'>
+                    <input class='radio' id='work{{i}}' name='works' type='radio'>
+                    <div class="relative">
+                        <div class="{{ checkDate(tmpData.date) ? 'title-comp' : 'title-comp-past' }}">
+                            <label class="title" for='work{{i}}'>
+                                <p> {{tmpData.departure}} -> {{tmpData.destination}} </p>
+                                <div class="time-component">
+                                    <p class="date-depart"> {{tmpData.date}} </p>
+                                    <p class="depart-hours"> {{ tmpData.time }} </p>
+                                </div>
+                            </label>
+    
+                        </div>
+                        <span class='date'> {{ tmpData.date | date: 'EEEE d MMMM' : 'UTC' }}</span>
+                        
+                        <span class="{{checkDate(tmpData.date) ? 'circle' : 'circle-past'}}"></span>
+                    </div>
+                    <div class="content  {{checkDate(tmpData.date) ? '' : 'past'}} ">
+                        <div class="card">
+                            <div class="card-comp">
+                                <h2 class="comp-title">Tarif :</h2>
+                                <h2>{{ tmpData.price }}FCFA</h2>
+                            </div>
+                            <div class="card-comp">
+                                <h2 class="comp-title">ID :</h2>
+                                <h2>{{tmpData.id}}</h2>
+                            </div>
+                            <div class="card-comp">
+                                <h2 class="comp-title">Nombre de Place :</h2>
+                                <h2> {{ tmpData.seat }} </h2>
+                            </div>
+                            <div class="card-comp">
+                                <button mat-raised-button color="primary" (click)="myTrip()">Consulter</button>
+                                <button mat-raised-button class="cancel-btn">Annuler</button>
+                            </div>
+    
+                        </div>
+                    </div>
+                </li>
+            </ul>
+    </div>
+    </mat-card-content>
+</mat-card>

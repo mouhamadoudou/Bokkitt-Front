@@ -4,7 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
-import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-load-students',
@@ -21,7 +20,7 @@ export class LoadStudentsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort! : MatSort;
 
 
-  constructor (private router : Router, private productService: ProductsService) {
+  constructor (private router : Router) {
 
   }
 

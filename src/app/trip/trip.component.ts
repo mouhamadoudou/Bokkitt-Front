@@ -89,7 +89,7 @@ export class TripComponent implements OnInit {
     if (this.authCheck.isConnected()) {
       this.router.navigate(["/reservation", this.trajectData.id]);
     } else {
-      this.router.navigate(["login-client", this.trajectData])
+      this.router.navigate(["login-client", this.trajectData.id])
     }
   }
 

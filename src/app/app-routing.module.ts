@@ -81,6 +81,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
           { path: "login-client", component: LoginComponent },
+          { path: "login-client/:id", component: LoginComponent },
           { path: "login-driver", component: ConnexionDriverComponent },
           { path: "choose-profile", component: ChooseTypeUserComponent },
           { path: "forgot-password", component: ForgotPasswordComponent },

@@ -11,13 +11,13 @@
                         </mat-card-header>
                         <mat-card-actions>
                             <mat-stepper orientation="vertical" #stepper>
-                                <mat-step [stepControl]="firstFormGroup">
-                                    <form [formGroup]="firstFormGroup">
+                                <mat-step>
+                                    <form>
                                         <ng-template matStepLabel>Selectionner le nombre de place</ng-template>
                                         <div>
                                             <mat-form-field class="step-one-form" required>
                                                 <mat-label>Nombre de places</mat-label>
-                                                <mat-select disableRipple [(ngModel)]="selectedNbSeats" (selectionChange)="onNbSeatsChange($event)">
+                                                <mat-select disableRipple (selectionChange)="onNbSeatsChange($event)">
                                                   <mat-option *ngFor="let i of [].constructor(tripData.seat); let index = index" [value]="index + 1">
                                                     {{ index + 1 }} place{{ index + 1 > 1 ? 's' : '' }}
                                                   </mat-option>
@@ -33,8 +33,8 @@
                                         </div>
                                     </form>
                                 </mat-step>
-                                <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
-                                    <form [formGroup]="secondFormGroup">
+                                <mat-step>
+                                    <form>
                                         <ng-template matStepLabel>Récapitulatif de votre demande</ng-template>
                                         <div class="recap-contenair">
                                             <div class="container">

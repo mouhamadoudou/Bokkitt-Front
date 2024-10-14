@@ -81,9 +81,7 @@ export class ReservationComponent implements AfterViewInit, OnInit {
 
   onNbSeatsChange(event: any): void {
     this.selectedNbSeats = event.value;
-    // Faites ce que vous voulez avec la valeur sélectionnée
     this.totalPrice = (this.selectedNbSeats * this.tripData.price)
-    console.log('Nombre de places sélectionnées :', this.totalPrice);
   }
 
   onSubmit() {

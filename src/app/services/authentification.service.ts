@@ -11,7 +11,7 @@ import { jwtDecode } from "jwt-decode"
 
 
 export class AuthentificationService {
-  private apiUrl = 'http://localhost:3001/api/';
+  private apiUrl = 'http://13.246.15.184:3001/api/';
 
 
   constructor(private router: Router, private http: HttpClient,

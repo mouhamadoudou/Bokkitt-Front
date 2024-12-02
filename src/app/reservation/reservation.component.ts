@@ -50,11 +50,9 @@ export class ReservationComponent implements AfterViewInit, OnInit {
       this.userService.getUserById(this.getToken.getId(), "clients").subscribe(
         (data) => {
           this.userData = data
-          console.log("userr == ", data)
           resolve();
         },
         (error) => {
-          console.error('Error fetching trip:', error);
           reject(error);
         }
       );
@@ -68,11 +66,9 @@ export class ReservationComponent implements AfterViewInit, OnInit {
           this.tripData = data
           this.totalPrice = data.price
           this.loadUserData()
-          console.log("data == ", data)
           resolve();
         },
         (error) => {
-          console.error('Error fetching trip:', error);
           reject(error);
         }
       );
@@ -86,7 +82,6 @@ export class ReservationComponent implements AfterViewInit, OnInit {
 
   onSubmit() {
     if (this.creditCardForm.valid) {
-      console.log('Form Submitted', this.creditCardForm.value);
     }
   }
 

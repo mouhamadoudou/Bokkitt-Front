@@ -47,11 +47,11 @@
             {{filterValues.destination}}</mat-card-title>
 
           <td mat-cell *matCellDef="let element">
-            <div class="date-header" *ngIf="tmpDate !== element.date">
+
+            <div class="date-header" *ngIf="element.showHeader">
               <h2>
                 {{ element.date | date: 'EEEE d MMMM' : 'UTC' }}
               </h2>
-              {{ updateDate(element.date) }}
             </div>
 
             <mat-card class="table-comp" [ngClass]="{ 'disabled': element.isfull}" (click)="onCardClick(element)">

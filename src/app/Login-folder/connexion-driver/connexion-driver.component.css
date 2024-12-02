@@ -25,6 +25,7 @@ mat-form-field {
     font-size: 12px;
     font-weight: bold;
     color: #437F97;
+    cursor: pointer;
 }
 
 .forgot-password-comp {
@@ -32,6 +33,9 @@ mat-form-field {
     justify-content: center;
 }
 
+.error-message-global {
+    color: black;
+}
 
 /* second option ----------------------------------------------
  */
@@ -65,7 +69,8 @@ input[type=number] {
 .main {
     margin-top: 90px;
     width: 400px;
-    height: 500px;
+    /* height: 500px; */
+    height: 600px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 2px 2px 30px #437F97;
@@ -80,6 +85,7 @@ input[type=number] {
     position: relative;
     width: 100%;
     height: 100%;
+    margin-top: 50px;
 }
 
 label {
@@ -87,7 +93,7 @@ label {
     font-size: 2.3em;
     justify-content: center;
     display: flex;
-    margin: 50px;
+    margin: 30px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
@@ -117,7 +123,7 @@ input {
 
     font-size: 1em;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 50px;
     outline: none;
     border: none;
     border-radius: 5px;
@@ -134,8 +140,8 @@ mat-icon {
 }
 
 .login {
-    margin-top: -37px;
-    height: 510px;
+    margin-top: 30px;
+    height: 554px;
     background: #eee;
     border-radius: 60% / 10%;
     transform: translateY(-170px);
@@ -154,7 +160,8 @@ mat-icon {
 }
 
 #chk:checked~.login {
-    transform: translateY(-520px);
+    transform: translateY(-590px)
+    
 }
 
 #chk:checked~.login label {
@@ -163,4 +170,75 @@ mat-icon {
 
 #chk:checked~.signup label {
     transform: scale(.6);
+}
+
+.invalid-border {
+    border: 2px solid red;
+}
+
+.disabled-route-btn {
+    background-color: rgb(114, 114, 114);
+}
+
+.disabled-route-btn:hover {
+    background-color: rgb(114, 114, 114);
+
+}
+
+.form-login {
+    margin-top: 0px;
+}
+
+.country-code-select {
+    height: 33px;
+    width: 120px;
+    background-color: #437F97;
+    border: none;
+    color: #f7f7f7;
+    font-weight: bold;
+}
+
+.form-main {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+
+.form-main-connect {
+    width: 100%;
+    /* background-color: red; */
+    position: relative;
+}
+
+.phone-main {
+    width: 85%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    margin-left: 22px;
+}
+
+
+.input-comp-connect {
+    width: 80%;
+    height: 100%;
+    /* background-color: blue; */
+    margin-left: 10%;
+}
+
+.input-comp {
+    width: 80%;
+    height: 100%;
+    /* background-color: blue; */
+}
+
+.input-subscibe {
+    width: 80%;
+}
+
+.input-phone {
+    width: 80%;
 }

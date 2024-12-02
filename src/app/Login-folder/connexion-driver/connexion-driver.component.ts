@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { AuthentificationService } from '../../services/authentification.service';
 import { Router } from '@angular/router';
 import { LogDialogComponent } from '../../log-dialog/log-dialog.component';
 import { MatDialog } from '@angular/material/dialog'
+import { RegistrationDataService } from '../../services/registration-data.service';
+import { TripService } from '../../services/trip.service';
 
 @Component({
   selector: 'app-connexion-driver',
@@ -12,74 +14,141 @@ import { MatDialog } from '@angular/material/dialog'
 })
 export class ConnexionDriverComponent implements OnInit {
 
-  public loginFormGroup! : FormGroup;
-  public isSubscribe : boolean = true;
+  public loginFormGroup!: FormGroup;
+  public isSubscribe: boolean = true;
+  public isSamePassword = true;
+  public isExistNumber = false;
 
-  constructor (private fb : FormBuilder, 
+  constructor(
+    private registrationDataService: RegistrationDataService,
     private dialog: MatDialog,
-    private authservice : AuthentificationService,
-    private router : Router) {
+    private fb: FormBuilder,
+    private tripService: TripService,
+    private authservice: AuthentificationService,
+    private router: Router) {
 
   }
+  public signUpForm!: FormGroup;
+  public logForm!: FormGroup;
 
-  signupObj:any = {
-    firstName: '',
-    lastName: '',
-    phoneNumber: '',
-    password:''
-  }
 
-  loginObj:any = {
-    phoneNumber: '',
-    password: ''
-  }
+  countryCodes = [
+    { name: 'Guinee Conakry', code: '+224' },
+    { name: 'Mali', code: '+223' },
+    { name: 'Senegal', code: '+221' },
+    { name: 'Mauritanie', code: '+222' },
+    { name: 'Gambie', code: '+220' },
+    { name: 'Guinee Bissau', code: '+245' },
+  ];
 
-  public signUpUser : any[] = []
+  public signUpUser: any[] = []
 
   ngOnInit(): void {
-    // this.loginFormGroup = this.fb.group({
-    //   firstName : this.fb.control(''),
-    //   lastName: this.fb.control(''),
-    //   phoneNumber : this.fb.control(''),
-    //   city : this.fb.control(''),
- 
- 
-    //   username : this.fb.control(''),
-    //   password : this.fb.control('')
-    // });
+
+    function noSpecialCharactersValidator(): ValidatorFn {
+      return (control: AbstractControl): { [key: string]: any } | null => {
+        const isValid = /^[a-zA-ZÀ-ÿ\s]+$/.test(control.value);
+        return isValid ? null : { 'noSpecialCharactersOrNumbers': { value: control.value } };
+      };
+    }
+
+    this.logForm = this.fb.group({
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+          Validators.minLength(9),
+          Validators.maxLength(9)
+        ]
+      ],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      selectedCountryCode: ['+221'],
+
+    })
+
+    this.signUpForm = this.fb.group({
+      firstName: ['', [Validators.required, noSpecialCharactersValidator()]],
+      lastName: ['', [Validators.required, noSpecialCharactersValidator()]],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+          Validators.minLength(9),
+          Validators.maxLength(9)
+        ]
+      ],
+      selectedCountryCode: ['+221'],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+    }
+    );
   }
 
-  onSignUp() :void {
-    let phoneNumber : string = this.signupObj.phoneNumber;
-    let password : string = this.signupObj.password;
-    let firstName : string = this.signupObj.firstName;
-    let lastName : string = this.signupObj.lastName;
-    let role :string = "DRIVER";
-
-    this.authservice.register(firstName, "NiangTMP", phoneNumber, password, role).then((userData) => {
-      console.log("Le Driver est inscrit : ", userData);
-      
-      this.router.navigateByUrl("/driver-dashboard")
-    }).catch((error) => {
-      console.error("Échec de lors de l'inscription : ", error);
-      this.dialog.open(LogDialogComponent)
+  checkIfExiste(phoneNumber: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.tripService.checkIfNumberExist("driver", phoneNumber).subscribe(
+        (data) => {
+          reject();
+        },
+        (error) => {
+          resolve();
+        }
+      );
     });
   }
 
-  onLoginDriver() :void {
-    console.log(this.loginObj)
-    let phoneNumber : string = this.loginObj.phoneNumber;
-    let password : string = this.loginObj.password;
-    let role : string = "DRIVER";
+  async onSignUp() {
+    console.log(this.signUpForm.value.confirmPassword, " $$ ", this.signUpForm.value.password)
+    if (this.signUpForm.value.confirmPassword == this.signUpForm.value.password) {
+
+      await this.checkIfExiste(
+        this.signUpForm.value.selectedCountryCode.replace("+", "") + this.signUpForm.value.phoneNumber
+      )
+        .then(() => {
+          const userData = {
+            phoneNumber: this.signUpForm.value.selectedCountryCode.replace("+", "") + this.signUpForm.value.phoneNumber,
+            password: this.signUpForm.value.password,
+            firstName: this.signUpForm.value.firstName,
+            lastName: this.signUpForm.value.lastName,
+            role: "DRIVER"
+          }
+          console.log("== === ", userData)
+          this.registrationDataService.setData('userInfo', userData);
+          this.router.navigate(['check-number', userData.phoneNumber, "driver"]);
+        })
+        .catch((error) => {
+          this.isExistNumber = true;
+        });
+
+    } else {
+      this.isSamePassword = false
+    }
+
+  }
+
+  forgotPassword(): void {
+    this.router.navigate(['forgot-password', "driver"]);
+  }
+
+  onLoginDriver(): void {
+    // console.log(this.loginObj)
+
+    let phoneNumber: string = (this.logForm.value.selectedCountryCode.replace("+", "") + this.logForm.value.phoneNumber);
+    let password: string = this.logForm.value.password;
+    let role: string = "DRIVER";
+
+    console.log("phone == ", phoneNumber, "   ",  this.logForm.value)
+    console.log("password == ", password)
+
 
     this.authservice.login(phoneNumber, password, role).then((userData) => {
-      console.log("Driver authentifié : ", userData);
       this.router.navigateByUrl("/driver-dashboard")
     }).catch((error) => {
-      console.error("Échec de l'authentification : ", error);
       this.dialog.open(LogDialogComponent)
     });
 
-    console.log(phoneNumber, password)
+    // console.log(phoneNumber, password)
   }
 }

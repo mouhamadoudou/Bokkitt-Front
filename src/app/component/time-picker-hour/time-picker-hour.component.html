@@ -1,0 +1,11 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-select (selectionChange)="onTimeChange($event.value)">
+            <mat-option *ngFor="let time of timesOur" [value]="time">
+                {{ time }}
+            </mat-option>
+        </mat-select>
+            {{ selectedTime }}
+        <mat-icon matSuffix>access_time</mat-icon>
+    </mat-form-field>
+</div>

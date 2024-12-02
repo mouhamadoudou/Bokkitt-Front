@@ -16,8 +16,6 @@ export class AuthorizationGuard implements CanActivate {
     let roles: string[] = this.authCheck.getRoles() as string[];
 
     for (let role of this.authCheck.getRoles()) {
-      console.log(authorizeRoles)
-
       for (let autRole of authorizeRoles) {
         if (role == autRole) {
           authorize = true;

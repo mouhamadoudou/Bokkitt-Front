@@ -17,7 +17,7 @@
 }
 
 mat-card-header {
-  background-color: #9e0f48e5;
+  background-color: #c2185bd1;
   display: flex;
   justify-content: center;
   justify-items: center;
@@ -188,4 +188,11 @@ mat-card-content {
 .no-resize {
   max-height: 100px; 
   resize: none;
+}
+
+
+.mat-stepper-vertical, .mat-stepper-horizontal {
+  display: block;
+  font-family: var(--mat-stepper-container-text-font);
+  background: #333;
 }

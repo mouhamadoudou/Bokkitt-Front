@@ -19,7 +19,7 @@ mat-card-content {
 }
 
 .search-header {
-  background-color: rgba(165, 6, 91, 0.192);
+  background-color: #c2185b70;;
 
   padding: 0;
   margin: 0 auto;
@@ -30,7 +30,7 @@ mat-card-content {
   overflow: hidden;
   justify-content: center;
   margin-top: 10px;
-
+  border: 2px solid #c1185ba3; 
 }
 
 .mat-mdc-card-content {

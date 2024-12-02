@@ -4,41 +4,101 @@
         <input type="checkbox" id="chk" aria-hidden="true">
         <div class="introduction">
             <p>
-                Connexion Conducteur : Accédez à votre tableau de bord et gérez vos trajets.
+                Connexion Passager : Accédez à votre tableau de bord et gérez vos trajets.
             </p>
         </div>
         <div class="signup">
-            <form>
+            <form [formGroup]="logForm" class="form-main-connect" (ngSubmit)="onLoginClient()">
                 <label for="chk" aria-hidden="true">
                     <span>
-                        Se connecter
-
+                        Se connecter    
                     </span>
                 </label>
-                <input type="number" name="number" placeholder="Numero de telephone" [(ngModel)]="loginObj.phoneNumber">
-                <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="loginObj.password">
-                <button class="button-form" (click)="onLoginClient()"> Se connecter passager</button>
+
+                <div class="input-comp-connect">
+
+                    <div class="phone-main">
+                        <select formControlName="selectedCountryCode" class="country-code-select">
+                            <option *ngFor="let country of countryCodes" [value]="country.code">
+                                {{ country.name }} ({{ country.code }})
+                            </option>
+                        </select>
+
+                        <input class="input-phone" type="text" formControlName="phoneNumber" maxlength="9"
+                            placeholder="Numero de telephone" required
+                            [ngClass]="{'invalid-border': logForm.get('phoneNumber')?.invalid && logForm.get('phoneNumber')?.touched}">
+                    </div>
+                    <input class="input-subscibe" type="password" formControlName="password" placeholder="Mot de passe"
+                        required
+                        [ngClass]="{'invalid-border': logForm.get('password')?.invalid && logForm.get('password')?.touched}">
+                </div>
+
+                <!-- <input type="number" name="number" placeholder="Numero de telephone" [(ngModel)]="loginObj.phoneNumber"> -->
+                <!-- <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="loginObj.password"> -->
+                <!-- <button class="button-form" (click)="onLoginClient()"> Se connecter client</button> -->
+                <button class="button-form" type="submit"> Se connecter</button>
                 <div class="forgot-password-comp">
-                    <a routerLink="/forgot-password" class="forgot-password-link">Mot de passe oublié ?</a>
+                    <a (click)="forgotPassword()" class="forgot-password-link">Mot de passe oublié ?</a>
                 </div>
             </form>
         </div>
 
         <div class="login">
-            <form>
-                <label class="form-login" for="chk" aria-hidden="true"> 
-                    <mat-icon class="subscribe-icon" color="primary">person_add</mat-icon>
-                    S'inscrire</label>
+            <form [formGroup]="signUpForm" class="form-main" (ngSubmit)="onSignUp()">
 
+                <div class="input-comp">
+                    <label class="form-login" for="chk" aria-hidden="true">
+                        <mat-icon class="subscribe-icon" color="primary">person_add</mat-icon>
+                        S'inscrire
+                    </label>
 
-                <input type="text" name="firstName" placeholder="Nom" [(ngModel)]="signupObj.firstName">
-                <input type="text" name="lastName" placeholder="Prenom" [(ngModel)]="signupObj.lastName">
-                <input type="number" name="phoneNumber" placeholder="Numero de telephone" [(ngModel)]="signupObj.phoneNumber">
-                <input type="password" name="pswd" placeholder="Mot de passe" [(ngModel)]="signupObj.password">
-                <button class="button-form" (click)="onSignUp()">
-                    En route
-                </button>
+                    <div *ngIf="signUpForm.invalid && signUpForm.touched" class="error-message-global">
+                        Tous les champs sont obligatoires.
+                    </div>
+
+                    <div *ngIf="signUpForm.get('confirmPassword')?.touched && !isSamePassword"
+                        class="error-message-global">
+                        Les mots de passe ne correspond paw
+                    </div>
+
+                    <div *ngIf="isExistNumber" class="error-message-global">
+                        Le numéro existe veillez vous connecter
+                    </div>
+
+                    <input class="input-subscibe" type="text" formControlName="firstName" placeholder="Nom"
+                        [ngClass]="{'invalid-border': signUpForm.get('firstName')?.invalid && signUpForm.get('firstName')?.touched}">
+
+                    <input class="input-subscibe" type="text" formControlName="lastName" placeholder="Prenom" required
+                        [ngClass]="{'invalid-border': signUpForm.get('lastName')?.invalid && signUpForm.get('lastName')?.touched}">
+
+                    <div class="phone-main">
+                        <select formControlName="selectedCountryCode" class="country-code-select">
+                            <option *ngFor="let country of countryCodes" [value]="country.code">
+                                {{ country.name }} ({{ country.code }})
+                            </option>
+                        </select>
+
+                        <input class="input-phone" type="text" formControlName="phoneNumber" maxlength="9"
+                            placeholder="Numero de telephone" required
+                            [ngClass]="{'invalid-border': signUpForm.get('phoneNumber')?.invalid && signUpForm.get('phoneNumber')?.touched}">
+                    </div>
+                    <input class="input-subscibe" type="password" formControlName="password" placeholder="Mot de passe"
+                        required
+                        [ngClass]="{'invalid-border': (signUpForm.get('password')?.invalid || !isSamePassword) && signUpForm.get('password')?.touched}">
+
+                    <input class="input-subscibe" type="password" formControlName="confirmPassword"
+                        placeholder="Veillez confirmer le mot de passe" required
+                        [ngClass]="{'invalid-border': (signUpForm.get('confirmPassword')?.invalid || !isSamePassword) && signUpForm.get('confirmPassword')?.touched}">
+
+                    <button type="submit" class="button-form" [disabled]="signUpForm.invalid"
+                        [ngClass]="{ 'disabled-route-btn': signUpForm.invalid }">
+                        En route
+                    </button>
+                </div>
+
             </form>
+
+
         </div>
     </div>
 </mat-drawer-container>

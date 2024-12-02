@@ -2,11 +2,11 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupComponent } from '../../component/popup/popup.component';
 import { TripService } from '../../services/trip.service';
 import { GetTokenService } from '../../services/get-token.service';
 import { Router } from '@angular/router';
-
+import { PushPopupComponent } from '../../component/push-popup/push-popup.component';
+import { PopupGenericComponent } from '../../component/popup-generic/popup-generic.component';
 
 @Component({
   selector: 'app-driver-dashboard',
@@ -25,15 +25,46 @@ export class DriverDashboardComponent implements OnInit {
     private tripService: TripService,
     private router: Router,
     private getToken: GetTokenService) {
-
     const currentDate = new Date();
     this.today = new Date(currentDate.toLocaleDateString());
   }
 
-  ngOnInit(): void {
+  openGenericDialog(): void {
+    const dialogRef = this.dialog.open(PopupGenericComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('Received data:', result);
+    });
+  }
+
+  async ngOnInit() {
+    const data = localStorage.getItem('tripData')
+
+    if (data != null) {
+      const dataJson = await JSON.parse(data);
+      this.openDialog(dataJson)
+    }
+
+    const addTrip = localStorage.getItem('addTrip')
+    if (addTrip != null) {
+      this.openGenericDialog()
+      localStorage.removeItem('addTrip')
+    }
+
     this.dataSource = []
     this.loadAndInitTrips()
     console.log(this.dataSource)
+  }
+
+  openDialog(tripData: any): void {
+    const dialogRef = this.dialog.open(PushPopupComponent, {
+      data: tripData
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log('Received data:', result);
+    });
   }
 
   checkDate(date: string) {

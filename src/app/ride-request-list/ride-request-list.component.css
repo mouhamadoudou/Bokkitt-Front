@@ -297,3 +297,7 @@ mat-card-content {
 .subscribe {
     background-color: green;
 }
+
+.mat-mdc-paginator {
+    margin-top: 26px;
+}

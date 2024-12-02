@@ -1,0 +1,51 @@
+<mat-drawer-container>
+
+
+    <div class="main">
+
+        <div class="contanair">
+            <div class="title">
+                <h1> Confirmation de votre numero de telephone </h1>
+            </div>
+
+            <div class="subtitle">
+                <p>
+                    Veuillez entrer le code de confirmation reçu par whatsapp au +{{phoneNumber}}.
+                </p>
+            </div>
+
+            <div class="number-contanair">
+                <input type="text" maxlength="5" [(ngModel)]="tryCode"  placeholder="Entrez le code" class="phone-number-input" />
+            </div>
+            <div class="error-code">
+                <p  *ngIf="!isValidCode">
+                    Le code saisie est incorrect.
+                </p>
+            </div>
+
+            <div class="button">
+                <button mat-raised-button (click)="checkCode()" class="step-one-button" color="primary">
+                    Confirmer
+                </button>
+            </div>
+            <div class="edit-comp">
+                <div class="edit">
+                    <p>
+                        Vous n’avez pas reçu de code ?
+                    </p>
+                    <a routerLink="/forgot-password" class="forgot-password-link">
+                        --> Renvoyer le code
+                    </a>
+                    <!-- <p>
+                        <a routerLink="/forgot-password" class="forgot-password-link">
+                             Modifier le numéro de téléphone
+                        </a>
+                    </p> -->
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</mat-drawer-container>

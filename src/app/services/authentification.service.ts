@@ -11,7 +11,8 @@ import { jwtDecode } from "jwt-decode"
 
 
 export class AuthentificationService {
-  private apiUrl = 'http://13.246.15.184:3001/api/';
+  // private apiUrl = 'https://api.bokkitt.com/api/';
+  private apiUrl = 'http://localhost:3021/api/';
 
 
   constructor(private router: Router, private http: HttpClient,
@@ -28,14 +29,14 @@ export class AuthentificationService {
         (response: any) => {
           if (response) {
             localStorage.setItem('token', response.token);
-            console.log("locallll host sett")
+            // console.log("locallll host sett")
             myResolve(true)
           } else {
             myReject("Réponse vide");
           }
         },
         (error) => {
-          console.error("Erreur lors de la requête :", error);
+          // console.error("Erreur lors de la requête :", error);
           myReject(error);
         }
       );
@@ -53,14 +54,15 @@ export class AuthentificationService {
       req.subscribe(
         (response: any) => {
           if (response) {
+            // console.log("resss = ", response)
             localStorage.setItem('token', response.token);
-
+            myResolve(true)
           } else {
-            myReject("Réponse vide ou invalide.");
+            myReject("invalide.");
           }
         },
         (error) => {
-          console.error("Erreur lors de la requête :", error);
+          // console.error("Erreur lors de la requête :", error);
           myReject(error);
         }
       );

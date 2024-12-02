@@ -65,13 +65,15 @@ export class InformationsClientComponent implements OnInit {
         (data) => {
           // this.clientRequestList = data.data
           // console.log("dataa ok => ", this.clientRequestList)
-          resolve();
+          resolve(true);
         },
         (error) => {
           console.error('Error fetching trip request:', error);
           reject(error);
         }
       );
+    }).then(() => {
+      location.reload();
     });
   }
   

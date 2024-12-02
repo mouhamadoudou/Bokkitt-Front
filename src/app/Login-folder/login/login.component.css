@@ -25,6 +25,7 @@ mat-form-field {
     font-size: 12px;
     font-weight: bold;
     color: #c2185b;
+    cursor: pointer;
 }
 
 .forgot-password-comp {
@@ -32,9 +33,9 @@ mat-form-field {
     justify-content: center;
 }
 
-
-/* second option ----------------------------------------------
- */
+.error-message-global {
+    color: black;
+}
 
 mat-drawer-container {
     height: 100%;
@@ -45,13 +46,11 @@ mat-drawer-container {
 }
 
 .introduction {
-    /* color: #437F97; */
+    /* color: #c2185b; */
     font-size: 18px;
     font-weight: bold;
     font-style: italic;
-    text-align: center;
 }
-
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -67,10 +66,12 @@ input[type=number] {
 .main {
     margin-top: 90px;
     width: 400px;
-    height: 500px;
+    /* height: 500px; */
+    height: 600px;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 2px 2px 30px #c2185b;
+    text-align: center;
 }
 
 #chk {
@@ -81,6 +82,7 @@ input[type=number] {
     position: relative;
     width: 100%;
     height: 100%;
+    margin-top: 50px;
 }
 
 label {
@@ -88,7 +90,7 @@ label {
     font-size: 2.3em;
     justify-content: center;
     display: flex;
-    margin: 50px;
+    margin: 30px;
     font-weight: bold;
     cursor: pointer;
     transition: .5s ease-in-out;
@@ -118,7 +120,7 @@ input {
 
     font-size: 1em;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 50px;
     outline: none;
     border: none;
     border-radius: 5px;
@@ -130,9 +132,13 @@ input {
     background: #c2185b;
 }
 
+mat-icon {
+    color: #c2185b;
+}
+
 .login {
-    margin-top: -27px;
-    height: 460px;
+    margin-top: 30px;
+    height: 554px;
     background: #eee;
     border-radius: 60% / 10%;
     transform: translateY(-170px);
@@ -151,7 +157,8 @@ input {
 }
 
 #chk:checked~.login {
-    transform: translateY(-520px);
+    transform: translateY(-590px)
+    
 }
 
 #chk:checked~.login label {
@@ -160,4 +167,75 @@ input {
 
 #chk:checked~.signup label {
     transform: scale(.6);
+}
+
+.invalid-border {
+    border: 2px solid red;
+}
+
+.disabled-route-btn {
+    background-color: rgb(114, 114, 114);
+}
+
+.disabled-route-btn:hover {
+    background-color: rgb(114, 114, 114);
+
+}
+
+.form-login {
+    margin-top: 0px;
+}
+
+.country-code-select {
+    height: 33px;
+    width: 120px;
+    background-color: #c2185b;
+    border: none;
+    color: #f7f7f7;
+    font-weight: bold;
+}
+
+.form-main {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+
+.form-main-connect {
+    width: 100%;
+    /* background-color: red; */
+    position: relative;
+}
+
+.phone-main {
+    width: 85%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    margin-left: 22px;
+}
+
+
+.input-comp-connect {
+    width: 80%;
+    height: 100%;
+    /* background-color: blue; */
+    margin-left: 10%;
+}
+
+.input-comp {
+    width: 80%;
+    height: 100%;
+    /* background-color: blue; */
+}
+
+.input-subscibe {
+    width: 80%;
+}
+
+.input-phone {
+    width: 80%;
 }

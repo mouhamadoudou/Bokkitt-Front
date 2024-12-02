@@ -33,9 +33,9 @@ export class PopupComponent {
 
   setChangeValue(confirmed: boolean): void {
     let result = {};
-    console.log("helooo wollll ", this.data.En)
+    // console.log("helooo wollll ", this.data.En)
     if (this.data.En == 'firstName' || this.data.En == 'lastName' || this.data.En == 'city' || this.data.En == 'old') {
-      console.log("okklllll")
+      // console.log("okklllll")
       const newValue: string = this.nValue;
       const column: string = this.data.En == 'old' ? "age" : this.data.En.toLowerCase();
       result = {type: "nValue", newValue: newValue, column: column, confirmed: confirmed };

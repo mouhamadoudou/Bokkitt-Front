@@ -10,9 +10,6 @@ export class AuthGuardUserService implements CanActivate {
   constructor(private authService: AuthentificationService, private router: Router,
     private authCheck: AuthcheckService) { }
 
-  private userOutIn = ["trip", "suggest-traject", "home"]
-
-  private driverOutIn = ["add-trip"]
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let authorize: boolean = false;
@@ -21,13 +18,10 @@ export class AuthGuardUserService implements CanActivate {
     let isConnected: boolean = this.authCheck.isConnected()
 
     if (!isConnected) {
-      console.log("not connnnect")
-
       return true;
     }
 
     if (roles.includes("USER") && profile == "p-user") {
-      console.log("p  userrrrr")
       return true
     }
 

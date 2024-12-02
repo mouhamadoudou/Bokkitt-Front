@@ -8,6 +8,8 @@ import { map, startWith } from 'rxjs/operators';
 import { AuthentificationService } from '../services/authentification.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { TripService } from '../services/trip.service';
+import { AuthcheckService } from '../services/authcheck.service';
+import { GetTokenService } from '../services/get-token.service';
 
 @Component({
   selector: 'app-suggest-traject',
@@ -40,23 +42,21 @@ export class SuggestTrajectComponent implements OnInit {
     nbSeat: ''
   };
 
-
   onDateSelected(date: string) {
     this.selectedDate = date;
-    console.log("date === ", this.selectedDate)
   }
 
   onTimeSelected(time: string) {
     this.selectedTime = time;
-    console.log("time == ", time)
   }
 
   constructor(private fb: FormBuilder, authService: AuthentificationService, private router: Router,
     private tripService: TripService,
+    public autCheck: AuthcheckService,
+    private getToken: GetTokenService,
 
   ) {
   }
-
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -82,30 +82,44 @@ export class SuggestTrajectComponent implements OnInit {
     }
   }
 
-
-  onSubmitbtn(): Promise<void> {
+  pushData(): Promise<void> {
     const body = {
       departure: this.filterValues.depart,
       destination: this.filterValues.destination,
       date: this.selectedDate,
       time: this.selectedTime,
-      numberrequest: this.filterValues.nbSeat
+      numberrequest: this.filterValues.nbSeat,
+      id_client: this.getToken.getId()
     }
 
     return new Promise((resolve, reject) => {
       this.tripService.createRequestTrip(body).subscribe(
         (data) => {
-          console.log("mohammed")
           resolve();
         },
         (error) => {
-          console.error('Error fetching trip:', error);
           reject(error);
         }
       );
     });
   }
-  // if (this.creditCardForm.valid) {
-  //   console.log('Form Submitted', this.creditCardForm.value);
-  // }
+
+  onSubmitbtn(): void {
+    if (this.autCheck.isConnected()) {
+      localStorage.setItem('suggestData', "true");
+      this.pushData()
+      this.router.navigate(["home"])
+    } else {
+      const tripData = {
+        departure: this.filterValues.depart,
+        destination: this.filterValues.destination,
+        date: this.selectedDate,
+        time: this.selectedTime,
+        numberrequest: this.filterValues.nbSeat
+      }
+
+      localStorage.setItem('suggestData', JSON.stringify(tripData));
+      this.router.navigate(["login-client"])
+    }
+  }
 }

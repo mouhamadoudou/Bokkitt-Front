@@ -86,6 +86,7 @@ export class TripComponent implements OnInit {
 
 
   onClickReserved() {
+    console.log(this.authCheck.isConnected())
     if (this.authCheck.isConnected()) {
       this.router.navigate(["/reservation", this.trajectData.id]);
     } else {

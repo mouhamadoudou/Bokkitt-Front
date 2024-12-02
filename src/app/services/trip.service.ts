@@ -7,9 +7,40 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class TripService {
-  private baseUrl = 'http://localhost:3001/api/'
+  // private baseUrl = 'https://api.bokkitt.com/api/'
+  private baseUrl = 'http://localhost:3021/api/'
 
   constructor(private http: HttpClient) { }
+
+  checkIfNumberExist(role: string, number : string): Observable<any> {
+    return this.http.get(`${this.baseUrl}check-if-number-exist/${role}/${number}`);
+  }
+
+  updatePassword(Data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}update_password_by_phone_number`, Data);
+  }
+
+  verifyCheckCode(Data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}verify-check-code`, Data);
+  }
+
+
+  verifyResetCode(Data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}verify-reset-code`, Data);
+  }
+
+  
+  generateCheckCode(msgData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}generate-check-code`, msgData);
+  }
+
+  sendMessage(msgData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}send-message`, msgData);
+  }
+
+  deleteTrip(tripId: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}delete-trip/${tripId}`);
+  }
 
   updateUserData(userData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}update-column`, userData);
@@ -27,6 +58,10 @@ export class TripService {
     return this.http.get(`${this.baseUrl}get-trips-history-by-client/${clientId}`);
   }
 
+  getClientByTripId(tripId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}get-clients-by-tripId/${tripId}`);
+  }
+  
   getDriverHistoryById(driverId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}get-driver-history-by-driverId/${driverId}`);
   }
@@ -47,8 +82,8 @@ export class TripService {
     return this.http.post(`${this.baseUrl}delete-client-triprequests`, tripClientData);
   }
 
-  getTripById(tripId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}get-trip-by-id/7`);
+  getTripById(tripId: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}get-trip-by-id/${tripId}`);
   }
 
   createTrip(tripData: any): Observable<any> {

@@ -1,14 +1,13 @@
 <div class="trip-contenair">
     <mat-card>
-        <mat-card-header class="driver-mode" *ngIf="autCheck.getRoles() && autCheck.getRoles().includes('DRIVER')">
+        <!-- <mat-card-header class="driver-mode" *ngIf="autCheck.getRoles() && autCheck.getRoles().includes('DRIVER')">
 
             <mat-card-title>
                 Annoncer un trajet
             </mat-card-title>
-        </mat-card-header>
+        </mat-card-header> -->
 
-        <mat-card-header *ngIf="!autCheck.getRoles()">
-
+        <mat-card-header>
             <mat-card-title>
                 Annoncer un trajet
             </mat-card-title>
@@ -27,9 +26,8 @@
 
                             <div class="date-time-conetainer">
                                 <app-date-input (dateChange)="onDateSelected($event)" />
-                                <app-time-picker (timeChange)="onTimeSelected($event)" />
+                                <app-time-picker-hour (timeChange)="onTimeSelected($event)" />
                                 <!-- <button mat-button matStepperNext>Next</button> -->
-
                                 <!-- <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
                                     Confirmer
                                 </button> -->
@@ -58,8 +56,6 @@
                                         maxlength="60"></textarea>
                                 </mat-form-field>
                                 
-
-
                                 <!-- <mat-icon>home</mat-icon> -->
 
                                 <mat-form-field class="destination-input" appearance="outline">
@@ -78,7 +74,6 @@
                                     <textarea matInput [(ngModel)]="filterValues.destinationdesc" name="destinationdesc"
                                         placeholder="Ex. Pat d'oie a côté du pont..." class="no-resize"></textarea>
                                 </mat-form-field>
-                                
                             </div>
 
                             <button mat-raised-button class="step-one-button" color="primary" matStepperNext>
@@ -133,10 +128,6 @@
                             </button>
                         </form>
                     </mat-step>
-
-
-
-
                     <mat-step>
                         <ng-template matStepLabel>Voiture</ng-template>
                         <form class="price-form last-step">
@@ -163,7 +154,6 @@
                                     </mat-select>
                                 </mat-form-field>
 
-
                                 <mat-form-field appearance="fill" class="traject-input">
                                     <mat-label>Capacité bagage</mat-label>
                                     <input [(ngModel)]="filterValues.bagCap" name="capacityBaggage" matInput
@@ -183,7 +173,6 @@
                                         maxlength="9" (ngModelChange)="formatLicensePlate($event)" name="licensePlate"
                                         required>
                                 </mat-form-field>
-
 
                                 <mat-form-field *ngIf="filterValues.baggagePaid" appearance="fill" class="traject-input">
                                     <mat-label>Prix bagage</mat-label>

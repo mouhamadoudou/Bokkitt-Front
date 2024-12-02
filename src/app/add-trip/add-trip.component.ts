@@ -9,6 +9,8 @@ import { AuthentificationService } from '../services/authentification.service';
 import { TripService } from '../services/trip.service';
 import { GetTokenService } from '../services/get-token.service';
 import { AuthcheckService } from '../services/authcheck.service';
+import { Router, NavigationEnd } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 interface Road {
   value: string;
@@ -25,6 +27,7 @@ export class AddTripComponent implements OnInit {
   public licensePlate: string = '';
   public dataSource: any;
   public city = ["Dakar", "Thies", "Mbour", "Saly", "Mermoz", "Pikine"];
+  public dataJson: any = {}
 
   @ViewChild('stepper') private stepper!: MatStepper;
   trajectData: any;
@@ -35,22 +38,7 @@ export class AddTripComponent implements OnInit {
 
   filteredOptions = new Observable<string[]>;
   filteredOptions2 = new Observable<string[]>;
-
-  filterValues = {
-    depart: '',
-    departuredesc: '',
-    destination: '',
-    destinationdesc: '',
-    nbSeat: '',
-    bagCap: '',
-    bagPrice: '',
-    smoke: false,
-    pets: false,
-    clim: false,
-    baggagePaid: false,
-    carType: '',
-    selectedRoad: ''
-  };
+  filterValues: any = {}
 
 
   selectedDate: string = "null";
@@ -76,7 +64,9 @@ export class AddTripComponent implements OnInit {
     public authService: AuthentificationService,
     private tripService: TripService,
     private getToken: GetTokenService,
-    public autCheck: AuthcheckService
+    public autCheck: AuthcheckService,
+    private router: Router,
+    public dialog: MatDialog,
   ) { }
 
   formatLicensePlate(value: string) {
@@ -100,6 +90,27 @@ export class AddTripComponent implements OnInit {
   }
 
   ngOnInit() {
+    // const data = localStorage.getItem('tripData')
+
+    // if (data != null) {
+    //   this.dataJson = await JSON.parse(data);
+    //   this.filterValues = {
+    //     depart: this.dataJson.departure,
+    //     departuredesc: this.dataJson.departuredesc,
+    //     destination: this.dataJson.destination,
+    //     destinationdesc: this.dataJson.destinationdesc,
+    //     nbSeat: this.dataJson.seat.toString(),
+    //     bagCap: this.dataJson.bagcap.toString(),
+    //     bagPrice: this.dataJson.bagpay.toString(),
+    //     smoke: this.dataJson.smoke,
+    //     pets: this.dataJson.pets,
+    //     clim: this.dataJson.clim,
+    //     baggagePaid: this.dataJson.bad,
+    //     carType: this.dataJson.carType,
+    //     selectedRoad: this.dataJson.selectedroad
+    //   }
+    // }
+
     this.creditCardForm = this.fb.group({
       Number: ['', [Validators.required, Validators.pattern('^[0-9]')]],
     });
@@ -115,8 +126,9 @@ export class AddTripComponent implements OnInit {
     );
   }
 
+
   private _filter(value: string): string[] {
-    console.log(this.dataSource)
+    // console.log(this.dataSource)
     const filterValue = value.toLowerCase();
 
     return this.city.filter(option => option.toLowerCase().includes(filterValue)).slice(0, 2);
@@ -131,22 +143,22 @@ export class AddTripComponent implements OnInit {
 
   onDateSelected(date: string) {
     this.selectedDate = date;
-    console.log("date === ", this.selectedDate)
+    // console.log("date === ", this.selectedDate)
   }
 
   onTimeSelected(time: string) {
     this.selectedTime = time;
-    console.log("time == ", time)
+    // console.log("time == ", time)
   }
 
   onPriceSelected(price: any) {
     this.selectedPrice = price;
-    console.log("price == ", price)
+    // console.log("price == ", price)
   }
 
 
-  onSubmit() {
-    console.log(this.licensePlate, "ress == ", this.filterValues)
+  pushData() {
+    // console.log(this.licensePlate, "ress == ", this.filterValues)
 
     const body = {
       time: this.selectedTime,
@@ -172,14 +184,46 @@ export class AddTripComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.tripService.createTrip(body).subscribe(
         (data) => {
-          console.log("mohammed")
           resolve(data);
         },
         (error) => {
-          console.error('Error fetching trip:', error);
           reject(error);
         }
       );
     });
+  }
+
+
+  onSubmit() {
+    if (this.autCheck.isConnected()) {
+      localStorage.setItem('addTrip', "true");
+      this.pushData()
+      this.router.navigate(["driver-dashboard"])
+    } else {
+      const tripData = {
+        time: this.selectedTime,
+        date: this.selectedDate,
+        licensePlate: this.licensePlate,
+        bagcap: parseInt(this.filterValues.bagCap),
+        bagpay: parseInt(this.filterValues.bagPrice),
+        bag: this.filterValues.baggagePaid,
+        carType: this.filterValues.carType,
+        clim: this.filterValues.clim,
+        departure: this.filterValues.depart,
+        departuredesc: this.filterValues.departuredesc,
+        destination: this.filterValues.destination,
+        destinationdesc: this.filterValues.destinationdesc,
+        seat: parseInt(this.filterValues.nbSeat),
+        pets: this.filterValues.pets,
+        selectedroad: this.filterValues.selectedRoad,
+        smoke: this.filterValues.smoke,
+        price: parseInt(this.selectedPrice),
+        driverid: parseInt(this.getToken.getId())
+      }
+
+      localStorage.setItem('tripData', JSON.stringify(tripData));
+
+      this.router.navigate(["login-driver"])
+    }
   }
 }

@@ -10,16 +10,16 @@
 
             <div class="subtitle">
                 <p>
-                    Veuillez entrer le code de réinitialisation reçu par message au 777123456.
+                    Veuillez entrer le code de réinitialisation reçu par whatsapp au {{phoneNumber}}.
                 </p>
             </div>
 
             <div class="number-contanair">
-                <input type="text" maxlength="10" placeholder="Entrez le code" class="phone-number-input" />
+                <input type="text" maxlength="5" [(ngModel)]="tryCode"  placeholder="Entrez le code" class="phone-number-input" />
             </div>
 
             <div class="button">
-                <button mat-raised-button routerLink="/verification" class="step-one-button" color="primary">
+                <button mat-raised-button (click)="checkCode()" class="step-one-button" color="primary">
                     Confirmer
                 </button>
             </div>

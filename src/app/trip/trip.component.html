@@ -86,13 +86,13 @@
                                     <mat-card-title class="header-driver"> Voiture</mat-card-title>
                                 </mat-card-header>
                                 <mat-card-content>
-                                    <p> Type: 4x4 </p>
+                                    <p> Type: {{trajectData.cartype}} </p>
                                 </mat-card-content>
                                 <mat-card-content>
                                     <p> Baggage Payant:  {{trajectData.bag ? "Oui" : "Non"}} </p>
                                 </mat-card-content>
                                 <mat-card-content>
-                                    <p> Capacité Baggage: 2 </p>
+                                    <p> Capacité Baggage: {{trajectData.badcap}} </p>
                                 </mat-card-content>
                                 <mat-card-content *ngIf="trajectData.bag">
                                     <p> Prix Baggage: {{trajectData.bagpay}} FCFA </p>

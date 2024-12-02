@@ -7,7 +7,7 @@
             <div class="traject-container">
                 <div class="nb-traject">
                     <h3>Trajets actifs</h3>
-                    <h3>3</h3>
+                    <h3 >{{ dataSource ? dataSource.length : 0}}</h3>
                 </div>
                 <div class="nb-traject">
                     <h3>Revenu potentiel</h3>
@@ -39,7 +39,7 @@
 
                 <div class="container-3">
 
-                    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 custom-table request-container">
+                    <table mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z1 custom-table request-container">
                         <ng-container matColumnDef="id">
                             <!-- <th mat-header-cell *matHeaderCellDef>
                             </th> -->

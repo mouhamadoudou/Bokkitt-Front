@@ -77,6 +77,11 @@ import { InformationsClientComponent } from './User-infos/informations-client/in
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { TimePickerHourComponent } from './component/time-picker-hour/time-picker-hour.component';
+import { PushPopupComponent } from './component/push-popup/push-popup.component';
+import { PopupGenericComponent } from './component/popup-generic/popup-generic.component';
+import { ChangePasswordComponent } from './Forgot-Password/change-password/change-password.component';
+import { CheckNumberComponent } from './check-number/check-number.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -117,6 +122,11 @@ registerLocaleData(localeFr, 'fr');
     ClientMyTripComponent,
     ReservationClientComponent,
     InformationsClientComponent,
+    TimePickerHourComponent,
+    PushPopupComponent,
+    PopupGenericComponent,
+    ChangePasswordComponent,
+    CheckNumberComponent,
   ],
   imports: [
     BrowserModule,

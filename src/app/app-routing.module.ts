@@ -25,7 +25,8 @@ import { ChooseTypeUserComponent } from './Login-folder/choose-type-user/choose-
 import { ConnexionDriverComponent } from './Login-folder/connexion-driver/connexion-driver.component';
 import { Page404Component } from './page404/page404.component';
 import { ClientMyTripComponent } from './User-infos/client-my-trip/client-my-trip.component';
-
+import { ChangePasswordComponent } from './Forgot-Password/change-password/change-password.component';
+import { CheckNumberComponent } from './check-number/check-number.component';
 import { AuthGuardUserService } from './guards/auth-guard-user.service';
 
 const routes: Routes = [
@@ -44,7 +45,7 @@ const routes: Routes = [
       // { path: "", component: ChooseTypeUserComponent },
 
 
-
+      // { path: "change-password", component: ChangePasswordComponent },
 
       {
         path: '',
@@ -76,6 +77,10 @@ const routes: Routes = [
         canActivate: [AuthorizationGuard], data: { roles: ['DRIVER', 'USER'] }
       },
 
+      { path: "change-password/:role", component: ChangePasswordComponent,
+        canActivate: [AuthorizationGuard], data: { roles: ['DRIVER', 'USER'] }
+      },
+
       {
         path: '',
         canActivate: [AuthGuard],
@@ -84,8 +89,10 @@ const routes: Routes = [
           { path: "login-client/:id", component: LoginComponent },
           { path: "login-driver", component: ConnexionDriverComponent },
           { path: "choose-profile", component: ChooseTypeUserComponent },
-          { path: "forgot-password", component: ForgotPasswordComponent },
-          { path: "verification", component: VerificationComponent },
+          { path: "forgot-password/:role", component: ForgotPasswordComponent },
+          { path: "verification/:number/:role", component: VerificationComponent },
+          { path: "check-number/:number/:role", component: CheckNumberComponent },
+
         ]
       },
       // ---------------------DRIVER-----------------------
@@ -96,7 +103,7 @@ const routes: Routes = [
         children: [
           { path: 'driver-dashboard', component: DriverDashboardComponent },
           { path: 'driver-ride-request', component: DriverRideRequestComponent },
-          { path: "my-trip", component: MyTripComponent },
+          { path: "my-trip/:id", component: MyTripComponent },
           { path: "add-trip", component: AddTripComponent },
 
           // { path: "informations", component: DashboardComponent },

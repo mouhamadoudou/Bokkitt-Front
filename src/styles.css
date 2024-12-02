@@ -1,13 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-
 :root {
     --primaryy: #6200ea;
     --secondary-color: #03dac6;
-    --background-color: #ffffff;
+    --background-color: #414141;
   }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body, mat-button, mat-input, mat-card
+body { margin: 0; font-family: 'Roboto', sans-serif !important;}
 
 .container {
     padding: 10px;

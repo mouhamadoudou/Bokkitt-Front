@@ -6,6 +6,10 @@ import { AuthcheckService } from '../services/authcheck.service';
 import { UserService } from '../services/user.service';
 import { jwtDecode } from "jwt-decode"
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatBadgeModule} from '@angular/material/badge';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

@@ -65,6 +65,10 @@ export class VerificationComponent implements OnInit {
     });
   }
 
+  reSend() {
+    this.router.navigate(['verification', this.phoneNumber, this.role]);
+  }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.phoneNumber = params.get('number')!;

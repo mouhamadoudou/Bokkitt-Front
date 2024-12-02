@@ -1,14 +1,14 @@
 html,
 body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 
 .main-container {
     width: 100%;
-    height: auto ;
-    background-color:#353535de;
+    height: auto;
+    background-color: #353535de;
     /* display: flex; */
     /* justify-content: center; */
 }
@@ -21,7 +21,7 @@ body {
     height: auto;
     padding-bottom: 80px;
     background-color: #437F97;
-    margin:auto;
+    margin: auto;
 }
 
 .page-title {
@@ -430,5 +430,11 @@ mat-icon {
 
 
 .btn-color {
+    background-color: rgb(19, 113, 134);
+}
+
+
+.paginator {
+    margin-top: 40px;
     background-color: rgb(19, 113, 134);
 }

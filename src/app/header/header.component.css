@@ -152,3 +152,8 @@
     background-color: #7a7a7a !important;
     border-radius: 20px !important;
 }
+
+
+.mat-badge.hide-text .mat-badge-content {
+    color: transparent;
+  }

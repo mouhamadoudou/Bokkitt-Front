@@ -28,11 +28,11 @@
                     <p>
                         Vous n’avez pas reçu de code ?
                     </p>
-                    <a routerLink="/forgot-password" class="forgot-password-link">
+                    <a (click)="sendCode()" class="resend-code">
                         --> Renvoyer le message
                     </a>
                     <p>
-                        <a routerLink="/forgot-password" class="forgot-password-link">
+                        <a routerLink="/forgot-password/{{role}}" class="forgot-password-link">
                             --> Modifier le numéro de téléphone
                         </a>
                     </p>

@@ -87,7 +87,7 @@ export class DriverDashboardComponent implements OnInit {
       const date = new Date(this.today);
       const formattedDate = date.toISOString().split('T')[0];
 
-      this.tripService.getDriverNextTrip5(this.getToken.getId(), formattedDate).subscribe(
+      this.tripService.getDriverHistoryById(this.getToken.getId()).subscribe(
         (data) => {
           this.dataSource = data.data
           resolve();
